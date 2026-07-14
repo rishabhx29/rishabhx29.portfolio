@@ -41,6 +41,14 @@ export const ProjectCard = ({
   const { resolvedTheme } = useTheme();
   const router = useRouter();
 
+  useEffect(() => {
+    // Render background image shortly after page load completes so it doesn't block initial page load
+    const timer = setTimeout(() => {
+      setShouldLoadHoverImage(true);
+    }, 400);
+    return () => clearTimeout(timer);
+  }, []);
+
   const imageSrc = resolvedTheme === "light" && project.lightModeSrc ? project.lightModeSrc : project.src;
 
   const isNotStarted = project.title === "Inquiro";
