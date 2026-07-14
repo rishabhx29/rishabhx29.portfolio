@@ -64,13 +64,11 @@ export const ProjectCard = ({
         animate="rest"
       >
         <div className="flex items-center justify-end z-10 min-h-[24px]">
-          {project.hasPin && (
-            <div className="w-6 h-6 rounded-[6px] bg-transparent border border-zinc-200/80 dark:border-zinc-800/80 flex items-center justify-center text-zinc-400 dark:text-zinc-500">
-              <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 17v5" /><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z" />
-              </svg>
-            </div>
-          )}
+          <div className="w-6 h-6 rounded-[6px] bg-transparent border border-zinc-200/80 dark:border-zinc-800/80 flex items-center justify-center text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 group-hover:border-zinc-400 dark:group-hover:border-zinc-600 transition-colors duration-200">
+            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
+          </div>
         </div>
 
         {/* Ambient Hover Background */}
@@ -91,36 +89,21 @@ export const ProjectCard = ({
           transition={{ duration: 0.3, ease: "easeOut" }}
         />
 
-        <motion.h1
-          className="absolute top-4 left-4 text-[10px] font-bold text-zinc-500 dark:text-zinc-400 z-30 uppercase tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]"
+        <motion.div
+          className="absolute top-4 left-4 z-30 pointer-events-none"
           variants={{
-            rest: { left: "1rem", top: "1rem", x: "0%", color: "#71717a", opacity: 0 },
-            hover: { left: "50%", top: "25%", x: "-50%", color: "#ffffff", opacity: 1 },
+            rest: { left: "1rem", top: "1rem", x: "0%", opacity: 0 },
+            hover: { left: "50%", top: "25%", x: "-50%", opacity: 1 },
           }}
           transition={{ type: "spring", stiffness: 200, damping: 25 }}
         >
-          Play Video
-        </motion.h1>
-
-        {project.video && (
-          <motion.div
-            className="absolute inset-0 z-40 flex items-center justify-center pointer-events-none group-hover:pointer-events-auto"
-            variants={{ rest: { scale: 0.5, opacity: 0 }, hover: { scale: 1, opacity: 1 } }}
-            transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.05 }}
-          >
-            <div 
-              className="h-10 w-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 active:scale-95 transition-transform duration-200 border border-white/50"
-              onClick={(e) => {
-                e.stopPropagation();
-                if (project.video) setActiveVideo(project.video);
-              }}
-            >
-              <svg className="w-4 h-4 text-zinc-900 ml-0.5 fill-current" viewBox="0 0 24 24">
-                <path d="M5.25 5.653v12.694c0 .856.926 1.39 1.668.958l11.1-6.347a1.125 1.125 0 000-1.916L6.918 4.695c-.742-.432-1.668.102-1.668.958z" />
-              </svg>
-            </div>
-          </motion.div>
-        )}
+          <span className="px-3 py-1.5 rounded-full bg-zinc-900/90 dark:bg-white/95 backdrop-blur-md text-white dark:text-zinc-900 text-[11px] font-semibold tracking-wider uppercase shadow-lg border border-white/10 dark:border-black/10 flex items-center gap-1.5">
+            Explore Project
+            <svg viewBox="0 0 24 24" className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
+          </span>
+        </motion.div>
 
         {/* Floating screenshot sitting directly at the bottom of the outer wrapper */}
         <motion.div
