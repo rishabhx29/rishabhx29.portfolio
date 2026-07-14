@@ -4,6 +4,7 @@ export type ExperienceData = {
   dates: string;
   location: string;
   src: string;
+  srcDark?: string;
   type?: string;
   imageFit?: "contain" | "cover";
   imageZoom?: number;
@@ -19,7 +20,7 @@ export const experiences: ExperienceData[] = [
     role: "Software Developer Intern",
     dates: "June 2026 - Present",
     location: "Remote",
-    src: "/Experience-image/pngegg (1).png",
+    src: "/logos/ecera-logo.png",
     imageFit: "contain",
     imageZoom: 1.5,
     description: `
@@ -33,7 +34,8 @@ export const experiences: ExperienceData[] = [
     role: "Project Admin",
     dates: "June 2026 - Present",
     location: "Remote",
-    src: "/Experience-image/Google_Summer_of_Code_sun_logo_2022.svg (1).png",
+    src: "/logos/SSoC_light.png",
+    srcDark: "/logos/SSoC_dark.png",
     imageFit: "contain",
     imageZoom: 0.9,
     description: `
@@ -48,7 +50,8 @@ export const experiences: ExperienceData[] = [
     role: "Contributor",
     dates: "April 2026 - Present",
     location: "Remote",
-    src: "/Experience-image/Google_Summer_of_Code_sun_logo_2022.svg (1).png",
+    src: "/logos/GSSoC_light.jpg",
+    srcDark: "/logos/GSSoC_dark.jpg",
     imageFit: "contain",
     imageZoom: 0.9,
     description: `

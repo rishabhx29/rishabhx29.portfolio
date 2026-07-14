@@ -53,16 +53,41 @@ export function ExperienceList() {
               <div className="flex items-start gap-3 sm:gap-4 flex-1 min-w-0">
                 <div className="size-10 shrink-0 rounded-[10px] border border-black/10 bg-zinc-50 p-[2px] shadow-sm shadow-black/15 dark:border-zinc-800 dark:bg-[#111111] dark:shadow-md dark:shadow-black/50">
                   <div className="w-full h-full rounded-[7px] border border-black/5 dark:border-black/20 bg-white flex items-center justify-center overflow-hidden relative">
-                    <Image
-                      src={item.src}
-                      alt={item.title}
-                      width={40}
-                      height={40}
-                      sizes="40px"
-                      quality={60}
-                      style={item.imageZoom ? { transform: `scale(${item.imageZoom})` } : undefined}
-                      className={`${item.imageFit === "contain" ? "object-contain" : "object-cover"} w-full h-full p-0.5`}
-                    />
+                    {item.srcDark ? (
+                      <>
+                        <Image
+                          src={item.src}
+                          alt={item.title}
+                          width={40}
+                          height={40}
+                          sizes="40px"
+                          quality={60}
+                          style={item.imageZoom ? { transform: `scale(${item.imageZoom})` } : undefined}
+                          className={`${item.imageFit === "contain" ? "object-contain" : "object-cover"} w-full h-full p-0.5 dark:hidden`}
+                        />
+                        <Image
+                          src={item.srcDark}
+                          alt={item.title}
+                          width={40}
+                          height={40}
+                          sizes="40px"
+                          quality={60}
+                          style={item.imageZoom ? { transform: `scale(${item.imageZoom})` } : undefined}
+                          className={`${item.imageFit === "contain" ? "object-contain" : "object-cover"} w-full h-full p-0.5 hidden dark:block`}
+                        />
+                      </>
+                    ) : (
+                      <Image
+                        src={item.src}
+                        alt={item.title}
+                        width={40}
+                        height={40}
+                        sizes="40px"
+                        quality={60}
+                        style={item.imageZoom ? { transform: `scale(${item.imageZoom})` } : undefined}
+                        className={`${item.imageFit === "contain" ? "object-contain" : "object-cover"} w-full h-full p-0.5`}
+                      />
+                    )}
                   </div>
                 </div>
                 <div className="flex flex-col gap-0.5 min-w-0 pr-2 sm:pr-4">
