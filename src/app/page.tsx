@@ -77,8 +77,8 @@ export default function Home() {
       {/* Cell 1: Banner */}
       <div className="absolute left-0 right-0 md:left-[30%] md:right-[30%] top-0 h-[22vh] -z-0 pointer-events-auto overflow-hidden bg-white dark:bg-black shadow-[0_4px_12px_rgba(2,6,23,0.04)] dark:shadow-[0_4px_12px_rgba(2,6,23,0.10)]">
         <Image
-          src="/ChatGPT%20Image%20May%2022%2C%202026%2C%2012_40_29%20AM.jpg"
-          alt=""
+          src="/new_banner_light%20(1).png"
+          alt="Portfolio Banner Light"
           fill
           fetchPriority="high"
           sizes="(min-width: 768px) 40vw, 100vw"
@@ -86,8 +86,8 @@ export default function Home() {
           className="object-cover object-center dark:hidden"
         />
         <Image
-          src="/ChatGPT%20Image%20May%2022%2C%202026%2C%2012_49_39%20AM.jpg"
-          alt=""
+          src="/new_banner_dark.png"
+          alt="Portfolio Banner Dark"
           fill
           fetchPriority="high"
           sizes="(min-width: 768px) 40vw, 100vw"
@@ -143,13 +143,13 @@ export default function Home() {
       {/* Flowing Content Section */}
       <div className="ml-0 mr-0 md:ml-[30%] md:mr-[30%] pt-[calc(22vh+112px)] pb-0 px-4 flex flex-col z-10 relative min-h-screen">
         <p className="text-[14px] sm:text-[15px] text-zinc-600 dark:text-zinc-300 leading-relaxed mt-4">
-          Engineer / Artist. I love building, breaking, and shipping things.
+          Full-stack engineer who ships fast and obsesses over clean architecture. I turn ideas into products people actually use.
         </p>
 
         <ul className="text-[14px] sm:text-[15px] text-zinc-600 dark:text-zinc-300 leading-relaxed mt-4 pl-4">
-          <li className="flex gap-1.5"><span>•</span><span>AI, open source, and developer tools excite me.</span></li>
-          <li className="flex gap-1.5"><span>•</span><span>I believe actions speak louder than words, so I put my code where my mouth is.</span></li>
-          <li className="flex gap-1.5"><span>•</span><span>Currently building <span className="font-semibold text-zinc-900 dark:text-white">AlgoForge</span>, <span className="font-semibold text-zinc-900 dark:text-white">Traceon</span>, and experimental AI tools.</span></li>
+          <li className="flex gap-1.5"><span>•</span><span>Building <span className="font-semibold text-zinc-900 dark:text-white">AlgoForge</span>, <span className="font-semibold text-zinc-900 dark:text-white">Traceon</span>, and <span className="font-semibold text-zinc-900 dark:text-white">EduPulse</span> — from gamified DSA to AI-powered code analysis.</span></li>
+          <li className="flex gap-1.5"><span>•</span><span>Open-source Project Admin at <span className="font-semibold text-zinc-900 dark:text-white">SSoC</span> and contributor at <span className="font-semibold text-zinc-900 dark:text-white">GSSoC</span>.</span></li>
+          <li className="flex gap-1.5"><span>•</span><span>My stack: React, Next.js, Node.js, TypeScript — and whatever else the problem demands.</span></li>
         </ul>
 
         {/* Buttons */}
@@ -200,7 +200,7 @@ export default function Home() {
                 </SoftPillButton>
               </SocialHoverCard>
             ))}
-            <Link href="/resume" target="_blank">
+            <Link href="/resume">
               <SoftPillButton
                 as="span"
                 variant="secondary"
@@ -402,12 +402,12 @@ export default function Home() {
         <div className="mt-12 flex flex-col items-center justify-center relative py-12">
           <div className="max-w-[480px] w-full flex flex-col items-center">
             <h3 className="text-[16px] font-medium text-center leading-relaxed text-zinc-500 dark:text-zinc-400 mb-6 italic">
-              &quot;Talk is cheap.<br className="hidden md:block" /> Show me the code.&quot;
+              &quot;Simplicity is prerequisite<br className="hidden md:block" /> for reliability.&quot;
             </h3>
 
             <div className="flex items-center gap-3 text-[10px] font-medium tracking-[0.2em] text-zinc-400 dark:text-zinc-600 uppercase">
               <div className="w-4 h-[1px] bg-zinc-200 dark:bg-zinc-800" />
-              LINUS TORVALDS
+              EDSGER W. DIJKSTRA
               <div className="w-4 h-[1px] bg-zinc-200 dark:bg-zinc-800" />
             </div>
           </div>
