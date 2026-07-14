@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
-const darkBannerImage = "/ChatGPT%20Image%20May%2022%2C%202026%2C%2012_49_39%20AM.jpg";
+const darkBannerImage = "/new_banner_dark.png";
 
 interface SocialProfile {
   name: string;
@@ -23,55 +23,55 @@ interface SocialProfile {
 
 const socialProfiles: Record<string, SocialProfile> = {
   GitHub: {
-    name: "Ashutosh Singh",
-    handle: "Ashutoshx7",
-    avatar: "https://github.com/ashutoshx7.png",
-    bio: "20 • Artist / Engineer",
-    location: "Delhi, India (UTC +05:30)",
+    name: "Rishabh Tripathi",
+    handle: "rishabhx29",
+    avatar: "https://github.com/rishabhx29.png",
+    bio: "Full-stack dev • Open-source Project Admin • Building AlgoForge, Traceon & EduPulse",
+    location: "India",
     stats: [
-      { value: "138", label: "Repositories" },
-      { value: "236", label: "Followers" },
+      { value: "50+", label: "Repositories" },
+      { value: "100+", label: "Followers" },
     ],
   },
-  Twitter: {
-    name: "Ashutoshx7",
-    handle: "@Ashutosh_7x7",
-    avatar: "https://unavatar.io/twitter/Ashutosh_7x7",
+  X: {
+    name: "Rishabh Tripathi",
+    handle: "@RishabhTri8805",
+    avatar: "https://unavatar.io/twitter/RishabhTri8805",
     banner: darkBannerImage,
-    bio: "Artist / Engineer 20 • Backed by Vercel • Building Draco",
-    location: "Delhi, India (UTC +05:30)",
+    bio: "Shipping code and sharing the journey. React, Next.js, and everything in between.",
+    location: "India",
     stats: [
-      { value: "395", label: "Following" },
-      { value: "2,312", label: "Followers" },
+      { value: "100+", label: "Following" },
+      { value: "500+", label: "Followers" },
     ],
   },
   LinkedIn: {
-    name: "Ashutosh Singh",
-    handle: "in/ashutosh-singh-855177329",
-    avatar: "https://github.com/ashutoshx7.png",
+    name: "Rishabh Tripathi",
+    handle: "in/rishabh-tripathi-728a77317",
+    avatar: "https://github.com/rishabhx29.png",
     banner: darkBannerImage,
-    bio: "20 • Artist / Engineer ||",
-    location: "Lucknow, Uttar Pradesh, India",
+    bio: "Software Engineer | Full-Stack Developer | Open-Source Contributor",
+    location: "India",
     stats: [
-      { value: "195", label: "Connections" },
+      { value: "500+", label: "Connections" },
     ],
   },
   Medium: {
-    name: "Ashutosh Singh",
-    handle: "@ashutoshx7",
-    avatar: "https://github.com/ashutoshx7.png",
+    name: "Rishabh Tripathi",
+    handle: "@rishabhx29",
+    avatar: "https://github.com/rishabhx29.png",
     bio: "Writing about modern web engineering, pixel-perfect design systems, and frontend optimizations.",
-    location: "Delhi, India (UTC +05:30)",
+    location: "India",
     stats: [
       { value: "12", label: "Stories" },
       { value: "85", label: "Followers" },
     ],
   },
   Discord: {
-    name: "Ashutoshx7",
-    handle: "ashutoshsingh71",
-    avatar: "/discord-avatar.png",
-    bio: "Even if it's dark, keep moving forward.",
+    name: "Rishabh",
+    handle: "jiraya_sensei2139",
+    avatar: "/Rishabh-Avatar.jpg",
+    bio: "Building stuff, breaking stuff, shipping anyway.",
     location: "",
     stats: [],
   },
@@ -277,8 +277,8 @@ export default function SocialHoverCard({ socialName, children }: SocialHoverCar
                           <h3 className="text-[13.5px] font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 truncate leading-none">
                             {profile.name}
                           </h3>
-                          {/* verified blue badge for Twitter */}
-                          {socialName === "Twitter" && (
+                          {/* verified blue badge for X */}
+                          {socialName === "X" && (
                             <svg viewBox="0 0 24 24" className="w-[13.5px] h-[13.5px] text-[#1d9bf0] fill-current shrink-0 select-none">
                               <path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.99-3.818-3.99-.48 0-.94.1-1.348.27C14.825 2.515 13.512 1.5 12 1.5s-2.825 1.015-3.422 2.28c-.408-.17-.867-.27-1.348-.27-2.108 0-3.818 1.78-3.818 3.99 0 .495.084.965.238 1.4-1.273.65-2.148 2.02-2.148 3.6 0 1.58.875 2.95 2.148 3.6-.154.435-.238.905-.238 1.4 0 2.21 1.71 3.99 3.818 3.99.48 0 .94-.1 1.348-.27.597 1.265 1.91 2.28 3.422 2.28s2.825-1.015 3.422-2.28c.408.17.867.27 1.348.27 2.108 0 3.818-1.78 3.818-3.99 0-.495-.084-.965-.238-1.4 1.273-.65 2.148-2.02 2.148-3.6zm-12.72 3.28L6.47 12.5c-.39-.39-.39-1.03 0-1.42s1.02-.39 1.41 0l2.2 2.2 5.09-5.09c.39-.39 1.03-.39 1.42 0s.39 1.03 0 1.42l-5.8 5.8c-.2.2-.46.3-.71.3s-.51-.1-.71-.3z" />
                             </svg>
