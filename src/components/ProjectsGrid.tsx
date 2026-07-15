@@ -38,10 +38,12 @@ export const ProjectCard = ({
 }) => {
   const [hoveredTech, setHoveredTech] = useState<string | null>(null);
   const [shouldLoadHoverImage, setShouldLoadHoverImage] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
   const router = useRouter();
 
   useEffect(() => {
+    setMounted(true);
     // Render background image shortly after page load completes so it doesn't block initial page load
     const timer = setTimeout(() => {
       setShouldLoadHoverImage(true);
@@ -49,7 +51,7 @@ export const ProjectCard = ({
     return () => clearTimeout(timer);
   }, []);
 
-  const imageSrc = resolvedTheme === "light" && project.lightModeSrc ? project.lightModeSrc : project.src;
+  const imageSrc = mounted && resolvedTheme === "light" && project.lightModeSrc ? project.lightModeSrc : project.src;
 
   const isNotStarted = project.title === "Inquiro";
   const isBuilding = project.title === "Blueprint" || project.title === "Scribble3D";
