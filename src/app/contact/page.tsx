@@ -5,7 +5,6 @@ import { FooterBackground } from "@/components/FooterBackground";
 import { CommandMenu } from "@/components/command-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { CurrentTime } from "@/components/CurrentTime";
-import { RightNavbar } from "@/components/RightNavbar";
 import { FlightButton } from "@/components/FlightButton";
 import DisplacementText from "@/components/DisplacementText";
 import { ArrowLeft } from "lucide-react";
@@ -119,7 +118,6 @@ export default function ContactPage() {
           --autofill-text: #fafafa;
         }
       `}} />
-      <RightNavbar />
 
       {/* Blueprint Vertical Lines */}
       <div className="absolute top-0 bottom-0 left-[30%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />

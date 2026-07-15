@@ -12,7 +12,6 @@ import { BlogLikeButton } from "@/components/BlogLikeButton";
 import { CommandMenu } from "@/components/command-menu";
 import { CurrentTime } from "@/components/CurrentTime";
 import { FooterBackground } from "@/components/FooterBackground";
-import { RightNavbar } from "@/components/RightNavbar";
 import { ThemeToggle } from "@/components/theme-toggle";
 import {
   BlogBlock,
@@ -222,7 +221,6 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-white transition-colors duration-300 dark:bg-black">
-      <RightNavbar />
       <BlueprintFrame />
 
       <div className="absolute left-0 right-0 top-0 h-[22vh] pointer-events-auto -z-0 md:left-[30%] md:right-[30%]">

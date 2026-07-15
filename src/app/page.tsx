@@ -5,14 +5,13 @@ import { ProjectsGrid } from "@/components/ProjectsGrid";
 import { ExperienceList } from "@/components/ExperienceList";
 import { OpenSourceContributions } from "@/components/OpenSourceContributions";
 import { Certifications } from "@/components/Certifications";
-import { FooterBackground } from "@/components/FooterBackground";
-import { RightNavbar } from "@/components/RightNavbar";
+import { RishabhParticles } from "@/components/RishabhParticles";
 import { CommandMenu } from "@/components/command-menu";
 import Link from "next/link";
 import SoftPillButton from "@/components/pixel-perfect/soft-pill-button";
 import SocialHoverCard from "@/components/pixel-perfect/social-hover-card";
 import { BannerParticles } from "@/components/BannerParticles";
-import { FileText } from "lucide-react";
+import { FileText, Boxes } from "lucide-react";
 import Image from "next/image";
 
 const skills = [
@@ -46,9 +45,6 @@ const skills = [
 export default function Home() {
   return (
     <div className="min-h-screen w-full bg-white dark:bg-black relative overflow-x-hidden transition-colors duration-300">
-
-      {/* Right Side Blueprint Navigation */}
-      <RightNavbar />
 
       {/* Vertical Lines - Ultra-fine Micro Dots */}
       <div className="absolute top-0 bottom-0 left-[30%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
@@ -167,6 +163,19 @@ export default function Home() {
                   <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>
                 Send an email
+              </div>
+            </SoftPillButton>
+          </Link>
+
+          <Link href="/playground">
+            <SoftPillButton
+              as="span"
+              variant="secondary"
+              className="px-3 py-1.5 !text-[12px]"
+            >
+              <div className="flex items-center gap-1.5 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
+                <Boxes className="w-3.5 h-3.5" />
+                Explore Playground
               </div>
             </SoftPillButton>
           </Link>
@@ -413,8 +422,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Fading Grid Filler */}
-        <div className="flex-grow w-[calc(100%+32px)] -mx-4 h-[300px] relative mt-4">
+        {/* Rishabh Particle Logo Footer */}
+        <div className="flex-grow w-[calc(100%+32px)] -mx-4 h-[380px] relative mt-4">
           {/* Top full-width line */}
           <div
             className="absolute top-0 left-[-100vw] right-[-100vw] h-0 border-t border-black/30 dark:border-white/[0.15] pointer-events-none z-10"
@@ -427,7 +436,7 @@ export default function Home() {
           <div className="absolute top-0 left-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" />
           <div className="absolute top-0 right-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" />
 
-          <FooterBackground />
+          <RishabhParticles />
         </div>
 
       </div>

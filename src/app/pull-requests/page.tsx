@@ -3,7 +3,6 @@
 import { ThemeToggle } from "@/components/theme-toggle";
 import { CommandMenu } from "@/components/command-menu";
 import { CurrentTime } from "@/components/CurrentTime";
-import { RightNavbar } from "@/components/RightNavbar";
 import { FooterBackground } from "@/components/FooterBackground";
 import { OpenSourceContributions } from "@/components/OpenSourceContributions";
 import Link from "next/link";
@@ -13,9 +12,6 @@ import { motion } from "framer-motion";
 export default function PullRequestsPage() {
   return (
     <div className="min-h-screen w-full bg-white dark:bg-black relative overflow-x-hidden transition-colors duration-300">
-      {/* Right Side Blueprint Navigation */}
-      <RightNavbar />
-
       {/* Vertical Lines - Ultra-fine Micro Dots */}
       <div className="absolute top-0 bottom-0 left-[30%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
       <div className="absolute top-0 bottom-0 right-[30%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
