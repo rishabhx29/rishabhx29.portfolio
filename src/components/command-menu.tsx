@@ -14,7 +14,8 @@ import {
     CornerDownLeft,
     Copy,
     Briefcase,
-    BookOpen
+    BookOpen,
+    Boxes
 } from "lucide-react"
 import { SiGithub } from "react-icons/si"
 
@@ -86,6 +87,9 @@ export function CommandMenu() {
                 } else if (key === 's') {
                     e.preventDefault()
                     runCommand(() => window.location.hash = "#skills")
+                } else if (key === 'g') {
+                    e.preventDefault()
+                    runCommand(() => window.location.href = "/playground")
                 }
 
                 // General
@@ -168,6 +172,11 @@ export function CommandMenu() {
                             <BookOpen className="mr-2 h-4 w-4 text-zinc-500" />
                             <span>Skills</span>
                             <CommandShortcut className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700">shift + S</CommandShortcut>
+                        </CommandItem>
+                        <CommandItem onSelect={() => runCommand(() => window.location.href = "/playground")} className="rounded-lg py-3 cursor-pointer text-cyan-400 font-medium">
+                            <Boxes className="mr-2 h-4 w-4 text-cyan-400" />
+                            <span>Blueprint Playground 🛠️</span>
+                            <CommandShortcut className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700">shift + G</CommandShortcut>
                         </CommandItem>
                     </CommandGroup>
 
