@@ -175,7 +175,7 @@ export function CommandMenu() {
                         </CommandItem>
                         <CommandItem onSelect={() => runCommand(() => window.location.href = "/playground")} className="rounded-lg py-3 cursor-pointer text-cyan-400 font-medium">
                             <Boxes className="mr-2 h-4 w-4 text-cyan-400" />
-                            <span>Blueprint Playground 🛠️</span>
+                            <span>Blueprint Playground</span>
                             <CommandShortcut className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700">shift + G</CommandShortcut>
                         </CommandItem>
                     </CommandGroup>
