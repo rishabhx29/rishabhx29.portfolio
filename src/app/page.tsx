@@ -9,6 +9,7 @@ import Link from "next/link";
 import SoftPillButton from "@/components/pixel-perfect/soft-pill-button";
 import SocialHoverCard from "@/components/pixel-perfect/social-hover-card";
 import { DeferredBannerParticles, DeferredGithubGraph, DeferredRishabhParticles } from "@/components/deferred-visuals";
+import { BannerMusicControl } from "@/components/BannerMusicControl";
 import { FileText, Boxes } from "lucide-react";
 import Image from "next/image";
 
@@ -92,6 +93,9 @@ export default function Home() {
         <div className="absolute inset-x-0 bottom-0 h-10 pointer-events-none z-[5] bg-gradient-to-t from-white/90 to-transparent dark:from-black/50 dark:to-transparent" />
         <div className="absolute left-0 top-0 bottom-0 w-8 pointer-events-none z-20 bg-gradient-to-r from-white/90 to-transparent dark:from-black/40 dark:to-transparent" />
         <div className="absolute right-0 top-0 bottom-0 w-8 pointer-events-none z-20 bg-gradient-to-l from-white/90 to-transparent dark:from-black/40 dark:to-transparent" />
+        <div className="absolute bottom-3 left-2 z-30 pointer-events-auto sm:left-3">
+          <BannerMusicControl />
+        </div>
         <div className="absolute bottom-3 right-2 z-10 pointer-events-auto">
           <CurrentTime />
         </div>

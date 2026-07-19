@@ -3,6 +3,28 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+@keyframes banner-music-level {
+  0%,
+  100% {
+    transform: scaleY(0.38);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.banner-music-level {
+  animation: banner-music-level 760ms ease-in-out infinite;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner-music-level {
+    animation: none;
+    transform: scaleY(0.72);
+  }
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
