@@ -238,7 +238,7 @@ export default function SocialHoverCard({ socialName, children }: SocialHoverCar
                             decoding="async"
                             quality={75}
                             sizes="250px"
-                            className="w-full h-full object-cover opacity-95 scale-[1.15] origin-right"
+                            className="w-full h-full object-cover object-[center_20%] opacity-95 scale-[1.15] origin-right"
                           />
                         )}
                       </div>

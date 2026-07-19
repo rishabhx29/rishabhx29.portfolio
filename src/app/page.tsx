@@ -78,7 +78,7 @@ export default function Home() {
           fetchPriority="high"
           sizes="(min-width: 768px) 40vw, 100vw"
           quality={75}
-          className="object-cover object-center dark:hidden"
+          className="object-cover object-[center_20%] dark:hidden"
         />
         <Image
           src="/new_banner_dark.png"
@@ -87,7 +87,7 @@ export default function Home() {
           loading="lazy"
           sizes="(min-width: 768px) 40vw, 100vw"
           quality={75}
-          className="hidden object-cover object-center dark:block"
+          className="hidden object-cover object-[center_20%] dark:block"
         />
         <DeferredBannerParticles />
         <div className="absolute inset-x-0 bottom-0 h-10 pointer-events-none z-[5] bg-gradient-to-t from-white/90 to-transparent dark:from-black/50 dark:to-transparent" />
