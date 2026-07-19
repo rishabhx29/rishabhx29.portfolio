@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowLeft,
-  AudioLines,
   Download,
   Eraser,
   Expand,
@@ -14,7 +13,6 @@ import {
   ImagePlus,
   Layers3,
   Minus,
-  Music2,
   PenLine,
   Plus,
   Redo2,
@@ -41,7 +39,6 @@ type Stroke = { id: string; points: Point[] };
 type LayoutName = keyof typeof WORKBENCH_LAYOUTS;
 
 const CAMERA_LIMITS = { min: 0.05, max: 12 };
-const AUDIO_SOURCE = encodeURI("/sounds/Tom Odell - Flying  )).mp3");
 const clone = <T,>(value: T): T => JSON.parse(JSON.stringify(value));
 
 function getObjectKindLabel(type: WorkbenchObjectType) {
@@ -52,7 +49,6 @@ export function PlaygroundCanvas() {
   const viewportRef = useRef<HTMLDivElement>(null);
   const worldRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef(new Map<string, HTMLDivElement>());
-  const audioRef = useRef<HTMLAudioElement>(null);
   const dragRef = useRef<{ id: string; start: Point; origin: Point } | null>(null);
   const panRef = useRef<{ start: Point; origin: Point } | null>(null);
   const historyRef = useRef<WorkbenchObject[][]>([]);
@@ -62,10 +58,9 @@ export function PlaygroundCanvas() {
   const [activeStroke, setActiveStroke] = useState<Point[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [tool, setTool] = useState<Tool>("hand");
-  const [camera, setCamera] = useState<Camera>({ x: 236, y: 168, zoom: 0.74 });
+  const [camera, setCamera] = useState<Camera>({ x: 160, y: 116, zoom: 0.8 });
   const [libraryOpen, setLibraryOpen] = useState(false);
   const [focusMode, setFocusMode] = useState(false);
-  const [audioState, setAudioState] = useState<"idle" | "playing" | "missing">("idle");
   const [toast, setToast] = useState("Drag the pieces. Make it yours. It resets when you leave.");
 
   const selected = objects.find((entry) => entry.id === selectedId) ?? null;
@@ -321,16 +316,8 @@ export function PlaygroundCanvas() {
     URL.revokeObjectURL(url);
   }
 
-  function toggleAudio() {
-    const player = audioRef.current;
-    if (!player) return;
-    if (audioState === "playing") { player.pause(); setAudioState("idle"); return; }
-    player.play().then(() => setAudioState("playing")).catch(() => { setAudioState("missing"); setToast("Add your audio track at public/sounds/Tom Odell - Flying  )).mp3 to activate this deck."); });
-  }
-
   return (
     <section className={`playground-shell relative min-h-[100dvh] overflow-hidden bg-zinc-50 text-zinc-900 dark:bg-[#09090b] dark:text-zinc-100 ${focusMode ? "playground-focus" : ""}`}>
-      <audio ref={audioRef} src={AUDIO_SOURCE} loop onEnded={() => setAudioState("idle")} />
       <div className="playground-grain pointer-events-none absolute inset-0" />
       <header className="playground-header absolute inset-x-0 top-0 z-30 flex items-start justify-between gap-3 px-3 py-3 sm:px-5">
         <div className="flex min-w-0 items-center gap-2 sm:gap-3">
@@ -347,7 +334,7 @@ export function PlaygroundCanvas() {
         </div>
       </header>
 
-      <div ref={viewportRef} onWheel={handleWheel} onPointerDown={(event) => tool === "draw" ? startDraw(event) : startPan(event)} onPointerMove={moveCanvas} onPointerUp={endCanvas} style={{ backgroundPosition: `${camera.x}px ${camera.y}px`, backgroundSize: `${72 * camera.zoom}px ${72 * camera.zoom}px` }} className={`playground-viewport relative min-h-[100dvh] touch-none overflow-hidden ${tool === "hand" ? "cursor-grab active:cursor-grabbing" : "cursor-crosshair"}`}>
+      <div ref={viewportRef} onWheel={handleWheel} onPointerDown={(event) => tool === "draw" ? startDraw(event) : startPan(event)} onPointerMove={moveCanvas} onPointerUp={endCanvas} style={{ "--field-grid-x": `${camera.x}px`, "--field-grid-y": `${camera.y}px`, "--field-grid-size": `${72 * camera.zoom}px` } as React.CSSProperties} className={`playground-viewport relative min-h-[100dvh] touch-none overflow-hidden ${tool === "hand" ? "cursor-grab active:cursor-grabbing" : "cursor-crosshair"}`}>
         <div className="playground-scanline pointer-events-none absolute inset-x-0 top-[62px] z-10" />
         <div ref={worldRef} style={{ width: 1, height: 1, transform: boardTransform, transformOrigin: "0 0", willChange: "transform", overflow: "visible" }} className="absolute left-0 top-0">
           <div className="pointer-events-none absolute left-[-58px] top-[-58px] h-[1px] w-[1600px] bg-zinc-400/45 dark:bg-zinc-500/45" />
@@ -355,7 +342,8 @@ export function PlaygroundCanvas() {
           <svg className="pointer-events-none absolute left-0 top-0 overflow-visible" width="1" height="1" aria-hidden="true">
             {[...strokes, ...(activeStroke.length > 1 ? [{ id: "active", points: activeStroke }] : [])].map((stroke) => <polyline key={stroke.id} points={stroke.points.map((point) => `${point.x},${point.y}`).join(" ")} fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-cyan-600/80 dark:text-cyan-300/80" />)}
           </svg>
-          {objects.map((object) => <WorkbenchCard key={object.id} object={object} selected={selectedId === object.id} setRef={(node) => { if (node) cardRefs.current.set(object.id, node); }} onSelect={() => setSelectedId(object.id)} onPointerDown={(event) => startDrag(event, object)} onPointerMove={moveDrag} onPointerUp={endDrag} onEdit={(content) => updateSelected({ content })} />)}
+          <div className="playground-orbit pointer-events-none absolute left-[760px] top-[380px] h-40 w-40" aria-hidden="true"><span /><span /><span /></div>
+          {objects.map((object, index) => <WorkbenchCard key={object.id} object={object} index={index} selected={selectedId === object.id} setRef={(node) => { if (node) cardRefs.current.set(object.id, node); }} onSelect={() => setSelectedId(object.id)} onPointerDown={(event) => startDrag(event, object)} onPointerMove={moveDrag} onPointerUp={endDrag} onEdit={(content) => updateSelected({ content })} />)}
         </div>
       </div>
 
@@ -389,8 +377,6 @@ export function PlaygroundCanvas() {
       {selected && <Inspector object={selected} onChange={updateSelected} onDuplicate={duplicateSelected} onRemove={removeSelected} onClose={() => setSelectedId(null)} />}
       <div aria-live="polite" className="pointer-events-none absolute bottom-[78px] left-3 z-30 max-w-[270px] text-xs text-zinc-600 dark:text-zinc-300 sm:bottom-5 sm:left-5">{toast && <span className="inline-block border border-black/10 bg-zinc-50/90 px-3 py-2 shadow-sm dark:border-white/10 dark:bg-zinc-900/90">{toast}</span>}</div>
       <button onClick={exportJson} className="absolute bottom-5 right-4 z-30 hidden items-center gap-2 text-xs text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-zinc-100 md:flex"><FileDown className="h-3.5 w-3.5" /> Export board data</button>
-      <aside className="absolute right-3 top-[70px] z-30 w-[min(330px,calc(100%-24px))] border border-cyan-500/30 bg-cyan-50/95 p-3 shadow-[0_18px_44px_rgba(8,145,178,.14)] backdrop-blur-md dark:bg-cyan-950/60 lg:right-[244px]"><div className="flex items-start justify-between gap-3"><div><p className="flex items-center gap-2 text-[10px] font-semibold tracking-[.16em] text-cyan-800 dark:text-cyan-200"><AudioLines className="h-3.5 w-3.5" /> FIELD AUDIO</p><p className="mt-1 text-sm font-semibold">{audioState === "playing" ? "Now playing — Tom Odell - Flying" : "A soundtrack for the canvas"}</p><p className="mt-1 text-xs leading-relaxed text-cyan-900/70 dark:text-cyan-100/70">{audioState === "missing" ? "Drop the track into the public folder, then return here." : "Bring the room to life when your track is ready."}</p></div><button onClick={toggleAudio} className="grid h-11 w-11 shrink-0 place-items-center bg-cyan-700 text-white shadow-md transition-transform duration-150 active:scale-[.95] dark:bg-cyan-300 dark:text-cyan-950" aria-label="Toggle field audio"><Music2 className="h-5 w-5" /></button></div><div className="mt-3 flex h-6 items-end gap-1">{[35, 76, 48, 92, 58, 82, 38, 68, 54].map((height, index) => <span key={index} style={{ height: `${audioState === "playing" ? height : 16}px` }} className={`w-1.5 bg-cyan-700/75 transition-[height] duration-300 dark:bg-cyan-200 ${audioState === "playing" ? "animate-pulse" : ""}`} />)}<span className="ml-2 text-[10px] text-cyan-900/65 dark:text-cyan-100/65">{audioState === "playing" ? "LIVE" : "OPTIONAL TRACK"}</span></div></aside>
-      {audioState === "missing" && <div className="absolute left-1/2 top-16 z-40 -translate-x-1/2 border border-cyan-500/30 bg-cyan-50 px-3 py-2 text-xs text-cyan-900 shadow-lg dark:bg-cyan-950 dark:text-cyan-100"><AudioLines className="mr-1.5 inline h-3.5 w-3.5" /> Add <code>public/sounds/Tom Odell - Flying  )).mp3</code> to activate audio.</div>}
     </section>
   );
 }
@@ -399,14 +385,16 @@ function ToolButton({ active, onClick, label, children }: { active?: boolean; on
   return <button onClick={onClick} aria-label={label} title={label} className={`grid h-8 w-8 place-items-center transition-[transform,background-color,color] duration-200 active:scale-[.94] ${active ? "bg-zinc-900 text-white shadow-sm dark:bg-zinc-100 dark:text-zinc-900" : "text-zinc-500 hover:bg-zinc-200 hover:text-zinc-900 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"}`}>{children}</button>;
 }
 
-function WorkbenchCard({ object, selected, setRef, onSelect, onPointerDown, onPointerMove, onPointerUp, onEdit }: { object: WorkbenchObject; selected: boolean; setRef: (node: HTMLDivElement | null) => void; onSelect: () => void; onPointerDown: (event: React.PointerEvent<HTMLDivElement>) => void; onPointerMove: (event: React.PointerEvent<HTMLDivElement>) => void; onPointerUp: (event: React.PointerEvent<HTMLDivElement>) => void; onEdit: (content: string) => void }) {
+function WorkbenchCard({ object, index, selected, setRef, onSelect, onPointerDown, onPointerMove, onPointerUp, onEdit }: { object: WorkbenchObject; index: number; selected: boolean; setRef: (node: HTMLDivElement | null) => void; onSelect: () => void; onPointerDown: (event: React.PointerEvent<HTMLDivElement>) => void; onPointerMove: (event: React.PointerEvent<HTMLDivElement>) => void; onPointerUp: (event: React.PointerEvent<HTMLDivElement>) => void; onEdit: (content: string) => void }) {
   const [editing, setEditing] = useState(false);
   const paper = object.variant === "polaroid" ? "bg-white p-2 text-zinc-900 shadow-[0_20px_42px_rgba(24,24,27,.18)]" : object.variant === "dark" ? "border-zinc-800 bg-zinc-950 text-zinc-100 shadow-[0_20px_42px_rgba(0,0,0,.32)]" : "border-zinc-300 bg-zinc-50 text-zinc-900 shadow-[0_20px_42px_rgba(24,24,27,.14)] dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100";
-  return <div ref={setRef} tabIndex={0} role="group" aria-label={`${getObjectKindLabel(object.type)}: ${object.title}`} onClick={(event) => { event.stopPropagation(); onSelect(); }} onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} style={{ width: object.width, height: object.height, transform: `translate3d(${object.x}px, ${object.y}px, 0) rotate(${object.rotation ?? 0}deg)`, willChange: "transform" }} className={`playground-object absolute z-10 select-none border transition-[box-shadow,filter] duration-200 ${paper} ${selected ? "ring-2 ring-cyan-500 ring-offset-2 ring-offset-zinc-100 dark:ring-cyan-300 dark:ring-offset-[#101012]" : ""} ${object.type === "label" ? "border-dashed bg-transparent shadow-none" : "cursor-grab active:cursor-grabbing"}`}>
+  return <div ref={setRef} tabIndex={0} role="group" aria-label={`${getObjectKindLabel(object.type)}: ${object.title}`} onClick={(event) => { event.stopPropagation(); onSelect(); }} onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} style={{ width: object.width, height: object.height, transform: `translate3d(${object.x}px, ${object.y}px, 0) rotate(${object.rotation ?? 0}deg)`, willChange: "transform" }} className={`playground-object playground-object-${object.type} playground-variant-${object.variant ?? "paper"} absolute z-10 select-none border transition-[box-shadow,filter] duration-200 ${paper} ${selected ? "ring-2 ring-cyan-500 ring-offset-2 ring-offset-zinc-100 dark:ring-cyan-300 dark:ring-offset-[#101012]" : ""} ${object.type === "label" ? "border-dashed bg-transparent shadow-none" : "cursor-grab active:cursor-grabbing"}`}>
+    <div className="playground-object-inner h-full" style={{ "--object-delay": `${Math.min(index, 8) * 80}ms` } as React.CSSProperties}>
     {object.type === "label" && <div className="flex h-full flex-col justify-center"><p className="text-[10px] font-semibold tracking-[.18em] text-zinc-500">{object.title}</p><p className="mt-1 text-sm font-medium tracking-tight">{object.subtitle}</p></div>}
     {(object.type === "photo" || object.type === "project") && object.src && <><div className="relative h-[calc(100%-52px)] overflow-hidden bg-zinc-200 dark:bg-zinc-800"><Image src={object.src} alt={object.title} fill className="pointer-events-none object-cover" sizes="360px" /></div><div className="px-1 pt-2"><p className="truncate text-xs font-semibold tracking-tight">{object.title}</p><p className="mt-0.5 truncate text-[10px] text-zinc-500 dark:text-zinc-400">{object.subtitle}</p></div></>}
     {object.type === "achievement" && object.src && <div className="flex h-full flex-col items-center justify-center p-4 text-center"><div className="relative h-28 w-28"><Image src={object.src} alt={object.title} fill className="pointer-events-none object-contain" sizes="112px" /></div><p className="mt-3 text-xs font-semibold">{object.title}</p><p className="mt-1 text-[10px] text-zinc-500 dark:text-zinc-400">{object.subtitle}</p></div>}
     {object.type === "note" && <div className="flex h-full flex-col p-4"><p className="border-b border-current/10 pb-2 text-[10px] font-semibold tracking-[.14em] uppercase opacity-65">{object.title}</p>{editing ? <textarea autoFocus value={object.content} onChange={(event) => onEdit(event.target.value)} onBlur={() => setEditing(false)} className="mt-3 min-h-0 flex-1 resize-none bg-transparent text-xs leading-relaxed outline-none" /> : <button onDoubleClick={() => setEditing(true)} className="mt-3 text-left text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">{object.content}</button>}<p className="mt-auto pt-2 text-[9px] text-zinc-400">double-click to edit</p></div>}
+    </div>
   </div>;
 }
 

@@ -176,19 +176,20 @@ const item = (id: string, x: number, y: number, rotation = 0): WorkbenchObject =
 };
 
 export const DEFAULT_WORKBENCH_OBJECTS: WorkbenchObject[] = [
-  { id: "label-build", type: "label", title: "01 / BUILD", subtitle: "things I have shipped", x: 122, y: 92, width: 260, height: 70, variant: "paper" },
-  item("traceon", 160, 190, -1),
-  { id: "note-systems", type: "note", title: "Systems note", content: "I care about clear boundaries, predictable failure modes, and interfaces that feel obvious after the hard work is done.", x: 535, y: 184, width: 290, height: 210, rotation: 2, variant: "paper" },
-  { id: "label-operate", type: "label", title: "02 / OPERATE", subtitle: "how I approach the work", x: 940, y: 106, width: 280, height: 70, variant: "paper" },
-  item("rishabh-avatar", 980, 210, 3),
-  item("field-view", 1280, 166, -3),
-  { id: "note-stack", type: "note", title: "Working stack", content: "TypeScript · React · Next.js · Node.js · MongoDB\n\nA practical toolkit for thoughtful products and systems.", x: 960, y: 530, width: 278, height: 198, rotation: -1, variant: "dark" },
-  { id: "label-contribute", type: "label", title: "03 / CONTRIBUTE", subtitle: "community and momentum", x: 150, y: 690, width: 290, height: 70, variant: "paper" },
-  item("gssoc", 176, 790, -4),
-  item("ssoc", 440, 790, 4),
-  item("outside-the-editor", 770, 765, -2),
-  { id: "label-after-hours", type: "label", title: "04 / AFTER HOURS", subtitle: "small context, real person", x: 1200, y: 760, width: 310, height: 70, variant: "paper" },
-  item("shinchan", 1300, 854, 5),
+  { id: "label-build", type: "label", title: "01 / BUILD", subtitle: "things I have shipped", x: 112, y: 80, width: 260, height: 70, variant: "paper" },
+  item("field-view", 112, 170, -5),
+  item("traceon", 318, 132, 2),
+  { id: "note-systems", type: "note", title: "Systems note", content: "I care about clear boundaries, predictable failure modes, and interfaces that feel obvious after the hard work is done.", x: 706, y: 118, width: 300, height: 214, rotation: -2, variant: "paper" },
+  { id: "label-operate", type: "label", title: "02 / OPERATE", subtitle: "how I approach the work", x: 1070, y: 96, width: 280, height: 70, variant: "paper" },
+  item("rishabh-avatar", 1040, 188, 4),
+  item("field-capture-03", 1288, 164, -2),
+  { id: "note-stack", type: "note", title: "Working stack", content: "TypeScript · React · Next.js · Node.js · MongoDB\n\nA practical toolkit for thoughtful products and systems.", x: 800, y: 442, width: 292, height: 202, rotation: 2, variant: "dark" },
+  { id: "label-contribute", type: "label", title: "03 / CONTRIBUTE", subtitle: "community and momentum", x: 144, y: 620, width: 290, height: 70, variant: "paper" },
+  item("gssoc", 188, 698, -7),
+  item("ssoc", 436, 680, 5),
+  item("outside-the-editor", 680, 664, -3),
+  { id: "label-after-hours", type: "label", title: "04 / AFTER HOURS", subtitle: "small context, real person", x: 1110, y: 626, width: 310, height: 70, variant: "paper" },
+  item("shinchan", 1236, 704, 6),
 ];
 
 export const WORKBENCH_LAYOUTS = {
