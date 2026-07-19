@@ -93,12 +93,14 @@ export default function Home() {
         <div className="absolute inset-x-0 bottom-0 h-10 pointer-events-none z-[5] bg-gradient-to-t from-white/90 to-transparent dark:from-black/50 dark:to-transparent" />
         <div className="absolute left-0 top-0 bottom-0 w-8 pointer-events-none z-20 bg-gradient-to-r from-white/90 to-transparent dark:from-black/40 dark:to-transparent" />
         <div className="absolute right-0 top-0 bottom-0 w-8 pointer-events-none z-20 bg-gradient-to-l from-white/90 to-transparent dark:from-black/40 dark:to-transparent" />
-        <div className="absolute bottom-3 left-2 z-30 pointer-events-auto sm:left-3">
-          <BannerMusicControl />
-        </div>
-        <div className="absolute bottom-3 right-2 z-10 pointer-events-auto">
-          <CurrentTime />
-        </div>
+      </div>
+
+      {/* Banner overlay controls — outside the banner's stacking context so z-[60] beats the profile section's z-50 */}
+      <div className="absolute left-2 sm:left-3 md:left-[calc(30%+12px)] z-[60] pointer-events-auto" style={{ top: 'calc(22vh - 48px)' }}>
+        <BannerMusicControl />
+      </div>
+      <div className="absolute right-2 md:right-[calc(30%+8px)] z-[60] pointer-events-auto" style={{ top: 'calc(22vh - 48px)' }}>
+        <CurrentTime />
       </div>
 
       {/* Cell 2: Profile Section - 112px height to wrap the framed image (13px gap top/bottom) */}
