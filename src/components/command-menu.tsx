@@ -7,7 +7,6 @@ import {
     FileText,
     Moon,
     Sun,
-    Laptop,
     Code,
     ArrowUp,
     ArrowDown,
@@ -113,9 +112,6 @@ export function CommandMenu() {
                 } else if (key === 'd') {
                     e.preventDefault()
                     runCommand(() => setTheme("dark"))
-                } else if (key === 'y') {
-                    e.preventDefault()
-                    runCommand(() => setTheme("system"))
                 }
             }
         }
@@ -209,11 +205,6 @@ export function CommandMenu() {
                             <Moon className="mr-2 h-4 w-4 text-zinc-500" />
                             <span>Dark Mode</span>
                             <CommandShortcut className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700">shift + D</CommandShortcut>
-                        </CommandItem>
-                        <CommandItem onSelect={() => runCommand(() => setTheme("system"))} className="rounded-lg py-3 cursor-pointer">
-                            <Laptop className="mr-2 h-4 w-4 text-zinc-500" />
-                            <span>System</span>
-                            <CommandShortcut className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700">shift + Y</CommandShortcut>
                         </CommandItem>
                     </CommandGroup>
                 </CommandList>
