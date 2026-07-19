@@ -1,11 +1,30 @@
+export type WorkbenchObjectType = "photo" | "project" | "achievement" | "note" | "label";
+
+export interface WorkbenchObject {
+  id: string;
+  type: WorkbenchObjectType;
+  title: string;
+  subtitle?: string;
+  content?: string;
+  src?: string;
+  href?: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  rotation?: number;
+  variant?: "paper" | "polaroid" | "stamp" | "dark";
+  removable?: boolean;
+}
+
 export interface PlaygroundAssetItem {
   id: string;
-  type: 'image' | 'badge' | 'sticky' | 'tech' | 'widget';
+  type: "image" | "badge" | "sticky" | "tech" | "widget";
   title: string;
   subtitle?: string;
   src?: string;
-  color?: string; // For sticky notes or tech badges
-  content?: string; // For sticky notes text
+  color?: string;
+  content?: string;
   defaultX: number;
   defaultY: number;
   width?: number;
@@ -14,180 +33,176 @@ export interface PlaygroundAssetItem {
   link?: string;
 }
 
-export const INITIAL_PLAYGROUND_ASSETS: PlaygroundAssetItem[] = [
-  // ── Profiles & Avatars ──
-  {
-    id: "avatar-main",
-    type: "image",
-    title: "Rishabh Tripathi",
-    subtitle: "Full-Stack & Systems Engineer",
-    src: "/Rishabh.png",
-    defaultX: 380,
-    defaultY: 180,
-    width: 240,
-    height: 280,
-    rotation: -2,
-    link: "https://github.com/rishabhx29"
-  },
-  {
-    id: "avatar-secondary",
-    type: "image",
-    title: "Level 99 Developer Mode",
-    subtitle: "Konami Code Unlocked",
-    src: "/Rishabh-Avatar.jpg",
-    defaultX: 780,
-    defaultY: 520,
-    width: 200,
-    height: 240,
-    rotation: 4
-  },
-  {
-    id: "project-banner",
-    type: "image",
-    title: "Traceon & Distributed Architecture",
-    subtitle: "High-throughput telemetry & logging engine",
-    src: "/banner.png",
-    defaultX: 680,
-    defaultY: 150,
-    width: 360,
-    height: 200,
-    rotation: 1
-  },
+export interface PlaygroundAssetCatalogItem {
+  id: string;
+  type: Extract<WorkbenchObjectType, "photo" | "achievement" | "project">;
+  title: string;
+  subtitle: string;
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  variant: NonNullable<WorkbenchObject["variant"]>;
+}
 
-  // ── Badges & Achievements ──
+export const PLAYGROUND_ASSET_CATALOG: PlaygroundAssetCatalogItem[] = [
   {
-    id: "badge-gssoc",
-    type: "badge",
-    title: "GirlScript Summer of Code 2024",
-    subtitle: "Top Open Source Contributor",
-    src: "/Gssoc-badge.png",
-    defaultX: 120,
-    defaultY: 160,
-    width: 220,
-    height: 220,
-    rotation: -4
+    id: "field-view",
+    type: "photo",
+    title: "Field notes: altitude",
+    subtitle: "A reminder to keep the system view wide.",
+    src: "/Playground/1.jpeg",
+    alt: "Green hills and a lake seen from a mountain viewpoint",
+    width: 276,
+    height: 330,
+    variant: "polaroid",
   },
   {
-    id: "badge-ssoc",
-    type: "badge",
-    title: "Social Summer of Code 2024",
-    subtitle: "Open Source Engineering Badge",
-    src: "/ssoc-badge.png",
-    defaultX: 140,
-    defaultY: 440,
-    width: 210,
-    height: 210,
-    rotation: 3
-  },
-
-  // ── Tech Stack Tokens ──
-  {
-    id: "tech-next",
-    type: "tech",
-    title: "Next.js 16 (App Router)",
-    color: "from-zinc-900 to-zinc-800 border-zinc-700 text-zinc-100",
-    defaultX: 420,
-    defaultY: 500,
-    width: 180,
-    height: 60,
-    rotation: -1
+    id: "outside-the-editor",
+    type: "photo",
+    title: "Outside the editor",
+    subtitle: "Curiosity survives the build.",
+    src: "/Playground/2.jpeg",
+    alt: "Rishabh seated on a rock during a hike",
+    width: 264,
+    height: 350,
+    variant: "polaroid",
   },
   {
-    id: "tech-ts",
-    type: "tech",
-    title: "TypeScript 5+",
-    color: "from-blue-950/80 to-blue-900/60 border-blue-500/40 text-blue-300",
-    defaultX: 620,
-    defaultY: 480,
-    width: 150,
-    height: 56,
-    rotation: 2
-  },
-  {
-    id: "tech-react",
-    type: "tech",
-    title: "React 19 & Framer Motion",
-    color: "from-cyan-950/80 to-cyan-900/60 border-cyan-500/40 text-cyan-300",
-    defaultX: 440,
-    defaultY: 580,
-    width: 210,
-    height: 56,
-    rotation: -2
-  },
-  {
-    id: "tech-node",
-    type: "tech",
-    title: "Node.js & Express Microservices",
-    color: "from-emerald-950/80 to-emerald-900/60 border-emerald-500/40 text-emerald-300",
-    defaultX: 680,
-    defaultY: 560,
-    width: 240,
-    height: 56,
-    rotation: 1
-  },
-  {
-    id: "tech-tailwind",
-    type: "tech",
-    title: "Tailwind CSS v4 & Glassmorphism",
-    color: "from-sky-950/80 to-sky-900/60 border-sky-500/40 text-sky-300",
-    defaultX: 400,
-    defaultY: 660,
+    id: "field-capture-03",
+    type: "photo",
+    title: "Field capture 03",
+    subtitle: "A small piece of the wider context.",
+    src: "/Playground/3.jpeg",
+    alt: "Personal field photograph from Rishabh's playground collection",
     width: 250,
-    height: 56,
-    rotation: -1
-  },
-
-  // ── Interactive Sticky Notes ──
-  {
-    id: "sticky-welcome",
-    type: "sticky",
-    title: "👋 Welcome to my Blueprint Sandbox!",
-    content: "Feel free to drag these cards, draw connecting lines between my achievements, leave architectural sticky notes, and export your snapshot! Everything saves directly to your browser memory.",
-    color: "yellow",
-    defaultX: 1080,
-    defaultY: 180,
-    width: 260,
-    height: 240,
-    rotation: 3
+    height: 300,
+    variant: "polaroid",
   },
   {
-    id: "sticky-architecture",
-    type: "sticky",
-    title: "💡 Systems Philosophy",
-    content: "\"Simplicity is prerequisite for reliability.\" Built with low latency, high throughput, and clean modular boundaries in mind.",
-    color: "cyan",
-    defaultX: 1060,
-    defaultY: 460,
-    width: 260,
+    id: "field-capture-04",
+    type: "photo",
+    title: "Field capture 04",
+    subtitle: "Proof that side quests count.",
+    src: "/Playground/4.jpeg",
+    alt: "Personal field photograph from Rishabh's playground collection",
+    width: 250,
+    height: 300,
+    variant: "polaroid",
+  },
+  {
+    id: "field-capture-05",
+    type: "photo",
+    title: "Field capture 05",
+    subtitle: "One more note from outside the build.",
+    src: "/Playground/5.jpeg",
+    alt: "Personal field photograph from Rishabh's playground collection",
+    width: 250,
+    height: 300,
+    variant: "polaroid",
+  },
+  {
+    id: "resume-snapshot",
+    type: "project",
+    title: "Resume snapshot",
+    subtitle: "The short version, pinned to the wall.",
+    src: "/Playground/Rishabh-Tripathi-Resume.png",
+    alt: "Screenshot of Rishabh Tripathi's resume",
+    width: 268,
+    height: 330,
+    variant: "paper",
+  },
+  {
+    id: "rishabh-avatar",
+    type: "photo",
+    title: "Rishabh Tripathi",
+    subtitle: "Full-stack & systems engineer",
+    src: "/Playground/Rishabh-Avatar.jpg",
+    alt: "Portrait of Rishabh Tripathi",
+    width: 230,
+    height: 274,
+    variant: "paper",
+  },
+  {
+    id: "traceon",
+    type: "project",
+    title: "Traceon",
+    subtitle: "Distributed telemetry & logging",
+    src: "/project-image/Traceon%20Dark.png",
+    alt: "Traceon project banner",
+    width: 340,
     height: 220,
-    rotation: -2
-  }
+    variant: "dark",
+  },
+  {
+    id: "gssoc",
+    type: "achievement",
+    title: "GSSoC 2024",
+    subtitle: "Open-source contributor",
+    src: "/Playground/Gssoc-badge.png",
+    alt: "GirlScript Summer of Code badge",
+    width: 210,
+    height: 240,
+    variant: "stamp",
+  },
+  {
+    id: "ssoc",
+    type: "achievement",
+    title: "Social Summer of Code",
+    subtitle: "Community engineering",
+    src: "/Playground/ssoc-badge.png",
+    alt: "Social Summer of Code badge",
+    width: 210,
+    height: 240,
+    variant: "stamp",
+  },
+  {
+    id: "shinchan",
+    type: "photo",
+    title: "Classified side quest",
+    subtitle: "Found it? Keep it quiet.",
+    src: "/Playground/SHINCHAN%20IS%20HACKER.jpg",
+    alt: "Playful Shinchan hacker illustration",
+    width: 200,
+    height: 230,
+    variant: "polaroid",
+  },
 ];
 
-export const PRESET_LAYOUTS: Record<string, PlaygroundAssetItem[]> = {
-  chaos: INITIAL_PLAYGROUND_ASSETS,
-  roadmap: INITIAL_PLAYGROUND_ASSETS.map((asset, index) => {
-    // Organize chronologically from left to right in clean grid rows
-    const col = index % 4;
-    const row = Math.floor(index / 4);
-    return {
-      ...asset,
-      defaultX: 140 + col * 320,
-      defaultY: 160 + row * 280,
-      rotation: 0
-    };
-  }),
-  tech: INITIAL_PLAYGROUND_ASSETS.map((asset) => {
-    // Cluster tech tokens and badges in center, profile on left, notes on right
-    if (asset.type === "tech") {
-      return { ...asset, defaultX: 520, defaultY: 250 + Math.random() * 300, rotation: 0 };
-    }
-    if (asset.type === "badge") {
-      return { ...asset, defaultX: 160, defaultY: 260 + Math.random() * 250, rotation: 0 };
-    }
-    if (asset.type === "sticky") {
-      return { ...asset, defaultX: 960, defaultY: 220 + Math.random() * 300, rotation: 0 };
-    }
-    return { ...asset, defaultX: 540, defaultY: 120, rotation: 0 };
-  })
+const item = (id: string, x: number, y: number, rotation = 0): WorkbenchObject => {
+  const asset = PLAYGROUND_ASSET_CATALOG.find((entry) => entry.id === id);
+  if (!asset) throw new Error(`Unknown playground asset: ${id}`);
+  return { ...asset, x, y, rotation, removable: false };
 };
+
+export const DEFAULT_WORKBENCH_OBJECTS: WorkbenchObject[] = [
+  { id: "label-build", type: "label", title: "01 / BUILD", subtitle: "things I have shipped", x: 122, y: 92, width: 260, height: 70, variant: "paper" },
+  item("traceon", 160, 190, -1),
+  { id: "note-systems", type: "note", title: "Systems note", content: "I care about clear boundaries, predictable failure modes, and interfaces that feel obvious after the hard work is done.", x: 535, y: 184, width: 290, height: 210, rotation: 2, variant: "paper" },
+  { id: "label-operate", type: "label", title: "02 / OPERATE", subtitle: "how I approach the work", x: 940, y: 106, width: 280, height: 70, variant: "paper" },
+  item("rishabh-avatar", 980, 210, 3),
+  item("field-view", 1280, 166, -3),
+  { id: "note-stack", type: "note", title: "Working stack", content: "TypeScript · React · Next.js · Node.js · MongoDB\n\nA practical toolkit for thoughtful products and systems.", x: 960, y: 530, width: 278, height: 198, rotation: -1, variant: "dark" },
+  { id: "label-contribute", type: "label", title: "03 / CONTRIBUTE", subtitle: "community and momentum", x: 150, y: 690, width: 290, height: 70, variant: "paper" },
+  item("gssoc", 176, 790, -4),
+  item("ssoc", 440, 790, 4),
+  item("outside-the-editor", 770, 765, -2),
+  { id: "label-after-hours", type: "label", title: "04 / AFTER HOURS", subtitle: "small context, real person", x: 1200, y: 760, width: 310, height: 70, variant: "paper" },
+  item("shinchan", 1300, 854, 5),
+];
+
+export const WORKBENCH_LAYOUTS = {
+  fieldNotes: DEFAULT_WORKBENCH_OBJECTS,
+  projectWall: DEFAULT_WORKBENCH_OBJECTS.map((entry, index) => ({
+    ...entry,
+    x: 120 + (index % 4) * 420,
+    y: 110 + Math.floor(index / 4) * 300,
+    rotation: 0,
+  })),
+  afterHours: DEFAULT_WORKBENCH_OBJECTS.map((entry, index) => ({
+    ...entry,
+    x: 130 + (index % 5) * 330,
+    y: 150 + Math.floor(index / 5) * 395,
+    rotation: [-4, 2, -2, 3, -1][index % 5],
+  })),
+} as const;
