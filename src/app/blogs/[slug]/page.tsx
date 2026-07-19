@@ -18,6 +18,7 @@ import {
   blogPosts,
   getBlogPostBySlug,
 } from "@/data/blogsData";
+import { siteName, siteUrl } from "@/lib/site";
 
 type BlogPageProps = {
   params: Promise<{ slug: string }>;
@@ -51,17 +52,27 @@ export async function generateMetadata({
 
   if (!post) {
     return {
-      title: "Blog | Rishabh Tripathi",
+      title: "Blog",
     };
   }
 
+  const description = post.description ?? `Notes by Rishabh Tripathi: ${post.title}`;
+
   return {
-    title: `${post.title} | Rishabh Tripathi`,
-    description: post.description,
+    title: post.title,
+    description,
+    alternates: { canonical: `/blogs/${post.slug}` },
+    authors: [{ name: siteName, url: siteUrl }],
     openGraph: {
       title: post.title,
-      description: post.description,
+      description,
+      url: `/blogs/${post.slug}`,
       type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description,
     },
   };
 }
@@ -219,8 +230,31 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
     notFound();
   }
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description ?? `Notes by Rishabh Tripathi: ${post.title}`,
+    mainEntityOfPage: new URL(`/blogs/${post.slug}`, siteUrl).href,
+    author: {
+      "@type": "Person",
+      name: siteName,
+      url: siteUrl.href,
+    },
+    publisher: {
+      "@type": "Person",
+      name: siteName,
+    },
+    image: new URL("/opengraph-image", siteUrl).href,
+    keywords: post.tags.join(", "),
+  };
+
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-white transition-colors duration-300 dark:bg-black">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <BlueprintFrame />
 
       <div className="absolute left-0 right-0 top-0 h-[22vh] pointer-events-auto -z-0 md:left-[30%] md:right-[30%]">

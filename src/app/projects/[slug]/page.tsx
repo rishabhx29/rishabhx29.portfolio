@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { CommandMenu } from "@/components/command-menu";
 import { CurrentTime } from "@/components/CurrentTime";
@@ -8,11 +9,51 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ExternalLink, ArrowLeft } from "lucide-react";
 import { SiGithub } from "react-icons/si";
+import { siteUrl } from "@/lib/site";
 
 export async function generateStaticParams() {
   return projectsData.map((project) => ({
     slug: project.slug,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projectsData.find((item) => item.slug === slug);
+
+  if (!project) {
+    return { title: "Project not found" };
+  }
+
+  const url = new URL(`/projects/${project.slug}`, siteUrl).href;
+
+  return {
+    title: project.title,
+    description: project.description,
+    alternates: { canonical: `/projects/${project.slug}` },
+    openGraph: {
+      title: project.title,
+      description: project.description,
+      url,
+      type: "website",
+      images: [
+        {
+          url: project.src,
+          alt: `${project.title} project preview`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: project.title,
+      description: project.description,
+      images: [project.src],
+    },
+  };
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {

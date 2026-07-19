@@ -11,8 +11,11 @@ import { ThemeToggle } from "@/components/theme-toggle";
 const resumePath = "/Rishabh-Tripathi-Resume.pdf";
 
 export const metadata: Metadata = {
-  title: "Resume | Rishabh Tripathi",
+  title: "Resume",
   description: "Resume of Rishabh Tripathi, full-stack developer and open-source contributor.",
+  alternates: {
+    canonical: "/resume",
+  },
 };
 
 export default function ResumePage() {
