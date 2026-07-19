@@ -19,6 +19,7 @@ import {
 } from "lucide-react"
 import { SiGithub } from "react-icons/si"
 
+import { useRouter } from "next/navigation"
 import {
     CommandDialog,
     CommandEmpty,
@@ -33,22 +34,11 @@ import {
 export function CommandMenu() {
     const [open, setOpen] = React.useState(false)
     const { setTheme } = useTheme()
+    const router = useRouter()
 
     const openExternal = React.useCallback((url: string) => {
         const opened = window.open(url, "_blank", "noopener,noreferrer")
         if (!opened) window.location.assign(url)
-    }, [])
-
-    React.useEffect(() => {
-        const down = (e: KeyboardEvent) => {
-            if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-                e.preventDefault()
-                setOpen((open) => !open)
-            }
-        }
-
-        document.addEventListener("keydown", down)
-        return () => document.removeEventListener("keydown", down)
     }, [])
 
     const runCommand = React.useCallback((command: () => unknown) => {
@@ -56,8 +46,27 @@ export function CommandMenu() {
         command()
     }, [])
 
+    const navigateToSection = React.useCallback((sectionId: string) => {
+        setOpen(false)
+        if (window.location.pathname === "/") {
+            window.location.hash = `#${sectionId}`
+            const element = document.getElementById(sectionId)
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" })
+            }
+        } else {
+            router.push(`/#${sectionId}`)
+        }
+    }, [router])
+
     React.useEffect(() => {
         const down = (e: KeyboardEvent) => {
+            if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+                e.preventDefault()
+                setOpen((open) => !open)
+                return
+            }
+
             const target = e.target as HTMLElement;
             const isTypingField =
                 target.isContentEditable ||
@@ -65,31 +74,30 @@ export function CommandMenu() {
                 target.tagName === 'TEXTAREA' ||
                 target.tagName === 'SELECT'
 
-            if (!open) {
+            // If user is typing inside an input/textarea when the command menu is CLOSED, don't trigger shortcuts
+            if (isTypingField && !open) {
                 return
             }
 
-            // When the command palette is open, we still want shortcuts to work
-            // even if the search input is focused.
             if (e.shiftKey) {
                 const key = e.key.toLowerCase()
 
                 // Navigation
                 if (key === 'e') {
                     e.preventDefault()
-                    runCommand(() => window.location.hash = "#experience")
+                    navigateToSection("experience")
                 } else if (key === 'p') {
                     e.preventDefault()
-                    runCommand(() => window.location.hash = "#projects")
+                    navigateToSection("projects")
                 } else if (key === 'o') {
                     e.preventDefault()
-                    runCommand(() => window.location.hash = "#opensource")
+                    navigateToSection("opensource")
                 } else if (key === 's') {
                     e.preventDefault()
-                    runCommand(() => window.location.hash = "#skills")
+                    navigateToSection("skills")
                 } else if (key === 'g') {
                     e.preventDefault()
-                    runCommand(() => window.location.href = "/playground")
+                    runCommand(() => router.push("/playground"))
                 }
 
                 // General
@@ -109,15 +117,12 @@ export function CommandMenu() {
                     e.preventDefault()
                     runCommand(() => setTheme("system"))
                 }
-            } else if (isTypingField) {
-                // Allow normal typing when no shortcut is being used
-                return
             }
         }
 
         document.addEventListener("keydown", down)
         return () => document.removeEventListener("keydown", down)
-    }, [open, openExternal, runCommand, setTheme])
+    }, [open, navigateToSection, router, runCommand, setTheme])
 
     return (
         <>
@@ -152,28 +157,28 @@ export function CommandMenu() {
                     <CommandEmpty>No results found.</CommandEmpty>
 
                     <CommandGroup heading="Sections">
-                        <CommandItem onSelect={() => runCommand(() => window.location.hash = "#experience")} className="rounded-lg py-3 cursor-pointer">
+                        <CommandItem onSelect={() => navigateToSection("experience")} className="rounded-lg py-3 cursor-pointer">
                             <Briefcase className="mr-2 h-4 w-4 text-zinc-500" />
                             <span>Experience</span>
                             <CommandShortcut className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700">shift + E</CommandShortcut>
                         </CommandItem>
-                        <CommandItem onSelect={() => runCommand(() => window.location.hash = "#projects")} className="rounded-lg py-3 cursor-pointer">
+                        <CommandItem onSelect={() => navigateToSection("projects")} className="rounded-lg py-3 cursor-pointer">
                             <Code className="mr-2 h-4 w-4 text-zinc-500" />
                             <span>Projects</span>
                             <CommandShortcut className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700">shift + P</CommandShortcut>
                         </CommandItem>
 
-                        <CommandItem onSelect={() => runCommand(() => window.location.hash = "#opensource")} className="rounded-lg py-3 cursor-pointer">
+                        <CommandItem onSelect={() => navigateToSection("opensource")} className="rounded-lg py-3 cursor-pointer">
                             <SiGithub className="mr-2 h-4 w-4 text-zinc-500" />
                             <span>Open Source</span>
                             <CommandShortcut className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700">shift + O</CommandShortcut>
                         </CommandItem>
-                        <CommandItem onSelect={() => runCommand(() => window.location.hash = "#skills")} className="rounded-lg py-3 cursor-pointer">
+                        <CommandItem onSelect={() => navigateToSection("skills")} className="rounded-lg py-3 cursor-pointer">
                             <BookOpen className="mr-2 h-4 w-4 text-zinc-500" />
                             <span>Skills</span>
                             <CommandShortcut className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700">shift + S</CommandShortcut>
                         </CommandItem>
-                        <CommandItem onSelect={() => runCommand(() => window.location.href = "/playground")} className="rounded-lg py-3 cursor-pointer text-cyan-400 font-medium">
+                        <CommandItem onSelect={() => runCommand(() => router.push("/playground"))} className="rounded-lg py-3 cursor-pointer text-cyan-400 font-medium">
                             <Boxes className="mr-2 h-4 w-4 text-cyan-400" />
                             <span>Blueprint Playground</span>
                             <CommandShortcut className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700">shift + G</CommandShortcut>
