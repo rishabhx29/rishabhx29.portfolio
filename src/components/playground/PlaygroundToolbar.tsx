@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import type { LucideIcon } from "lucide-react";
 import {
   Hand,
   PenTool,
@@ -27,7 +28,7 @@ export function PlaygroundToolbar({
   onResetCanvas,
   onExportSnapshot,
 }: PlaygroundToolbarProps) {
-  const tools = [
+  const tools: { id: PlaygroundToolbarProps["activeTool"]; label: string; icon: LucideIcon; color: string }[] = [
     { id: "select", label: "Pan / Select", icon: Hand, color: "text-zinc-300" },
     { id: "pen", label: "Pen (Red)", icon: PenTool, color: "text-rose-400" },
     { id: "arrow", label: "Connector Arrow", icon: ArrowUpRight, color: "text-cyan-400" },
@@ -45,7 +46,7 @@ export function PlaygroundToolbar({
           return (
             <button
               key={t.id}
-              onClick={() => onSelectTool(t.id as any)}
+            onClick={() => onSelectTool(t.id)}
               title={t.label}
               className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium transition-all ${
                 isActive
