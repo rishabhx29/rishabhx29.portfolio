@@ -14,7 +14,7 @@ const settings = {
   rotationSpeed: 0,
   tumbleStrength: 0.3,
   staticTilt: 0,
-  particleCount: 40,
+  particleCount: 24,
   direction: 1 // 1 = left to right
 };
 
@@ -96,6 +96,8 @@ export function BannerParticles() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -105,6 +107,7 @@ export function BannerParticles() {
     let height = 0;
     let animationFrameId: number;
     let isUnmounted = false;
+    let isPaused = document.hidden;
 
     updateCache();
     const particleImage = createDefaultImage();
@@ -233,7 +236,7 @@ export function BannerParticles() {
     };
 
     const animate = () => {
-      if (isUnmounted) return;
+      if (isUnmounted || isPaused) return;
       ctx.clearRect(0, 0, width, height);
 
       for (const particle of particles) {
@@ -244,6 +247,11 @@ export function BannerParticles() {
       animationFrameId = requestAnimationFrame(animate);
     };
 
+    const handleVisibilityChange = () => {
+      isPaused = document.hidden;
+      if (!isPaused) animate();
+    };
+
     setTimeout(() => {
       if (isUnmounted) return;
       resize();
@@ -252,10 +260,12 @@ export function BannerParticles() {
     }, 0);
 
     window.addEventListener("resize", resize);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       isUnmounted = true;
       window.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
       }

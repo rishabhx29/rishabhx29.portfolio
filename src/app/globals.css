@@ -147,6 +147,208 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.page-transition {
+  animation: page-enter 360ms cubic-bezier(.16, 1, .3, 1) both;
+}
+
+@keyframes page-enter {
+  from { opacity: 0; transform: translate3d(0, 10px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* Playground: a monochrome field station that deliberately echoes the portfolio grid. */
+.playground-shell {
+  --field-x: 50%;
+  --field-y: 50%;
+  --field-grid-x: 0px;
+  --field-grid-y: 0px;
+  --field-grid-size: 72px;
+}
+
+.playground-grain {
+  opacity: .055;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+
+.playground-header {
+  border-bottom: 1px solid color-mix(in srgb, currentColor 10%, transparent);
+  background: color-mix(in srgb, var(--color-background) 82%, transparent);
+  backdrop-filter: blur(16px) saturate(.8);
+}
+
+.playground-icon-button,
+.playground-export-button,
+.playground-panel,
+.playground-dock {
+  border: 1px solid color-mix(in srgb, currentColor 12%, transparent);
+  background: color-mix(in srgb, var(--color-background) 88%, transparent);
+  box-shadow: 0 14px 36px rgba(24, 24, 27, .10);
+  backdrop-filter: blur(16px) saturate(.8);
+}
+
+.dark .playground-icon-button,
+.dark .playground-export-button,
+.dark .playground-panel,
+.dark .playground-dock {
+  box-shadow: 0 16px 42px rgba(0, 0, 0, .32);
+}
+
+.playground-icon-button {
+  transition: transform 180ms ease-out, background-color 180ms ease-out, color 180ms ease-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .playground-icon-button:hover { background: color-mix(in srgb, currentColor 8%, transparent); }
+  .playground-object:hover { filter: brightness(1.015); box-shadow: 0 25px 52px rgba(24, 24, 27, .22); }
+}
+
+.playground-icon-button:active,
+.playground-export-button:active { transform: scale(.97); }
+
+.playground-export-button { background: #18181b; color: #fafafa; }
+.dark .playground-export-button { background: #f4f4f5; color: #18181b; }
+
+.playground-viewport {
+  background-color: #fafafa;
+  background-image:
+    radial-gradient(520px circle at var(--field-x) var(--field-y), rgba(14, 116, 144, .075), transparent 58%),
+    linear-gradient(rgba(113, 113, 122, .10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(113, 113, 122, .10) 1px, transparent 1px);
+  background-position: center, var(--field-grid-x) var(--field-grid-y), var(--field-grid-x) var(--field-grid-y);
+  background-repeat: no-repeat, repeat, repeat;
+  background-size: auto, var(--field-grid-size) var(--field-grid-size), var(--field-grid-size) var(--field-grid-size);
+  transition: background-color 250ms ease-out;
+}
+
+.dark .playground-viewport {
+  background-color: #0c0c0f;
+  background-image:
+    radial-gradient(540px circle at var(--field-x) var(--field-y), rgba(103, 232, 249, .045), transparent 62%),
+    linear-gradient(rgba(161, 161, 170, .045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(161, 161, 170, .045) 1px, transparent 1px);
+}
+
+.playground-scanline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(8,145,178,.08) 18%, rgba(8,145,178,.55) 50%, rgba(8,145,178,.08) 82%, transparent 100%);
+  animation: field-scan 7s ease-in-out infinite;
+}
+
+.playground-layout-button { transition: background-color 160ms ease-out, color 160ms ease-out, transform 160ms ease-out; }
+.playground-layout-button:hover { background: color-mix(in srgb, currentColor 7%, transparent); }
+.playground-layout-button:active { transform: translateY(1px); }
+
+.playground-focus .playground-panel,
+.playground-focus .playground-intro,
+.playground-focus > aside:not(.playground-panel) { opacity: 0; pointer-events: none; transform: translateY(-8px); }
+
+.playground-panel,
+.playground-intro { transition: opacity 180ms ease-out, transform 180ms ease-out; }
+
+.playground-object-inner {
+  position: relative;
+  animation: field-object-arrive 700ms cubic-bezier(.16, 1, .3, 1) var(--object-delay, 0ms) both;
+}
+
+.playground-object-photo .playground-object-inner::before,
+.playground-object-project .playground-object-inner::before {
+  position: absolute;
+  z-index: 2;
+  top: 10px;
+  left: 10px;
+  padding: 4px 6px;
+  background: rgba(9, 9, 11, .78);
+  color: #f4f4f5;
+  content: "FIELD CAPTURE";
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: .13em;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 180ms ease-out, transform 180ms ease-out;
+}
+
+.playground-object-project .playground-object-inner::before { content: "SHIPPED / SELECTED"; }
+
+.playground-object-photo .playground-object-inner > .relative,
+.playground-object-project .playground-object-inner > .relative {
+  transform: scale(1.025);
+  animation: field-image-drift 9s ease-in-out 1.2s infinite alternate;
+}
+
+.playground-object-note .playground-object-inner {
+  background-image: linear-gradient(135deg, rgba(8, 145, 178, .04), transparent 42%);
+}
+
+.dark .playground-object-note .playground-object-inner {
+  background-image: linear-gradient(135deg, rgba(103, 232, 249, .08), transparent 42%);
+}
+
+.playground-object-achievement .playground-object-inner {
+  background: radial-gradient(circle at 50% 35%, rgba(250, 204, 21, .14), transparent 46%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .playground-object-photo:hover .playground-object-inner::before,
+  .playground-object-project:hover .playground-object-inner::before { opacity: 1; transform: translateY(0); }
+  .playground-object-photo:hover .playground-object-inner > .relative,
+  .playground-object-project:hover .playground-object-inner > .relative { animation-play-state: paused; transform: scale(1.06); }
+}
+
+.playground-orbit {
+  border: 1px solid rgba(8, 145, 178, .18);
+  border-radius: 999px;
+  animation: field-orbit 18s linear infinite;
+}
+
+.playground-orbit::before,
+.playground-orbit::after,
+.playground-orbit span {
+  position: absolute;
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #0891b2;
+  box-shadow: 0 0 0 4px rgba(8, 145, 178, .10);
+  content: "";
+}
+
+.playground-orbit::before { top: -4px; left: 50%; }
+.playground-orbit::after { right: 14px; bottom: 22px; width: 4px; height: 4px; opacity: .65; }
+.playground-orbit span:nth-child(1) { top: 42%; left: -4px; width: 4px; height: 4px; opacity: .55; }
+.playground-orbit span:nth-child(2) { top: 10px; right: 32px; width: 3px; height: 3px; opacity: .35; }
+.playground-orbit span:nth-child(3) { display: none; }
+.dark .playground-orbit { border-color: rgba(103, 232, 249, .13); opacity: .72; }
+
+@keyframes field-object-arrive {
+  from { opacity: 0; filter: blur(5px); transform: translate3d(0, 18px, 0) scale(.975); }
+  to { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes field-image-drift {
+  from { transform: scale(1.025) translate3d(-1.5%, -1%, 0); }
+  to { transform: scale(1.075) translate3d(1.5%, 1%, 0); }
+}
+
+@keyframes field-orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes field-scan {
+  0%, 100% { opacity: .25; transform: scaleX(.7); }
+  50% { opacity: 1; transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition { animation: none; }
+  .playground-scanline { animation: none; }
+  .playground-icon-button, .playground-export-button, .playground-layout-button, .playground-panel, .playground-intro { transition: none; }
+  .playground-object-inner, .playground-object-photo .playground-object-inner > .relative, .playground-object-project .playground-object-inner > .relative, .playground-orbit { animation: none; }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

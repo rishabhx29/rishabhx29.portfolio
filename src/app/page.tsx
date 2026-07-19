@@ -1,16 +1,14 @@
 import { ThemeToggle } from "@/components/theme-toggle";
-import { GithubGraph } from "@/components/GithubGraph";
 import { CurrentTime } from "@/components/CurrentTime";
 import { ProjectsGrid } from "@/components/ProjectsGrid";
 import { ExperienceList } from "@/components/ExperienceList";
 import { OpenSourceContributions } from "@/components/OpenSourceContributions";
 import { Certifications } from "@/components/Certifications";
-import { RishabhParticles } from "@/components/RishabhParticles";
 import { CommandMenu } from "@/components/command-menu";
 import Link from "next/link";
 import SoftPillButton from "@/components/pixel-perfect/soft-pill-button";
 import SocialHoverCard from "@/components/pixel-perfect/social-hover-card";
-import { BannerParticles } from "@/components/BannerParticles";
+import { DeferredBannerParticles, DeferredGithubGraph, DeferredRishabhParticles } from "@/components/deferred-visuals";
 import { FileText, Boxes } from "lucide-react";
 import Image from "next/image";
 
@@ -78,19 +76,19 @@ export default function Home() {
           fill
           fetchPriority="high"
           sizes="(min-width: 768px) 40vw, 100vw"
-          quality={100}
+          quality={75}
           className="object-cover object-center dark:hidden"
         />
         <Image
           src="/new_banner_dark.png"
           alt="Portfolio Banner Dark"
           fill
-          fetchPriority="high"
+          loading="lazy"
           sizes="(min-width: 768px) 40vw, 100vw"
-          quality={100}
+          quality={75}
           className="hidden object-cover object-center dark:block"
         />
-        <BannerParticles />
+        <DeferredBannerParticles />
         <div className="absolute inset-x-0 bottom-0 h-10 pointer-events-none z-[5] bg-gradient-to-t from-white/90 to-transparent dark:from-black/50 dark:to-transparent" />
         <div className="absolute left-0 top-0 bottom-0 w-8 pointer-events-none z-20 bg-gradient-to-r from-white/90 to-transparent dark:from-black/40 dark:to-transparent" />
         <div className="absolute right-0 top-0 bottom-0 w-8 pointer-events-none z-20 bg-gradient-to-l from-white/90 to-transparent dark:from-black/40 dark:to-transparent" />
@@ -112,7 +110,7 @@ export default function Home() {
                   alt="Profile"
                   width={240}
                   height={240}
-                  quality={90}
+                  quality={80}
                   fetchPriority="high"
                   sizes="(min-width: 640px) 120px, 96px"
                   className="h-full w-full origin-center object-cover opacity-90 grayscale contrast-100 mix-blend-multiply dark:mix-blend-normal"
@@ -320,7 +318,7 @@ export default function Home() {
         </div>
 
         {/* Github Graph */}
-        <GithubGraph />
+        <DeferredGithubGraph />
 
         {/* Open Source Contributions */}
         <div id="opensource" className="scroll-mt-24">
@@ -436,7 +434,7 @@ export default function Home() {
           <div className="absolute top-0 left-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" />
           <div className="absolute top-0 right-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" />
 
-          <RishabhParticles />
+          <DeferredRishabhParticles />
         </div>
 
       </div>

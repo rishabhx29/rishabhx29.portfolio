@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -38,20 +38,11 @@ export const ProjectCard = ({
 }) => {
   const [hoveredTech, setHoveredTech] = useState<string | null>(null);
   const [shouldLoadHoverImage, setShouldLoadHoverImage] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
   const router = useRouter();
 
-  useEffect(() => {
-    setMounted(true);
-    // Render background image shortly after page load completes so it doesn't block initial page load
-    const timer = setTimeout(() => {
-      setShouldLoadHoverImage(true);
-    }, 400);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const imageSrc = mounted && resolvedTheme === "light" && project.lightModeSrc ? project.lightModeSrc : project.src;
+  // Keep optional ambient art off the network until a visitor shows intent.
+  const imageSrc = resolvedTheme === "light" && project.lightModeSrc ? project.lightModeSrc : project.src;
 
   const isNotStarted = project.title === "Inquiro";
   const isBuilding = project.title === "Blueprint" || project.title === "Scribble3D";

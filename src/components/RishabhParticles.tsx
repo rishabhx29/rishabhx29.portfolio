@@ -1,22 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { InteractiveParticles } from "@/components/ui/interactive-particles";
 
 export function RishabhParticles() {
   const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   const isDark = resolvedTheme === "dark";
-
-  if (!mounted) {
-    return <div className="h-full w-full bg-white dark:bg-black" />;
-  }
 
   return (
     <InteractiveParticles
