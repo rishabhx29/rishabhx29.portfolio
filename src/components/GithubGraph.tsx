@@ -98,6 +98,10 @@ export function GithubGraph() {
           body: JSON.stringify({ query }),
         });
 
+        if (!response.ok || !response.headers.get("content-type")?.includes("application/json")) {
+          throw new Error(`GitHub API returned non-JSON or error status: ${response.status}`);
+        }
+
         const data = await response.json();
         const calendar = data?.data?.user?.contributionsCollection?.contributionCalendar;
         

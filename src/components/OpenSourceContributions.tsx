@@ -99,6 +99,10 @@ export function OpenSourceContributions({ isFullPage = false }: { isFullPage?: b
         body: JSON.stringify({ query }),
       });
 
+      if (!response.ok || !response.headers.get("content-type")?.includes("application/json")) {
+        throw new Error(`GitHub API returned non-JSON or error status: ${response.status}`);
+      }
+
       const data = (await response.json()) as GitHubSearchResponse;
       if (data.data?.search?.edges) {
         const fetchedPRs = data.data.search.edges

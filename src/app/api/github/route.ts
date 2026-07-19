@@ -22,6 +22,12 @@ export async function POST(request: Request) {
       body: JSON.stringify({ query }),
     });
 
+    if (!response.ok || !response.headers.get("content-type")?.includes("application/json")) {
+      const text = await response.text();
+      console.error("GitHub GraphQL API error or non-JSON response:", response.status, text.slice(0, 200));
+      return NextResponse.json({ error: "Failed to fetch from GitHub API", status: response.status }, { status: response.status || 500 });
+    }
+
     const data = await response.json();
     return NextResponse.json(data);
   } catch (error) {
