@@ -1,8 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 type PetVariant = "dog" | "classic" | "tora" | "maia" | "vaporwave";
+
+const emptySubscribe = () => () => {};
 
 const VARIANTS: { id: PetVariant; label: string; icon: string }[] = [
   { id: "dog", label: "Dog", icon: "🐶" },
@@ -86,10 +88,10 @@ const BARK_PHRASES = [
 ];
 
 export function OnekoPet() {
-  const [variant, setVariant] = useState<PetVariant>("dog");
+  const [, setVariant] = useState<PetVariant>("dog");
   const [bubbleText, setBubbleText] = useState<string | null>(null);
   const [bubblePos, setBubblePos] = useState<{ x: number; y: number }>({ x: 32, y: 32 });
-  const [isClient, setIsClient] = useState(false);
+  const isClient = useSyncExternalStore(emptySubscribe, () => true, () => false);
   const bubbleTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   const showBubble = (text: string, x: number, y: number, duration = 2000) => {
@@ -102,8 +104,6 @@ export function OnekoPet() {
   };
 
   useEffect(() => {
-    setIsClient(true);
-
     // Disable pet on mobile touch devices to avoid touch gesture conflicts
     if (window.matchMedia && window.matchMedia("(pointer: coarse)").matches) {
       return;

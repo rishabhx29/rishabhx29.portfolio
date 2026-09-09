@@ -8,19 +8,51 @@ import { FooterBackground } from "@/components/FooterBackground";
 import SoftPillButton from "@/components/pixel-perfect/soft-pill-button";
 import { ThemeToggle } from "@/components/theme-toggle";
 
+import { siteUrl } from "@/lib/site";
+
 const resumePath = "/Rishabh-Tripathi-Resume.pdf";
 
 export const metadata: Metadata = {
   title: "Resume",
-  description: "Resume of Rishabh Tripathi, full-stack developer and open-source contributor.",
+  description:
+    "Professional resume and qualifications of Rishabh Tripathi (rishabhx29), full-stack software engineer specializing in React, Next.js, TypeScript, and Node.js.",
   alternates: {
     canonical: "/resume",
+  },
+  openGraph: {
+    title: "Resume | Rishabh Tripathi Portfolio",
+    description:
+      "Professional resume and qualifications of Rishabh Tripathi (rishabhx29), full-stack software engineer.",
+    url: "/resume",
   },
 };
 
 export default function ResumePage() {
+  const resumeJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteUrl.origin,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Resume",
+        item: new URL("/resume", siteUrl).href,
+      },
+    ],
+  };
+
   return (
     <main className="relative min-h-screen w-full overflow-x-hidden bg-[#fbfaf9] transition-colors duration-300 dark:bg-[#100f0f]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(resumeJsonLd) }}
+      />
       <div
         className="pointer-events-none absolute bottom-0 left-[30%] top-0 hidden w-0 border-r border-black/30 dark:border-white/[0.15] md:block"
         style={{

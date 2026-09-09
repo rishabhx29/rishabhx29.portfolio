@@ -9,7 +9,7 @@ import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 
-import { ExperienceData, experiences } from "@/data/experienceData";
+import { experiences } from "@/data/experienceData";
 
 export default function AllExperiencePage() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);

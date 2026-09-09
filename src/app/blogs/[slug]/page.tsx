@@ -230,23 +230,56 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
     notFound();
   }
 
+  const parsedDate = new Date(post.date);
+  const publishDateIso = !isNaN(parsedDate.getTime()) ? parsedDate.toISOString() : new Date().toISOString();
+
   const articleJsonLd = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.description ?? `Notes by Rishabh Tripathi: ${post.title}`,
-    mainEntityOfPage: new URL(`/blogs/${post.slug}`, siteUrl).href,
-    author: {
-      "@type": "Person",
-      name: siteName,
-      url: siteUrl.href,
-    },
-    publisher: {
-      "@type": "Person",
-      name: siteName,
-    },
-    image: new URL("/opengraph-image", siteUrl).href,
-    keywords: post.tags.join(", "),
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.description ?? `Notes by Rishabh Tripathi: ${post.title}`,
+        mainEntityOfPage: new URL(`/blogs/${post.slug}`, siteUrl).href,
+        datePublished: publishDateIso,
+        dateModified: publishDateIso,
+        author: {
+          "@type": "Person",
+          name: siteName,
+          url: siteUrl.origin,
+        },
+        publisher: {
+          "@type": "Person",
+          name: siteName,
+          url: siteUrl.origin,
+        },
+        image: new URL("/opengraph-image", siteUrl).href,
+        keywords: post.tags.join(", "),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: siteUrl.origin,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Blogs",
+            item: siteUrl.origin,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: post.title,
+            item: new URL(`/blogs/${post.slug}`, siteUrl).href,
+          },
+        ],
+      },
+    ],
   };
 
   return (

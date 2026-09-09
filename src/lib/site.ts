@@ -1,7 +1,40 @@
-export const siteUrl = new URL(
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-v2-two-xi.vercel.app"
-);
+const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL;
+const resolvedUrl =
+  configuredUrl && !configuredUrl.includes("portfolio-v2-two-xi")
+    ? configuredUrl
+    : "https://rishabhx29.me";
+
+export const siteUrl = new URL(resolvedUrl);
 
 export const siteName = "Rishabh Tripathi";
+export const siteDomain = "rishabhx29.me";
+export const alternateDomain = "rishabhx29.vercel.app";
+
+export const siteTitle = "Rishabh Portfolio | Rishabh Tripathi — Full-Stack Software Engineer";
+
 export const siteDescription =
-  "Rishabh Tripathi is a full-stack engineer and open-source contributor building thoughtful web products, developer tools, and reliable systems.";
+  "Official portfolio of Rishabh Tripathi (rishabhx29) — Full-stack software engineer & open-source developer. Building scalable web applications, developer tools (AlgoForge, Traceon, EduPulse), and high-performance user interfaces.";
+
+export const siteKeywords = [
+  "Rishabh",
+  "Rishabh portfolio",
+  "Rishabh Tripathi",
+  "Rishabh Tripathi portfolio",
+  "rishabhx29",
+  "rishabhx29 portfolio",
+  "rishabh developer",
+  "full-stack engineer portfolio",
+  "software engineer portfolio",
+  "Next.js developer portfolio",
+  "React developer portfolio",
+  "TypeScript engineer",
+  "frontend developer portfolio",
+  "backend developer portfolio",
+  "AlgoForge",
+  "Traceon",
+  "EduPulse",
+  "open-source contributor portfolio",
+  "SSoC Project Admin",
+  "GSSoC Contributor",
+];
+

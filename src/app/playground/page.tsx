@@ -3,10 +3,17 @@ import { Metadata } from "next";
 import { PlaygroundCanvas } from "@/components/playground/PlaygroundCanvas";
 
 export const metadata: Metadata = {
-  title: "Architecture Field Notebook",
-  description: "A temporary, editable field notebook of Rishabh's work, ideas, images, and side quests.",
+  title: "Playground & Architecture Field Notebook",
+  description:
+    "An interactive, infinite-canvas field notebook of Rishabh Tripathi's creative experiments, architectural notes, and side quests.",
   alternates: {
     canonical: "/playground",
+  },
+  openGraph: {
+    title: "Playground & Field Notebook | Rishabh Tripathi Portfolio",
+    description:
+      "Interactive experiments and architecture sketches by Rishabh Tripathi.",
+    url: "/playground",
   },
 };
 

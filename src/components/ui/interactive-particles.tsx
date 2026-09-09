@@ -510,7 +510,7 @@ export function InteractiveParticles({
       // single WebGL context when the effect re-runs (e.g. after an upload).
       renderer.dispose();
     };
-  }, [effectiveSrc, color, size, randomness, depth, touchRadius, threshold, maxDimension]);
+  }, [effectiveSrc, color, size, randomness, depth, touchRadius, threshold, maxDimension, scaleMultiplier]);
 
   return (
     <div

@@ -1,13 +1,24 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import dynamic from "next/dynamic";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { PageTransition } from "@/components/page-transition";
 import { RightNavbar } from "@/components/RightNavbar";
-import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import { OnekoPet } from "@/components/OnekoPet";
-import { siteDescription, siteName, siteUrl } from "@/lib/site";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import {
+  siteDescription,
+  siteKeywords,
+  siteName,
+  siteTitle,
+  siteUrl,
+} from "@/lib/site";
+
+const OnekoPet = dynamic(
+  () => import("@/components/OnekoPet").then((module) => module.OnekoPet),
+  { ssr: false }
+);
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,25 +33,21 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   title: {
-    default: "Rishabh Tripathi | Full-stack engineer",
-    template: "%s | Rishabh Tripathi",
+    default: siteTitle,
+    template: "%s | Rishabh Tripathi Portfolio",
   },
   description: siteDescription,
-  applicationName: siteName,
-  keywords: [
-    "Rishabh Tripathi",
-    "full-stack engineer",
-    "Next.js developer",
-    "React developer",
-    "TypeScript developer",
-    "open-source contributor",
-  ],
+  applicationName: "Rishabh Portfolio",
+  keywords: siteKeywords,
   authors: [{ name: siteName, url: siteUrl }],
   creator: siteName,
   publisher: siteName,
   category: "technology",
   alternates: {
     canonical: "/",
+    languages: {
+      "en-US": "/",
+    },
   },
   robots: {
     index: true,
@@ -61,10 +68,10 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
   },
   openGraph: {
-    title: "Rishabh Tripathi | Full-stack engineer",
+    title: siteTitle,
     description: siteDescription,
     url: "/",
-    siteName,
+    siteName: "Rishabh Portfolio",
     type: "website",
     locale: "en_US",
     images: [
@@ -72,13 +79,13 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Rishabh Tripathi, full-stack engineer and open-source contributor",
+        alt: "Rishabh Tripathi Portfolio — Full-Stack Software Engineer & Open Source Developer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rishabh Tripathi | Full-stack engineer",
+    title: siteTitle,
     description: siteDescription,
     creator: "@RishabhTri8805",
     images: ["/opengraph-image"],
@@ -89,22 +96,70 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "WebSite",
+      "@id": `${siteUrl.origin}/#website`,
+      url: siteUrl.origin,
+      name: "Rishabh Portfolio",
+      alternateName: [
+        "Rishabh Tripathi Portfolio",
+        "rishabhx29 Portfolio",
+        "Rishabh Developer Portfolio",
+        "Rishabh's Portfolio",
+      ],
+      description: siteDescription,
+      inLanguage: "en-US",
+      publisher: {
+        "@id": `${siteUrl.origin}/#person`,
+      },
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${siteUrl.origin}/#profilepage`,
+      url: siteUrl.origin,
+      name: siteTitle,
+      isPartOf: {
+        "@id": `${siteUrl.origin}/#website`,
+      },
+      about: {
+        "@id": `${siteUrl.origin}/#person`,
+      },
+      mainEntity: {
+        "@id": `${siteUrl.origin}/#person`,
+      },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: `${siteUrl.origin}/Rishabh-Avatar.jpg`,
+      },
+    },
+    {
       "@type": "Person",
+      "@id": `${siteUrl.origin}/#person`,
       name: siteName,
-      url: siteUrl.href,
-      jobTitle: "Full-stack engineer",
+      alternateName: ["Rishabh", "rishabhx29", "Rishabh Tripathi Portfolio"],
+      url: siteUrl.origin,
+      image: `${siteUrl.origin}/Rishabh-Avatar.jpg`,
+      jobTitle: "Full-Stack Software Engineer",
+      description:
+        "Full-stack software engineer and open-source contributor building scalable web applications, developer tools, and high-performance user interfaces.",
+      knowsAbout: [
+        "Full-Stack Web Development",
+        "Software Engineering",
+        "React",
+        "Next.js",
+        "TypeScript",
+        "JavaScript",
+        "Node.js",
+        "Tailwind CSS",
+        "Data Structures and Algorithms",
+        "Open Source Software",
+        "System Architecture",
+      ],
       sameAs: [
         "https://github.com/rishabhx29",
         "https://www.linkedin.com/in/rishabh-tripathi-728a77317",
         "https://x.com/RishabhTri8805",
+        "https://rishabhx29.vercel.app",
       ],
-    },
-    {
-      "@type": "WebSite",
-      name: siteName,
-      url: siteUrl.href,
-      description: siteDescription,
-      inLanguage: "en",
     },
   ],
 };

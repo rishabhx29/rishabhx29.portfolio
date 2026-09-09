@@ -4,7 +4,6 @@ import * as React from "react"
 import { useTheme } from "next-themes"
 import {
     LayoutDashboard,
-    FileText,
     Moon,
     Sun,
     Code,
@@ -34,11 +33,6 @@ export function CommandMenu() {
     const [open, setOpen] = React.useState(false)
     const { setTheme } = useTheme()
     const router = useRouter()
-
-    const openExternal = React.useCallback((url: string) => {
-        const opened = window.open(url, "_blank", "noopener,noreferrer")
-        if (!opened) window.location.assign(url)
-    }, [])
 
     const runCommand = React.useCallback((command: () => unknown) => {
         setOpen(false)

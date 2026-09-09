@@ -29,11 +29,11 @@ export {
 
 export const ProjectCard = ({
   project,
-  setActiveVideo,
+  setActiveVideo: _setActiveVideo,
   isPriority = false,
 }: {
   project: Project;
-  setActiveVideo: (v: string) => void;
+  setActiveVideo?: (v: string) => void;
   isPriority?: boolean;
 }) => {
   const [hoveredTech, setHoveredTech] = useState<string | null>(null);
@@ -118,10 +118,10 @@ export const ProjectCard = ({
           <div className="size-full overflow-hidden rounded-t-[9px]">
             <Image
               src={imageSrc}
-              alt={`${project.title} preview`}
+              alt={`${project.title} — ${project.imageTitle} by Rishabh Tripathi`}
               width={600}
               height={400}
-              preload={isPriority}
+              priority={isPriority}
               sizes="(min-width: 768px) 17vw, calc(100vw - 2rem)"
               quality={70}
               className="size-full object-cover"

@@ -2,14 +2,14 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Rishabh Tripathi | Full-stack engineer",
-    short_name: "Rishabh Tripathi",
+    name: "Rishabh Portfolio | Rishabh Tripathi",
+    short_name: "Rishabh Portfolio",
     description:
-      "Portfolio of Rishabh Tripathi, a full-stack engineer and open-source contributor.",
+      "Official portfolio of Rishabh Tripathi (rishabhx29), full-stack software engineer and open-source developer.",
     start_url: "/",
     display: "standalone",
-    background_color: "#09090b",
-    theme_color: "#09090b",
+    background_color: "#100f0f",
+    theme_color: "#100f0f",
     icons: [
       {
         src: "/icon.png",

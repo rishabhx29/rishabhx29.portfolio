@@ -46,18 +46,18 @@ export default function Home() {
       <div className="absolute left-0 right-0 md:left-[30%] md:right-[30%] top-0 h-[22vh] -z-0 pointer-events-auto overflow-hidden bg-[#fbfaf9] dark:bg-[#100f0f] shadow-[0_4px_12px_rgba(2,6,23,0.04)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.20)]">
         <Image
           src="/new_banner_light%20(1).png"
-          alt="Portfolio Banner Light"
+          alt="Rishabh Tripathi — Full-Stack Software Engineer Portfolio Banner"
           fill
-          fetchPriority="high"
+          priority
           sizes="(min-width: 768px) 40vw, 100vw"
           quality={75}
           className="object-cover object-[center_20%] dark:hidden"
         />
         <Image
           src="/new_banner_dark.png"
-          alt="Portfolio Banner Dark"
+          alt="Rishabh Tripathi — Full-Stack Software Engineer Portfolio Banner Dark"
           fill
-          loading="lazy"
+          priority
           sizes="(min-width: 768px) 40vw, 100vw"
           quality={75}
           className="hidden object-cover object-[center_20%] dark:block"
@@ -86,11 +86,11 @@ export default function Home() {
               <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-[3px] sm:rounded-[5px] overflow-hidden bg-zinc-100 dark:bg-[#171717]">
                 <Image
                   src="/Rishabh-Avatar.jpg"
-                  alt="Profile"
+                  alt="Rishabh Tripathi — Full-Stack Software Engineer Portfolio Avatar"
                   width={240}
                   height={240}
                   quality={80}
-                  fetchPriority="high"
+                  priority
                   sizes="(min-width: 640px) 120px, 96px"
                   className="h-full w-full origin-center object-cover opacity-90 grayscale contrast-100 mix-blend-multiply dark:mix-blend-normal"
                 />
@@ -100,8 +100,9 @@ export default function Home() {
             <div className="flex flex-col justify-center pt-8">
               <h1 className="text-[20px] sm:text-[24px] font-bold text-zinc-800 dark:text-zinc-100 tracking-tight leading-none mb-0.5 [text-shadow:-1.5px_0_0_rgba(0,200,255,0.3),1.5px_0_0_rgba(255,80,0,0.3)] dark:[text-shadow:-1.5px_0_0_rgba(0,200,255,0.6),1.5px_0_0_rgba(255,80,0,0.6)]">
                 Rishabh Tripathi
+                <span className="sr-only"> — Full-Stack Software Engineer Portfolio (rishabhx29)</span>
               </h1>
-              <p className="text-[13px] sm:text-[14px] text-zinc-500 dark:text-zinc-400">Software Engineer</p>
+              <p className="text-[13px] sm:text-[14px] text-zinc-500 dark:text-zinc-400">Full-Stack Software Engineer</p>
             </div>
           </div>
 

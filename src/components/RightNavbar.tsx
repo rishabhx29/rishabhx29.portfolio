@@ -45,7 +45,10 @@ export function RightNavbar() {
       className="fixed inset-0 z-50 pointer-events-none hidden lg:block"
       style={{ width: 'calc(100vw - var(--removed-body-scroll-bar-size, 0px))' }}
     >
-      <nav className="absolute top-[22vh] left-[calc(69%+32px)] pointer-events-auto flex flex-col gap-4 mt-2">
+      <nav
+        aria-label="Section navigation"
+        className="absolute top-[22vh] left-[calc(69%+32px)] pointer-events-auto flex flex-col gap-4 mt-2"
+      >
         <h3 className="text-[10px] font-bold tracking-[0.2em] text-zinc-400 dark:text-zinc-600 uppercase mb-1">Index</h3>
         {links.map((link) => {
           const isActive = activeSection === link.href.slice(1);

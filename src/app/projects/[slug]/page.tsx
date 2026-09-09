@@ -9,7 +9,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ExternalLink, ArrowLeft } from "lucide-react";
 import { SiGithub } from "react-icons/si";
-import { siteUrl } from "@/lib/site";
+import { siteName, siteUrl } from "@/lib/site";
 
 export async function generateStaticParams() {
   return projectsData.map((project) => ({
@@ -36,7 +36,7 @@ export async function generateMetadata({
     description: project.description,
     alternates: { canonical: `/projects/${project.slug}` },
     openGraph: {
-      title: project.title,
+      title: `${project.title} | Rishabh Tripathi Portfolio`,
       description: project.description,
       url,
       type: "website",
@@ -49,7 +49,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: project.title,
+      title: `${project.title} | Rishabh Tripathi Portfolio`,
       description: project.description,
       images: [project.src],
     },
@@ -64,8 +64,57 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     notFound();
   }
 
+  const projectJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        name: project.title,
+        headline: `${project.title} — ${project.imageTitle}`,
+        description: project.description,
+        applicationCategory: "DeveloperApplication",
+        operatingSystem: "Web",
+        url: project.live,
+        sameAs: project.github ? [project.github] : [],
+        image: new URL(project.src, siteUrl).href,
+        author: {
+          "@type": "Person",
+          name: siteName,
+          url: siteUrl.origin,
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: siteUrl.origin,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Projects",
+            item: new URL("/projects", siteUrl).href,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: project.title,
+            item: new URL(`/projects/${project.slug}`, siteUrl).href,
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen w-full bg-[#fbfaf9] dark:bg-[#100f0f] relative overflow-x-hidden transition-colors duration-300">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
+      />
       {/* Vertical Lines - Ultra-fine Micro Dots */}
       <div className="absolute top-0 bottom-0 left-[30%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
       <div className="absolute top-0 bottom-0 right-[30%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />

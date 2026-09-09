@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-import { ExperienceData, experiences } from "@/data/experienceData";
+import { experiences } from "@/data/experienceData";
 
 export function ExperienceList() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);

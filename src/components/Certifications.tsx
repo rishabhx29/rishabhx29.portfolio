@@ -10,7 +10,7 @@ export function Certifications() {
           <div className="relative w-full aspect-video bg-zinc-100 dark:bg-[#100f0f]/60 p-2 flex items-center justify-center overflow-hidden">
             <Image
               src="/Gssoc-badge.png"
-              alt="GSSoC Badge"
+              alt="Rishabh Tripathi — GirlScript Summer of Code 2024 Contributor Badge"
               width={260}
               height={146}
               className="w-auto h-full max-h-full max-w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
@@ -34,7 +34,7 @@ export function Certifications() {
           <div className="relative w-full aspect-video bg-zinc-100 dark:bg-[#100f0f]/60 p-2 flex items-center justify-center overflow-hidden">
             <Image
               src="/ssoc-badge.png"
-              alt="SSoC Badge"
+              alt="Rishabh Tripathi — Social Summer of Code 2024 Project Admin & Contributor Badge"
               width={260}
               height={146}
               className="w-auto h-full max-h-full max-w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
