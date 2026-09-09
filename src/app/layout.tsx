@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import dynamic from "next/dynamic";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { PageTransition } from "@/components/page-transition";
@@ -14,11 +13,6 @@ import {
   siteTitle,
   siteUrl,
 } from "@/lib/site";
-
-const OnekoPet = dynamic(
-  () => import("@/components/OnekoPet").then((module) => module.OnekoPet),
-  { ssr: false }
-);
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -187,7 +181,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <RightNavbar />
-          <OnekoPet />
           <PageTransition>{children}</PageTransition>
         </ThemeProvider>
         <Analytics />

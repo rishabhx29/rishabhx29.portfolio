@@ -9,6 +9,11 @@ const KonamiEasterEgg = dynamic(
   { ssr: false }
 );
 
+const OnekoPet = dynamic(
+  () => import("@/components/OnekoPet").then((module) => module.OnekoPet),
+  { ssr: false }
+);
+
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
@@ -19,6 +24,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
   return (
     <>
       <KonamiEasterEgg />
+      <OnekoPet />
       <div key={pathname} className="page-transition flex min-h-screen w-full flex-col relative">
         {children}
       </div>
