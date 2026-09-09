@@ -125,6 +125,7 @@ export function OnekoPet() {
     // Pet element setup
     const nekoEl = document.createElement("div");
     nekoEl.id = "portfolio-oneko-pet";
+    nekoEl.setAttribute("aria-hidden", "true");
     nekoEl.style.width = "32px";
     nekoEl.style.height = "32px";
     nekoEl.style.position = "fixed";
@@ -222,6 +223,7 @@ export function OnekoPet() {
     const nekoSpeed = 11;
 
     const frame = () => {
+      if (document.hidden) return;
       frameCount += 1;
 
       if (grabbing) {

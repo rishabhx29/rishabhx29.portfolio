@@ -153,9 +153,11 @@ export function KonamiEasterEgg() {
                 <span>KONAMI CODE DETECTED: LEVEL 99 DEV MODE</span>
               </div>
               <button
+                type="button"
                 onClick={() => setIsOpen(false)}
                 className="p-1.5 text-zinc-400 hover:text-white hover:bg-zinc-800 rounded-lg transition-colors cursor-pointer"
                 title="Close"
+                aria-label="Close easter egg"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -217,6 +219,7 @@ export function KonamiEasterEgg() {
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-zinc-800/80">
               <button
+                type="button"
                 onClick={triggerAvatarBackflip}
                 className="flex items-center gap-2 px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-medium rounded-xl transition-all cursor-pointer border border-zinc-700"
               >
@@ -225,6 +228,7 @@ export function KonamiEasterEgg() {
               </button>
               <div className="flex items-center gap-2">
                 <button
+                  type="button"
                   onClick={triggerConfetti}
                   className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-bold text-xs rounded-xl shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all cursor-pointer"
                 >

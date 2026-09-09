@@ -372,9 +372,9 @@ export default function Home() {
         {/* Minimal Quote Section */}
         <div className="mt-12 flex flex-col items-center justify-center relative py-12">
           <div className="max-w-[540px] w-full flex flex-col items-center">
-            <h3 className="text-[15px] sm:text-[16px] font-medium text-center leading-relaxed text-zinc-500 dark:text-zinc-400 mb-6 italic">
+            <blockquote className="text-[15px] sm:text-[16px] font-medium text-center leading-relaxed text-zinc-600 dark:text-zinc-300 mb-6 italic">
               &quot;It is simpler to plan for everything to go wrong,<br className="hidden md:block" /> and be pleasantly surprised when it works.&quot;
-            </h3>
+            </blockquote>
 
             <div className="flex items-center gap-3 text-[10px] font-medium tracking-[0.2em] text-zinc-400 dark:text-zinc-600 uppercase">
               <div className="w-4 h-[1px] bg-zinc-200 dark:bg-zinc-800" />

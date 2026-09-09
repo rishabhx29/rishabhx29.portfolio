@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Doto, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { PageTransition } from "@/components/page-transition";
@@ -17,11 +17,21 @@ import {
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const doto = Doto({
+  variable: "--font-doto",
+  subsets: ["latin"],
+  weight: ["700"],
+  display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -167,7 +177,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${doto.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#fbfaf9] dark:bg-[#100f0f] text-[#17171a] dark:text-[#fafafa] transition-colors duration-300 selection:bg-orange-500/20">
         <script

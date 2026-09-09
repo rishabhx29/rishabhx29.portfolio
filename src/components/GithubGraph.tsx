@@ -118,7 +118,9 @@ export function GithubGraph() {
           }
         }
       } catch (error) {
-        console.error("Failed to fetch GitHub contributions", error);
+        if (process.env.NODE_ENV !== "production") {
+          console.error("Failed to fetch GitHub contributions", error);
+        }
       } finally {
         setLoading(false);
       }

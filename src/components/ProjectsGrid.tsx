@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
@@ -50,9 +51,10 @@ export const ProjectCard = ({
   const statusLabel = isNotStarted ? "Not Started" : isBuilding ? "Building" : "Live";
 
   return (
-    <div
-      className="flex flex-col group cursor-pointer"
-      onClick={() => router.push(`/projects/${project.slug}`)}
+    <Link
+      href={`/projects/${project.slug}`}
+      aria-label={`View project details for ${project.title}`}
+      className="flex flex-col group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 rounded-xl"
       onMouseEnter={() => setShouldLoadHoverImage(true)}
       onFocus={() => setShouldLoadHoverImage(true)}
       onTouchStart={() => setShouldLoadHoverImage(true)}
@@ -198,7 +200,7 @@ export const ProjectCard = ({
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

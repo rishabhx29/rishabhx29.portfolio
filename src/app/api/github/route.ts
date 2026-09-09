@@ -7,10 +7,10 @@ export async function POST(request: Request) {
 
     if (!token) {
       return NextResponse.json({ 
-        error: "Missing GITHUB_TOKEN credential",
-        message: "Bad credentials",
-        status: "401"
-      }, { status: 401 });
+        data: null,
+        message: "Offline / Fallback mode",
+        fallback: true
+      }, { status: 200 });
     }
 
     const response = await fetch("https://api.github.com/graphql", {
@@ -23,15 +23,12 @@ export async function POST(request: Request) {
     });
 
     if (!response.ok || !response.headers.get("content-type")?.includes("application/json")) {
-      const text = await response.text();
-      console.error("GitHub GraphQL API error or non-JSON response:", response.status, text.slice(0, 200));
-      return NextResponse.json({ error: "Failed to fetch from GitHub API", status: response.status }, { status: response.status || 500 });
+      return NextResponse.json({ data: null, fallback: true }, { status: 200 });
     }
 
     const data = await response.json();
     return NextResponse.json(data);
-  } catch (error) {
-    console.error("GitHub API Proxy Error:", error);
-    return NextResponse.json({ error: "Failed to fetch from GitHub" }, { status: 500 });
+  } catch {
+    return NextResponse.json({ data: null, fallback: true }, { status: 200 });
   }
 }

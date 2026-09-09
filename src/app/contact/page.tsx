@@ -158,6 +158,7 @@ export default function ContactPage() {
           <div className="flex items-center gap-5">
             <Link
               href="/"
+              aria-label="Back to home"
               className="group flex items-center justify-center w-8 h-8 rounded-md bg-zinc-100 dark:bg-zinc-900 border border-zinc-200/50 dark:border-zinc-800/50 text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all hover:bg-zinc-200 dark:hover:bg-zinc-800"
             >
               <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" />
@@ -191,10 +192,11 @@ export default function ContactPage() {
           <input type="text" name="_honey" style={{ display: "none" }} />
 
           <div className="space-y-2">
-            <label className="text-[11px] font-bold tracking-[0.15em] text-zinc-400 dark:text-zinc-600 uppercase ml-4">
+            <label htmlFor="contact-name" className="text-[11px] font-bold tracking-[0.15em] text-zinc-600 dark:text-zinc-400 uppercase ml-4">
               Full Name
             </label>
             <input
+              id="contact-name"
               required
               name="name"
               value={formData.name}
@@ -207,10 +209,11 @@ export default function ContactPage() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-[11px] font-bold tracking-[0.15em] text-zinc-400 dark:text-zinc-600 uppercase ml-4">
+            <label htmlFor="contact-email" className="text-[11px] font-bold tracking-[0.15em] text-zinc-600 dark:text-zinc-400 uppercase ml-4">
               Email Address
             </label>
             <input
+              id="contact-email"
               required
               type="email"
               name="email"
@@ -224,10 +227,11 @@ export default function ContactPage() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-[11px] font-bold tracking-[0.15em] text-zinc-400 dark:text-zinc-600 uppercase ml-4">
+            <label htmlFor="contact-message" className="text-[11px] font-bold tracking-[0.15em] text-zinc-600 dark:text-zinc-400 uppercase ml-4">
               Message
             </label>
             <textarea
+              id="contact-message"
               required
               name="message"
               rows={4}
@@ -279,7 +283,13 @@ export default function ContactPage() {
             <p className="text-[14px] text-zinc-500 mb-2">Find me on my <span className="font-medium text-zinc-800 dark:text-zinc-200">socials</span></p>
             <div className="flex flex-wrap gap-1.5">
               <SocialHoverCard socialName="GitHub">
-                <a href="https://github.com/rishabhx29" target="_blank" className="flex items-center gap-1.5 px-2.5 py-1.5 bg-zinc-100 dark:bg-zinc-800/40 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-md text-[12px] font-medium text-zinc-600 dark:text-zinc-300 transition-colors border border-zinc-200/50 dark:border-zinc-700/50">
+                <a
+                  href="https://github.com/rishabhx29"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Rishabh's GitHub profile"
+                  className="flex items-center gap-1.5 px-2.5 py-1.5 bg-zinc-100 dark:bg-zinc-800/40 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-md text-[12px] font-medium text-zinc-600 dark:text-zinc-300 transition-colors border border-zinc-200/50 dark:border-zinc-700/50"
+                >
                   <svg viewBox="0 0 24 24" className="w-3.5 h-3.5">
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke="currentColor" strokeWidth="2" fill="none" />
                   </svg>
@@ -287,7 +297,13 @@ export default function ContactPage() {
                 </a>
               </SocialHoverCard>
               <SocialHoverCard socialName="Twitter">
-                <a href="https://x.com/RishabhTri8805" target="_blank" className="flex items-center gap-1.5 px-2.5 py-1.5 bg-zinc-100 dark:bg-zinc-800/40 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-md text-[12px] font-medium text-zinc-600 dark:text-zinc-300 transition-colors border border-zinc-200/50 dark:border-zinc-700/50">
+                <a
+                  href="https://x.com/RishabhTri8805"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Rishabh's Twitter/X profile"
+                  className="flex items-center gap-1.5 px-2.5 py-1.5 bg-zinc-100 dark:bg-zinc-800/40 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-md text-[12px] font-medium text-zinc-600 dark:text-zinc-300 transition-colors border border-zinc-200/50 dark:border-zinc-700/50"
+                >
                   <svg viewBox="0 0 24 24" className="w-3.5 h-3.5">
                     <path d="M4 4l11.733 16h4.267l-11.733-16zM4 20l6.768-6.768M20 4l-6.768 6.768" stroke="currentColor" strokeWidth="2" fill="none" />
                   </svg>
@@ -295,7 +311,13 @@ export default function ContactPage() {
                 </a>
               </SocialHoverCard>
               <SocialHoverCard socialName="LinkedIn">
-                <a href="https://www.linkedin.com/in/rishabh-tripathi-728a77317" target="_blank" className="flex items-center gap-1.5 px-2.5 py-1.5 bg-zinc-100 dark:bg-zinc-800/40 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-md text-[12px] font-medium text-zinc-600 dark:text-zinc-300 transition-colors border border-zinc-200/50 dark:border-zinc-700/50">
+                <a
+                  href="https://www.linkedin.com/in/rishabh-tripathi-728a77317"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Rishabh's LinkedIn profile"
+                  className="flex items-center gap-1.5 px-2.5 py-1.5 bg-zinc-100 dark:bg-zinc-800/40 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-md text-[12px] font-medium text-zinc-600 dark:text-zinc-300 transition-colors border border-zinc-200/50 dark:border-zinc-700/50"
+                >
                   <svg viewBox="0 0 24 24" className="w-3.5 h-3.5">
                     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1-2 2 2 2 0 0 1 2-2z" stroke="currentColor" strokeWidth="2" fill="none" />
                   </svg>

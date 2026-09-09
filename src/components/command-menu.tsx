@@ -117,7 +117,10 @@ export function CommandMenu() {
     return (
         <>
             <button 
+                type="button"
                 onClick={() => setOpen(true)}
+                aria-label="Open command palette"
+                title="Open command palette (⌘K)"
                 className="relative group cursor-pointer transition-all duration-300 active:scale-95"
             >
                 {/* Outer border wrapper matching View All style */}

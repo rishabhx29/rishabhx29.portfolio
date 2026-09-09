@@ -55,6 +55,7 @@ export default function AllExperiencePage() {
           <div className="flex items-center gap-5">
             <Link
               href="/"
+              aria-label="Back to home"
               className="group flex items-center justify-center w-8 h-8 rounded-md bg-zinc-100 dark:bg-zinc-900 border border-zinc-200/50 dark:border-zinc-800/50 text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all hover:bg-zinc-200 dark:hover:bg-zinc-800"
             >
               <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" />
@@ -111,8 +112,18 @@ export default function AllExperiencePage() {
                   )}
 
                   <div
-                    className="flex flex-col items-start gap-2.5 py-3.5 px-4 -mx-4 hover:bg-zinc-50 dark:hover:bg-zinc-900/20 transition-colors cursor-pointer relative z-20 rounded-lg sm:gap-3 sm:py-4 2xl:flex-row 2xl:items-center 2xl:justify-between"
+                    className="flex flex-col items-start gap-2.5 py-3.5 px-4 -mx-4 hover:bg-zinc-50 dark:hover:bg-zinc-900/20 transition-colors cursor-pointer relative z-20 rounded-lg sm:gap-3 sm:py-4 2xl:flex-row 2xl:items-center 2xl:justify-between focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
                     onClick={() => setOpenIdx(isOpen ? null : idx)}
+                    role="button"
+                    tabIndex={0}
+                    aria-expanded={isOpen}
+                    aria-label={`Toggle details for ${item.role} at ${item.title}`}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setOpenIdx(isOpen ? null : idx);
+                      }
+                    }}
                   >
                     <div className="flex min-w-0 flex-1 items-start gap-3 sm:gap-4">
                       <div className="size-10 shrink-0 rounded-[10px] border border-black/10 bg-zinc-50 p-[2px] shadow-sm shadow-black/15 dark:border-zinc-800 dark:bg-[#111111] dark:shadow-md dark:shadow-black/50">

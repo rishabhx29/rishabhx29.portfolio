@@ -64,6 +64,7 @@ export default function AllProjectsPage() {
             <div className="flex items-center gap-5">
               <Link
                 href="/"
+                aria-label="Back to home"
                 className="group flex items-center justify-center w-8 h-8 rounded-md bg-zinc-100 dark:bg-zinc-900 border border-zinc-200/50 dark:border-zinc-800/50 text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all hover:bg-zinc-200 dark:hover:bg-zinc-800"
               >
                 <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" />
@@ -153,7 +154,9 @@ export default function AllProjectsPage() {
               className="relative bg-black rounded-xl overflow-hidden w-[90%] max-w-3xl shadow-2xl"
             >
               <button
+                type="button"
                 onClick={() => setActiveVideo(null)}
+                aria-label="Close project preview"
                 className="absolute top-3 right-3 p-2 bg-neutral-800/80 hover:bg-neutral-700 rounded-full cursor-pointer transition-colors z-50"
               >
                 <X size={20} className="text-neutral-200" />
@@ -162,6 +165,7 @@ export default function AllProjectsPage() {
               {activeVideo.includes("youtube") ? (
                 <iframe
                   src={activeVideo}
+                  title="Project demonstration video"
                   className="w-full aspect-video border-0"
                   allowFullScreen
                 ></iframe>

@@ -119,16 +119,20 @@ export function OpenSourceContributions({ isFullPage = false }: { isFullPage?: b
           localStorage.setItem(cacheKey, JSON.stringify(fetchedPRs));
         }
       } else {
-        if (data.message === "Bad credentials" || data.error) {
-          console.warn("GitHub API: Invalid or missing GITHUB_TOKEN credentials. Fallback to cached/offline timeline state.");
-        } else {
-          console.error("GraphQL response missing expected data structure", data);
+        if (process.env.NODE_ENV !== "production") {
+          if (data.message === "Bad credentials" || data.error) {
+            console.warn("GitHub API: Invalid or missing GITHUB_TOKEN credentials. Fallback to cached/offline timeline state.");
+          } else {
+            console.error("GraphQL response missing expected data structure", data);
+          }
         }
         // Even on error, mark as loaded so we don't show spinner forever
         setLoadedTypes(prev => new Set(prev).add(type));
       }
     } catch (error) {
-      console.error("Failed to fetch PRs:", error);
+      if (process.env.NODE_ENV !== "production") {
+        console.error("Failed to fetch PRs:", error);
+      }
       setLoadedTypes(prev => new Set(prev).add(type));
     }
   }, []);
@@ -183,8 +187,11 @@ export function OpenSourceContributions({ isFullPage = false }: { isFullPage?: b
             {/* Buttons */}
             {(["merged", "open", "closed"] as FilterType[]).map((type) => (
               <button
+                type="button"
                 key={type}
                 onClick={() => handleFilterChange(type)}
+                aria-pressed={filterType === type}
+                aria-label={`Filter by ${type} contributions`}
                 className={`z-10 relative px-3 py-1.5 text-[12px] font-medium text-center transition-colors duration-200 capitalize ${filterType === type
                   ? "text-zinc-900 dark:text-zinc-100"
                   : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200"
