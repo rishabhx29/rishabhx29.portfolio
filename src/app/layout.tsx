@@ -6,6 +6,7 @@ import { PageTransition } from "@/components/page-transition";
 import { RightNavbar } from "@/components/RightNavbar";
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { OnekoPet } from "@/components/OnekoPet";
 import { siteDescription, siteName, siteUrl } from "@/lib/site";
 
 const geistSans = Geist({
@@ -131,6 +132,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <RightNavbar />
+          <OnekoPet />
           <PageTransition>{children}</PageTransition>
         </ThemeProvider>
         <Analytics />
