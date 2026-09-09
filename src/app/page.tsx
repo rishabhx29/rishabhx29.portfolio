@@ -12,46 +12,19 @@ import { DeferredBannerParticles, DeferredGithubGraph, DeferredRishabhParticles 
 import { BannerMusicControl } from "@/components/BannerMusicControl";
 import { FileText, Boxes } from "lucide-react";
 import Image from "next/image";
-
-const skills = [
-  { name: "JavaScript", icon: "javascript" },
-  { name: "TypeScript", icon: "typescript" },
-  { name: "HTML5", icon: "html5" },
-  { name: "CSS3", icon: "css3" },
-  { name: "Python", icon: "python" },
-  { name: "C", icon: "c" },
-  { name: "C++", icon: "cplusplus" },
-  { name: "Java", icon: "java" },
-  { name: "SQL", icon: "databricks" },
-  { name: "React.js", icon: "react" },
-  { name: "Next.js", icon: "nextdotjs" },
-  { name: "Tailwind CSS", icon: "tailwindcss" },
-  { name: "Framer Motion", icon: "framer" },
-  { name: "Node.js", icon: "nodedotjs" },
-  { name: "Express.js", icon: "express" },
-  { name: "MySQL", icon: "mysql" },
-  { name: "MongoDB", icon: "mongodb" },
-  { name: "Supabase", icon: "supabase" },
-  { name: "Git", icon: "git" },
-  { name: "GitHub", icon: "github" },
-  { name: "Vercel", icon: "vercel" },
-  { name: "VS Code", icon: "visualstudiocode" },
-  { name: "Redux", icon: "redux" },
-  { name: "Stripe", icon: "stripe" },
-  { name: "Cloudinary", icon: "cloudinary" },
-];
+import { StackSection } from "@/components/StackSection";
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-full bg-white dark:bg-black relative overflow-x-hidden transition-colors duration-300">
+    <div className="min-h-screen w-full bg-[#fbfaf9] dark:bg-[#100f0f] relative overflow-x-hidden transition-colors duration-300">
 
       {/* Vertical Lines - Ultra-fine Micro Dots */}
-      <div className="absolute top-0 bottom-0 left-[30%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-      <div className="absolute top-0 bottom-0 right-[30%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+      <div className="absolute top-0 bottom-0 left-[30%] w-0 border-r border-black/25 dark:border-white/[0.10] pointer-events-none hidden md:block" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+      <div className="absolute top-0 bottom-0 right-[30%] w-0 border-r border-black/25 dark:border-white/[0.10] pointer-events-none hidden md:block" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
 
       {/* Horizontal Lines - Ultra-fine Micro Dots */}
-      <div className="absolute left-0 right-0 top-[22vh] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-      <div className="absolute left-0 right-0 top-[calc(22vh+112px)] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+      <div className="absolute left-0 right-0 top-[22vh] h-0 border-b border-black/25 dark:border-white/[0.10] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+      <div className="absolute left-0 right-0 top-[calc(22vh+112px)] h-0 border-b border-black/25 dark:border-white/[0.10] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
 
       {/* Ultra-Tiny Solid Nodes */}
       {[
@@ -60,7 +33,7 @@ export default function Home() {
         { top: 'calc(22vh + 112px)', left: '30%' },
         { top: 'calc(22vh + 112px)', right: '30%' },
       ].map((pos, i) => (
-        <div key={i} className="absolute w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] pointer-events-none z-10 hidden md:block"
+        <div key={i} className="absolute w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.20] pointer-events-none z-10 hidden md:block"
           style={{
             top: pos.top,
             left: pos.left,
@@ -70,7 +43,7 @@ export default function Home() {
       ))}
 
       {/* Cell 1: Banner */}
-      <div className="absolute left-0 right-0 md:left-[30%] md:right-[30%] top-0 h-[22vh] -z-0 pointer-events-auto overflow-hidden bg-white dark:bg-black shadow-[0_4px_12px_rgba(2,6,23,0.04)] dark:shadow-[0_4px_12px_rgba(2,6,23,0.10)]">
+      <div className="absolute left-0 right-0 md:left-[30%] md:right-[30%] top-0 h-[22vh] -z-0 pointer-events-auto overflow-hidden bg-[#fbfaf9] dark:bg-[#100f0f] shadow-[0_4px_12px_rgba(2,6,23,0.04)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.20)]">
         <Image
           src="/new_banner_light%20(1).png"
           alt="Portfolio Banner Light"
@@ -90,9 +63,9 @@ export default function Home() {
           className="hidden object-cover object-[center_20%] dark:block"
         />
         <DeferredBannerParticles />
-        <div className="absolute inset-x-0 bottom-0 h-10 pointer-events-none z-[5] bg-gradient-to-t from-white/90 to-transparent dark:from-black/50 dark:to-transparent" />
-        <div className="absolute left-0 top-0 bottom-0 w-8 pointer-events-none z-20 bg-gradient-to-r from-white/90 to-transparent dark:from-black/40 dark:to-transparent" />
-        <div className="absolute right-0 top-0 bottom-0 w-8 pointer-events-none z-20 bg-gradient-to-l from-white/90 to-transparent dark:from-black/40 dark:to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-10 pointer-events-none z-[5] bg-gradient-to-t from-[#fbfaf9]/90 to-transparent dark:from-[#100f0f]/90 dark:to-transparent" />
+        <div className="absolute left-0 top-0 bottom-0 w-8 pointer-events-none z-20 bg-gradient-to-r from-[#fbfaf9]/90 to-transparent dark:from-[#100f0f]/80 dark:to-transparent" />
+        <div className="absolute right-0 top-0 bottom-0 w-8 pointer-events-none z-20 bg-gradient-to-l from-[#fbfaf9]/90 to-transparent dark:from-[#100f0f]/80 dark:to-transparent" />
       </div>
 
       {/* Banner overlay controls — outside the banner's stacking context so z-[60] beats the profile section's z-50 */}
@@ -108,9 +81,9 @@ export default function Home() {
         <div className="flex w-full items-center justify-between">
 
           <div className="flex items-center gap-4 sm:gap-5">
-            <div className="relative p-[3px] rounded-[6px] sm:rounded-[8px] border-[1.5px] border-black/30 dark:border-white/[0.15] shrink-0">
+            <div className="relative p-[3px] rounded-[6px] sm:rounded-[8px] border-[1.5px] border-black/25 dark:border-white/[0.12] shrink-0">
               {/* The inner image */}
-              <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-[3px] sm:rounded-[5px] overflow-hidden bg-zinc-100 dark:bg-zinc-900">
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-[3px] sm:rounded-[5px] overflow-hidden bg-zinc-100 dark:bg-[#171717]">
                 <Image
                   src="/Rishabh-Avatar.jpg"
                   alt="Profile"
@@ -268,7 +241,7 @@ export default function Home() {
               <div className="absolute bottom-0 right-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
               <Link href="/experience" className="relative group block mt-0">
                 <div className="absolute -inset-[5px] border border-black/5 dark:border-white/5 rounded-[11px] pointer-events-none transition-colors duration-300 group-hover:border-black/10 dark:group-hover:border-white/10" />
-                <div className="relative flex items-center gap-1.5 px-4 py-2 bg-zinc-50 hover:bg-zinc-100 dark:bg-[#09090b] dark:hover:bg-[#121214] text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 rounded-[6px] text-[13px] font-medium transition-all duration-300 border border-black/5 dark:border-white/5 shadow-sm shadow-black/20 dark:shadow-lg dark:shadow-black/80">
+                <div className="relative flex items-center gap-1.5 px-4 py-2 bg-zinc-50 hover:bg-zinc-100 dark:bg-[#171717] dark:hover:bg-[#1e1e1e] text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 rounded-[6px] text-[13px] font-medium transition-all duration-300 border border-black/5 dark:border-white/5 shadow-sm shadow-black/20 dark:shadow-lg dark:shadow-black/80">
                   View All
                   <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -312,7 +285,7 @@ export default function Home() {
           <div className="flex justify-center -mt-[19px] pb-0 relative z-20">
             <Link href="/projects" className="relative group block">
               <div className="absolute -inset-[5px] border border-black/5 dark:border-white/5 rounded-[11px] pointer-events-none transition-colors duration-300 group-hover:border-black/10 dark:group-hover:border-white/10" />
-              <div className="relative flex items-center gap-1.5 px-4 py-2 bg-zinc-50 hover:bg-zinc-100 dark:bg-[#09090b] dark:hover:bg-[#121214] text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 rounded-[6px] text-[13px] font-medium transition-all duration-300 border border-black/5 dark:border-white/5 shadow-sm shadow-black/20 dark:shadow-lg dark:shadow-black/80">
+              <div className="relative flex items-center gap-1.5 px-4 py-2 bg-zinc-50 hover:bg-zinc-100 dark:bg-[#171717] dark:hover:bg-[#1e1e1e] text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 rounded-[6px] text-[13px] font-medium transition-all duration-300 border border-black/5 dark:border-white/5 shadow-sm shadow-black/20 dark:shadow-lg dark:shadow-black/80">
                 View All
                 <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-colors" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -331,8 +304,9 @@ export default function Home() {
           <OpenSourceContributions />
         </div>
 
-        {/* Skills */}
+        {/* Stack */}
         <div id="skills" className="mt-6 flex flex-col relative z-10 scroll-mt-24">
+          <div id="stack" className="-top-24 absolute pointer-events-none" />
           {/* Top full-width line */}
           <div
             className="absolute top-0 left-[-100vw] right-[-100vw] h-0 border-t border-black/30 dark:border-white/[0.15] pointer-events-none"
@@ -346,33 +320,16 @@ export default function Home() {
           <div className="absolute top-0 -right-4 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" />
 
           <div className="py-2 relative mt-1">
-            <h2 className="text-[18px] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">Skills & Technologies</h2>
+            <h2 className="text-[18px] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">Stack</h2>
 
-            {/* Horizontal line below Skills heading */}
+            {/* Horizontal line below Stack heading */}
             <div className="absolute bottom-0 left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
             {/* Intersections */}
             <div className="absolute bottom-0 -left-4 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
             <div className="absolute bottom-0 -right-4 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
           </div>
 
-          <div className="relative pt-6 pb-2">
-            <div className="flex flex-wrap gap-2 w-full">
-              {skills.map((skill, index) => (
-                <div key={index} className="grow flex items-center justify-center gap-2 px-3 py-1.5 bg-zinc-50 hover:bg-zinc-100 dark:bg-[#0a0a0a] dark:hover:bg-[#121214] border border-black/30 dark:border-white/[0.15] rounded-[6px] transition-colors duration-200 cursor-default">
-                  <img
-                    src={skill.icon.startsWith('http') ? skill.icon : `https://cdn.simpleicons.org/${skill.icon}/71717a`}
-                    alt={skill.name}
-                    width={14}
-                    height={14}
-                    loading="lazy"
-                    decoding="async"
-                    className={`h-3.5 w-3.5 opacity-80 ${skill.icon.startsWith('http') ? 'rounded-sm grayscale' : ''}`}
-                  />
-                  <span className="text-[13px] font-medium text-zinc-600 dark:text-zinc-400">{skill.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <StackSection />
         </div>
 
 

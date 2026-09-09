@@ -33,7 +33,7 @@ export function RightNavbar() {
     { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
     { name: "Open Source", href: "#opensource" },
-    { name: "Skills", href: "#skills" },
+    { name: "Stack", href: "#skills" },
     { name: "Certifications", href: "#certifications" },
   ];
 
