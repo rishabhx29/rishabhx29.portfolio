@@ -130,19 +130,19 @@ export function GithubGraph() {
   const contributionLevels = useMemo<ContributionLevel[]>(
     () => [
       {
-        cell: "bg-zinc-100 dark:bg-zinc-800",
+        cell: "bg-[#eceae6] dark:bg-[#1c1c1c]",
       },
       {
-        cell: "bg-zinc-300 dark:bg-zinc-600",
+        cell: "bg-[#d5d2cc] dark:bg-[#2f2f2f]",
       },
       {
-        cell: "bg-zinc-500 dark:bg-zinc-500",
+        cell: "bg-[#b0aca4] dark:bg-[#4d4d4e]",
       },
       {
-        cell: "bg-zinc-700 dark:bg-zinc-300",
+        cell: "bg-[#7d7a73] dark:bg-[#79797b]",
       },
       {
-        cell: "bg-zinc-950 dark:bg-zinc-100",
+        cell: "bg-[#46443f] dark:bg-[#b4b4b6]",
       },
     ],
     []
@@ -246,7 +246,7 @@ export function GithubGraph() {
                       {Array.from({ length: 7 }).map((__, rowIndex) => (
                         <div
                           key={rowIndex}
-                          className="aspect-square w-full animate-pulse rounded-[2px] bg-zinc-100 dark:bg-zinc-800"
+                          className="aspect-square w-full animate-pulse rounded-[2px] bg-[#eceae6] dark:bg-[#1c1c1c]"
                         />
                       ))}
                     </div>
@@ -301,7 +301,7 @@ export function GithubGraph() {
 
         {tooltip && (
           <div
-            className="pointer-events-none fixed z-[100] -translate-x-1/2 -translate-y-[calc(100%+8px)] rounded-md border border-zinc-200 bg-white px-2.5 py-1.5 text-[11px] font-medium text-zinc-700 shadow-lg shadow-zinc-950/10 dark:border-white/10 dark:bg-zinc-950 dark:text-zinc-200 dark:shadow-black/40"
+            className="pointer-events-none fixed z-[100] -translate-x-1/2 -translate-y-[calc(100%+8px)] rounded-md border border-zinc-200 bg-white px-2.5 py-1.5 text-[11px] font-medium text-zinc-700 shadow-lg shadow-zinc-950/10 dark:border-white/10 dark:bg-[#171717] dark:text-zinc-200 dark:shadow-black/60 backdrop-blur-md"
             style={{ left: tooltip.x, top: tooltip.y }}
           >
             {tooltip.count} contributions on {tooltip.date}

@@ -6,8 +6,8 @@ export function Certifications() {
   return (
     <div className="relative mt-4 overflow-hidden w-full pb-4">
       <div className="flex gap-4 w-full">
-        <div className="group w-full max-w-[260px] flex-shrink-0 flex flex-col rounded-[6px] overflow-hidden bg-zinc-50 dark:bg-[#09090b] border border-black/30 dark:border-white/[0.15] transition-colors duration-200 cursor-default">
-          <div className="relative w-full aspect-video bg-zinc-100 dark:bg-zinc-800/40 p-2 flex items-center justify-center overflow-hidden">
+        <div className="group w-full max-w-[260px] flex-shrink-0 flex flex-col rounded-[6px] overflow-hidden bg-zinc-50 dark:bg-[#171717] border border-black/20 dark:border-white/[0.08] hover:border-black/30 dark:hover:border-white/[0.16] transition-colors duration-200 cursor-default">
+          <div className="relative w-full aspect-video bg-zinc-100 dark:bg-[#100f0f]/60 p-2 flex items-center justify-center overflow-hidden">
             <Image
               src="/Gssoc-badge.png"
               alt="GSSoC Badge"
@@ -30,8 +30,8 @@ export function Certifications() {
           </div>
         </div>
 
-        <div className="group w-full max-w-[260px] flex-shrink-0 flex flex-col rounded-[6px] overflow-hidden bg-zinc-50 dark:bg-[#09090b] border border-black/30 dark:border-white/[0.15] transition-colors duration-200 cursor-default">
-          <div className="relative w-full aspect-video bg-zinc-100 dark:bg-zinc-800/40 p-2 flex items-center justify-center overflow-hidden">
+        <div className="group w-full max-w-[260px] flex-shrink-0 flex flex-col rounded-[6px] overflow-hidden bg-zinc-50 dark:bg-[#171717] border border-black/20 dark:border-white/[0.08] hover:border-black/30 dark:hover:border-white/[0.16] transition-colors duration-200 cursor-default">
+          <div className="relative w-full aspect-video bg-zinc-100 dark:bg-[#100f0f]/60 p-2 flex items-center justify-center overflow-hidden">
             <Image
               src="/ssoc-badge.png"
               alt="SSoC Badge"

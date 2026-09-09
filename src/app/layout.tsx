@@ -119,7 +119,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col dark:bg-black dark:text-zinc-50 transition-colors duration-300">
+      <body className="min-h-full flex flex-col bg-[#fbfaf9] dark:bg-[#100f0f] text-[#17171a] dark:text-[#fafafa] transition-colors duration-300 selection:bg-orange-500/20">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
