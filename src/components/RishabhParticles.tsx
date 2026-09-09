@@ -11,8 +11,8 @@ export function RishabhParticles() {
     <InteractiveParticles
       src="/Rishabh.png"
       allowUpload={false}
-      background={isDark ? "#000000" : "#ffffff"}
-      color={isDark ? "#a1a1aa" : "#52525b"}
+      background="transparent"
+      color={isDark ? "#d4d4d8" : "#52525b"}
       size={0.9}
       randomness={1.5}
       depth={2.0}

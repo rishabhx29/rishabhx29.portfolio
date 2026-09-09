@@ -370,14 +370,14 @@ export default function Home() {
 
         {/* Minimal Quote Section */}
         <div className="mt-12 flex flex-col items-center justify-center relative py-12">
-          <div className="max-w-[480px] w-full flex flex-col items-center">
-            <h3 className="text-[16px] font-medium text-center leading-relaxed text-zinc-500 dark:text-zinc-400 mb-6 italic">
-              &quot;Simplicity is prerequisite<br className="hidden md:block" /> for reliability.&quot;
+          <div className="max-w-[540px] w-full flex flex-col items-center">
+            <h3 className="text-[15px] sm:text-[16px] font-medium text-center leading-relaxed text-zinc-500 dark:text-zinc-400 mb-6 italic">
+              &quot;You should enjoy the little detours to the fullest.<br className="hidden md:block" /> That&apos;s where you&apos;ll find the things more important than what you want.&quot;
             </h3>
 
             <div className="flex items-center gap-3 text-[10px] font-medium tracking-[0.2em] text-zinc-400 dark:text-zinc-600 uppercase">
               <div className="w-4 h-[1px] bg-zinc-200 dark:bg-zinc-800" />
-              EDSGER W. DIJKSTRA
+              GING FREECSS — HUNTER × HUNTER
               <div className="w-4 h-[1px] bg-zinc-200 dark:bg-zinc-800" />
             </div>
           </div>

@@ -248,7 +248,7 @@ export function InteractiveParticles({
   onUpload,
   maxDimension = 480,
   className,
-  background = "#000000",
+  background = "transparent",
   color = "#ffffff",
   size = 1.2,
   randomness = 1.8,
