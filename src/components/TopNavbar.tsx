@@ -12,7 +12,7 @@ export function TopNavbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -44,7 +44,7 @@ export function TopNavbar() {
   ];
 
   return (
-    <nav className="fixed top-2 right-4 md:right-[31%] z-[100] pointer-events-auto">
+    <nav aria-label="Main navigation" className="fixed top-2 right-4 md:right-[31%] z-[100] pointer-events-auto">
       <div
         className={`flex items-center gap-5 px-5 py-2.5 rounded-full transition-all duration-300 ${scrolled
           ? "bg-[#fbfaf9]/85 dark:bg-[#171717]/85 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.08)] border border-black/5 dark:border-white/[0.10]"

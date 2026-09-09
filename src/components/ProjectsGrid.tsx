@@ -191,9 +191,20 @@ export const ProjectCard = ({
             })}
           </div>
 
-          <div className="flex shrink-0 items-center gap-1 text-[11px] font-medium text-zinc-500 transition-colors cursor-pointer group-hover:text-zinc-800 dark:group-hover:text-zinc-200 sm:text-[12px]" onClick={(e) => { e.stopPropagation(); if (project.live) window.open(project.live, "_blank"); else if (project.github) window.open(project.github, "_blank"); }}>
+          <div
+            className="flex shrink-0 items-center gap-1 text-[11px] font-medium text-zinc-500 transition-colors cursor-pointer group-hover:text-zinc-800 dark:group-hover:text-zinc-200 sm:text-[12px]"
+            onClick={(e) => {
+              if (project.live || project.github) {
+                e.preventDefault();
+                e.stopPropagation();
+                window.open(project.live || project.github, "_blank", "noopener,noreferrer");
+              }
+            }}
+            title={project.live ? `Open ${project.title} live demo` : `Open ${project.title} source code`}
+            aria-label={project.live ? `Open ${project.title} live demo` : `Open ${project.title} source code`}
+          >
             View Project
-            <svg viewBox="0 0 24 24" className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg viewBox="0 0 24 24" className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <line x1="7" y1="17" x2="17" y2="7"></line>
               <polyline points="7 7 17 7 17 17"></polyline>
             </svg>
@@ -260,7 +271,9 @@ export function ProjectsGrid() {
               className="relative bg-black rounded-xl overflow-hidden w-[90%] max-w-3xl shadow-2xl"
             >
               <button
+                type="button"
                 onClick={() => setActiveVideo(null)}
+                aria-label="Close project preview video"
                 className="absolute top-3 right-3 p-2 bg-neutral-800/80 hover:bg-neutral-700 rounded-full cursor-pointer transition-colors z-50"
               >
                 <X size={20} className="text-neutral-200" />
@@ -269,6 +282,7 @@ export function ProjectsGrid() {
               {activeVideo.includes("youtube") ? (
                 <iframe
                   src={activeVideo}
+                  title="Project demonstration video"
                   className="w-full aspect-video border-0"
                   allowFullScreen
                 ></iframe>

@@ -102,17 +102,20 @@ export function PlaygroundItem({
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
               title="Open Link"
+              aria-label={`Open link for ${item.title}`}
               className="p-1.5 rounded-lg hover:bg-zinc-800 text-zinc-300 hover:text-cyan-400 transition-colors"
             >
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           )}
           <button
+            type="button"
             onClick={(e) => {
               e.stopPropagation();
               onDelete(item.id);
             }}
             title="Remove from Canvas"
+            aria-label={`Remove ${item.title} from canvas`}
             className="p-1.5 rounded-lg hover:bg-red-950/60 text-zinc-400 hover:text-red-400 transition-colors"
           >
             <X className="w-3.5 h-3.5" />

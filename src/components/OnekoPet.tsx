@@ -340,8 +340,8 @@ export function OnekoPet() {
         window.removeEventListener("mouseup", onDragEnd);
       };
 
-      window.addEventListener("mousemove", onDragMove);
-      window.addEventListener("mouseup", onDragEnd);
+      window.addEventListener("mousemove", onDragMove, { passive: true });
+      window.addEventListener("mouseup", onDragEnd, { passive: true });
     };
 
     // Single click for cute bark / speech bubble
@@ -387,7 +387,7 @@ export function OnekoPet() {
       );
     });
 
-    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
     nekoEl.addEventListener("mousedown", onMouseDown);
 
     // Run animation frame tick at 100ms (~10 FPS retro style)

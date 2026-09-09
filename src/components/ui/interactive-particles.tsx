@@ -518,7 +518,7 @@ export function InteractiveParticles({
       className={cn("relative h-full w-full overflow-hidden", className)}
       style={{ background }}
     >
-      <canvas ref={canvasRef} className="block h-full w-full" />
+      <canvas ref={canvasRef} aria-hidden="true" className="block h-full w-full" />
 
       {allowUpload && (
         <>

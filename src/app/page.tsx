@@ -306,7 +306,7 @@ export default function Home() {
         </div>
 
         {/* Stack */}
-        <div id="skills" className="mt-6 flex flex-col relative z-10 scroll-mt-24">
+        <div id="skills" className="mt-6 flex flex-col relative z-10 scroll-mt-24 content-visibility-auto">
           <div id="stack" className="-top-24 absolute pointer-events-none" />
           {/* Top full-width line */}
           <div
@@ -336,7 +336,7 @@ export default function Home() {
 
 
         {/* Certifications */}
-        <div id="certifications" className="mt-6 flex flex-col relative z-10 scroll-mt-24">
+        <div id="certifications" className="mt-6 flex flex-col relative z-10 scroll-mt-24 content-visibility-auto">
           {/* Top full-width line */}
           <div
             className="absolute top-0 left-[-100vw] right-[-100vw] h-0 border-t border-black/30 dark:border-white/[0.15] pointer-events-none"
@@ -370,7 +370,7 @@ export default function Home() {
         </div>
 
         {/* Minimal Quote Section */}
-        <div className="mt-12 flex flex-col items-center justify-center relative py-12">
+        <div className="mt-12 flex flex-col items-center justify-center relative py-12 content-visibility-auto">
           <div className="max-w-[540px] w-full flex flex-col items-center">
             <blockquote className="text-[15px] sm:text-[16px] font-medium text-center leading-relaxed text-zinc-600 dark:text-zinc-300 mb-6 italic">
               &quot;It is simpler to plan for everything to go wrong,<br className="hidden md:block" /> and be pleasantly surprised when it works.&quot;
@@ -385,7 +385,7 @@ export default function Home() {
         </div>
 
         {/* Rishabh Particle Logo Footer */}
-        <div className="flex-grow w-[calc(100%+32px)] -mx-4 h-[380px] relative mt-4">
+        <div className="flex-grow w-[calc(100%+32px)] -mx-4 h-[380px] relative mt-4 content-visibility-auto">
           {/* Top full-width line */}
           <div
             className="absolute top-0 left-[-100vw] right-[-100vw] h-0 border-t border-black/30 dark:border-white/[0.15] pointer-events-none z-10"

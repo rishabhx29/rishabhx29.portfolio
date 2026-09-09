@@ -41,10 +41,15 @@ export function CurrentTime() {
   const seconds = time.getSeconds().toString().padStart(2, "0");
 
   return (
-    <div className="flex items-center h-[24px]">
+    <div
+      className="flex items-center h-[24px]"
+      role="timer"
+      aria-label={`Current time: ${hours}:${minutes}:${seconds}`}
+    >
       <div 
         className="text-[20px] sm:text-[24px] tracking-[0.15em] flex items-center text-zinc-400 dark:text-zinc-500 h-full" 
         style={{ fontFamily: 'var(--font-doto), monospace', fontWeight: 700 }}
+        aria-hidden="true"
       >
         <span>{hours}</span>
         <TwoDots />

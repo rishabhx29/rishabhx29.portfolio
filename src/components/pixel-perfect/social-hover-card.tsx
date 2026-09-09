@@ -231,7 +231,7 @@ export default function SocialHoverCard({ socialName, children }: SocialHoverCar
                         ) : (
                           <Image
                             src={profile.banner}
-                            alt="Banner"
+                            alt={`${profile.name} profile banner`}
                             width={250}
                             height={64}
                             loading="eager"

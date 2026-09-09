@@ -134,6 +134,8 @@ export function FlightButton({ className, onClick, ...props }: FlightButtonProps
   return (
     <button 
         ref={buttonRef} 
+        type="submit"
+        aria-label="Send Message"
         className={`${styles.button} ${className || ''}`} 
         onClick={handleClick}
         {...props}
