@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function ResumePage() {
   return (
-    <main className="relative min-h-screen w-full overflow-x-hidden bg-white transition-colors duration-300 dark:bg-black">
+    <main className="relative min-h-screen w-full overflow-x-hidden bg-[#fbfaf9] transition-colors duration-300 dark:bg-[#100f0f]">
       <div
         className="pointer-events-none absolute bottom-0 left-[30%] top-0 hidden w-0 border-r border-black/30 dark:border-white/[0.15] md:block"
         style={{
