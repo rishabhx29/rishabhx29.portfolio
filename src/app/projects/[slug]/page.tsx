@@ -31,13 +31,15 @@ export async function generateMetadata({
 
   const url = new URL(`/projects/${project.slug}`, siteUrl).href;
 
+  const desc = project.detailedDescription || project.description;
+
   return {
     title: project.title,
-    description: project.description,
+    description: desc,
     alternates: { canonical: `/projects/${project.slug}` },
     openGraph: {
       title: `${project.title} | Rishabh Tripathi Portfolio`,
-      description: project.description,
+      description: desc,
       url,
       type: "website",
       images: [
@@ -50,7 +52,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: `${project.title} | Rishabh Tripathi Portfolio`,
-      description: project.description,
+      description: desc,
       images: [project.src],
     },
   };
@@ -64,6 +66,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     notFound();
   }
 
+  const desc = project.detailedDescription || project.description;
+
   const projectJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -71,7 +75,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         "@type": "SoftwareApplication",
         name: project.title,
         headline: `${project.title} — ${project.imageTitle}`,
-        description: project.description,
+        description: desc,
         applicationCategory: "DeveloperApplication",
         operatingSystem: "Web",
         url: project.live,
@@ -204,7 +208,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           ) : (
             <Image 
               src={project.src} 
-              alt={project.imageTitle} 
+              alt={`${project.title} — ${project.imageTitle} preview`} 
               fill 
               priority
               sizes="(min-width: 768px) 40vw, 100vw"
@@ -216,42 +220,34 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
         {/* Top Dashed Divider (Blueprint system) */}
         <div className="relative mt-8">
-          <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-          <div className="absolute left-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
-          <div className="absolute right-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
+          <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+          <div className="absolute left-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" aria-hidden="true" />
+          <div className="absolute right-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" aria-hidden="true" />
         </div>
 
         {/* Action Links Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 items-center justify-between py-4 relative">
+        <div className="grid grid-cols-2 items-center justify-between py-4 relative">
           {project.github ? (
             <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 text-[13px] font-medium text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
-              <SiGithub className="w-4 h-4" /> Github
+              <SiGithub aria-hidden="true" className="w-4 h-4" /> Github
             </a>
           ) : <div />}
           
-          {/* Vertical Divider 1 */}
-          <div className="hidden md:block absolute left-1/3 top-0 bottom-0 w-0 border-l border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+          {/* Vertical Divider */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-0 border-l border-black/30 dark:border-white/[0.15] pointer-events-none" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
 
           {project.live ? (
             <a href={project.live} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 text-[13px] font-medium text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
-              <ExternalLink className="w-4 h-4" /> Website
+              <ExternalLink aria-hidden="true" className="w-4 h-4" /> Website
             </a>
           ) : <div />}
-          
-          {/* Vertical Divider 2 */}
-          <div className="hidden md:block absolute left-2/3 top-0 bottom-0 w-0 border-l border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-
-          <a href="#" className="hidden md:flex items-center justify-center gap-2 text-[13px] font-medium text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="9" x2="15" y1="9" y2="9"/><line x1="9" x2="15" y1="15" y2="15"/></svg>
-            Post
-          </a>
         </div>
 
         {/* Bottom Dashed Divider */}
         <div className="relative mb-6">
-          <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-          <div className="absolute left-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
-          <div className="absolute right-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
+          <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+          <div className="absolute left-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" aria-hidden="true" />
+          <div className="absolute right-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" aria-hidden="true" />
         </div>
 
         {/* Title and Status */}
@@ -261,23 +257,25 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </h1>
           <div className="flex items-center gap-2">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${project.status === "building" ? "bg-amber-400" : "bg-emerald-400"} opacity-75`}></span>
+              <span className={`relative inline-flex rounded-full h-2 w-2 ${project.status === "building" ? "bg-amber-500" : "bg-emerald-500"}`}></span>
             </span>
-            <span className="text-[13px] font-medium text-emerald-600 dark:text-emerald-400">Live</span>
+            <span className={`text-[13px] font-medium ${project.status === "building" ? "text-amber-600 dark:text-amber-400" : "text-emerald-600 dark:text-emerald-400"}`}>
+              {project.status === "building" ? "Building" : "Live"}
+            </span>
           </div>
         </div>
 
         {/* Description */}
         <p className="text-[14px] sm:text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-300">
-          {project.description}
+          {project.detailedDescription || project.description}
         </p>
 
         {/* Dashed Divider before Stack */}
         <div className="relative mt-8 mb-6">
-          <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-          <div className="absolute left-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
-          <div className="absolute right-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
+          <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+          <div className="absolute left-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" aria-hidden="true" />
+          <div className="absolute right-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" aria-hidden="true" />
         </div>
 
         {/* Tech Stack */}
@@ -291,7 +289,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
               return (
                 <div key={i} className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-100 dark:bg-zinc-900 border border-black/10 dark:border-white/5 rounded-md text-[12px] font-medium text-zinc-700 dark:text-zinc-300">
-                  {Icon && <Icon className="w-3.5 h-3.5" />}
+                  {Icon && <Icon aria-hidden="true" className="w-3.5 h-3.5" />}
                   <span>{label}</span>
                 </div>
               );

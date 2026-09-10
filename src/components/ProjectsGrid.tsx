@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -39,15 +38,14 @@ export const ProjectCard = ({
 }) => {
   const [hoveredTech, setHoveredTech] = useState<string | null>(null);
   const [shouldLoadHoverImage, setShouldLoadHoverImage] = useState(false);
-  const { resolvedTheme } = useTheme();
   const router = useRouter();
 
-  // Keep optional ambient art off the network until a visitor shows intent.
-  const imageSrc = resolvedTheme === "light" && project.lightModeSrc ? project.lightModeSrc : project.src;
+  // Consistent thumbnail across both dark and light modes
+  const imageSrc = project.src;
 
-  const isNotStarted = project.title === "Inquiro";
-  const isBuilding = project.title === "Blueprint" || project.title === "Scribble3D";
-  const statusColor = isNotStarted ? "bg-zinc-400" : isBuilding ? "bg-red-500" : "bg-emerald-500";
+  const isNotStarted = project.status === "not-started" || project.title === "Inquiro";
+  const isBuilding = project.status === "building" || project.title === "Blueprint" || project.title === "Scribble3D";
+  const statusColor = isNotStarted ? "bg-zinc-400" : isBuilding ? "bg-amber-500" : "bg-emerald-500";
   const statusLabel = isNotStarted ? "Not Started" : isBuilding ? "Building" : "Live";
 
   return (
@@ -68,7 +66,7 @@ export const ProjectCard = ({
       >
         <div className="flex items-center justify-end z-10 min-h-[24px]">
           <div className="w-6 h-6 rounded-[6px] bg-transparent border border-zinc-200/80 dark:border-zinc-800/80 flex items-center justify-center text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 group-hover:border-zinc-400 dark:group-hover:border-zinc-600 transition-colors duration-200">
-            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M7 17L17 7M17 7H7M17 7V17" />
             </svg>
           </div>
@@ -102,7 +100,7 @@ export const ProjectCard = ({
         >
           <span className="px-3 py-1.5 rounded-full bg-zinc-900/90 dark:bg-white/95 backdrop-blur-md text-white dark:text-zinc-900 text-[11px] font-semibold tracking-wider uppercase shadow-lg border border-white/10 dark:border-black/10 flex items-center gap-1.5">
             Explore Project
-            <svg viewBox="0 0 24 24" className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M7 17L17 7M17 7H7M17 7V17" />
             </svg>
           </span>
@@ -240,9 +238,9 @@ export function ProjectsGrid() {
         <div className="relative w-full h-0 hidden md:block">
           <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
           {/* Intersections */}
-          <div className="absolute top-0 -left-4 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" />
-          <div className="absolute top-0 -right-4 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" />
-          <div className="absolute top-0 left-1/2 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" />
+          <div className="absolute top-0 -left-4 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" aria-hidden="true" />
+          <div className="absolute top-0 -right-4 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" aria-hidden="true" />
+          <div className="absolute top-0 left-1/2 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" aria-hidden="true" />
         </div>
 
         {/* Row 2 */}

@@ -206,8 +206,8 @@ export function OpenSourceContributions({ isFullPage = false }: { isFullPage?: b
         {/* Horizontal line below heading */}
         <div className="absolute bottom-0 left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
         {/* Intersections */}
-        <div className="absolute bottom-0 -left-4 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] -translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
-        <div className="absolute bottom-0 -right-4 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
+        <div className="absolute bottom-0 -left-4 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] -translate-x-1/2 translate-y-1/2 pointer-events-none z-20" aria-hidden="true" />
+        <div className="absolute bottom-0 -right-4 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] translate-x-1/2 translate-y-1/2 pointer-events-none z-20" aria-hidden="true" />
       </div>
 
       <div className="relative pt-0 pb-2">
@@ -266,7 +266,7 @@ export function OpenSourceContributions({ isFullPage = false }: { isFullPage?: b
                       />
                     )}
                     <div className="flex items-center gap-2.5 relative z-20 min-w-0">
-                      <div className={`w-2 h-2 rounded-full shrink-0 ${pr.state === "MERGED"
+                      <div aria-hidden="true" className={`w-2 h-2 rounded-full shrink-0 ${pr.state === "MERGED"
                         ? "bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.4)]"
                         : pr.state === "OPEN"
                           ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]"

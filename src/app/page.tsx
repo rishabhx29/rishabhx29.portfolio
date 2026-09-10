@@ -121,7 +121,7 @@ export default function Home() {
         </p>
 
         <ul className="text-[14px] sm:text-[15px] text-zinc-600 dark:text-zinc-300 leading-relaxed mt-4 pl-4">
-          <li className="flex gap-1.5"><span aria-hidden="true">•</span><span>Building <span className="font-semibold text-zinc-900 dark:text-white">AlgoForge</span> and <span className="font-semibold text-zinc-900 dark:text-white">Traceon</span> — from gamified DSA to AI-powered code analysis.</span></li>
+          <li className="flex gap-1.5"><span aria-hidden="true">•</span><span>Building <span className="font-semibold text-zinc-900 dark:text-white">Traceon</span>, <span className="font-semibold text-zinc-900 dark:text-white">VeloKey</span>, <span className="font-semibold text-zinc-900 dark:text-white">Adaptive</span>, and <span className="font-semibold text-zinc-900 dark:text-white">AlgoForge</span>.</span></li>
           <li className="flex gap-1.5"><span aria-hidden="true">•</span><span>Open-source Project Admin at <span className="font-semibold text-zinc-900 dark:text-white">SSoC</span> and contributor at <span className="font-semibold text-zinc-900 dark:text-white">GSSoC</span>.</span></li>
           <li className="flex gap-1.5"><span aria-hidden="true">•</span><span>My stack: React, Next.js, Node.js, TypeScript — and whatever else the problem demands.</span></li>
         </ul>
@@ -136,7 +136,7 @@ export default function Home() {
               className="px-3 py-1.5 !text-[12px]"
             >
               <div className="flex items-center gap-1.5 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg viewBox="0 0 24 24" aria-hidden="true" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                   <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>
@@ -152,7 +152,7 @@ export default function Home() {
               className="px-3 py-1.5 !text-[12px]"
             >
               <div className="flex items-center gap-1.5 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-                <Boxes className="w-3.5 h-3.5" />
+                <Boxes aria-hidden="true" className="w-3.5 h-3.5" />
                 Explore Playground
               </div>
             </SoftPillButton>
@@ -179,7 +179,7 @@ export default function Home() {
                   className="px-3 py-1.5 !text-[12px]"
                 >
                   <div className="flex items-center gap-1.5 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-                    <svg viewBox="0 0 24 24" className="w-3.5 h-3.5">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" className="w-3.5 h-3.5">
                       {social.icon}
                     </svg>
                     {social.name}
@@ -194,7 +194,7 @@ export default function Home() {
                 className="px-3 py-1.5 !text-[12px]"
               >
                 <span className="flex items-center gap-1.5 opacity-70 transition-opacity duration-300 group-hover:opacity-100">
-                  <FileText className="h-3.5 w-3.5" />
+                  <FileText aria-hidden="true" className="h-3.5 w-3.5" />
                   Resume
                 </span>
               </SoftPillButton>
@@ -238,8 +238,8 @@ export default function Home() {
             <div className="py-4 px-4 -mx-4 flex justify-center relative hover:bg-zinc-50 dark:hover:bg-zinc-900/20 transition-colors cursor-pointer rounded-b-lg mt-0">
               <div className="absolute bottom-0 left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
               {/* Bottom Line Intersections */}
-              <div className="absolute bottom-0 left-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
-              <div className="absolute bottom-0 right-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-1/2 pointer-events-none z-20" />
+              <div className="absolute bottom-0 left-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-1/2 pointer-events-none z-20" aria-hidden="true" />
+              <div className="absolute bottom-0 right-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-1/2 pointer-events-none z-20" aria-hidden="true" />
               <Link href="/experience" aria-label="View all work experiences" className="relative group block mt-0">
                 <div className="absolute -inset-[5px] border border-black/5 dark:border-white/5 rounded-[11px] pointer-events-none transition-colors duration-300 group-hover:border-black/10 dark:group-hover:border-white/10" />
                 <div className="relative flex items-center gap-1.5 px-4 py-2 bg-zinc-50 hover:bg-zinc-100 dark:bg-[#171717] dark:hover:bg-[#1e1e1e] text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 rounded-[6px] text-[13px] font-medium transition-all duration-300 border border-black/5 dark:border-white/5 shadow-sm shadow-black/20 dark:shadow-lg dark:shadow-black/80">

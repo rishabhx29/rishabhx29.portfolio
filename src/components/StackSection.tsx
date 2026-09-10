@@ -108,7 +108,7 @@ export function StackSection() {
                   key={item.name}
                   className="group inline-flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 bg-zinc-50 hover:bg-zinc-100/90 dark:bg-[#171717] dark:hover:bg-[#1e1e1e] border border-black/10 dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/[0.16] rounded-[8px] transition-all duration-200 cursor-default select-none shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
                 >
-                  <Icon className="w-[15px] h-[15px] text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-800 dark:group-hover:text-zinc-200 transition-colors shrink-0" />
+                  <Icon aria-hidden="true" className="w-[15px] h-[15px] text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-800 dark:group-hover:text-zinc-200 transition-colors shrink-0" />
                   <span className="text-[13px] font-medium text-zinc-700 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors whitespace-nowrap">
                     {item.name}
                   </span>

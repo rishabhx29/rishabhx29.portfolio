@@ -32,7 +32,7 @@ export default function OpenGraphImage() {
             Full-Stack Software Engineer
           </div>
           <div style={{ display: "flex", fontSize: 30, color: "#d4d4d8", lineHeight: 1.4 }}>
-            Building AlgoForge, Traceon, and high-performance web products.
+            Building Traceon, VeloKey, Adaptive, and AlgoForge.
           </div>
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: "1px solid #27272a", paddingTop: "24px" }}>

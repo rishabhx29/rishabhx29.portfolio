@@ -13,7 +13,7 @@ export const alternateDomain = "rishabhx29.vercel.app";
 export const siteTitle = "Rishabh Portfolio | Rishabh Tripathi — Full-Stack Software Engineer";
 
 export const siteDescription =
-  "Official portfolio of Rishabh Tripathi (rishabhx29) — Full-stack software engineer & open-source developer. Building scalable web applications, developer tools (AlgoForge, Traceon), and high-performance user interfaces.";
+  "Official portfolio of Rishabh Tripathi (rishabhx29) — Full-stack software engineer & open-source developer. Building scalable web applications, developer tools (Traceon, VeloKey, Adaptive, AlgoForge), and high-performance user interfaces.";
 
 export const siteKeywords = [
   "Rishabh",
@@ -32,6 +32,8 @@ export const siteKeywords = [
   "backend developer portfolio",
   "AlgoForge",
   "Traceon",
+  "VeloKey",
+  "Adaptive",
   "open-source contributor portfolio",
   "SSoC Project Admin",
   "GSSoC Contributor",

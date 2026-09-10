@@ -5,12 +5,12 @@ import { siteName, siteUrl } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Featured software engineering projects by Rishabh Tripathi (rishabhx29), including AlgoForge (DSA learning platform) and Traceon (AI codebase analysis).",
+    "Featured software engineering projects by Rishabh Tripathi (rishabhx29), including Traceon (AI codebase analysis), VeloKey (typing performance platform), Adaptive (AI persona portfolio), and AlgoForge (DSA learning platform).",
   alternates: { canonical: "/projects" },
   openGraph: {
     title: "Projects | Rishabh Tripathi Portfolio",
     description:
-      "Featured software engineering projects by Rishabh Tripathi (rishabhx29), including AlgoForge and Traceon.",
+      "Featured software engineering projects by Rishabh Tripathi (rishabhx29), including Traceon, VeloKey, Adaptive, and AlgoForge.",
     url: "/projects",
   },
 };

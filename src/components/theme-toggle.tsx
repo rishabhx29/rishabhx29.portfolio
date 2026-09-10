@@ -37,7 +37,7 @@ export function ThemeToggle({ className }: { className?: string }) {
   const mounted = useMounted();
 
   if (!mounted) {
-    return <div className={cn("h-[18px] w-[18px]", className)} />;
+    return <div className={cn("h-8 w-8", className)} aria-hidden="true" />;
   }
 
   const isDark = resolvedTheme === "dark";

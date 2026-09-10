@@ -55,6 +55,7 @@ export default function ResumePage() {
       />
       <div
         className="pointer-events-none absolute bottom-0 left-[30%] top-0 hidden w-0 border-r border-black/30 dark:border-white/[0.15] md:block"
+        aria-hidden="true"
         style={{
           maskImage:
             "repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)",
@@ -64,6 +65,7 @@ export default function ResumePage() {
       />
       <div
         className="pointer-events-none absolute bottom-0 right-[30%] top-0 hidden w-0 border-r border-black/30 dark:border-white/[0.15] md:block"
+        aria-hidden="true"
         style={{
           maskImage:
             "repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)",
@@ -74,6 +76,7 @@ export default function ResumePage() {
 
       <div
         className="pointer-events-none absolute left-0 right-0 top-[22vh] h-0 border-b border-black/30 dark:border-white/[0.15]"
+        aria-hidden="true"
         style={{
           maskImage:
             "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
@@ -83,6 +86,7 @@ export default function ResumePage() {
       />
       <div
         className="pointer-events-none absolute left-0 right-0 top-[calc(22vh+112px)] h-0 border-b border-black/30 dark:border-white/[0.15]"
+        aria-hidden="true"
         style={{
           maskImage:
             "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
@@ -100,6 +104,7 @@ export default function ResumePage() {
         <div
           key={index}
           className="pointer-events-none absolute z-10 hidden h-[2px] w-[2px] bg-black/50 dark:bg-white/[0.25] md:block"
+          aria-hidden="true"
           style={{
             top: position.top,
             left: position.left,
@@ -153,7 +158,7 @@ export default function ResumePage() {
               <p className="truncate text-[13px] font-semibold text-zinc-800 dark:text-zinc-200">
                 Rishabh Tripathi Resume
               </p>
-              <p className="text-[11px] text-zinc-400 dark:text-zinc-600">
+              <p className="text-[11px] text-zinc-500 dark:text-zinc-400">
                 PDF document
               </p>
             </div>
@@ -205,6 +210,7 @@ export default function ResumePage() {
         <div className="relative mt-8">
           <div
             className="pointer-events-none absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15]"
+            aria-hidden="true"
             style={{
               maskImage:
                 "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
@@ -212,8 +218,8 @@ export default function ResumePage() {
                 "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
             }}
           />
-          <div className="pointer-events-none absolute -left-4 h-[2px] w-[2px] -translate-x-1/2 -translate-y-1/2 bg-black/50 dark:bg-white/[0.25]" />
-          <div className="pointer-events-none absolute -right-4 h-[2px] w-[2px] translate-x-1/2 -translate-y-1/2 bg-black/50 dark:bg-white/[0.25]" />
+          <div className="pointer-events-none absolute -left-4 h-[2px] w-[2px] -translate-x-1/2 -translate-y-1/2 bg-black/50 dark:bg-white/[0.25]" aria-hidden="true" />
+          <div className="pointer-events-none absolute -right-4 h-[2px] w-[2px] translate-x-1/2 -translate-y-1/2 bg-black/50 dark:bg-white/[0.25]" aria-hidden="true" />
         </div>
       </section>
     </main>

@@ -142,16 +142,16 @@ export function FlightButton({ className, onClick, ...props }: FlightButtonProps
     >
       <span className={styles.defaultText}>Send Message</span>
       <span className={styles.successText}>
-        <svg viewBox="0 0 24 24">
+        <svg aria-hidden="true" viewBox="0 0 24 24">
           <line x1="22" y1="2" x2="11" y2="13"></line>
           <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
         </svg>Sent
       </span>
-      <svg className={styles.trails} viewBox="0 0 33 64">
+      <svg aria-hidden="true" className={styles.trails} viewBox="0 0 33 64">
         <path d="M26,4 C28,13.3333333 29,22.6666667 29,32 C29,41.3333333 28,50.6666667 26,60"></path>
         <path d="M6,4 C8,13.3333333 9,22.6666667 9,32 C9,41.3333333 8,50.6666667 6,60"></path>
       </svg>
-      <div className={styles.plane}>
+      <div aria-hidden="true" className={styles.plane}>
         <div className={styles.left}></div>
         <div className={styles.right}></div>
       </div>

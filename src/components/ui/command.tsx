@@ -75,6 +75,7 @@ function CommandInput({
       <SearchIcon className="size-4 shrink-0 opacity-50" />
       <CommandPrimitive.Input
         data-slot="command-input"
+        aria-label={props["aria-label"] || "Search actions, commands, or sections"}
         className={cn(
           "placeholder:text-zinc-500 dark:placeholder:text-zinc-400 flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
           className
