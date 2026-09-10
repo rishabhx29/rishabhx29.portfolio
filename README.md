@@ -125,7 +125,7 @@ Portfolio-v2-/
 │   │   ├── RightNavbar.tsx      # Fixed right-side INDEX navigation
 │   │   └── KonamiEasterEgg.tsx  # Secret ↑↑↓↓←→←→BA sequence listener
 │   ├── data/                    # Type-safe static content stores
-│   │   ├── projectsData.ts      # AlgoForge, Traceon, EduPulse metadata
+│   │   ├── projectsData.ts      # Featured projects metadata
 │   │   ├── experienceData.ts    # Career timeline & achievements
 │   │   └── playgroundAssets.ts  # Draggable tech tokens & initial sticky notes
 │   ├── hooks/                   # Custom React utility hooks

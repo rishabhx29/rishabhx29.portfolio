@@ -98,17 +98,4 @@ export const projectsData: Project[] = [
     backgroundImage: "/image copy 3.png",
     hasPin: true,
   },
-  {
-    slug: "edupulse",
-    title: "EduPulse",
-    imageTitle: "Learning Management System",
-    src: "/project-image/Edupulse.png",
-    video: "",
-    description: "Production-ready Learning Management System with Instructor Studio, payment integration, and Admin Controls.",
-    tech: ["react", "node", "tailwind"],
-    github: "https://github.com/rishabhx29/Edupulse",
-    live: "https://edupulse-client.vercel.app/",
-    backgroundImage: "/image copy 4.png",
-    hasPin: false,
-  },
 ];

@@ -121,7 +121,7 @@ export default function Home() {
         </p>
 
         <ul className="text-[14px] sm:text-[15px] text-zinc-600 dark:text-zinc-300 leading-relaxed mt-4 pl-4">
-          <li className="flex gap-1.5"><span aria-hidden="true">•</span><span>Building <span className="font-semibold text-zinc-900 dark:text-white">AlgoForge</span>, <span className="font-semibold text-zinc-900 dark:text-white">Traceon</span>, and <span className="font-semibold text-zinc-900 dark:text-white">EduPulse</span> — from gamified DSA to AI-powered code analysis.</span></li>
+          <li className="flex gap-1.5"><span aria-hidden="true">•</span><span>Building <span className="font-semibold text-zinc-900 dark:text-white">AlgoForge</span> and <span className="font-semibold text-zinc-900 dark:text-white">Traceon</span> — from gamified DSA to AI-powered code analysis.</span></li>
           <li className="flex gap-1.5"><span aria-hidden="true">•</span><span>Open-source Project Admin at <span className="font-semibold text-zinc-900 dark:text-white">SSoC</span> and contributor at <span className="font-semibold text-zinc-900 dark:text-white">GSSoC</span>.</span></li>
           <li className="flex gap-1.5"><span aria-hidden="true">•</span><span>My stack: React, Next.js, Node.js, TypeScript — and whatever else the problem demands.</span></li>
         </ul>

@@ -26,7 +26,7 @@ const socialProfiles: Record<string, SocialProfile> = {
     name: "Rishabh Tripathi",
     handle: "rishabhx29",
     avatar: "https://github.com/rishabhx29.png",
-    bio: "Full-stack dev • Open-source Project Admin • Building AlgoForge, Traceon & EduPulse",
+    bio: "Full-stack dev • Open-source Project Admin • Building AlgoForge & Traceon",
     location: "India",
     stats: [
       { value: "50+", label: "Repositories" },
