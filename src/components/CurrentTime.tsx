@@ -27,7 +27,7 @@ export function CurrentTime() {
     return (
       <div className="flex items-center opacity-0">
         <div 
-          className="text-[20px] sm:text-[24px] tracking-[0.15em] text-zinc-400 dark:text-zinc-500" 
+          className="text-[20px] sm:text-[24px] tracking-[0.15em] text-zinc-600 dark:text-zinc-400" 
           style={{ fontFamily: 'var(--font-doto), monospace', fontWeight: 700 }}
         >
           00.00.00
@@ -47,7 +47,7 @@ export function CurrentTime() {
       aria-label={`Current time: ${hours}:${minutes}:${seconds}`}
     >
       <div 
-        className="text-[20px] sm:text-[24px] tracking-[0.15em] flex items-center text-zinc-400 dark:text-zinc-500 h-full" 
+        className="text-[20px] sm:text-[24px] tracking-[0.15em] flex items-center text-zinc-600 dark:text-zinc-400 h-full" 
         style={{ fontFamily: 'var(--font-doto), monospace', fontWeight: 700 }}
         aria-hidden="true"
       >

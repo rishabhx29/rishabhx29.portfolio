@@ -232,13 +232,12 @@ export default function SocialHoverCard({ socialName, children }: SocialHoverCar
                           <Image
                             src={profile.banner}
                             alt={`${profile.name} profile banner`}
-                            width={250}
-                            height={64}
+                            fill
+                            sizes="280px"
                             loading="eager"
                             decoding="async"
                             quality={75}
-                            sizes="250px"
-                            className="w-full h-full object-cover object-[center_20%] opacity-95 scale-[1.15] origin-right"
+                            className="object-cover object-[center_20%] opacity-95 scale-[1.15] origin-right"
                           />
                         )}
                       </div>

@@ -56,13 +56,13 @@ export function RightNavbar() {
             <Link
               key={link.name}
               href={link.href}
-              className={`text-[12px] font-medium tracking-[0.05em] transition-all duration-300 ease-out flex items-center gap-3 ${isActive
-                  ? "text-zinc-800 dark:text-zinc-200"
-                  : "text-zinc-400 dark:text-zinc-600 hover:text-zinc-600 dark:hover:text-zinc-400"
+              className={`text-[12px] font-medium tracking-[0.05em] transition-all duration-300 ease-out flex items-center gap-3 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600 ${isActive
+                  ? "text-zinc-900 dark:text-zinc-100 font-semibold"
+                  : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
                 }`}
             >
-              <span className={`h-[1px] transition-all duration-300 ease-out ${isActive
-                  ? "w-3 bg-zinc-300 dark:bg-zinc-700"
+              <span aria-hidden="true" className={`h-[1px] transition-all duration-300 ease-out ${isActive
+                  ? "w-3 bg-zinc-400 dark:bg-zinc-600"
                   : "w-0 bg-transparent"
                 }`} />
               {link.name}

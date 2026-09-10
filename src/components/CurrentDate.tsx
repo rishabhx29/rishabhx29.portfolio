@@ -29,7 +29,7 @@ export function CurrentDate() {
       <div className="text-[12px] sm:text-[13px] font-medium text-zinc-800 dark:text-zinc-200 tracking-tight">
         {dayName}
       </div>
-      <div className="text-[8px] font-mono text-zinc-400 dark:text-zinc-500 tracking-[0.2em] uppercase mt-0.5">
+      <div className="text-[8px] font-mono text-zinc-600 dark:text-zinc-400 tracking-[0.2em] uppercase mt-0.5">
         {day} {month} {year}
       </div>
     </div>

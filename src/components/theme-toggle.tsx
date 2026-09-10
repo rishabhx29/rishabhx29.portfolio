@@ -66,7 +66,7 @@ export function ThemeToggle({ className }: { className?: string }) {
         toggleTheme();
       }}
       className={cn(
-        "relative z-50 flex h-[18px] w-[18px] cursor-pointer items-center justify-center text-zinc-500 transition-all duration-300 hover:text-zinc-900 active:scale-95 dark:text-zinc-600 dark:hover:text-zinc-300",
+        "relative z-50 flex h-8 w-8 cursor-pointer items-center justify-center rounded-md text-zinc-600 transition-all duration-300 hover:text-zinc-900 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:text-zinc-400 dark:hover:text-zinc-100",
         className,
       )}
       aria-label="Toggle theme"

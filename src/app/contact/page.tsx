@@ -88,7 +88,9 @@ export default function ContactPage() {
         setSubmitStatus("error");
       }
     } catch (error) {
-      console.error("Error submitting form:", error);
+      if (process.env.NODE_ENV !== "production") {
+        console.error("Error submitting form:", error);
+      }
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -182,14 +184,14 @@ export default function ContactPage() {
       </div>
 
       {/* Content Section */}
-      <div className="ml-0 mr-0 md:ml-[30%] md:mr-[30%] pt-[calc(22vh+112px)] pb-0 px-8 md:px-4 flex flex-col z-10 relative">
+      <main id="main-content" className="ml-0 mr-0 md:ml-[30%] md:mr-[30%] pt-[calc(22vh+112px)] pb-0 px-8 md:px-4 flex flex-col z-10 relative">
         {/* Form */}
         <form onSubmit={handleSubmit} className="mt-12 -mx-8 space-y-10 md:-mx-4">
           {/* FormSubmit Configuration */}
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_subject" value="New Submission from Portfolio" />
-          <input type="text" name="_honey" style={{ display: "none" }} />
+          <input type="text" name="_honey" tabIndex={-1} aria-hidden="true" autoComplete="off" className="hidden" />
 
           <div className="space-y-2">
             <label htmlFor="contact-name" className="text-[11px] font-bold tracking-[0.15em] text-zinc-600 dark:text-zinc-400 uppercase ml-4">
@@ -337,7 +339,7 @@ export default function ContactPage() {
             />
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }

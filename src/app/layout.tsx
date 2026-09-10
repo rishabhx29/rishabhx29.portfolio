@@ -180,6 +180,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${doto.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#fbfaf9] dark:bg-[#100f0f] text-[#17171a] dark:text-[#fafafa] transition-colors duration-300 selection:bg-orange-500/20">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:border focus:border-black/20 focus:rounded-md focus:shadow-lg dark:focus:bg-zinc-900 dark:focus:text-white"
+        >
+          Skip to main content
+        </a>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

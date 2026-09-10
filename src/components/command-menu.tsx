@@ -144,7 +144,7 @@ export function CommandMenu() {
                     </div>
                 </div>
 
-                <CommandInput placeholder="Search for actions..." className="border-none focus:ring-0" />
+                <CommandInput aria-label="Search actions, commands, or sections" placeholder="Search for actions..." className="border-none focus:ring-0" />
 
                 <CommandList className="p-2">
                     <CommandEmpty>No results found.</CommandEmpty>

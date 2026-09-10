@@ -124,7 +124,7 @@ export function ExperienceList() {
                                     sizes="40px"
                                     quality={60}
                                     aria-hidden="true"
-                                    className="h-[18px] w-auto -translate-x-px translate-y-px rotate-180 object-contain"
+                                    className="h-[18px] w-[21px] -translate-x-px translate-y-px rotate-180 object-contain"
                                   />
                                 </span>
                               </span>

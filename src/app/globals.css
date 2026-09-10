@@ -422,11 +422,5 @@ body {
   .highlights-track:hover {
     animation-play-state: paused;
   }
-
-  .content-visibility-auto {
-    content-visibility: auto;
-    contain-intrinsic-size: 0 420px;
-  }
-
 }
 
