@@ -160,11 +160,43 @@ export function OnekoPet() {
       const set = SPRITE_SETS[name] || SPRITE_SETS.idle;
       const sprite = set[frame % set.length];
       nekoEl.style.backgroundPosition = `${sprite[0] * 32}px ${sprite[1] * 32}px`;
-    };
-
-    const resetIdleAnimation = () => {
+    };    const resetIdleAnimation = () => {
       idleAnimation = null;
       idleAnimationFrame = 0;
+    };
+
+    const runIdleAnimation = () => {
+      switch (idleAnimation) {
+        case "sleeping":
+          if (idleAnimationFrame < 8 && nudge && forceSleep) {
+            setSprite("idle", 0);
+            return;
+          } else if (nudge) {
+            nudge = false;
+            resetIdleAnimation();
+          }
+          if (idleAnimationFrame < 8) {
+            setSprite("tired", 0);
+            return;
+          }
+          setSprite("sleeping", Math.floor(idleAnimationFrame / 4));
+          if (idleAnimationFrame > 192 && !forceSleep) {
+            resetIdleAnimation();
+          }
+          return;
+        case "scratchWallN":
+        case "scratchWallS":
+        case "scratchWallE":
+        case "scratchWallW":
+        case "scratchSelf":
+          setSprite(idleAnimation, idleAnimationFrame);
+          if (idleAnimationFrame > 9) {
+            resetIdleAnimation();
+          }
+          return;
+        default:
+          setSprite("idle", 0);
+      }
     };
 
     const idle = () => {
@@ -185,38 +217,11 @@ export function OnekoPet() {
         idleAnimation = "sleeping";
       }
 
-      switch (idleAnimation) {
-        case "sleeping":
-          if (idleAnimationFrame < 8 && nudge && forceSleep) {
-            setSprite("idle", 0);
-            break;
-          } else if (nudge) {
-            nudge = false;
-            resetIdleAnimation();
-          }
-          if (idleAnimationFrame < 8) {
-            setSprite("tired", 0);
-            break;
-          }
-          setSprite("sleeping", Math.floor(idleAnimationFrame / 4));
-          if (idleAnimationFrame > 192 && !forceSleep) {
-            resetIdleAnimation();
-          }
-          break;
-        case "scratchWallN":
-        case "scratchWallS":
-        case "scratchWallE":
-        case "scratchWallW":
-        case "scratchSelf":
-          setSprite(idleAnimation, idleAnimationFrame);
-          if (idleAnimationFrame > 9) {
-            resetIdleAnimation();
-          }
-          break;
-        default:
-          setSprite("idle", 0);
-          return;
+      if (idleAnimation === null) {
+        setSprite("idle", 0);
+        return;
       }
+      runIdleAnimation();
       idleAnimationFrame += 1;
     };
 

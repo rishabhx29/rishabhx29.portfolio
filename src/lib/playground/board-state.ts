@@ -76,6 +76,24 @@ function isBoardVariant(value: unknown): value is NonNullable<WorkbenchObject["v
   );
 }
 
+/** Parse the strokes array, or return null if any entry is malformed. */
+function parseStrokes(value: unknown): BoardStroke[] | null {
+  if (!Array.isArray(value)) return null;
+  const strokes: BoardStroke[] = [];
+  for (const stroke of value) {
+    if (typeof stroke !== "object" || stroke === null) return null;
+    const candidate = stroke as Record<string, unknown>;
+    if (!Array.isArray(candidate.points) || !candidate.points.every(isPoint)) return null;
+    strokes.push({
+      id: typeof candidate.id === "string" ? candidate.id : `stroke-${strokes.length}`,
+      points: candidate.points,
+      color: typeof candidate.color === "string" ? candidate.color : undefined,
+      width: typeof candidate.width === "number" ? candidate.width : undefined,
+    });
+  }
+  return strokes;
+}
+
 export function parseBoardState(raw: string): BoardState | null {
   try {
     const data: unknown = JSON.parse(raw);
@@ -85,19 +103,8 @@ export function parseBoardState(raw: string): BoardState | null {
     if (typeof candidate.camera !== "object" || candidate.camera === null) return null;
     const camera = candidate.camera as Record<string, unknown>;
     if (typeof camera.x !== "number" || typeof camera.y !== "number" || typeof camera.zoom !== "number") return null;
-    if (!Array.isArray(candidate.strokes)) return null;
-    const strokes: BoardStroke[] = [];
-    for (const stroke of candidate.strokes) {
-      if (typeof stroke !== "object" || stroke === null) return null;
-      const candidateStroke = stroke as Record<string, unknown>;
-      if (!Array.isArray(candidateStroke.points) || !candidateStroke.points.every(isPoint)) return null;
-      strokes.push({
-        id: typeof candidateStroke.id === "string" ? candidateStroke.id : `stroke-${strokes.length}`,
-        points: candidateStroke.points,
-        color: typeof candidateStroke.color === "string" ? candidateStroke.color : undefined,
-        width: typeof candidateStroke.width === "number" ? candidateStroke.width : undefined,
-      });
-    }
+    const strokes = parseStrokes(candidate.strokes);
+    if (!strokes) return null;
     return {
       objects: candidate.objects,
       strokes,
