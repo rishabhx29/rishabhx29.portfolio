@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { PageTransition } from "@/components/page-transition";
 import { RightNavbar } from "@/components/RightNavbar";
+import { VisitTracker } from "@/lib/playground/visit-tracker";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import {
@@ -197,6 +198,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <RightNavbar />
+          <VisitTracker />
           <PageTransition>{children}</PageTransition>
         </ThemeProvider>
         <Analytics />

@@ -5,6 +5,7 @@ import { Moon, Sun } from "lucide-react";
 import { flushSync } from "react-dom";
 import { useTheme } from "next-themes";
 import { playSound } from "@/lib/audio";
+import { recordAchievement } from "@/lib/playground/use-achievements";
 import { cn } from "@/lib/utils";
 
 type ViewTransitionDocument = Document & {
@@ -62,6 +63,7 @@ export function ThemeToggle({ className }: Readonly<{ className?: string }>) {
       type="button"
       onClick={() => {
         void playSound("/sounds/click-003.mp3", { volume: 0.5 });
+        if (resolvedTheme !== "dark") recordAchievement("night-owl");
         toggleTheme();
       }}
       className={cn(

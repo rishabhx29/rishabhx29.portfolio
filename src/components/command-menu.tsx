@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { recordAchievement } from "@/lib/playground/use-achievements"
 import { useTheme } from "next-themes"
 import {
     LayoutDashboard,
@@ -57,6 +58,7 @@ export function CommandMenu() {
 
     const runCommand = React.useCallback((command: () => unknown) => {
         setOpen(false)
+        recordAchievement("commander")
         command()
     }, [])
 

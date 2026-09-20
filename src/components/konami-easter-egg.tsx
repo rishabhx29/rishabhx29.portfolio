@@ -1,5 +1,7 @@
 "use client";
 
+import { recordAchievement } from "@/lib/playground/use-achievements";
+
 import React, { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
@@ -101,6 +103,7 @@ export function KonamiEasterEgg() {
 
       if (buffer.join(",") === KONAMI_CODE.join(",")) {
         buffer = [];
+        recordAchievement("secret-handshake");
         setIsOpen(true);
         triggerConfetti();
         playCelebrationSound();

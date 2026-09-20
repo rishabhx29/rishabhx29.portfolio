@@ -1,4 +1,12 @@
-export type WorkbenchObjectType = "photo" | "project" | "achievement" | "note" | "label";
+export type WorkbenchObjectType =
+  | "photo"
+  | "project"
+  | "achievement"
+  | "note"
+  | "label"
+  | "link"
+  | "clock"
+  | "music";
 
 export interface WorkbenchObject {
   id: string;
@@ -16,6 +24,63 @@ export interface WorkbenchObject {
   variant?: "paper" | "polaroid" | "stamp" | "dark";
   removable?: boolean;
 }
+
+export type WidgetKind = Extract<WorkbenchObjectType, "link" | "clock" | "music">;
+
+export const WIDGET_PRESETS: readonly {
+  id: string;
+  kind: WidgetKind;
+  title: string;
+  subtitle: string;
+  href?: string;
+  width: number;
+  height: number;
+  content?: string;
+}[] = [
+  {
+    id: "link-github",
+    kind: "link",
+    title: "GitHub",
+    subtitle: "@rishabhx29",
+    href: "https://github.com/rishabhx29",
+    width: 220,
+    height: 108,
+  },
+  {
+    id: "link-linkedin",
+    kind: "link",
+    title: "LinkedIn",
+    subtitle: "Rishabh Tripathi",
+    href: "https://www.linkedin.com/in/rishabh-tripathi-728a77317",
+    width: 220,
+    height: 108,
+  },
+  {
+    id: "link-mail",
+    kind: "link",
+    title: "Say hello",
+    subtitle: "rishabh.j.tripathi2903@gmail.com",
+    href: "/contact",
+    width: 220,
+    height: 108,
+  },
+  {
+    id: "widget-clock",
+    kind: "clock",
+    title: "Local time",
+    subtitle: "My desk clock",
+    width: 200,
+    height: 116,
+  },
+  {
+    id: "widget-music",
+    kind: "music",
+    title: "Desk radio",
+    subtitle: "Flying — on loop",
+    width: 240,
+    height: 96,
+  },
+];
 
 export interface PlaygroundAssetItem {
   id: string;

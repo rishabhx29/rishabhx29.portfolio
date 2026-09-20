@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { CommandMenu } from "@/components/command-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { FlightButton } from "@/components/FlightButton";
-import { Keyboard } from "@/components/ui/keyboard";
+import { Keyboard, type KeyboardInteractionEvent } from "@/components/ui/keyboard";
+import { recordAchievement } from "@/lib/playground/use-achievements";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { BlueprintGrid } from "@/components/BlueprintGrid";
@@ -19,6 +20,13 @@ export default function ContactPage() {
   const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(
     null
   );
+
+  const keyTallyRef = useRef(new Set<string>());
+  const handleKeyboardEvent = useCallback((event: KeyboardInteractionEvent) => {
+    if (event.phase !== "down") return;
+    keyTallyRef.current.add(event.code);
+    if (keyTallyRef.current.size >= 16) recordAchievement("sweet-sixteen");
+  }, []);
 
   const isFormValid =
     formData.name.trim() !== "" &&
@@ -82,6 +90,7 @@ export default function ContactPage() {
         form.reset();
         setFormData({ name: "", email: "", message: "" });
         setSubmitStatus("success");
+        recordAchievement("pen-pal");
       } else {
         setSubmitStatus("error");
       }
@@ -242,7 +251,7 @@ export default function ContactPage() {
 
         {/* Interactive Keyboard */}
         <div className="mt-10 flex w-full justify-center [zoom:0.65] sm:[zoom:0.75] xl:[zoom:0.85] 2xl:[zoom:1]">
-          <Keyboard theme="classic" enableHaptics enableSound />
+          <Keyboard theme="classic" enableHaptics enableSound onKeyEvent={handleKeyboardEvent} />
         </div>
       </main>
     </div>

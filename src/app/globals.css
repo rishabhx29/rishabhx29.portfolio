@@ -206,6 +206,21 @@ body {
   backdrop-filter: blur(16px) saturate(.8);
 }
 
+/* Achievement stamps: earned ones look inked-in, locked ones stay ghostly. */
+.playground-stamp {
+  box-shadow: 0 10px 26px rgba(24, 24, 27, .10);
+  backdrop-filter: blur(4px);
+}
+
+.playground-stamp-earned {
+  background-image: radial-gradient(circle at 32% 28%, rgba(234, 88, 12, .10), transparent 62%);
+  mask-image: radial-gradient(ellipse 130% 130% at 50% 40%, black 62%, rgba(0, 0, 0, .82) 100%);
+}
+
+.playground-stamp:not(.playground-stamp-earned) {
+  box-shadow: none;
+}
+
 .playground-icon-button,
 .playground-export-button,
 .playground-panel,
