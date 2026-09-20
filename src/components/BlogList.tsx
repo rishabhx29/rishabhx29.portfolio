@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Calendar } from "lucide-react";
 import { blogsData } from "@/data/blogsData";
 
-const RealClapIcon = ({ className }: { className?: string }) => (
+const RealClapIcon = ({ className }: Readonly<{ className?: string }>) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <path d="M10 20v-5.5"></path>
     <path d="M14 20v-5.5"></path>
@@ -80,9 +80,9 @@ export function BlogList() {
                   <div className="hidden sm:block w-[1px] h-3 bg-zinc-300 dark:bg-zinc-700" />
 
                   <div className="flex flex-wrap items-center gap-2">
-                    {blog.tags.map((tag, tagIdx) => (
+                    {blog.tags.map((tag) => (
                       <span
-                        key={tagIdx}
+                        key={tag}
                         className="px-2 py-0.5 rounded-[4px] border border-black/30 dark:border-white/[0.15] text-[11px] text-zinc-600 dark:text-zinc-400 bg-white/50 dark:bg-black/20"
                       >
                         {tag}

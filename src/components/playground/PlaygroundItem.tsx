@@ -6,13 +6,13 @@ import Image from "next/image";
 import { PlaygroundAssetItem } from "@/data/playgroundAssets";
 import { Maximize2, Minimize2, RotateCw, ExternalLink, X } from "lucide-react";
 
-interface PlaygroundItemProps {
+type PlaygroundItemProps = Readonly<{
   item: PlaygroundAssetItem;
   onUpdate: (id: string, updates: Partial<PlaygroundAssetItem>) => void;
   onDelete: (id: string) => void;
   isSelected: boolean;
   onSelect: () => void;
-}
+}>;
 
 export function PlaygroundItem({
   item,

@@ -267,7 +267,7 @@ export function InteractiveParticles({
   const effectiveSrc = uploadedSrc ?? src ?? null;
 
   const handleFile = (file: File | undefined) => {
-    if (!file || !file.type.startsWith("image/")) return;
+    if (!file?.type.startsWith("image/")) return;
     if (objectUrlRef.current) URL.revokeObjectURL(objectUrlRef.current);
     const url = URL.createObjectURL(file);
     objectUrlRef.current = url;
@@ -442,14 +442,14 @@ export function InteractiveParticles({
       let hasAnimated = false;
       introObserver = new IntersectionObserver(
         (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting && !hasAnimated && uniforms) {
-              hasAnimated = true;
-              gsap.fromTo(uniforms.uSize, { value: 0.1 }, { value: size, duration: 1.6, ease: "power2.out" });
-              gsap.fromTo(uniforms.uRandom, { value: 30.0 }, { value: randomness, duration: 1.8, ease: "power3.out" });
-              gsap.fromTo(uniforms.uDepth, { value: 60.0 }, { value: depth, duration: 2.0, ease: "power3.out" });
-            }
-          });
+          if (!uniforms) return;
+          if (hasAnimated) return;
+          if (!entries.some((entry) => entry.isIntersecting)) return;
+
+          hasAnimated = true;
+          gsap.fromTo(uniforms.uSize, { value: 0.1 }, { value: size, duration: 1.6, ease: "power2.out" });
+          gsap.fromTo(uniforms.uRandom, { value: 30.0 }, { value: randomness, duration: 1.8, ease: "power3.out" });
+          gsap.fromTo(uniforms.uDepth, { value: 60.0 }, { value: depth, duration: 2.0, ease: "power3.out" });
         },
         { threshold: 0.25 }
       );
@@ -518,7 +518,8 @@ export function InteractiveParticles({
       className={cn("relative h-full w-full overflow-hidden", className)}
       style={{ background }}
     >
-      <canvas ref={canvasRef} aria-hidden="true" className="block h-full w-full" />
+      {/* Decorative canvas: not focusable, pointer interactions are auxiliary. */}
+      <canvas ref={canvasRef} aria-hidden="true" className="block h-full w-full pointer-events-none" />
 
       {allowUpload && (
         <>

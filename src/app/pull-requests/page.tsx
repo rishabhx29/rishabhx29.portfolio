@@ -26,8 +26,8 @@ export default function PullRequestsPage() {
         { top: '22vh', right: '30%' },
         { top: 'calc(22vh + 112px)', left: '30%' },
         { top: 'calc(22vh + 112px)', right: '30%' },
-      ].map((pos, i) => (
-        <div key={i} className="absolute w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] pointer-events-none z-10 hidden md:block"
+      ].map((pos) => (
+        <div key={`${pos.top}-${pos.left ?? pos.right}`} className="absolute w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] pointer-events-none z-10 hidden md:block"
           aria-hidden="true"
           style={{
             top: pos.top,

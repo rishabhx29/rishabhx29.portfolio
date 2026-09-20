@@ -77,10 +77,10 @@ const socialProfiles: Record<string, SocialProfile> = {
   },
 };
 
-interface SocialHoverCardProps {
+type SocialHoverCardProps = Readonly<{
   socialName: string;
   children: React.ReactNode;
-}
+}>;
 
 export default function SocialHoverCard({ socialName, children }: SocialHoverCardProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -207,8 +207,8 @@ export default function SocialHoverCard({ socialName, children }: SocialHoverCar
                     {/* Stats Section */}
                     {profile.stats && profile.stats.length > 0 && (
                       <div className="mt-3.5 flex items-center gap-5 text-[12px] text-zinc-400 dark:text-zinc-500 pt-3 border-t border-black/5 dark:border-white/5">
-                        {profile.stats.map((stat, i) => (
-                          <div key={i} className="flex items-center gap-1">
+                        {profile.stats.map((stat) => (
+                          <div key={stat.label} className="flex items-center gap-1">
                             <span className="font-extrabold text-zinc-950 dark:text-zinc-100">
                               {stat.value}
                             </span>
@@ -317,8 +317,8 @@ export default function SocialHoverCard({ socialName, children }: SocialHoverCar
 
                       {/* Stats Section */}
                       <div className="mt-3.5 flex items-center gap-4 text-[11.5px] text-zinc-400 dark:text-zinc-500 border-t border-black/5 dark:border-white/5 pt-2.5">
-                        {profile.stats.map((stat, i) => (
-                          <div key={i} className="flex items-center gap-1">
+                        {profile.stats.map((stat) => (
+                          <div key={stat.label} className="flex items-center gap-1">
                             <span className="font-extrabold text-zinc-950 dark:text-zinc-100">
                               {stat.value}
                             </span>

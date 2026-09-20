@@ -92,6 +92,107 @@ function rotateVector(x: number, y: number, z: number, ax: number, ay: number, a
   };
 }
 
+// Module-scope class so the functional component itself never uses `this`.
+class Particle {
+  x: number = 0;
+  y: number = 0;
+  width: number = 0;
+  height: number = 0;
+  windFactor: number = 0;
+  vx: number = 0;
+  vy: number = 0;
+  waveOffset: number = 0;
+  angleZ: number = 0;
+  spinZ: number = 0;
+  angleX: number = 0;
+  angleY: number = 0;
+  spinX: number = 0;
+  spinY: number = 0;
+
+  constructor(canvasWidth: number, canvasHeight: number, initOnScreen = false) {
+    this.reset(canvasWidth, canvasHeight, initOnScreen);
+  }
+
+  reset(canvasWidth: number, canvasHeight: number, initOnScreen = false) {
+    this.width = cache.minSize + Math.random() * (cache.maxSize - cache.minSize);
+    this.height = this.width;
+
+    const centerY = canvasHeight * settings.emitterY;
+    const spreadHeight = canvasHeight * settings.emitterSpread;
+    const minY = centerY - spreadHeight / 2;
+    const maxY = centerY + spreadHeight / 2;
+
+    this.y = minY + Math.random() * (maxY - minY);
+
+    if (initOnScreen) {
+      this.x = Math.random() * canvasWidth;
+    } else {
+      this.x = settings.direction === -1
+        ? canvasWidth + this.width + Math.random() * canvasWidth
+        : -this.width - Math.random() * canvasWidth;
+    }
+
+    const sizeFactor = (this.width - cache.minSize) / (cache.maxSize - cache.minSize || 1);
+
+    this.windFactor = 1 - (sizeFactor * 0.5 + Math.random() * 0.5);
+    this.windFactor = Math.max(0.1, Math.min(1, this.windFactor));
+
+    this.vx = 0;
+    this.vy = 0;
+
+    this.waveOffset = Math.random() * Math.PI * 2;
+    this.angleZ = Math.random() * Math.PI * 2;
+    this.spinZ = (Math.random() - 0.5) * settings.rotationSpeed;
+    this.angleX = 0;
+    this.angleY = 0;
+    this.spinX = (Math.random() - 0.5) * 0.1;
+    this.spinY = (Math.random() - 0.5) * 0.1;
+  }
+
+  update(canvasWidth: number, canvasHeight: number) {
+    const targetSpeed = cache.minWind + (cache.maxWind - cache.minWind) * this.windFactor;
+    this.vx += (targetSpeed - this.vx) * 0.1;
+    this.x += this.vx * settings.direction;
+
+    const gravityMod = 1.5 - this.windFactor;
+    this.vy += settings.gravity * 0.05 * gravityMod;
+
+    const wave = Math.sin(this.x * 0.01 * settings.direction + this.waveOffset);
+    this.vy += wave * settings.turbulence * 0.05;
+    this.vy *= 0.98;
+
+    this.y += this.vy;
+    this.angleZ += this.spinZ + this.vx * 0.002;
+
+    if (settings.tumbleStrength > 0) {
+      this.angleX += this.spinX * settings.tumbleStrength;
+      this.angleY += this.spinY * settings.tumbleStrength;
+    }
+
+    const buffer = 200;
+    const outByX = settings.direction === -1 ? this.x < -buffer : this.x > canvasWidth + buffer;
+
+    if (outByX || this.y > canvasHeight + buffer || this.y < -buffer) {
+      this.reset(canvasWidth, canvasHeight, false);
+    }
+  }
+
+  draw(ctx: CanvasRenderingContext2D | null, particleImage: HTMLImageElement | null) {
+    if (!ctx || !particleImage) return;
+    const vecU = rotateVector(1, 0, 0, this.angleX, this.angleY + cache.tiltRad, this.angleZ);
+    const vecV = rotateVector(0, 1, 0, this.angleX, this.angleY + cache.tiltRad, this.angleZ);
+
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.transform(vecU.x, vecU.y, vecV.x, vecV.y, 0, 0);
+
+    // Add a slight opacity for visual blending
+    ctx.globalAlpha = 0.45;
+    ctx.drawImage(particleImage, -this.width / 2, -this.height / 2, this.width, this.height);
+    ctx.restore();
+  }
+}
+
 export function BannerParticles() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -113,106 +214,6 @@ export function BannerParticles() {
     const particleImage = createDefaultImage();
     if (!particleImage) return;
 
-    class Particle {
-      x: number = 0;
-      y: number = 0;
-      width: number = 0;
-      height: number = 0;
-      windFactor: number = 0;
-      vx: number = 0;
-      vy: number = 0;
-      waveOffset: number = 0;
-      angleZ: number = 0;
-      spinZ: number = 0;
-      angleX: number = 0;
-      angleY: number = 0;
-      spinX: number = 0;
-      spinY: number = 0;
-
-      constructor(initOnScreen = false) {
-        this.reset(initOnScreen);
-      }
-
-      reset(initOnScreen = false) {
-        this.width = cache.minSize + Math.random() * (cache.maxSize - cache.minSize);
-        this.height = this.width;
-
-        const centerY = height * settings.emitterY;
-        const spreadHeight = height * settings.emitterSpread;
-        const minY = centerY - spreadHeight / 2;
-        const maxY = centerY + spreadHeight / 2;
-
-        this.y = minY + Math.random() * (maxY - minY);
-
-        if (initOnScreen) {
-          this.x = Math.random() * width;
-        } else {
-          this.x = settings.direction === -1
-            ? width + this.width + Math.random() * width
-            : -this.width - Math.random() * width;
-        }
-
-        const sizeFactor = (this.width - cache.minSize) / (cache.maxSize - cache.minSize || 1);
-
-        this.windFactor = 1 - (sizeFactor * 0.5 + Math.random() * 0.5);
-        this.windFactor = Math.max(0.1, Math.min(1, this.windFactor));
-
-        this.vx = 0;
-        this.vy = 0;
-
-        this.waveOffset = Math.random() * Math.PI * 2;
-        this.angleZ = Math.random() * Math.PI * 2;
-        this.spinZ = (Math.random() - 0.5) * settings.rotationSpeed;
-        this.angleX = 0;
-        this.angleY = 0;
-        this.spinX = (Math.random() - 0.5) * 0.1;
-        this.spinY = (Math.random() - 0.5) * 0.1;
-      }
-
-      update() {
-        const targetSpeed = cache.minWind + (cache.maxWind - cache.minWind) * this.windFactor;
-        this.vx += (targetSpeed - this.vx) * 0.1;
-        this.x += this.vx * settings.direction;
-
-        const gravityMod = 1.5 - this.windFactor;
-        this.vy += settings.gravity * 0.05 * gravityMod;
-
-        const wave = Math.sin(this.x * 0.01 * settings.direction + this.waveOffset);
-        this.vy += wave * settings.turbulence * 0.05;
-        this.vy *= 0.98;
-
-        this.y += this.vy;
-        this.angleZ += this.spinZ + this.vx * 0.002;
-
-        if (settings.tumbleStrength > 0) {
-          this.angleX += this.spinX * settings.tumbleStrength;
-          this.angleY += this.spinY * settings.tumbleStrength;
-        }
-
-        const buffer = 200;
-        const outByX = settings.direction === -1 ? this.x < -buffer : this.x > width + buffer;
-
-        if (outByX || this.y > height + buffer || this.y < -buffer) {
-          this.reset(false);
-        }
-      }
-
-      draw() {
-        if (!ctx || !particleImage) return;
-        const vecU = rotateVector(1, 0, 0, this.angleX, this.angleY + cache.tiltRad, this.angleZ);
-        const vecV = rotateVector(0, 1, 0, this.angleX, this.angleY + cache.tiltRad, this.angleZ);
-
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.transform(vecU.x, vecU.y, vecV.x, vecV.y, 0, 0);
-        
-        // Add a slight opacity for visual blending
-        ctx.globalAlpha = 0.45;
-        ctx.drawImage(particleImage, -this.width / 2, -this.height / 2, this.width, this.height);
-        ctx.restore();
-      }
-    }
-
     let particles: Particle[] = [];
 
     const resize = () => {
@@ -230,7 +231,7 @@ export function BannerParticles() {
       for (let i = 0; i < settings.particleCount; i++) {
         // Init half on screen for immediate effect, half off screen
         const initOnScreen = Math.random() > 0.5;
-        const particle = new Particle(initOnScreen);
+        const particle = new Particle(width, height, initOnScreen);
         particles.push(particle);
       }
     };
@@ -240,8 +241,8 @@ export function BannerParticles() {
       ctx.clearRect(0, 0, width, height);
 
       for (const particle of particles) {
-        particle.update();
-        particle.draw();
+        particle.update(width, height);
+        particle.draw(ctx, particleImage);
       }
 
       animationFrameId = requestAnimationFrame(animate);

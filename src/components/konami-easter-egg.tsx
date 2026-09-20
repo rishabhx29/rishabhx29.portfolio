@@ -166,7 +166,20 @@ export function KonamiEasterEgg() {
             {/* Main Content: Avatar Backflip & Message */}
             <div className="flex flex-col sm:flex-row items-center gap-6 mb-6">
               {/* Backflipping Avatar */}
-              <div className="relative group cursor-pointer" onClick={triggerAvatarBackflip} title="Click to do another backflip!">
+              <div
+                className="relative group cursor-pointer rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+                onClick={triggerAvatarBackflip}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    triggerAvatarBackflip();
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                title="Click to do another backflip!"
+                aria-label="Make the avatar do a backflip"
+              >
                 <motion.div
                   animate={
                     isFlipping

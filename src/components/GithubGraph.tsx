@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
+import { fetchContributionCalendar } from "@/lib/github";
 
 interface ContributionDay {
   contributionCount: number;
@@ -68,62 +69,22 @@ export function GithubGraph() {
         }
       }
 
-      const query = `
-        query {
-          user(login: "rishabhx29") {
-            contributionsCollection {
-              contributionCalendar {
-                totalContributions
-                months {
-                  name
-                }
-                weeks {
-                  contributionDays {
-                    contributionCount
-                    date
-                  }
-                }
-              }
-            }
-          }
-        }
-      `;
+      const calendar = await fetchContributionCalendar();
 
-      try {
-        const response = await fetch("/api/github", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ query }),
-        });
-
-        if (!response.ok || !response.headers.get("content-type")?.includes("application/json")) {
-          throw new Error(`GitHub API returned non-JSON or error status: ${response.status}`);
+      if (calendar) {
+        setWeeks(calendar.weeks);
+        setMonths(calendar.months);
+        setTotalContributions(calendar.totalContributions);
+        if (typeof window !== "undefined") {
+          localStorage.setItem(cacheKey, JSON.stringify({
+            weeks: calendar.weeks,
+            months: calendar.months,
+            totalContributions: calendar.totalContributions
+          }));
         }
-
-        const data = await response.json();
-        const calendar = data?.data?.user?.contributionsCollection?.contributionCalendar;
-        
-        if (calendar) {
-          setWeeks(calendar.weeks);
-          setMonths(calendar.months);
-          setTotalContributions(calendar.totalContributions);
-          if (typeof window !== "undefined") {
-            localStorage.setItem(cacheKey, JSON.stringify({
-              weeks: calendar.weeks,
-              months: calendar.months,
-              totalContributions: calendar.totalContributions
-            }));
-          }
-        }
-      } catch (error) {
-        if (process.env.NODE_ENV !== "production") {
-          console.error("Failed to fetch GitHub contributions", error);
-        }
-      } finally {
-        setLoading(false);
       }
+
+      setLoading(false);
     };
 
     fetchContributions();
@@ -244,7 +205,7 @@ export function GithubGraph() {
             <div className="grid grid-cols-[repeat(53,minmax(0,1fr))] gap-x-[2px]" role="img" aria-label={graphStatus}>
               {loading && weeks.length === 0
                 ? Array.from({ length: 53 }).map((_, colIndex) => (
-                    <div key={colIndex} className="flex flex-col gap-[2px]">
+                    <div key={`skeleton-${colIndex}`} className="flex flex-col gap-[2px]">
                       {Array.from({ length: 7 }).map((__, rowIndex) => (
                         <div
                           key={rowIndex}
@@ -254,7 +215,7 @@ export function GithubGraph() {
                     </div>
                   ))
                 : graphWeeks.map((week, colIndex) => (
-                    <div key={colIndex} className="flex flex-col gap-[2px]">
+                    <div key={week.contributionDays[0]?.date ?? `week-${colIndex}`} className="flex flex-col gap-[2px]">
                       {colIndex === 0 &&
                         Array.from({ length: 7 - week.contributionDays.length }).map((_, i) => (
                           <div key={`empty-top-${i}`} className="aspect-square w-full rounded-[2px] bg-transparent" />
@@ -290,9 +251,9 @@ export function GithubGraph() {
         <div className="mt-3 flex items-center justify-between gap-3">
           <span className="text-[11px] text-zinc-500 dark:text-zinc-400">Less active</span>
           <div className="flex shrink-0 items-center gap-1.5">
-            {contributionLevels.map((level, index) => (
+            {contributionLevels.map((level) => (
               <div
-                key={index}
+                key={level.cell}
                 aria-hidden="true"
                 className={`size-2 rounded-[2px] opacity-80 dark:opacity-70 ${level.cell}`}
               />

@@ -20,9 +20,9 @@ import {
 } from "@/data/blogsData";
 import { siteName, siteUrl } from "@/lib/site";
 
-type BlogPageProps = {
+type BlogPageProps = Readonly<{
   params: Promise<{ slug: string }>;
-};
+}>;
 
 const horizontalDashes = {
   maskImage:
@@ -103,9 +103,9 @@ function BlueprintFrame() {
         { top: "22vh", right: "30%" },
         { top: "calc(22vh + 112px)", left: "30%" },
         { top: "calc(22vh + 112px)", right: "30%" },
-      ].map((position, index) => (
+      ].map((position) => (
         <div
-          key={index}
+          key={`${position.top}-${position.left ?? position.right}`}
           className="absolute hidden h-[2px] w-[2px] bg-black/50 pointer-events-none dark:bg-white/[0.25] md:block"
           style={{
             top: position.top,

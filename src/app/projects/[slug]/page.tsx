@@ -58,7 +58,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function ProjectPage({ params }: Readonly<{ params: Promise<{ slug: string }> }>) {
   const { slug } = await params;
   const project = projectsData.find((p) => p.slug === slug);
 
@@ -133,8 +133,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         { top: '22vh', right: '30%' },
         { top: 'calc(22vh + 112px)', left: '30%' },
         { top: 'calc(22vh + 112px)', right: '30%' },
-      ].map((pos, i) => (
-        <div key={i} className="absolute w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] pointer-events-none z-10 hidden md:block"
+      ].map((pos) => (
+        <div key={`${pos.top}-${pos.left ?? pos.right}`} className="absolute w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] pointer-events-none z-10 hidden md:block"
           style={{
             top: pos.top,
             left: pos.left,
@@ -282,13 +282,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <div>
           <h2 className="text-[16px] font-bold text-zinc-900 dark:text-zinc-50 tracking-tight mb-4">Stack used</h2>
           <div className="flex flex-wrap gap-2">
-            {project.tech.map((t: TechItem, i: number) => {
+            {project.tech.map((t: TechItem) => {
               const isKey = typeof t === "string";
               const label = isKey ? techNames[t as TechKey] : t.label;
               const Icon = isKey ? iconMap[t as TechKey] : null;
 
               return (
-                <div key={i} className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-100 dark:bg-zinc-900 border border-black/10 dark:border-white/5 rounded-md text-[12px] font-medium text-zinc-700 dark:text-zinc-300">
+                <div key={label} className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-100 dark:bg-zinc-900 border border-black/10 dark:border-white/5 rounded-md text-[12px] font-medium text-zinc-700 dark:text-zinc-300">
                   {Icon && <Icon aria-hidden="true" className="w-3.5 h-3.5" />}
                   <span>{label}</span>
                 </div>

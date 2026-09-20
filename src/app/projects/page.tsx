@@ -11,6 +11,12 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowLeft } from "lucide-react";
 
+function rowGridClass(rowIndex: number, totalRows: number) {
+  if (rowIndex === 0) return "pb-10 md:pb-6 gap-y-10 md:gap-y-0";
+  if (rowIndex === totalRows - 1) return "pt-0 md:pt-6 gap-y-10 md:gap-y-0";
+  return "pb-10 md:pb-6 pt-0 md:pt-6 gap-y-10 md:gap-y-0";
+}
+
 export default function AllProjectsPage() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
@@ -39,8 +45,8 @@ export default function AllProjectsPage() {
           { top: '22vh', right: '30%' },
           { top: 'calc(22vh + 112px)', left: '30%' },
           { top: 'calc(22vh + 112px)', right: '30%' },
-        ].map((pos, i) => (
-          <div key={i} className="absolute w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] pointer-events-none z-10 hidden md:block"
+        ].map((pos) => (
+          <div key={`${pos.top}-${pos.left ?? pos.right}`} className="absolute w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] pointer-events-none z-10 hidden md:block"
             aria-hidden="true"
             style={{
               top: pos.top,
@@ -103,13 +109,12 @@ export default function AllProjectsPage() {
               {Array.from({ length: Math.ceil(projectsData.length / 2) }).map((_, rowIndex) => {
                 const rowProjects = projectsData.slice(rowIndex * 2, rowIndex * 2 + 2);
                 return (
-                  <div key={rowIndex} className="flex flex-col relative w-full">
-                    <div className={`grid grid-cols-1 md:grid-cols-2 gap-x-10 ${rowIndex === 0 ? 'pb-10 md:pb-6 gap-y-10 md:gap-y-0' : rowIndex === Math.ceil(projectsData.length / 2) - 1 ? 'pt-0 md:pt-6 gap-y-10 md:gap-y-0' : 'pb-10 md:pb-6 pt-0 md:pt-6 gap-y-10 md:gap-y-0'}`}>
+                  <div key={rowProjects[0].slug} className="flex flex-col relative w-full">
+                    <div className={`grid grid-cols-1 md:grid-cols-2 gap-x-10 ${rowGridClass(rowIndex, Math.ceil(projectsData.length / 2))}`}>
                       {rowProjects.map((project) => (
                         <ProjectCard
                           key={project.title}
                           project={project}
-                          setActiveVideo={setActiveVideo}
                           isPriority={rowIndex === 0}
                         />
                       ))}

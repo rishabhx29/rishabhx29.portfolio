@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ContactLayout({ children }: { children: React.ReactNode }) {
+export default function ContactLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

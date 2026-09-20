@@ -4,8 +4,7 @@ import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { flushSync } from "react-dom";
 import { useTheme } from "next-themes";
-import { playSound } from "@/lib/sound-engine";
-import { click003Sound } from "@/lib/click-003";
+import { playSound } from "@/lib/audio";
 import { cn } from "@/lib/utils";
 
 type ViewTransitionDocument = Document & {
@@ -32,7 +31,7 @@ function useMounted() {
   );
 }
 
-export function ThemeToggle({ className }: { className?: string }) {
+export function ThemeToggle({ className }: Readonly<{ className?: string }>) {
   const { setTheme, resolvedTheme } = useTheme();
   const mounted = useMounted();
 
@@ -62,7 +61,7 @@ export function ThemeToggle({ className }: { className?: string }) {
     <button
       type="button"
       onClick={() => {
-        void playSound(click003Sound.dataUri, { volume: 0.5 });
+        void playSound("/sounds/click-003.mp3", { volume: 0.5 });
         toggleTheme();
       }}
       className={cn(

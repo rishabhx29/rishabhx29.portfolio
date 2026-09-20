@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, LayoutGrid, Sparkles, ChevronDown, Award, Image as ImageIcon, Cpu, FileText } from "lucide-react";
 
-interface PlaygroundDockProps {
+type PlaygroundDockProps = Readonly<{
   onSpawnAsset: (type: "image" | "badge" | "tech" | "sticky", presetId?: string) => void;
   onSelectLayout: (templateKey: string) => void;
   currentLayout: string;
-}
+}>;
 
 export function PlaygroundDock({
   onSpawnAsset,

@@ -38,12 +38,22 @@ type Camera = { x: number; y: number; zoom: number };
 type Point = { x: number; y: number };
 type Stroke = { id: string; points: Point[] };
 type LayoutName = keyof typeof WORKBENCH_LAYOUTS;
+type CSSVariables = React.CSSProperties &
+  Record<"--field-grid-x" | "--field-grid-y" | "--field-grid-size" | "--object-delay", string>; // custom properties need this narrow escape hatch
 
 const CAMERA_LIMITS = { min: 0.05, max: 12 };
 const clone = <T,>(value: T): T => JSON.parse(JSON.stringify(value));
 
+const OBJECT_KIND_LABELS: Record<WorkbenchObjectType, string> = {
+  photo: "Photo",
+  project: "Project",
+  achievement: "Achievement",
+  label: "Frame",
+  note: "Note",
+};
+
 function getObjectKindLabel(type: WorkbenchObjectType) {
-  return type === "photo" ? "Photo" : type === "project" ? "Project" : type === "achievement" ? "Achievement" : type === "label" ? "Frame" : "Note";
+  return OBJECT_KIND_LABELS[type];
 }
 
 export function PlaygroundCanvas() {
@@ -153,7 +163,8 @@ export function PlaygroundCanvas() {
   function selectLayout(name: LayoutName) {
     commit(clone(WORKBENCH_LAYOUTS[name]));
     setSelectedId(null);
-    setToast(`${name === "fieldNotes" ? "Field notes" : name === "projectWall" ? "Project wall" : "After hours"} arranged.`);
+    const layoutLabels = { fieldNotes: "Field notes", projectWall: "Project wall", afterHours: "After hours" } as const;
+    setToast(`${layoutLabels[name]} arranged.`);
   }
 
   function toWorld(clientX: number, clientY: number): Point {
@@ -290,7 +301,7 @@ export function PlaygroundCanvas() {
         y: bounds.top,
         width: bounds.right - bounds.left,
         height: bounds.bottom - bounds.top,
-      } as unknown as Parameters<typeof html2canvas>[1];
+      };
       const canvas = await html2canvas(worldRef.current!, exportOptions);
       canvas.toBlob((blob) => {
         if (!blob) throw new Error("Could not create image");
@@ -336,7 +347,7 @@ export function PlaygroundCanvas() {
         </div>
       </header>
 
-      <div ref={viewportRef} onWheel={handleWheel} onPointerDown={(event) => tool === "draw" ? startDraw(event) : startPan(event)} onPointerMove={moveCanvas} onPointerUp={endCanvas} style={{ "--field-grid-x": `${camera.x}px`, "--field-grid-y": `${camera.y}px`, "--field-grid-size": `${72 * camera.zoom}px` } as React.CSSProperties} className={`playground-viewport relative min-h-[100dvh] touch-none overflow-hidden ${tool === "hand" ? "cursor-grab active:cursor-grabbing" : "cursor-crosshair"}`}>
+      <div ref={viewportRef} onWheel={handleWheel} onPointerDown={(event) => { if (tool === "draw") { startDraw(event); } else { startPan(event); } }} onPointerMove={moveCanvas} onPointerUp={endCanvas} style={{ "--field-grid-x": `${camera.x}px`, "--field-grid-y": `${camera.y}px`, "--field-grid-size": `${72 * camera.zoom}px` } as CSSVariables} className={`playground-viewport relative min-h-[100dvh] touch-none overflow-hidden ${tool === "hand" ? "cursor-grab active:cursor-grabbing" : "cursor-crosshair"}`}>
         <div className="playground-scanline pointer-events-none absolute inset-x-0 top-[62px] z-10" />
         <div ref={worldRef} style={{ width: 1, height: 1, transform: boardTransform, transformOrigin: "0 0", willChange: "transform", overflow: "visible" }} className="absolute left-0 top-0">
           <div className="pointer-events-none absolute left-[-58px] top-[-58px] h-[1px] w-[1600px] bg-zinc-400/45 dark:bg-zinc-500/45" />
@@ -383,15 +394,26 @@ export function PlaygroundCanvas() {
   );
 }
 
-function ToolButton({ active, onClick, label, children }: { active?: boolean; onClick: () => void; label: string; children: React.ReactNode }) {
+function ToolButton({ active, onClick, label, children }: Readonly<{ active?: boolean; onClick: () => void; label: string; children: React.ReactNode }>) {
   return <button onClick={onClick} aria-label={label} title={label} className={`grid h-8 w-8 place-items-center transition-[transform,background-color,color] duration-200 active:scale-[.94] ${active ? "bg-zinc-900 text-white shadow-sm dark:bg-zinc-100 dark:text-zinc-900" : "text-zinc-500 hover:bg-zinc-200 hover:text-zinc-900 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"}`}>{children}</button>;
 }
 
-function WorkbenchCard({ object, index, selected, setRef, onSelect, onPointerDown, onPointerMove, onPointerUp, onEdit }: { object: WorkbenchObject; index: number; selected: boolean; setRef: (node: HTMLDivElement | null) => void; onSelect: () => void; onPointerDown: (event: React.PointerEvent<HTMLDivElement>) => void; onPointerMove: (event: React.PointerEvent<HTMLDivElement>) => void; onPointerUp: (event: React.PointerEvent<HTMLDivElement>) => void; onEdit: (content: string) => void }) {
+function paperClasses(variant: WorkbenchObject["variant"]) {
+  switch (variant) {
+    case "polaroid":
+      return "bg-white p-2 text-zinc-900 shadow-[0_20px_42px_rgba(24,24,27,.18)]";
+    case "dark":
+      return "border-zinc-800 bg-zinc-950 text-zinc-100 shadow-[0_20px_42px_rgba(0,0,0,.32)]";
+    default:
+      return "border-zinc-300 bg-zinc-50 text-zinc-900 shadow-[0_20px_42px_rgba(24,24,27,.14)] dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100";
+  }
+}
+
+function WorkbenchCard({ object, index, selected, setRef, onSelect, onPointerDown, onPointerMove, onPointerUp, onEdit }: Readonly<{ object: WorkbenchObject; index: number; selected: boolean; setRef: (node: HTMLDivElement | null) => void; onSelect: () => void; onPointerDown: (event: React.PointerEvent<HTMLDivElement>) => void; onPointerMove: (event: React.PointerEvent<HTMLDivElement>) => void; onPointerUp: (event: React.PointerEvent<HTMLDivElement>) => void; onEdit: (content: string) => void }>) {
   const [editing, setEditing] = useState(false);
-  const paper = object.variant === "polaroid" ? "bg-white p-2 text-zinc-900 shadow-[0_20px_42px_rgba(24,24,27,.18)]" : object.variant === "dark" ? "border-zinc-800 bg-zinc-950 text-zinc-100 shadow-[0_20px_42px_rgba(0,0,0,.32)]" : "border-zinc-300 bg-zinc-50 text-zinc-900 shadow-[0_20px_42px_rgba(24,24,27,.14)] dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100";
-  return <div ref={setRef} tabIndex={0} role="group" aria-label={`${getObjectKindLabel(object.type)}: ${object.title}`} onClick={(event) => { event.stopPropagation(); onSelect(); }} onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} style={{ width: object.width, height: object.height, transform: `translate3d(${object.x}px, ${object.y}px, 0) rotate(${object.rotation ?? 0}deg)`, willChange: "transform" }} className={`playground-object playground-object-${object.type} playground-variant-${object.variant ?? "paper"} absolute z-10 select-none border transition-[box-shadow,filter] duration-200 ${paper} ${selected ? "ring-2 ring-cyan-500 ring-offset-2 ring-offset-zinc-100 dark:ring-cyan-300 dark:ring-offset-[#101012]" : ""} ${object.type === "label" ? "border-dashed bg-transparent shadow-none" : "cursor-grab active:cursor-grabbing"}`}>
-    <div className="playground-object-inner h-full" style={{ "--object-delay": `${Math.min(index, 8) * 80}ms` } as React.CSSProperties}>
+  const paper = paperClasses(object.variant);
+  return <div ref={setRef} tabIndex={0} aria-label={`${getObjectKindLabel(object.type)}: ${object.title} — draggable card, Enter or Space to select`} onClick={(event) => { event.stopPropagation(); onSelect(); }} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); event.stopPropagation(); onSelect(); } }} onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} style={{ width: object.width, height: object.height, transform: `translate3d(${object.x}px, ${object.y}px, 0) rotate(${object.rotation ?? 0}deg)`, willChange: "transform" }} className={`playground-object playground-object-${object.type} playground-variant-${object.variant ?? "paper"} absolute z-10 select-none border transition-[box-shadow,filter] duration-200 ${paper} ${selected ? "ring-2 ring-cyan-500 ring-offset-2 ring-offset-zinc-100 dark:ring-cyan-300 dark:ring-offset-[#101012]" : ""} ${object.type === "label" ? "border-dashed bg-transparent shadow-none" : "cursor-grab active:cursor-grabbing"}`}>
+    <div className="playground-object-inner h-full" style={{ "--object-delay": `${Math.min(index, 8) * 80}ms` } as CSSVariables}>
     {object.type === "label" && <div className="flex h-full flex-col justify-center"><p className="text-[10px] font-semibold tracking-[.18em] text-zinc-500">{object.title}</p><p className="mt-1 text-sm font-medium tracking-tight">{object.subtitle}</p></div>}
     {(object.type === "photo" || object.type === "project") && object.src && <><div className="relative h-[calc(100%-52px)] overflow-hidden bg-zinc-200 dark:bg-zinc-800"><Image src={object.src} alt={object.title} fill className="pointer-events-none object-cover" sizes="360px" /></div><div className="px-1 pt-2"><p className="truncate text-xs font-semibold tracking-tight">{object.title}</p><p className="mt-0.5 truncate text-[10px] text-zinc-500 dark:text-zinc-400">{object.subtitle}</p></div></>}
     {object.type === "achievement" && object.src && <div className="flex h-full flex-col items-center justify-center p-4 text-center"><div className="relative h-28 w-28"><Image src={object.src} alt={object.title} fill className="pointer-events-none object-contain" sizes="112px" /></div><p className="mt-3 text-xs font-semibold">{object.title}</p><p className="mt-1 text-[10px] text-zinc-500 dark:text-zinc-400">{object.subtitle}</p></div>}
@@ -400,6 +422,6 @@ function WorkbenchCard({ object, index, selected, setRef, onSelect, onPointerDow
   </div>;
 }
 
-function Inspector({ object, onChange, onDuplicate, onRemove, onClose }: { object: WorkbenchObject; onChange: (updates: Partial<WorkbenchObject>) => void; onDuplicate: () => void; onRemove: () => void; onClose: () => void }) {
+function Inspector({ object, onChange, onDuplicate, onRemove, onClose }: Readonly<{ object: WorkbenchObject; onChange: (updates: Partial<WorkbenchObject>) => void; onDuplicate: () => void; onRemove: () => void; onClose: () => void }>) {
   return <aside aria-label="Object details inspector" className="absolute left-3 top-[70px] z-40 w-[calc(100%-24px)] max-w-xs border border-black/10 bg-zinc-50/96 p-3 shadow-2xl backdrop-blur-md dark:border-white/10 dark:bg-zinc-950/96 sm:w-72"><div className="flex items-start justify-between gap-3"><div><p className="text-[10px] font-medium tracking-[.16em] text-zinc-500">SELECTED {getObjectKindLabel(object.type).toUpperCase()}</p><p className="mt-1 text-sm font-semibold">{object.title}</p></div><button onClick={onClose} aria-label="Close inspector" className="p-1 text-zinc-500 hover:text-zinc-900 dark:hover:text-white"><X className="h-4 w-4" /></button></div><div className="mt-3 grid grid-cols-2 gap-2"><button onClick={() => onChange({ rotation: (object.rotation ?? 0) + 15 })} className="flex items-center justify-center gap-2 border border-black/10 py-2 text-xs dark:border-white/10"><RotateCw className="h-3.5 w-3.5" /> Rotate</button><button onClick={onDuplicate} className="flex items-center justify-center gap-2 border border-black/10 py-2 text-xs dark:border-white/10"><Sparkles className="h-3.5 w-3.5" /> Duplicate</button></div>{object.type === "note" && <label className="mt-3 block text-xs text-zinc-500">Title<input value={object.title} onChange={(event) => onChange({ title: event.target.value })} className="mt-1 w-full border border-black/10 bg-transparent px-2 py-2 text-zinc-900 outline-none dark:border-white/10 dark:text-zinc-100" /></label>}{object.removable && <button onClick={onRemove} className="mt-3 flex w-full items-center justify-center gap-2 border border-red-500/30 py-2 text-xs text-red-600 dark:text-red-300"><Trash2 className="h-3.5 w-3.5" /> Remove from this session</button>}</aside>;
 }

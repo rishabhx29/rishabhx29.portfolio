@@ -88,7 +88,8 @@ const BARK_PHRASES = [
 ];
 
 export function OnekoPet() {
-  const [, setVariant] = useState<PetVariant>("dog");
+  // Variant state lives in the effect below (localStorage + DOM), not in React:
+  // the pet element is imperative, so React state for it would be write-only.
   const [bubbleText, setBubbleText] = useState<string | null>(null);
   const [bubblePos, setBubblePos] = useState<{ x: number; y: number }>({ x: 32, y: 32 });
   const isClient = useSyncExternalStore(emptySubscribe, () => true, () => false);
@@ -117,7 +118,6 @@ export function OnekoPet() {
         const parsed = JSON.parse(saved);
         if (VARIANTS.some((v) => v.id === parsed)) {
           activeVariant = parsed;
-          setVariant(parsed);
         }
       }
     } catch {}
@@ -375,7 +375,6 @@ export function OnekoPet() {
       const currentIndex = VARIANTS.findIndex((v) => v.id === activeVariant);
       const nextIndex = (currentIndex + 1) % VARIANTS.length;
       activeVariant = VARIANTS[nextIndex].id;
-      setVariant(activeVariant);
       try {
         localStorage.setItem("oneko:variant", JSON.stringify(activeVariant));
       } catch {}

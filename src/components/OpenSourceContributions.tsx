@@ -2,66 +2,13 @@
 
 import { useEffect, useState, useRef, useCallback } from "react";
 import Link from "next/link";
+import {
+  fetchPullRequests,
+  type PRFilterType as FilterType,
+  type PullRequest as PR,
+} from "@/lib/github";
 
-interface PR {
-  id: number;
-  title: string;
-  url: string;
-  repository: {
-    nameWithOwner: string;
-  };
-  state: string;
-  createdAt: string;
-  mergedAt?: string;
-  closedAt?: string;
-}
-
-type SearchEdge = {
-  node: PR;
-};
-
-type GitHubSearchResponse = {
-  data?: {
-    search?: {
-      edges?: Array<SearchEdge | null>;
-    };
-  };
-  message?: string;
-  error?: unknown;
-};
-
-type FilterType = "merged" | "open" | "closed";
-
-const SEARCH_QUERIES: Record<FilterType, string> = {
-  merged: "author:rishabhx29 type:pr is:merged",
-  open: "author:rishabhx29 type:pr is:open",
-  closed: "author:rishabhx29 type:pr is:closed is:unmerged",
-};
-
-function buildGraphQLQuery(searchQuery: string) {
-  return `query {
-    search(query: "${searchQuery}", type: ISSUE, first: 100) {
-      edges {
-        node {
-          ... on PullRequest {
-            id
-            title
-            url
-            repository {
-              nameWithOwner
-            }
-            state
-            createdAt
-            mergedAt
-            closedAt
-          }
-        }
-      }
-    }
-  }`;
-}
-
-export function OpenSourceContributions({ isFullPage = false }: { isFullPage?: boolean }) {
+export function OpenSourceContributions({ isFullPage = false }: Readonly<{ isFullPage?: boolean }>) {
   const [prsByType, setPrsByType] = useState<Record<FilterType, PR[]>>({
     merged: [],
     open: [],
@@ -90,49 +37,17 @@ export function OpenSourceContributions({ isFullPage = false }: { isFullPage?: b
       }
     }
 
-    // Fetch fresh data in background
-    try {
-      const query = buildGraphQLQuery(SEARCH_QUERIES[type]);
-      const response = await fetch("/api/github", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query }),
-      });
+    // Fetch fresh data in background. null = offline/unconfigured: keep cached state.
+    const fetchedPRs = await fetchPullRequests(type);
 
-      if (!response.ok || !response.headers.get("content-type")?.includes("application/json")) {
-        throw new Error(`GitHub API returned non-JSON or error status: ${response.status}`);
+    if (fetchedPRs) {
+      setPrsByType(prev => ({ ...prev, [type]: fetchedPRs }));
+      setLoadedTypes(prev => new Set(prev).add(type));
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(cacheKey, JSON.stringify(fetchedPRs));
       }
-
-      const data = (await response.json()) as GitHubSearchResponse;
-      if (data.data?.search?.edges) {
-        const fetchedPRs = data.data.search.edges
-          .flatMap((edge) => (edge?.node ? [edge.node] : []))
-          .filter((pr: PR) => !(pr.title === "Main" && pr.repository.nameWithOwner === "rishabhx29/flexprice-storybook"));
-        fetchedPRs.sort((a: PR, b: PR) => {
-          const dateA = new Date(b.mergedAt || b.closedAt || b.createdAt).getTime();
-          const dateB = new Date(a.mergedAt || a.closedAt || a.createdAt).getTime();
-          return dateA - dateB;
-        });
-        setPrsByType(prev => ({ ...prev, [type]: fetchedPRs }));
-        setLoadedTypes(prev => new Set(prev).add(type));
-        if (typeof window !== 'undefined') {
-          localStorage.setItem(cacheKey, JSON.stringify(fetchedPRs));
-        }
-      } else {
-        if (process.env.NODE_ENV !== "production") {
-          if (data.message === "Bad credentials" || data.error) {
-            console.warn("GitHub API: Invalid or missing GITHUB_TOKEN credentials. Fallback to cached/offline timeline state.");
-          } else {
-            console.error("GraphQL response missing expected data structure", data);
-          }
-        }
-        // Even on error, mark as loaded so we don't show spinner forever
-        setLoadedTypes(prev => new Set(prev).add(type));
-      }
-    } catch (error) {
-      if (process.env.NODE_ENV !== "production") {
-        console.error("Failed to fetch PRs:", error);
-      }
+    } else {
+      // Mark as loaded so we don't show a spinner forever
       setLoadedTypes(prev => new Set(prev).add(type));
     }
   }, []);

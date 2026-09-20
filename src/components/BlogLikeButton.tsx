@@ -3,10 +3,10 @@
 import { useCallback, useMemo, useSyncExternalStore } from "react";
 import { Heart } from "lucide-react";
 
-type BlogLikeButtonProps = {
+type BlogLikeButtonProps = Readonly<{
   slug: string;
   initialLikes: number;
-};
+}>;
 
 export function BlogLikeButton({ slug, initialLikes }: BlogLikeButtonProps) {
   const storageKey = useMemo(() => `blog-like:${slug}`, [slug]);

@@ -5,13 +5,13 @@ import { motion } from "framer-motion";
 import { PlaygroundAssetItem } from "@/data/playgroundAssets";
 import { X, Check } from "lucide-react";
 
-interface StickyNoteProps {
+type StickyNoteProps = Readonly<{
   item: PlaygroundAssetItem;
   onUpdate: (id: string, updates: Partial<PlaygroundAssetItem>) => void;
   onDelete: (id: string) => void;
   isSelected: boolean;
   onSelect: () => void;
-}
+}>;
 
 export function StickyNote({
   item,
@@ -121,8 +121,17 @@ export function StickyNote({
         />
       ) : (
         <div
+          role="button"
+          tabIndex={0}
+          aria-label="Edit note"
           onDoubleClick={() => setIsEditing(true)}
-          className="w-full flex-grow text-xs font-mono leading-relaxed overflow-y-auto pr-1 select-text cursor-text"
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              setIsEditing(true);
+            }
+          }}
+          className="w-full flex-grow text-xs font-mono leading-relaxed overflow-y-auto pr-1 select-text cursor-text focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
         >
           {text || (
             <span className="opacity-40 italic">Double click or press edit to type...</span>

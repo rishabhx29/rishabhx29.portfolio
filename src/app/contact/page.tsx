@@ -1,15 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { FooterBackground } from "@/components/FooterBackground";
 import { CommandMenu } from "@/components/command-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { CurrentTime } from "@/components/CurrentTime";
 import { FlightButton } from "@/components/FlightButton";
-import DisplacementText from "@/components/DisplacementText";
+import { Keyboard } from "@/components/ui/keyboard";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import SocialHoverCard from "@/components/pixel-perfect/social-hover-card";
+import { BlueprintGrid } from "@/components/BlueprintGrid";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -121,40 +119,11 @@ export default function ContactPage() {
         }
       `}} />
 
-      {/* Blueprint Vertical Lines */}
-      <div className="absolute top-0 bottom-0 left-[30%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-      <div className="absolute top-0 bottom-0 right-[30%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+      {/* Blueprint grid motif */}
+      <BlueprintGrid horizontals={["112px"]} />
 
-      {/* Blueprint Horizontal Lines */}
-      <div className="absolute left-0 right-0 top-[22vh] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-      <div className="absolute left-0 right-0 top-[calc(22vh+112px)] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-
-      {/* Grid Intersection Nodes */}
-      {[
-        { top: '22vh', left: '30%' },
-        { top: '22vh', right: '30%' },
-        { top: 'calc(22vh + 112px)', left: '30%' },
-        { top: 'calc(22vh + 112px)', right: '30%' },
-      ].map((pos, i) => (
-        <div key={i} className="absolute w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] pointer-events-none z-10 hidden md:block"
-          style={{
-            top: pos.top,
-            left: pos.left,
-            right: pos.right,
-            transform: `translate(${pos.right ? '50%' : '-50%'}, -50%)`
-          }} />
-      ))}
-
-      {/* Cell 1: Dot Matrix Background */}
-      <div className="absolute left-0 right-0 md:left-[30%] md:right-[30%] top-0 h-[22vh] -z-0 pointer-events-auto">
-        <FooterBackground />
-        <div className="absolute bottom-3 right-2 z-10 pointer-events-auto">
-          <CurrentTime />
-        </div>
-      </div>
-
-      {/* Cell 2: Header with Back Button + Title + Controls */}
-      <div className="absolute left-0 right-0 md:left-[30%] md:right-[30%] top-[22vh] h-[112px] flex items-center px-4 z-50">
+      {/* Header with Back Button + Title + Controls */}
+      <div className="absolute left-0 right-0 md:left-[30%] md:right-[30%] top-0 h-[112px] flex items-center px-4 z-50">
         <div className="flex w-full items-center justify-between">
           {/* Left: Back + Title */}
           <div className="flex items-center gap-5">
@@ -184,9 +153,9 @@ export default function ContactPage() {
       </div>
 
       {/* Content Section */}
-      <main id="main-content" className="ml-0 mr-0 md:ml-[30%] md:mr-[30%] pt-[calc(22vh+112px)] pb-0 px-8 md:px-4 flex flex-col z-10 relative">
+      <main id="main-content" className="ml-0 mr-0 md:ml-[30%] md:mr-[30%] pt-[136px] pb-16 px-8 md:px-4 flex flex-col z-10 relative">
         {/* Form */}
-        <form onSubmit={handleSubmit} className="mt-12 -mx-8 space-y-10 md:-mx-4">
+        <form onSubmit={handleSubmit} className="mt-6 -mx-8 space-y-10 md:-mx-4">
           {/* FormSubmit Configuration */}
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
@@ -271,73 +240,9 @@ export default function ContactPage() {
           </div>
         </form>
 
-        {/* Separator */}
-        <div className="relative mt-16 mb-0">
-          <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-          {/* Intersection nodes */}
-          <div className="absolute -left-8 md:-left-4 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
-          <div className="absolute -right-8 md:-right-4 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" />
-        </div>
-
-        {/* Footer - Socials + Displacement Text */}
-        <div className="pt-2 -mt-4 pb-5 px-4 flex flex-col md:flex-row md:items-center justify-between gap-8 overflow-hidden">
-          <div className="flex-shrink-0">
-            <p className="text-[14px] text-zinc-500 mb-2">Find me on my <span className="font-medium text-zinc-800 dark:text-zinc-200">socials</span></p>
-            <div className="flex flex-wrap gap-1.5">
-              <SocialHoverCard socialName="GitHub">
-                <a
-                  href="https://github.com/rishabhx29"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Visit Rishabh's GitHub profile"
-                  className="flex items-center gap-1.5 px-2.5 py-1.5 bg-zinc-100 dark:bg-zinc-800/40 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-md text-[12px] font-medium text-zinc-600 dark:text-zinc-300 transition-colors border border-zinc-200/50 dark:border-zinc-700/50"
-                >
-                  <svg viewBox="0 0 24 24" className="w-3.5 h-3.5">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke="currentColor" strokeWidth="2" fill="none" />
-                  </svg>
-                  GitHub
-                </a>
-              </SocialHoverCard>
-              <SocialHoverCard socialName="Twitter">
-                <a
-                  href="https://x.com/RishabhTri8805"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Visit Rishabh's Twitter/X profile"
-                  className="flex items-center gap-1.5 px-2.5 py-1.5 bg-zinc-100 dark:bg-zinc-800/40 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-md text-[12px] font-medium text-zinc-600 dark:text-zinc-300 transition-colors border border-zinc-200/50 dark:border-zinc-700/50"
-                >
-                  <svg viewBox="0 0 24 24" className="w-3.5 h-3.5">
-                    <path d="M4 4l11.733 16h4.267l-11.733-16zM4 20l6.768-6.768M20 4l-6.768 6.768" stroke="currentColor" strokeWidth="2" fill="none" />
-                  </svg>
-                  Twitter
-                </a>
-              </SocialHoverCard>
-              <SocialHoverCard socialName="LinkedIn">
-                <a
-                  href="https://www.linkedin.com/in/rishabh-tripathi-728a77317"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Visit Rishabh's LinkedIn profile"
-                  className="flex items-center gap-1.5 px-2.5 py-1.5 bg-zinc-100 dark:bg-zinc-800/40 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-md text-[12px] font-medium text-zinc-600 dark:text-zinc-300 transition-colors border border-zinc-200/50 dark:border-zinc-700/50"
-                >
-                  <svg viewBox="0 0 24 24" className="w-3.5 h-3.5">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1-2 2 2 2 0 0 1 2-2z" stroke="currentColor" strokeWidth="2" fill="none" />
-                  </svg>
-                  LinkedIn
-                </a>
-              </SocialHoverCard>
-            </div>
-          </div>
-
-          <div className="flex-grow h-[160px] relative flex items-center justify-end -mr-56 mt-2">
-            <DisplacementText
-              text="RISHABH"
-              fontSize={300}
-              className="h-full w-full"
-              lightColor="#171717"
-              darkColor="#e5e5e5"
-            />
-          </div>
+        {/* Interactive Keyboard */}
+        <div className="mt-10 flex w-full justify-center [zoom:0.65] sm:[zoom:0.75] xl:[zoom:0.85] 2xl:[zoom:1]">
+          <Keyboard theme="classic" enableHaptics enableSound />
         </div>
       </main>
     </div>

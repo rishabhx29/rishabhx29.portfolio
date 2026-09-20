@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
@@ -29,24 +28,24 @@ export {
 
 export const ProjectCard = ({
   project,
-  setActiveVideo: _setActiveVideo,
   isPriority = false,
-}: {
+}: Readonly<{
   project: Project;
-  setActiveVideo?: (v: string) => void;
   isPriority?: boolean;
-}) => {
+}>) => {
   const [hoveredTech, setHoveredTech] = useState<string | null>(null);
   const [shouldLoadHoverImage, setShouldLoadHoverImage] = useState(false);
-  const router = useRouter();
-
   // Consistent thumbnail across both dark and light modes
   const imageSrc = project.src;
 
   const isNotStarted = project.status === "not-started" || project.title === "Inquiro";
   const isBuilding = project.status === "building" || project.title === "Blueprint" || project.title === "Scribble3D";
-  const statusColor = isNotStarted ? "bg-zinc-400" : isBuilding ? "bg-amber-500" : "bg-emerald-500";
-  const statusLabel = isNotStarted ? "Not Started" : isBuilding ? "Building" : "Live";
+  const STATUS_STYLES = {
+    "not-started": { color: "bg-zinc-400", label: "Not Started" },
+    building: { color: "bg-amber-500", label: "Building" },
+    live: { color: "bg-emerald-500", label: "Live" },
+  } as const;
+  const status = isNotStarted ? STATUS_STYLES["not-started"] : isBuilding ? STATUS_STYLES.building : STATUS_STYLES.live;
 
   return (
     <Link
@@ -136,8 +135,8 @@ export const ProjectCard = ({
           <h3 className="text-[15px] font-bold text-zinc-900 dark:text-zinc-100 leading-tight">{project.title}</h3>
 
           <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-zinc-200/50 dark:border-zinc-800/50 bg-white dark:bg-zinc-900/50 w-fit shrink-0">
-            <div className={`w-1.5 h-1.5 rounded-full ${statusColor}`} />
-            <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400">{statusLabel}</span>
+            <div className={`w-1.5 h-1.5 rounded-full ${status.color}`} />
+            <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400">{status.label}</span>
           </div>
         </div>
 
@@ -190,7 +189,7 @@ export const ProjectCard = ({
           </div>
 
           <div
-            className="flex shrink-0 items-center gap-1 text-[11px] font-medium text-zinc-500 transition-colors cursor-pointer group-hover:text-zinc-800 dark:group-hover:text-zinc-200 sm:text-[12px]"
+            className="flex shrink-0 items-center gap-1 text-[11px] font-medium text-zinc-500 transition-colors cursor-pointer group-hover:text-zinc-800 dark:group-hover:text-zinc-200 sm:text-[12px] focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 rounded-sm"
             onClick={(e) => {
               if (project.live || project.github) {
                 e.preventDefault();
@@ -198,6 +197,16 @@ export const ProjectCard = ({
                 window.open(project.live || project.github, "_blank", "noopener,noreferrer");
               }
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                if (project.live || project.github) {
+                  window.open(project.live || project.github, "_blank", "noopener,noreferrer");
+                }
+              }
+            }}
+            role="button"
+            tabIndex={0}
             title={project.live ? `Open ${project.title} live demo` : `Open ${project.title} source code`}
             aria-label={project.live ? `Open ${project.title} live demo` : `Open ${project.title} source code`}
           >
@@ -230,7 +239,7 @@ export function ProjectsGrid() {
         {/* Row 1 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10 md:gap-y-0 pb-10 md:pb-6">
           {projectsData.slice(0, 2).map((project) => (
-            <ProjectCard key={project.title} project={project} setActiveVideo={setActiveVideo} />
+            <ProjectCard key={project.title} project={project} />
           ))}
         </div>
 
@@ -246,7 +255,7 @@ export function ProjectsGrid() {
         {/* Row 2 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10 md:gap-y-0 pt-0 md:pt-6">
           {projectsData.slice(2, 4).map((project) => (
-            <ProjectCard key={project.title} project={project} setActiveVideo={setActiveVideo} />
+            <ProjectCard key={project.title} project={project} />
           ))}
         </div>
       </div>

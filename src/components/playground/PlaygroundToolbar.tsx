@@ -13,13 +13,13 @@ import {
   RotateCcw,
 } from "lucide-react";
 
-interface PlaygroundToolbarProps {
+type PlaygroundToolbarProps = Readonly<{
   activeTool: "select" | "pen" | "arrow" | "highlighter" | "sticky";
   onSelectTool: (tool: "select" | "pen" | "arrow" | "highlighter" | "sticky") => void;
   onClearAnnotations: () => void;
   onResetCanvas: () => void;
   onExportSnapshot: () => void;
-}
+}>;
 
 export function PlaygroundToolbar({
   activeTool,

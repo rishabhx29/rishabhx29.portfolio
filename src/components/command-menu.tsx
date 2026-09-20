@@ -29,6 +29,27 @@ import {
     CommandShortcut,
 } from "@/components/ui/command"
 
+const ITEM_CLASS = "rounded-lg py-3 cursor-pointer"
+const SHORTCUT_CLASS = "font-mono text-[10px] bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700"
+
+interface CommandDefinition {
+    id: string
+    label: string
+    /** Shift + this key fires the command globally. */
+    hotkey: string
+    group: CommandGroup
+    icon: React.ComponentType<{ className?: string }>
+    /** Extra classes for the palette item. */
+    itemClassName?: string
+    /** Extra classes for the palette icon. */
+    iconClassName?: string
+    run: () => unknown
+}
+
+type CommandGroup = "Sections" | "General" | "Theme"
+
+const GROUP_ORDER: CommandGroup[] = ["Sections", "General", "Theme"]
+
 export function CommandMenu() {
     const [open, setOpen] = React.useState(false)
     const { setTheme } = useTheme()
@@ -52,6 +73,37 @@ export function CommandMenu() {
         }
     }, [router])
 
+    // The single source of truth: both the palette below and the global
+    // shift+key handler read from this one table. Add a command once.
+    const commands = React.useMemo<CommandDefinition[]>(() => [
+        { id: "experience", label: "Experience", hotkey: "e", group: "Sections", icon: Briefcase, run: () => navigateToSection("experience") },
+        { id: "projects", label: "Projects", hotkey: "p", group: "Sections", icon: Code, run: () => navigateToSection("projects") },
+        { id: "opensource", label: "Open Source", hotkey: "o", group: "Sections", icon: SiGithub, run: () => navigateToSection("opensource") },
+        { id: "skills", label: "Stack", hotkey: "s", group: "Sections", icon: BookOpen, run: () => navigateToSection("skills") },
+        {
+            id: "playground",
+            label: "Blueprint Playground",
+            hotkey: "g",
+            group: "Sections",
+            icon: Boxes,
+            itemClassName: "text-cyan-400 font-medium",
+            iconClassName: "text-cyan-400",
+            run: () => router.push("/playground"),
+        },
+        {
+            id: "copy-link",
+            label: "Copy Link",
+            hotkey: "c",
+            group: "General",
+            icon: Copy,
+            run: () => {
+                navigator.clipboard.writeText(window.location.href)
+            },
+        },
+        { id: "light-mode", label: "Light Mode", hotkey: "t", group: "Theme", icon: Sun, run: () => setTheme("light") },
+        { id: "dark-mode", label: "Dark Mode", hotkey: "d", group: "Theme", icon: Moon, run: () => setTheme("dark") },
+    ], [navigateToSection, router, setTheme])
+
     React.useEffect(() => {
         const down = (e: KeyboardEvent) => {
             if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
@@ -73,50 +125,21 @@ export function CommandMenu() {
             }
 
             if (e.shiftKey) {
-                const key = e.key.toLowerCase()
-
-                // Navigation
-                if (key === 'e') {
+                const command = commands.find((c) => c.hotkey === e.key.toLowerCase())
+                if (command) {
                     e.preventDefault()
-                    navigateToSection("experience")
-                } else if (key === 'p') {
-                    e.preventDefault()
-                    navigateToSection("projects")
-                } else if (key === 'o') {
-                    e.preventDefault()
-                    navigateToSection("opensource")
-                } else if (key === 's') {
-                    e.preventDefault()
-                    navigateToSection("skills")
-                } else if (key === 'g') {
-                    e.preventDefault()
-                    runCommand(() => router.push("/playground"))
-                }
-
-                // General
-                else if (key === 'c') {
-                    e.preventDefault()
-                    runCommand(() => navigator.clipboard.writeText(window.location.href))
-                }
-
-                // Theme
-                else if (key === 't') {
-                    e.preventDefault()
-                    runCommand(() => setTheme("light"))
-                } else if (key === 'd') {
-                    e.preventDefault()
-                    runCommand(() => setTheme("dark"))
+                    runCommand(command.run)
                 }
             }
         }
 
         document.addEventListener("keydown", down)
         return () => document.removeEventListener("keydown", down)
-    }, [open, navigateToSection, router, runCommand, setTheme])
+    }, [open, commands, runCommand])
 
     return (
         <>
-            <button 
+            <button
                 type="button"
                 onClick={() => setOpen(true)}
                 aria-label="Open command palette"
@@ -125,7 +148,7 @@ export function CommandMenu() {
             >
                 {/* Outer border wrapper matching View All style */}
                 <div className="absolute -inset-[4.5px] border border-black/5 dark:border-white/5 rounded-[9px] pointer-events-none transition-colors duration-300 group-hover:border-black/10 dark:group-hover:border-white/10" />
-                
+
                 <div className="relative flex items-center gap-1.5 px-3 py-1 bg-zinc-50 hover:bg-zinc-100 dark:bg-[#171717] dark:hover:bg-[#1e1e1e] text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 rounded-[5px] text-[11px] font-medium transition-all duration-300 border border-black/5 dark:border-white/5 shadow-sm shadow-black/20 dark:shadow-lg dark:shadow-black/80 font-mono">
                     <span className="leading-none mt-[0.5px]">⌘</span>
                     <span className="leading-none mt-[0.5px]">K</span>
@@ -149,61 +172,34 @@ export function CommandMenu() {
                 <CommandList className="p-2">
                     <CommandEmpty>No results found.</CommandEmpty>
 
-                    <CommandGroup heading="Sections">
-                        <CommandItem onSelect={() => navigateToSection("experience")} className="rounded-lg py-3 cursor-pointer">
-                            <Briefcase className="mr-2 h-4 w-4 text-zinc-500" />
-                            <span>Experience</span>
-                            <CommandShortcut className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700">shift + E</CommandShortcut>
-                        </CommandItem>
-                        <CommandItem onSelect={() => navigateToSection("projects")} className="rounded-lg py-3 cursor-pointer">
-                            <Code className="mr-2 h-4 w-4 text-zinc-500" />
-                            <span>Projects</span>
-                            <CommandShortcut className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700">shift + P</CommandShortcut>
-                        </CommandItem>
+                    {GROUP_ORDER.map((group, groupIndex) => {
+                        const groupCommands = commands.filter((c) => c.group === group)
+                        if (groupCommands.length === 0) return null
 
-                        <CommandItem onSelect={() => navigateToSection("opensource")} className="rounded-lg py-3 cursor-pointer">
-                            <SiGithub className="mr-2 h-4 w-4 text-zinc-500" />
-                            <span>Open Source</span>
-                            <CommandShortcut className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700">shift + O</CommandShortcut>
-                        </CommandItem>
-                        <CommandItem onSelect={() => navigateToSection("skills")} className="rounded-lg py-3 cursor-pointer">
-                            <BookOpen className="mr-2 h-4 w-4 text-zinc-500" />
-                            <span>Stack</span>
-                            <CommandShortcut className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700">shift + S</CommandShortcut>
-                        </CommandItem>
-                        <CommandItem onSelect={() => runCommand(() => router.push("/playground"))} className="rounded-lg py-3 cursor-pointer text-cyan-400 font-medium">
-                            <Boxes className="mr-2 h-4 w-4 text-cyan-400" />
-                            <span>Blueprint Playground</span>
-                            <CommandShortcut className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700">shift + G</CommandShortcut>
-                        </CommandItem>
-                    </CommandGroup>
-
-                    <CommandSeparator className="my-2" />
-
-                    <CommandGroup heading="General">
-                        <CommandItem onSelect={() => runCommand(() => {
-                            navigator.clipboard.writeText(window.location.href)
-                        })} className="rounded-lg py-3 cursor-pointer">
-                            <Copy className="mr-2 h-4 w-4 text-zinc-500" />
-                            <span>Copy Link</span>
-                            <CommandShortcut className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700">shift + C</CommandShortcut>
-                        </CommandItem>
-                    </CommandGroup>
-
-                    <CommandSeparator className="my-2" />
-
-                    <CommandGroup heading="Theme">
-                        <CommandItem onSelect={() => runCommand(() => setTheme("light"))} className="rounded-lg py-3 cursor-pointer">
-                            <Sun className="mr-2 h-4 w-4 text-zinc-500" />
-                            <span>Light Mode</span>
-                            <CommandShortcut className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700">shift + T</CommandShortcut>
-                        </CommandItem>
-                        <CommandItem onSelect={() => runCommand(() => setTheme("dark"))} className="rounded-lg py-3 cursor-pointer">
-                            <Moon className="mr-2 h-4 w-4 text-zinc-500" />
-                            <span>Dark Mode</span>
-                            <CommandShortcut className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700">shift + D</CommandShortcut>
-                        </CommandItem>
-                    </CommandGroup>
+                        return (
+                            <React.Fragment key={group}>
+                                {groupIndex > 0 && <CommandSeparator className="my-2" />}
+                                <CommandGroup heading={group}>
+                                    {groupCommands.map((command) => {
+                                        const Icon = command.icon
+                                        return (
+                                            <CommandItem
+                                                key={command.id}
+                                                onSelect={() => runCommand(command.run)}
+                                                className={`${ITEM_CLASS} ${command.itemClassName || ""}`}
+                                            >
+                                                <Icon className={`mr-2 h-4 w-4 ${command.iconClassName || "text-zinc-500"}`} />
+                                                <span>{command.label}</span>
+                                                <CommandShortcut className={SHORTCUT_CLASS}>
+                                                    shift + {command.hotkey.toUpperCase()}
+                                                </CommandShortcut>
+                                            </CommandItem>
+                                        )
+                                    })}
+                                </CommandGroup>
+                            </React.Fragment>
+                        )
+                    })}
                 </CommandList>
 
                 {/* Footer */}

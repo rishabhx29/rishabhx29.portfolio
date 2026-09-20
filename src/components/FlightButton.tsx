@@ -4,13 +4,31 @@ import React, { useRef, useState } from 'react';
 import gsap from 'gsap';
 import styles from './flight-button.module.css';
 
-interface FlightButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children?: React.ReactNode;
-}
+type FlightButtonProps = Readonly<
+  React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    children?: React.ReactNode;
+  }
+>;
 
 export function FlightButton({ className, onClick, ...props }: FlightButtonProps) {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [isActive, setIsActive] = useState(false);
+
+  const resetButtonAppearance = (button: HTMLButtonElement, onDone: () => void) => {
+    button.removeAttribute('style');
+    gsap.fromTo(button, {
+      opacity: 0,
+      y: -8
+    }, {
+      opacity: 1,
+      y: 0,
+      clearProps: true,
+      duration: .3,
+      onComplete() {
+        onDone();
+      }
+    });
+  };
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (isActive || props.disabled) return;
@@ -85,19 +103,7 @@ export function FlightButton({ className, onClick, ...props }: FlightButtonProps
           duration: .375,
           onComplete() {
             setTimeout(() => {
-              button.removeAttribute('style');
-              gsap.fromTo(button, {
-                opacity: 0,
-                y: -8
-              }, {
-                opacity: 1,
-                y: 0,
-                clearProps: true,
-                duration: .3,
-                onComplete() {
-                  setIsActive(false);
-                }
-              })
+              resetButtonAppearance(button, () => setIsActive(false));
             }, 1800)
           }
         }]

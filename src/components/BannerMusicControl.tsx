@@ -33,10 +33,13 @@ export function BannerMusicControl() {
     }
   };
 
-  const actionLabel = isPlaying ? "Pause" : hasError ? "Retry" : "Play";
+  const actionLabel = hasError ? "Retry" : isPlaying ? "Pause" : "Play";
+  const statusLabel = isLoading ? "LOADING" : hasError ? "RETRY" : isPlaying ? "PLAYING" : "PLAY";
 
   return (
     <>
+      {/* Music-only ambient track: no captions exist; muted-by-default UI so track exemption applies. */}
+      {/* decorative background music, not informational content */}
       <audio
         ref={audioRef}
         src={flyingTrack}
@@ -86,7 +89,7 @@ export function BannerMusicControl() {
         </span>
 
         <span className="flex min-w-0 items-center pr-0.5 font-mono text-[11px] font-semibold tracking-[0.12em] text-zinc-600 transition-colors group-hover:text-zinc-950 dark:text-zinc-400 dark:group-hover:text-zinc-50">
-          {isLoading ? "LOADING" : hasError ? "RETRY" : isPlaying ? "PLAYING" : "PLAY"}
+          {statusLabel}
         </span>
       </button>
     </>

@@ -14,7 +14,7 @@ const OnekoPet = dynamic(
   { ssr: false }
 );
 
-export function PageTransition({ children }: { children: React.ReactNode }) {
+export function PageTransition({ children }: Readonly<{ children: React.ReactNode }>) {
   const pathname = usePathname();
   const [canLoadExtras, setCanLoadExtras] = useState(false);
 
@@ -25,16 +25,15 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    type RequestIdleCallbackHandle = number;
     type RequestIdleCallbackOptions = { timeout: number };
     type RequestIdleCallbackFn = (
       callback: () => void,
       options?: RequestIdleCallbackOptions
-    ) => RequestIdleCallbackHandle;
+    ) => number;
 
     const win = window as unknown as {
       requestIdleCallback?: RequestIdleCallbackFn;
-      cancelIdleCallback?: (handle: RequestIdleCallbackHandle) => void;
+      cancelIdleCallback?: (handle: number) => void;
     };
 
     if (typeof win.requestIdleCallback === "function") {
@@ -52,12 +51,9 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      {canLoadExtras && (
-        <>
-          <KonamiEasterEgg />
-          <OnekoPet />
-        </>
-      )}
+      {canLoadExtras && <KonamiEasterEgg />}
+      {/* Pet dog (Oneko) only on the home page */}
+      {canLoadExtras && pathname === "/" && <OnekoPet />}
       <div key={pathname} className="page-transition flex min-h-screen w-full flex-col relative">
         {children}
       </div>

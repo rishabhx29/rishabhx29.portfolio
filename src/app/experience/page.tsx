@@ -4,6 +4,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { CommandMenu } from "@/components/command-menu";
 import { CurrentTime } from "@/components/CurrentTime";
 import { FooterBackground } from "@/components/FooterBackground";
+import { DescriptionPointList } from "@/components/rich-description";
 import Link from "next/link";
 import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
@@ -12,7 +13,7 @@ import Image from "next/image";
 import { experiences } from "@/data/experienceData";
 
 export default function AllExperiencePage() {
-  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const [openItem, setOpenItem] = useState<string | null>(null);
 
   return (
     <div className="min-h-screen w-full bg-[#fbfaf9] dark:bg-[#100f0f] relative overflow-x-hidden transition-colors duration-300">
@@ -30,8 +31,8 @@ export default function AllExperiencePage() {
         { top: '22vh', right: '30%' },
         { top: 'calc(22vh + 112px)', left: '30%' },
         { top: 'calc(22vh + 112px)', right: '30%' },
-      ].map((pos, i) => (
-        <div key={i} className="absolute w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] pointer-events-none z-10 hidden md:block"
+      ].map((pos) => (
+        <div key={`${pos.top}-${pos.left ?? pos.right}`} className="absolute w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] pointer-events-none z-10 hidden md:block"
           aria-hidden="true"
           style={{
             top: pos.top,
@@ -89,11 +90,11 @@ export default function AllExperiencePage() {
           {/* Experience Items */}
           <div className="flex flex-col relative z-10 w-full">
             {experiences.map((item, idx) => {
-              const isOpen = openIdx === idx;
+              const isOpen = openItem === item.title;
               const isLast = idx === experiences.length - 1;
 
               return (
-                <div key={idx} className="group relative">
+                <div key={item.title} className="group relative">
                   {/* Dashed bottom border for all items */}
                   <div
                     className={`absolute bottom-0 ${isLast ? 'left-[-100vw] right-[-100vw]' : 'left-[-16px] right-[-16px]'} h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none z-10`}
@@ -115,7 +116,7 @@ export default function AllExperiencePage() {
 
                   <div
                     className="flex flex-col items-start gap-2.5 py-3.5 px-4 -mx-4 hover:bg-zinc-50 dark:hover:bg-zinc-900/20 transition-colors cursor-pointer relative z-20 rounded-lg sm:gap-3 sm:py-4 2xl:flex-row 2xl:items-center 2xl:justify-between focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
-                    onClick={() => setOpenIdx(isOpen ? null : idx)}
+                    onClick={() => setOpenItem(isOpen ? null : item.title)}
                     role="button"
                     tabIndex={0}
                     aria-expanded={isOpen}
@@ -123,7 +124,7 @@ export default function AllExperiencePage() {
                     onKeyDown={(e) => {
                       if (e.key === "Enter" || e.key === " ") {
                         e.preventDefault();
-                        setOpenIdx(isOpen ? null : idx);
+                        setOpenItem(isOpen ? null : item.title);
                       }
                     }}
                   >
@@ -315,50 +316,7 @@ export default function AllExperiencePage() {
                           </div>
                         )}
 
-                        <ul className="mb-4 space-y-2 text-[13px] leading-relaxed">
-                          {item.description
-                            .split("\n")
-                            .filter((line) => line.trim() !== "")
-                            .map((point, i) => {
-                              const [label, ...detail] = point.trim().split(":");
-
-                              return (
-                                <li key={i} className="flex items-start gap-1.5">
-                                  <span className="text-zinc-400 dark:text-zinc-500 mt-[2px] text-[14px] leading-none">•</span>
-                                  <span>
-                                    {detail.length > 0 ? (
-                                      <>
-                                        <strong className="font-semibold text-zinc-800 dark:text-zinc-200">
-                                          {label}:
-                                        </strong>
-                                        {detail
-                                          .join(":")
-                                          .split(
-                                            /(kgateway|FOSSology|FOSSASIA Eventyay|Extralit|React JSON Schema Form)/,
-                                          )
-                                          .map((part, partIndex) =>
-                                            /^(kgateway|FOSSology|FOSSASIA Eventyay|Extralit|React JSON Schema Form)$/.test(
-                                              part,
-                                            ) ? (
-                                              <strong
-                                                key={partIndex}
-                                                className="font-semibold text-zinc-800 dark:text-zinc-200"
-                                              >
-                                                {part}
-                                              </strong>
-                                            ) : (
-                                              part
-                                            ),
-                                          )}
-                                      </>
-                                    ) : (
-                                      point.trim()
-                                    )}
-                                  </span>
-                                </li>
-                              );
-                            })}
-                        </ul>
+                        <DescriptionPointList description={item.description} />
 
                         {item.tech && (
                           <div className="flex flex-wrap gap-2 mt-4">

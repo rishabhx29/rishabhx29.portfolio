@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ProjectsLayout({ children }: { children: React.ReactNode }) {
+export default function ProjectsLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const projectsJsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",

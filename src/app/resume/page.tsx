@@ -100,9 +100,9 @@ export default function ResumePage() {
         { top: "22vh", right: "30%" },
         { top: "calc(22vh + 112px)", left: "30%" },
         { top: "calc(22vh + 112px)", right: "30%" },
-      ].map((position, index) => (
+      ].map((position) => (
         <div
-          key={index}
+          key={`${position.top}-${position.left ?? position.right}`}
           className="pointer-events-none absolute z-10 hidden h-[2px] w-[2px] bg-black/50 dark:bg-white/[0.25] md:block"
           aria-hidden="true"
           style={{
