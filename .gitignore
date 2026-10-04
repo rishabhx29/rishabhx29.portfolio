@@ -46,3 +46,6 @@ AGENTS.md
 .agents/
 .claude/
 .gemini/
+
+# playwright-cli scratch output
+.playwright-cli/

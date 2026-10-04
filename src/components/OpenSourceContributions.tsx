@@ -107,7 +107,7 @@ export function OpenSourceContributions({ isFullPage = false }: Readonly<{ isFul
                 onClick={() => handleFilterChange(type)}
                 aria-pressed={filterType === type}
                 aria-label={`Filter by ${type} contributions`}
-                className={`z-10 relative px-3 py-1.5 text-[12px] font-medium text-center transition-colors duration-200 capitalize ${filterType === type
+                className={`z-10 relative px-3 py-1.5 min-h-11 sm:min-h-0 text-[12px] font-medium text-center transition-colors duration-200 capitalize ${filterType === type
                   ? "text-zinc-900 dark:text-zinc-100"
                   : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200"
                   }`}
@@ -187,7 +187,7 @@ export function OpenSourceContributions({ isFullPage = false }: Readonly<{ isFul
                           ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]"
                           : "bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.4)]"
                         }`}></div>
-                      <h3 className="text-[14px] font-medium text-zinc-800 dark:text-zinc-200 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors truncate">
+                      <h3 className="text-[14px] font-medium text-zinc-800 dark:text-zinc-200 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors line-clamp-2 sm:truncate">
                         {pr.title}
                       </h3>
                     </div>
@@ -202,7 +202,7 @@ export function OpenSourceContributions({ isFullPage = false }: Readonly<{ isFul
                 <div className="flex justify-center mt-4 relative z-20">
                   <Link href="/pull-requests" aria-label="View all open source pull requests" className="relative group block">
                     <div className="absolute -inset-[5px] border border-black/5 dark:border-white/5 rounded-[11px] pointer-events-none transition-colors duration-300 group-hover:border-black/10 dark:group-hover:border-white/10" />
-                    <div className="relative flex items-center gap-1.5 px-4 py-2 bg-zinc-50 hover:bg-zinc-100 dark:bg-[#171717] dark:hover:bg-[#1e1e1e] text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 rounded-[6px] text-[13px] font-medium transition-all duration-300 border border-black/5 dark:border-white/5 shadow-sm shadow-black/20 dark:shadow-lg dark:shadow-black/80">
+                    <div className="relative flex items-center gap-1.5 px-4 py-2 min-h-11 sm:min-h-0 bg-zinc-50 hover:bg-zinc-100 dark:bg-[#171717] dark:hover:bg-[#1e1e1e] text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 rounded-[6px] text-[13px] font-medium transition-all duration-300 border border-black/5 dark:border-white/5 shadow-sm shadow-black/20 dark:shadow-lg dark:shadow-black/80">
                       View All ({currentPrs.length - initialCount} more)
                       <svg viewBox="0 0 24 24" aria-hidden="true" className="w-3.5 h-3.5 text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-zinc-300 transition-transform duration-300 -rotate-90" fill="none" stroke="currentColor" strokeWidth="2.5">
                         <line x1="12" y1="5" x2="12" y2="19"></line>

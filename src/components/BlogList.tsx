@@ -83,7 +83,7 @@ export function BlogList() {
                     {blog.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-0.5 rounded-[4px] border border-black/30 dark:border-white/[0.15] text-[11px] text-zinc-600 dark:text-zinc-400 bg-white/50 dark:bg-black/20"
+                        className="px-2 py-0.5 rounded-[4px] border border-black/30 dark:border-white/[0.15] text-[12px] sm:text-[11px] text-zinc-600 dark:text-zinc-400 bg-white/50 dark:bg-black/20"
                       >
                         {tag}
                       </span>

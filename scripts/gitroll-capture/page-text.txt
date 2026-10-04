@@ -1,0 +1,151 @@
+Share
+
+Code quality
+
+Passed
+Repository name
+rishabhx29.portfolio
+Information
+
+10.8k lines
+·
+1 star
+·
+Updated
+September 2026
+
+Languages
+
+TypeScript, CSS, JavaScript
+
+Skills
+
+CSS Styling, UI Development, React, Animation, GSAP, Next.js, Three
+
+Measures
+Reliability
+
+63 Bugs
+
+C
+Security
+0 Vulnerabilities
+A
+Maintainability
+
+113 Code smells
+
+A
+Type
+Severity
+Tag
+Issue
+	
+Type
+	
+Severity
+
+
+performance
+react
+jsx
+Do not use Array index in keys
+	
+Smell
+	
+Medium
+
+
+type-dependent
+react
+Mark the props of the component as read-only.
+	
+Smell
+	
+Low
+
+
+type-dependent
+react
+Mark the props of the component as read-only.
+	
+Smell
+	
+Low
+
+
+type-dependent
+react
+Mark the props of the component as read-only.
+	
+Smell
+	
+Low
+
+
+type-dependent
+react
+Mark the props of the component as read-only.
+	
+Smell
+	
+Low
+
+
+performance
+react
+jsx
+Do not use Array index in keys
+	
+Smell
+	
+Medium
+
+
+type-dependent
+react
+Mark the props of the component as read-only.
+	
+Smell
+	
+Low
+
+
+performance
+react
+jsx
+Do not use Array index in keys
+	
+Smell
+	
+Medium
+
+
+brain-overload
+architecture
+Refactor this function to reduce its Cognitive Complexity from 19 to the 15 allowed.
+	
+Smell
+	
+High
+
+
+performance
+react
+jsx
+Do not use Array index in keys
+	
+Smell
+	
+Medium
+
+Rows per page
+
+10
+Page 1 of 18
+Go to first page
+Go to previous page
+Go to next page
+Go to last page
+
+Please select an issue from the table to view its details.

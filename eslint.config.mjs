@@ -25,6 +25,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Development-only third-party skill packs / tooling, not production code.
+    ".agents/**",
+    "scripts/**",
   ]),
 ]);
 

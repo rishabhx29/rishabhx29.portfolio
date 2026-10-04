@@ -1,7 +1,7 @@
 "use client";
 
 import { ThemeToggle } from "@/components/theme-toggle";
-import { CommandMenu } from "@/components/command-menu";
+import { BannerMusicControl } from "@/components/BannerMusicControl";
 import { CurrentTime } from "@/components/CurrentTime";
 import { FooterBackground } from "@/components/FooterBackground";
 import { OpenSourceContributions } from "@/components/OpenSourceContributions";
@@ -17,17 +17,17 @@ export default function PullRequestsPage() {
       <div className="absolute top-0 bottom-0 right-[30%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
 
       {/* Horizontal Lines - Ultra-fine Micro Dots */}
-      <div className="absolute left-0 right-0 top-[22vh] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-      <div className="absolute left-0 right-0 top-[calc(22vh+112px)] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+      <div className="absolute left-0 right-0 top-[var(--banner-h)] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+      <div className="absolute left-0 right-0 top-[var(--content-offset)] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
 
       {/* Ultra-Tiny Solid Nodes */}
       {[
-        { top: '22vh', left: '30%' },
-        { top: '22vh', right: '30%' },
-        { top: 'calc(22vh + 112px)', left: '30%' },
-        { top: 'calc(22vh + 112px)', right: '30%' },
+        { top: 'var(--banner-h)', left: '30%' },
+        { top: 'var(--banner-h)', right: '30%' },
+        { top: 'var(--content-offset)', left: '30%' },
+        { top: 'var(--content-offset)', right: '30%' },
       ].map((pos) => (
-        <div key={`${pos.top}-${pos.left ?? pos.right}`} className="absolute w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] pointer-events-none z-10 hidden md:block"
+        <div key={`${pos.top}-${pos.left ? "left" : "right"}`} className="absolute w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] pointer-events-none z-10 hidden md:block"
           aria-hidden="true"
           style={{
             top: pos.top,
@@ -38,7 +38,7 @@ export default function PullRequestsPage() {
       ))}
 
       {/* Cell 1: Dot Matrix Background */}
-      <div className="absolute left-0 right-0 md:left-[30%] md:right-[30%] top-0 h-[22vh] -z-0 pointer-events-auto">
+      <div className="absolute left-0 right-0 md:left-[30%] md:right-[30%] top-0 h-[var(--banner-h)] -z-0 pointer-events-auto">
         <FooterBackground />
         <div className="absolute bottom-3 right-2 z-10 pointer-events-auto">
           <CurrentTime />
@@ -46,7 +46,7 @@ export default function PullRequestsPage() {
       </div>
 
       {/* Cell 2: Header with Back Button + Title + Controls */}
-      <div className="absolute left-0 right-0 md:left-[30%] md:right-[30%] top-[22vh] h-[112px] flex items-center px-4 z-50">
+      <div className="absolute left-0 right-0 md:left-[30%] md:right-[30%] top-[var(--banner-h)] h-[var(--profile-h)] flex items-center px-4 z-50">
         <div className="flex w-full items-center justify-between">
           {/* Left: Back + Title */}
           <div className="flex items-center gap-5">
@@ -68,19 +68,20 @@ export default function PullRequestsPage() {
           </div>
 
           {/* Right: Controls */}
-          <div className="flex items-start justify-end gap-2 sm:gap-3 h-20 sm:h-24 py-1">
-            <CommandMenu />
+          <div className="flex items-start justify-end gap-2 sm:gap-3 h-20 sm:h-24 py-1 max-md:hidden">
+            <BannerMusicControl />
             <ThemeToggle className="dark:text-zinc-400 hover:dark:text-zinc-300" />
           </div>
         </div>
       </div>
 
       {/* Content Section */}
-      <motion.div 
+      <motion.main
+        id="main-content"
         initial={{ opacity: 0, filter: "blur(8px)", y: 12 }}
         animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
-        className="ml-0 mr-0 md:ml-[30%] md:mr-[30%] pt-[calc(22vh+112px)] pb-16 px-4 flex flex-col z-10 relative"
+        className="ml-0 mr-0 md:ml-[30%] md:mr-[30%] pt-[var(--content-offset)] pb-16 px-4 flex flex-col z-10 relative"
       >
         <div className="mt-4">
           <OpenSourceContributions isFullPage />
@@ -92,7 +93,7 @@ export default function PullRequestsPage() {
           <div className="absolute -left-4 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" aria-hidden="true" />
           <div className="absolute -right-4 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" aria-hidden="true" />
         </div>
-      </motion.div>
+      </motion.main>
     </div>
   );
 }

@@ -8,7 +8,7 @@ import { Fragment } from "react";
  *
  * Render inside the page's root positioning context (a `relative` container).
  */
-export function BlueprintGrid({ horizontals }: { horizontals: string[] }) {
+export function BlueprintGrid({ horizontals }: { readonly horizontals: readonly string[] }) {
   const verticalMask = {
     maskImage:
       "repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)",
@@ -41,7 +41,7 @@ export function BlueprintGrid({ horizontals }: { horizontals: string[] }) {
       {horizontals.map((top) => (
         <Fragment key={top}>
           <div
-            className="absolute left-0 right-0 h-0 border-b border-black/25 dark:border-white/[0.10] pointer-events-none"
+            className="absolute left-0 right-0 h-0 border-b border-black/25 dark:border-white/[0.10] pointer-events-none hidden md:block"
             aria-hidden="true"
             style={{ top, ...horizontalMask }}
           />

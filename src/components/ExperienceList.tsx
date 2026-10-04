@@ -140,7 +140,7 @@ export function ExperienceList() {
                       )}
                     </span>
                     {item.type && (
-                      <span className="self-center px-1.5 py-[1px] rounded-[4px] text-[11px] font-medium text-zinc-600 dark:text-zinc-400 bg-zinc-200/50 dark:bg-zinc-800/50 border border-zinc-300/50 dark:border-zinc-700/50 whitespace-nowrap">
+                      <span className="self-center px-1.5 py-[1px] rounded-[4px] text-[12px] sm:text-[11px] font-medium text-zinc-600 dark:text-zinc-400 bg-zinc-200/50 dark:bg-zinc-800/50 border border-zinc-300/50 dark:border-zinc-700/50 whitespace-nowrap">
                         {item.type}
                       </span>
                     )}
@@ -257,7 +257,7 @@ export function ExperienceList() {
                       {item.tech.map((tech) => (
                         <span
                           key={tech}
-                          className="px-2 py-0.5 rounded-[4px] border border-zinc-200/50 dark:border-zinc-800/50 bg-zinc-50 dark:bg-[#111111] text-[11px] font-medium text-zinc-500 dark:text-zinc-400"
+                          className="px-2 py-0.5 rounded-[4px] border border-zinc-200/50 dark:border-zinc-800/50 bg-zinc-50 dark:bg-[#111111] text-[12px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400"
                         >
                           {tech}
                         </span>

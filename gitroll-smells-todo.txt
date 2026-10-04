@@ -1,0 +1,109 @@
+src/app/blogs/[slug]/page.tsx:108 | Do not use Array index in keys
+src/app/blogs/[slug]/page.tsx:122 | Mark the props of the component as read-only.
+src/app/blogs/[slug]/page.tsx:135 | Mark the props of the component as read-only.
+src/app/blogs/[slug]/page.tsx:225 | Mark the props of the component as read-only.
+src/app/contact/layout.tsx:17 | Mark the props of the component as read-only.
+src/app/contact/page.tsx:139 | Do not use Array index in keys
+src/app/experience/layout.tsx:17 | Mark the props of the component as read-only.
+src/app/experience/page.tsx:34 | Do not use Array index in keys
+src/app/experience/page.tsx:91 | Refactor this function to reduce its Cognitive Complexity from 19 to the 15 allowed.
+src/app/experience/page.tsx:96 | Do not use Array index in keys
+src/app/experience/page.tsx:116 | Use <input type="button">, <input type="image">, <input type="reset">, <input type="submit">, or <button> inst
+src/app/experience/page.tsx:326 | Do not use Array index in keys
+src/app/experience/page.tsx:344 | Do not use Array index in keys
+src/app/page.tsx:36 | Do not use Array index in keys
+src/app/page.tsx:103 | Ambiguous spacing before next element span
+src/app/page.tsx:172 | Do not use Array index in keys
+src/app/projects/[slug]/page.tsx:61 | Mark the props of the component as read-only.
+src/app/projects/[slug]/page.tsx:137 | Do not use Array index in keys
+src/app/projects/[slug]/page.tsx:190 | Extract this nested ternary operation into an independent statement.
+src/app/projects/[slug]/page.tsx:191 | <iframe> elements must have a unique title property.
+src/app/projects/[slug]/page.tsx:287 | This assertion is unnecessary since it does not change the type of the expression.
+src/app/projects/[slug]/page.tsx:288 | This assertion is unnecessary since it does not change the type of the expression.
+src/app/projects/[slug]/page.tsx:291 | Do not use Array index in keys
+src/app/projects/layout.tsx:18 | Mark the props of the component as read-only.
+src/app/projects/page.tsx:43 | Do not use Array index in keys
+src/app/projects/page.tsx:106 | Do not use Array index in keys
+src/app/projects/page.tsx:107 | Extract this nested ternary operation into an independent statement.
+src/app/projects/page.tsx:175 | Media elements such as <audio> and <video> must have a <track> for captions.
+src/app/pull-requests/layout.tsx:17 | Mark the props of the component as read-only.
+src/app/pull-requests/page.tsx:30 | Do not use Array index in keys
+src/app/resume/page.tsx:105 | Do not use Array index in keys
+src/components/BannerMusicControl.tsx:36 | Extract this nested ternary operation into an independent statement.
+src/components/BannerMusicControl.tsx:40 | Media elements such as <audio> and <video> must have a <track> for captions.
+src/components/BannerMusicControl.tsx:89 | Extract this nested ternary operation into an independent statement.
+src/components/BannerMusicControl.tsx:89 | Extract this nested ternary operation into an independent statement.
+src/components/BannerParticles.tsx:276 | aria-hidden="true" must not be set on focusable elements.
+src/components/BlogLikeButton.tsx:11 | Mark the props of the component as read-only.
+src/components/BlogList.tsx:85 | Do not use Array index in keys
+src/components/DisplacementText.tsx:258 | 'addListener' is deprecated.
+src/components/DisplacementText.tsx:259 | The signature '(callback: ((this: MediaQueryList, ev: MediaQueryListEvent) => any) | null): void' of 'mediaQue
+src/components/DisplacementText.tsx:260 | The signature '(callback: ((this: MediaQueryList, ev: MediaQueryListEvent) => any) | null): void' of 'mediaQue
+src/components/ExperienceList.tsx:13 | Refactor this function to reduce its Cognitive Complexity from 18 to the 15 allowed.
+src/components/ExperienceList.tsx:18 | Do not use Array index in keys
+src/components/ExperienceList.tsx:49 | Use <input type="button">, <input type="image">, <input type="reset">, <input type="submit">, or <button> inst
+src/components/ExperienceList.tsx:260 | Do not use Array index in keys
+src/components/ExperienceList.tsx:278 | Do not use Array index in keys
+src/components/FlightButton.tsx:11 | Mark the props of the component as read-only.
+src/components/FlightButton.tsx:97 | Refactor this code to not nest functions more than 4 levels deep.
+src/components/GithubGraph.tsx:244 | Use <img alt=...>, or <img alt=...> instead of the "img" role to ensure accessibility across all devices.
+src/components/GithubGraph.tsx:247 | Do not use Array index in keys
+src/components/GithubGraph.tsx:250 | Do not use Array index in keys
+src/components/GithubGraph.tsx:257 | Do not use Array index in keys
+src/components/GithubGraph.tsx:260 | Do not use Array index in keys
+src/components/GithubGraph.tsx:282 | Do not use Array index in keys
+src/components/GithubGraph.tsx:295 | Do not use Array index in keys
+src/components/OnekoPet.tsx:91 | useState call is not destructured into value + setter pair
+src/components/OnekoPet.tsx:170 | Refactor this function to reduce its Cognitive Complexity from 23 to the 15 allowed.
+src/components/OnekoPet.tsx:314 | Refactor this code to not nest functions more than 4 levels deep.
+src/components/OpenSourceContributions.tsx:64 | Mark the props of the component as read-only.
+src/components/OpenSourceContributions.tsx:78 | Refactor this function to reduce its Cognitive Complexity from 18 to the 15 allowed.
+src/components/OpenSourceContributions.tsx:160 | Refactor this code to not nest functions more than 4 levels deep.
+src/components/OpenSourceContributions.tsx:183 | Extract this nested ternary operation into an independent statement.
+src/components/OpenSourceContributions.tsx:226 | Do not use Array index in keys
+src/components/OpenSourceContributions.tsx:246 | Extract this nested ternary operation into an independent statement.
+src/components/OpenSourceContributions.tsx:271 | Extract this nested ternary operation into an independent statement.
+src/components/ProjectsGrid.tsx:41 | Remove this useless assignment to variable "router".
+src/components/ProjectsGrid.tsx:48 | Extract this nested ternary operation into an independent statement.
+src/components/ProjectsGrid.tsx:49 | Extract this nested ternary operation into an independent statement.
+src/components/ProjectsGrid.tsx:157 | Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and suppo
+src/components/ProjectsGrid.tsx:192 | Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and suppo
+src/components/ProjectsGrid.tsx:288 | Media elements such as <audio> and <video> must have a <track> for captions.
+src/components/konami-easter-egg.tsx:169 | Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and suppo
+src/components/page-transition.tsx:17 | Mark the props of the component as read-only.
+src/components/page-transition.tsx:28 | Remove this redundant type alias and replace its occurrences with "number".
+src/components/pixel-perfect/social-hover-card.tsx:85 | Mark the props of the component as read-only.
+src/components/pixel-perfect/social-hover-card.tsx:211 | Do not use Array index in keys
+src/components/pixel-perfect/social-hover-card.tsx:321 | Do not use Array index in keys
+src/components/playground/DrawingOverlay.tsx:21 | Mark the props of the component as read-only.
+src/components/playground/DrawingOverlay.tsx:68 | Extract this nested ternary operation into an independent statement.
+src/components/playground/DrawingOverlay.tsx:72 | Extract this nested ternary operation into an independent statement.
+src/components/playground/DrawingOverlay.tsx:77 | This assertion is unnecessary since it does not change the type of the expression.
+src/components/playground/DrawingOverlay.tsx:110 | Refactor this function to reduce its Cognitive Complexity from 19 to the 15 allowed.
+src/components/playground/DrawingOverlay.tsx:154 | Extract this nested ternary operation into an independent statement.
+src/components/playground/DrawingOverlay.tsx:157 | Extract this nested ternary operation into an independent statement.
+src/components/playground/DrawingOverlay.tsx:193 | Extract this nested ternary operation into an independent statement.
+src/components/playground/DrawingOverlay.tsx:195 | Extract this nested ternary operation into an independent statement.
+src/components/playground/PlaygroundCanvas.tsx:46 | Extract this nested ternary operation into an independent statement.
+src/components/playground/PlaygroundCanvas.tsx:46 | Extract this nested ternary operation into an independent statement.
+src/components/playground/PlaygroundCanvas.tsx:46 | Extract this nested ternary operation into an independent statement.
+src/components/playground/PlaygroundCanvas.tsx:156 | Extract this nested ternary operation into an independent statement.
+src/components/playground/PlaygroundCanvas.tsx:285 | This assertion is unnecessary since it does not change the type of the expression.
+src/components/playground/PlaygroundCanvas.tsx:294 | This assertion is unnecessary since the receiver accepts the original type of the expression.
+src/components/playground/PlaygroundCanvas.tsx:386 | Mark the props of the component as read-only.
+src/components/playground/PlaygroundCanvas.tsx:390 | Mark the props of the component as read-only.
+src/components/playground/PlaygroundCanvas.tsx:392 | Extract this nested ternary operation into an independent statement.
+src/components/playground/PlaygroundCanvas.tsx:393 | Use <details>, <fieldset>, <optgroup>, or <address> instead of the "group" role to ensure accessibility across
+src/components/playground/PlaygroundCanvas.tsx:393 | Non-interactive elements should not be assigned mouse or keyboard event listeners.
+src/components/playground/PlaygroundCanvas.tsx:393 | `tabIndex` should only be declared on interactive elements.
+src/components/playground/PlaygroundCanvas.tsx:403 | Mark the props of the component as read-only.
+src/components/playground/PlaygroundDock.tsx:13 | Mark the props of the component as read-only.
+src/components/playground/PlaygroundItem.tsx:17 | Mark the props of the component as read-only.
+src/components/playground/PlaygroundToolbar.tsx:24 | Mark the props of the component as read-only.
+src/components/playground/StickyNote.tsx:16 | Mark the props of the component as read-only.
+src/components/playground/StickyNote.tsx:123 | Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and suppo
+src/components/theme-toggle.tsx:35 | Mark the props of the component as read-only.
+src/components/ui/interactive-particles.tsx:244 | Mark the props of the component as read-only.
+src/components/ui/interactive-particles.tsx:270 | Prefer using an optional chain expression instead, as it's more concise and easier to read.
+src/components/ui/interactive-particles.tsx:445 | Refactor this code to not nest functions more than 4 levels deep.
+src/components/ui/interactive-particles.tsx:521 | aria-hidden="true" must not be set on focusable elements.

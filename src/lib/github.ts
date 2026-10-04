@@ -7,8 +7,17 @@
  * offline state"; callers never inspect HTTP details.
  *
  * The `/api/github` route stays a thin token adapter: it injects the server-side
- * GITHUB_TOKEN and folds all its own failures into `{ data: null, fallback: true }`.
+ * GITHUB_TOKEN, executes only the queries allowlisted in `./github-queries`, and
+ * folds its own failures into `{ data: null, fallback: true }`.
  */
+
+import {
+  CONTRIBUTION_CALENDAR_QUERY,
+  PULL_REQUEST_SEARCH_QUERIES,
+  type PRFilterType,
+} from "./github-queries";
+
+export type { PRFilterType };
 
 export interface ContributionCalendar {
   totalContributions: number;
@@ -34,8 +43,6 @@ export interface PullRequest {
   closedAt?: string;
 }
 
-export type PRFilterType = "merged" | "open" | "closed";
-
 /** Run a GraphQL query through the thin adapter. Returns `data.data` or null. */
 async function runQuery(query: string): Promise<Record<string, unknown> | null> {
   try {
@@ -60,26 +67,7 @@ async function runQuery(query: string): Promise<Record<string, unknown> | null> 
 
 /** Contribution calendar for the profile owner, or null when offline. */
 export async function fetchContributionCalendar(): Promise<ContributionCalendar | null> {
-  const data = await runQuery(`
-    query {
-      user(login: "rishabhx29") {
-        contributionsCollection {
-          contributionCalendar {
-            totalContributions
-            months {
-              name
-            }
-            weeks {
-              contributionDays {
-                contributionCount
-                date
-              }
-            }
-          }
-        }
-      }
-    }
-  `);
+  const data = await runQuery(CONTRIBUTION_CALENDAR_QUERY);
 
   const calendar = (
     data as {
@@ -90,35 +78,6 @@ export async function fetchContributionCalendar(): Promise<ContributionCalendar 
   )?.user?.contributionsCollection?.contributionCalendar;
 
   return calendar ?? null;
-}
-
-const SEARCH_QUERIES: Record<PRFilterType, string> = {
-  merged: "author:rishabhx29 type:pr is:merged",
-  open: "author:rishabhx29 type:pr is:open",
-  closed: "author:rishabhx29 type:pr is:closed is:unmerged",
-};
-
-function buildGraphQLQuery(searchQuery: string) {
-  return `query {
-    search(query: "${searchQuery}", type: ISSUE, first: 100) {
-      edges {
-        node {
-          ... on PullRequest {
-            id
-            title
-            url
-            repository {
-              nameWithOwner
-            }
-            state
-            createdAt
-            mergedAt
-            closedAt
-          }
-        }
-      }
-    }
-  }`;
 }
 
 /** PRs that shouldn't appear in the open-source timeline. */
@@ -132,7 +91,7 @@ function recency(pr: PullRequest): number {
 
 /** The profile owner's PRs for a filter type, newest first — or null when offline. */
 export async function fetchPullRequests(type: PRFilterType): Promise<PullRequest[] | null> {
-  const data = await runQuery(buildGraphQLQuery(SEARCH_QUERIES[type]));
+  const data = await runQuery(PULL_REQUEST_SEARCH_QUERIES[type]);
 
   const edges = (
     data as {

@@ -603,7 +603,7 @@ function KeyboardLayout() {
   );
 }
 
-function Row({ children }: { children: ReactNode }) {
+function Row({ children }: { readonly children: ReactNode }) {
   return <div className="flex">{children}</div>;
 }
 

@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { PageTransition } from "@/components/page-transition";
 import { RightNavbar } from "@/components/RightNavbar";
+import { MobileTabBar } from "@/components/MobileTabBar";
+import { MobileTopBar } from "@/components/MobileTopBar";
 import { VisitTracker } from "@/lib/playground/visit-tracker";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -178,6 +180,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
+      data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} ${doto.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#fbfaf9] dark:bg-[#100f0f] text-[#17171a] dark:text-[#fafafa] transition-colors duration-300 selection:bg-orange-500/20">
@@ -198,11 +201,29 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <RightNavbar />
+          <MobileTopBar />
+          <MobileTabBar />
           <VisitTracker />
           <PageTransition>{children}</PageTransition>
         </ThemeProvider>
-        <Analytics />
-        <SpeedInsights />
+        {/*
+          Both of these inject a <script src="/_vercel/.../script.js"> that is
+          only served by Vercel's edge. Mounted unconditionally they 404 in local
+          dev and local `next start`, and because the 404 falls through to the
+          HTML 404 page the browser then refuses the script under strict MIME
+          checking — two red console errors plus a pointless request on every
+          page load, for telemetry that cannot work off-Vercel anyway.
+
+          `NEXT_PUBLIC_VERCEL_ENV` is injected automatically by Vercel at build
+          time and is undefined everywhere else, so this compiles the scripts
+          out of local and preview builds entirely.
+        */}
+        {process.env.NEXT_PUBLIC_VERCEL_ENV ? (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        ) : null}
       </body>
     </html>
   );

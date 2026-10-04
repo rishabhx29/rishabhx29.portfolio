@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { fetchContributionCalendar } from "@/lib/github";
 
 interface ContributionDay {
@@ -33,6 +33,7 @@ export function GithubGraph() {
   const [totalContributions, setTotalContributions] = useState(0);
   const [loading, setLoading] = useState(true);
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const emptyWeeks = useMemo<ContributionWeek[]>(() => {
     const today = new Date();
@@ -143,12 +144,18 @@ export function GithubGraph() {
   };
 
   const defaultMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const displayMonths = months.length > 0 ? months.map(m => m.name.substring(0, 3)) : defaultMonths;
   const graphWeeks = weeks.length > 0 ? weeks : emptyWeeks;
+  const displayMonths = months.length > 0 ? months.map(m => m.name.substring(0, 3)) : defaultMonths;
   const graphStatus =
     loading && totalContributions === 0
       ? "Loading GitHub contribution activity"
       : `${totalContributions} GitHub activities in the last year`;
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (el && el.scrollWidth > el.clientWidth) el.scrollLeft = el.scrollWidth;
+  }, [graphWeeks]);
+
   const dashedLineMask = {
     maskImage: "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
     WebkitMaskImage: "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
@@ -195,7 +202,8 @@ export function GithubGraph() {
       {/* Graph content — sits directly on the page background */}
       <div className="relative py-4">
         <div className="w-full">
-          <div>
+          <div ref={scrollRef} className="overflow-x-auto md:overflow-visible">
+            <div className="min-w-[720px] md:min-w-0">
             <div className="mb-2 flex w-full justify-between text-[10px] text-zinc-500 dark:text-zinc-400">
               {displayMonths.map((month, index) => (
                 <span key={`${month}-${index}`}>{month}</span>
@@ -245,6 +253,7 @@ export function GithubGraph() {
                     </div>
                   ))}
             </div>
+          </div>
           </div>
         </div>
 

@@ -8,7 +8,6 @@ import {
   SiPostgresql,
   SiDocker,
   SiGit,
-  SiClaude,
   SiReact,
   SiKubernetes,
   SiRedis,
@@ -44,19 +43,17 @@ const stackCategories: StackCategory[] = [
     items: [
       { name: "Python", icon: SiPython },
       { name: "TypeScript", icon: SiTypescript },
+      { name: "React", icon: SiReact },
       { name: "FastAPI", icon: SiFastapi },
       { name: "Next.js", icon: SiNextdotjs },
       { name: "PostgreSQL", icon: SiPostgresql },
-      { name: "Docker", icon: SiDocker },
       { name: "Git", icon: SiGit },
-      { name: "Claude Code", icon: SiClaude },
     ],
   },
   {
     title: "Often",
     description: "Reached for whenever the problem calls for it",
     items: [
-      { name: "React", icon: SiReact },
       { name: "Kubernetes", icon: SiKubernetes },
       { name: "Redis", icon: SiRedis },
       { name: "Tailwind", icon: SiTailwindcss },
@@ -64,6 +61,7 @@ const stackCategories: StackCategory[] = [
       { name: "Vue", icon: SiVuedotjs },
       { name: "Prometheus", icon: SiPrometheus },
       { name: "Vercel", icon: SiVercel },
+      { name: "Docker", icon: SiDocker },
     ],
   },
   {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Download, ExternalLink, FileText } from "lucide-react";
-import { CommandMenu } from "@/components/command-menu";
+import { BannerMusicControl } from "@/components/BannerMusicControl";
 import { CurrentTime } from "@/components/CurrentTime";
 import { FooterBackground } from "@/components/FooterBackground";
 import SoftPillButton from "@/components/pixel-perfect/soft-pill-button";
@@ -48,7 +48,7 @@ export default function ResumePage() {
   };
 
   return (
-    <main className="relative min-h-screen w-full overflow-x-hidden bg-[#fbfaf9] transition-colors duration-300 dark:bg-[#100f0f]">
+    <main id="main-content" className="relative min-h-screen w-full overflow-x-hidden bg-[#fbfaf9] transition-colors duration-300 dark:bg-[#100f0f]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(resumeJsonLd) }}
@@ -75,7 +75,7 @@ export default function ResumePage() {
       />
 
       <div
-        className="pointer-events-none absolute left-0 right-0 top-[22vh] h-0 border-b border-black/30 dark:border-white/[0.15]"
+        className="pointer-events-none absolute left-0 right-0 top-[var(--banner-h)] h-0 border-b border-black/30 dark:border-white/[0.15]"
         aria-hidden="true"
         style={{
           maskImage:
@@ -85,7 +85,7 @@ export default function ResumePage() {
         }}
       />
       <div
-        className="pointer-events-none absolute left-0 right-0 top-[calc(22vh+112px)] h-0 border-b border-black/30 dark:border-white/[0.15]"
+        className="pointer-events-none absolute left-0 right-0 top-[var(--content-offset)] h-0 border-b border-black/30 dark:border-white/[0.15]"
         aria-hidden="true"
         style={{
           maskImage:
@@ -96,13 +96,13 @@ export default function ResumePage() {
       />
 
       {[
-        { top: "22vh", left: "30%" },
-        { top: "22vh", right: "30%" },
-        { top: "calc(22vh + 112px)", left: "30%" },
-        { top: "calc(22vh + 112px)", right: "30%" },
+        { top: "var(--banner-h)", left: "30%" },
+        { top: "var(--banner-h)", right: "30%" },
+        { top: "var(--content-offset)", left: "30%" },
+        { top: "var(--content-offset)", right: "30%" },
       ].map((position) => (
         <div
-          key={`${position.top}-${position.left ?? position.right}`}
+          key={`${position.top}-${position.left ? "left" : "right"}`}
           className="pointer-events-none absolute z-10 hidden h-[2px] w-[2px] bg-black/50 dark:bg-white/[0.25] md:block"
           aria-hidden="true"
           style={{
@@ -114,14 +114,14 @@ export default function ResumePage() {
         />
       ))}
 
-      <div className="pointer-events-auto absolute left-0 right-0 top-0 h-[22vh] md:left-[30%] md:right-[30%]">
+      <div className="pointer-events-auto absolute left-0 right-0 top-0 h-[var(--banner-h)] md:left-[30%] md:right-[30%]">
         <FooterBackground />
         <div className="pointer-events-auto absolute bottom-3 right-2 z-10">
           <CurrentTime />
         </div>
       </div>
 
-      <header className="absolute left-0 right-0 top-[22vh] z-50 flex h-[112px] items-center px-4 md:left-[30%] md:right-[30%]">
+      <header className="absolute left-0 right-0 top-[var(--banner-h)] z-50 flex h-[var(--profile-h)] items-center px-4 md:left-[30%] md:right-[30%]">
         <div className="flex w-full items-center justify-between gap-3">
           <div className="flex min-w-0 items-center gap-3 sm:gap-5">
             <Link
@@ -141,14 +141,14 @@ export default function ResumePage() {
             </div>
           </div>
 
-          <div className="flex h-20 shrink-0 items-start justify-end gap-2 py-1 sm:h-24 sm:gap-3">
-            <CommandMenu />
+          <div className="flex h-20 shrink-0 items-start justify-end gap-2 py-1 sm:h-24 sm:gap-3 max-md:hidden">
+            <BannerMusicControl />
             <ThemeToggle className="dark:text-zinc-400 hover:dark:text-zinc-300" />
           </div>
         </div>
       </header>
 
-      <section className="relative z-10 ml-0 mr-0 flex min-h-screen flex-col px-4 pb-12 pt-[calc(22vh+112px)] md:ml-[30%] md:mr-[30%]">
+      <section className="relative z-10 ml-0 mr-0 flex min-h-screen flex-col px-4 pb-12 pt-[var(--content-offset)] md:ml-[30%] md:mr-[30%]">
         <div className="flex flex-wrap items-center justify-between gap-3 py-4">
           <div className="flex min-w-0 items-center gap-3">
             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[6px] border border-black/10 bg-zinc-50 text-zinc-500 dark:border-white/10 dark:bg-[#0a0a0a] dark:text-zinc-400">
@@ -158,7 +158,7 @@ export default function ResumePage() {
               <p className="truncate text-[13px] font-semibold text-zinc-800 dark:text-zinc-200">
                 Rishabh Tripathi Resume
               </p>
-              <p className="text-[11px] text-zinc-500 dark:text-zinc-400">
+              <p className="text-[12px] sm:text-[11px] text-zinc-500 dark:text-zinc-400">
                 PDF document
               </p>
             </div>

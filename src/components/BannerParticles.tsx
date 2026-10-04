@@ -35,13 +35,13 @@ function updateCache() {
 }
 
 function createDefaultImage() {
-  if (typeof document === 'undefined') return null;
+  if (typeof document === 'undefined') return Promise.resolve<HTMLImageElement | null>(null);
   const tempCanvas = document.createElement("canvas");
   tempCanvas.width = 128;
   tempCanvas.height = 128;
 
   const tCtx = tempCanvas.getContext("2d");
-  if (!tCtx) return null;
+  if (!tCtx) return Promise.resolve<HTMLImageElement | null>(null);
 
   tCtx.scale(2, 2);
   tCtx.beginPath();
@@ -61,10 +61,14 @@ function createDefaultImage() {
   tCtx.lineTo(32, 59);
   tCtx.stroke();
 
-  const img = new Image();
-  img.src = tempCanvas.toDataURL();
-
-  return img;
+  // ctx.drawImage() is a silent no-op on an image that has not finished
+  // decoding, so the sprite must be resolved before the loop starts.
+  return new Promise<HTMLImageElement | null>((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => resolve(null);
+    img.src = tempCanvas.toDataURL();
+  });
 }
 
 function rotateVector(x: number, y: number, z: number, ax: number, ay: number, az: number) {
@@ -211,9 +215,9 @@ export function BannerParticles() {
     let isPaused = document.hidden;
 
     updateCache();
-    const particleImage = createDefaultImage();
-    if (!particleImage) return;
+    const spriteReady = createDefaultImage();
 
+    let particleImage: HTMLImageElement | null = null;
     let particles: Particle[] = [];
 
     const resize = () => {
@@ -253,12 +257,13 @@ export function BannerParticles() {
       if (!isPaused) animate();
     };
 
-    setTimeout(() => {
-      if (isUnmounted) return;
+    spriteReady.then((sprite) => {
+      if (isUnmounted || !sprite) return;
+      particleImage = sprite;
       resize();
       initParticles();
       animate();
-    }, 0);
+    });
 
     window.addEventListener("resize", resize);
     document.addEventListener("visibilitychange", handleVisibilityChange);

@@ -3,16 +3,15 @@ import { CurrentTime } from "@/components/CurrentTime";
 import { ProjectsGrid } from "@/components/ProjectsGrid";
 import { ExperienceList } from "@/components/ExperienceList";
 import { OpenSourceContributions } from "@/components/OpenSourceContributions";
-import { Certifications } from "@/components/Certifications";
-import { CommandMenu } from "@/components/command-menu";
+import { BannerMusicControl } from "@/components/BannerMusicControl";
 import Link from "next/link";
 import SoftPillButton from "@/components/pixel-perfect/soft-pill-button";
 import SocialHoverCard from "@/components/pixel-perfect/social-hover-card";
 import { DeferredBannerParticles, DeferredGithubGraph, DeferredRishabhParticles } from "@/components/deferred-visuals";
-import { BannerMusicControl } from "@/components/BannerMusicControl";
 import { FileText, Boxes } from "lucide-react";
 import Image from "next/image";
 import { StackSection } from "@/components/StackSection";
+import { Certifications } from "@/components/Certifications";
 import { BlueprintGrid } from "@/components/BlueprintGrid";
 
 export default function Home() {
@@ -20,12 +19,12 @@ export default function Home() {
     <div className="min-h-screen w-full bg-[#fbfaf9] dark:bg-[#100f0f] relative overflow-x-hidden transition-colors duration-300">
 
       {/* Blueprint grid motif */}
-      <BlueprintGrid horizontals={["22vh", "calc(22vh + 112px)"]} />
+      <BlueprintGrid horizontals={["var(--banner-h)", "var(--content-offset)"]} />
 
       {/* Cell 1: Banner */}
-      <div className="absolute left-0 right-0 md:left-[30%] md:right-[30%] top-0 h-[22vh] -z-0 pointer-events-auto overflow-hidden bg-[#fbfaf9] dark:bg-[#100f0f] shadow-[0_4px_12px_rgba(2,6,23,0.04)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.20)]">
+      <div className="absolute left-0 right-0 md:left-[30%] md:right-[30%] top-0 h-[var(--banner-h)] -z-0 pointer-events-auto overflow-hidden bg-[#fbfaf9] dark:bg-[#100f0f] shadow-[0_4px_12px_rgba(2,6,23,0.04)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.20)] max-md:hidden">
         <Image
-          src="/new_banner_light%20(1).png"
+          src="/new_banner_light (1).png"
           alt="Rishabh Tripathi — Full-Stack Software Engineer Portfolio Banner"
           fill
           priority
@@ -48,18 +47,15 @@ export default function Home() {
       </div>
 
       {/* Banner overlay controls — outside the banner's stacking context so z-[60] beats the profile section's z-50 */}
-      <div className="absolute left-2 sm:left-3 md:left-[calc(30%+12px)] z-[60] pointer-events-auto" style={{ top: 'calc(22vh - 48px)' }}>
-        <BannerMusicControl />
-      </div>
-      <div className="absolute right-2 md:right-[calc(30%+8px)] z-[60] pointer-events-auto" style={{ top: 'calc(22vh - 48px)' }}>
+      <div className="absolute right-2 md:right-[calc(30%+8px)] z-[60] pointer-events-auto max-md:hidden" style={{ top: 'calc(var(--banner-h) - 48px)' }}>
         <CurrentTime />
       </div>
 
-      {/* Cell 2: Profile Section - 112px height to wrap the framed image (13px gap top/bottom) */}
-      <div className="absolute left-0 right-0 md:left-[30%] md:right-[30%] top-[22vh] h-[112px] flex items-center px-4 z-50">
+      {/* Cell 2: Profile Section - --profile-h height to wrap the framed image (13px gap top/bottom) */}
+      <div className="absolute left-0 right-0 md:left-[30%] md:right-[30%] top-[var(--banner-h)] h-[var(--profile-h)] flex items-center px-4 z-50 max-md:hidden">
         <div className="flex w-full items-center justify-between">
 
-          <div className="flex items-center gap-4 sm:gap-5">
+          <div className="flex items-center gap-3 sm:gap-5">
             <div className="relative p-[3px] rounded-[6px] sm:rounded-[8px] border-[1.5px] border-black/25 dark:border-white/[0.12] shrink-0">
               {/* The inner image */}
               <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-[3px] sm:rounded-[5px] overflow-hidden bg-zinc-100 dark:bg-[#171717]">
@@ -76,17 +72,17 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex flex-col justify-center pt-8">
-              <h1 className="text-[20px] sm:text-[24px] font-bold text-zinc-800 dark:text-zinc-100 tracking-tight leading-none mb-0.5 [text-shadow:-1.5px_0_0_rgba(0,200,255,0.3),1.5px_0_0_rgba(255,80,0,0.3)] dark:[text-shadow:-1.5px_0_0_rgba(0,200,255,0.6),1.5px_0_0_rgba(255,80,0,0.6)]">
+            <div className="flex flex-col justify-center pt-0 sm:pt-8">
+              <h1 className="text-[16px] sm:text-[24px] font-bold text-zinc-800 dark:text-zinc-100 tracking-tight leading-none mb-0.5 whitespace-nowrap [font-family:var(--font-doto),monospace] [text-shadow:-1.5px_0_0_rgba(0,200,255,0.3),1.5px_0_0_rgba(255,80,0,0.3)] dark:[text-shadow:-1.5px_0_0_rgba(0,200,255,0.6),1.5px_0_0_rgba(255,80,0,0.6)]">
                 Rishabh Tripathi
                 <span className="sr-only"> — Full-Stack Software Engineer Portfolio (rishabhx29)</span>
               </h1>
-              <p className="text-[13px] sm:text-[14px] text-zinc-500 dark:text-zinc-400">Full-Stack Software Engineer</p>
+              <p className="text-[12px] sm:text-[14px] text-zinc-500 dark:text-zinc-400">Full-Stack Software Engineer</p>
             </div>
           </div>
 
-          <div className="flex items-start justify-end gap-2 sm:gap-3 h-20 sm:h-24 py-1">
-            <CommandMenu />
+          <div className="flex items-start justify-end gap-2 sm:gap-3 h-20 sm:h-24 py-1 max-md:hidden">
+            <BannerMusicControl />
             <ThemeToggle className="dark:text-zinc-400 hover:dark:text-zinc-300" />
           </div>
 
@@ -94,16 +90,28 @@ export default function Home() {
       </div>
 
       {/* Flowing Content Section */}
-      <main id="main-content" className="ml-0 mr-0 md:ml-[30%] md:mr-[30%] pt-[calc(22vh+112px)] pb-0 px-4 flex flex-col z-10 relative min-h-screen">
-        <p className="text-[14px] sm:text-[15px] text-zinc-600 dark:text-zinc-300 leading-relaxed mt-4">
-          Full-stack engineer who ships fast and obsesses over clean architecture. I turn ideas into products people actually use.
-        </p>
+      {/* Mobile-only hero (mirrors the reference mobile header) */}
+      <div className="md:hidden px-4 pt-16 pb-2">
+        <div className="rounded-3xl border border-dashed border-black/20 dark:border-white/[0.14] p-3">
+          <div className="relative overflow-hidden rounded-2xl">
+            <Image src="/new_banner_light (1).png" alt="Banner" width={1200} height={630} quality={75} className="block w-full dark:hidden" />
+            <Image src="/new_banner_dark.png" alt="Banner (dark)" width={1200} height={630} quality={75} className="hidden w-full dark:block" />
+            <DeferredBannerParticles />
+          </div>
+          <div className="-mt-8 ml-3 relative z-10 w-16 h-16 rounded-full overflow-hidden ring-4 ring-[#fbfaf9] dark:ring-[#100f0f]">
+            <Image src="/Rishabh-Avatar.jpg" alt="Rishabh Tripathi" width={240} height={240} className="h-full w-full object-cover grayscale contrast-100" />
+          </div>
+        </div>
 
-        <ul className="text-[14px] sm:text-[15px] text-zinc-600 dark:text-zinc-300 leading-relaxed mt-4 pl-4">
-          <li className="flex gap-1.5"><span aria-hidden="true">•</span><span>Building <span className="font-semibold text-zinc-900 dark:text-white">Traceon</span>, <span className="font-semibold text-zinc-900 dark:text-white">VeloKey</span>, <span className="font-semibold text-zinc-900 dark:text-white">Adaptive</span>, and <span className="font-semibold text-zinc-900 dark:text-white">AlgoForge</span>.</span></li>
-          <li className="flex gap-1.5"><span aria-hidden="true">•</span><span>Open-source Project Admin at <span className="font-semibold text-zinc-900 dark:text-white">SSoC</span> and contributor at <span className="font-semibold text-zinc-900 dark:text-white">GSSoC</span>.</span></li>
-          <li className="flex gap-1.5"><span aria-hidden="true">•</span><span>My stack: React, Next.js, Node.js, TypeScript&nbsp;— and whatever else the problem demands.</span></li>
-        </ul>
+        <h1 style={{ fontFamily: "var(--font-doto), monospace" }} className="mt-4 text-[22px] font-bold tracking-tight text-zinc-900 dark:text-zinc-100">Rishabh Tripathi</h1>
+        <p className="mt-1 text-[13px] text-zinc-500 dark:text-zinc-400">Full-Stack Developer &amp; Open-Source Contributor</p>
+        <p className="mt-3 text-[14px] leading-relaxed text-zinc-600 dark:text-zinc-300">I design and build fast, dependable products — currently shipping Traceon, VeloKey, Adaptive and AlgoForge, leading open-source at SSoC and contributing at GSSoC. I write clean, readable code that people enjoy using.</p>
+      </div>
+
+      <main id="main-content" className="ml-0 mr-0 md:ml-[30%] md:mr-[30%] pt-4 md:pt-[var(--content-offset)] pb-0 px-4 flex flex-col z-10 relative min-h-screen">
+        <div className="hidden md:block mt-4">
+          <p className="text-[14px] sm:text-[15px] text-zinc-600 dark:text-zinc-300 leading-relaxed mt-2">I design and build fast, dependable products — currently shipping Traceon, VeloKey, Adaptive and AlgoForge, leading open-source at SSoC and contributing at GSSoC. I write clean, readable code that people enjoy using.</p>
+        </div>
 
         {/* Buttons */}
         <div className="flex flex-wrap items-center gap-2 mt-4">
@@ -166,7 +174,7 @@ export default function Home() {
                 </SoftPillButton>
               </SocialHoverCard>
             ))}
-            <Link href="/resume">
+            <Link href="/resume" className="hidden md:block">
               <SoftPillButton
                 as="span"
                 variant="secondary"
@@ -234,7 +242,7 @@ export default function Home() {
         </div>
 
         {/* Projects */}
-        <div id="projects" className="mt-0 flex flex-col relative z-10 scroll-mt-24">
+        <div id="projects" className="mt-0 flex flex-col relative z-10 scroll-mt-24 max-md:hidden">
           <div className="py-2 relative mt-1">
             <h2 className="text-[18px] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">Projects</h2>
 
@@ -285,7 +293,7 @@ export default function Home() {
         </div>
 
         {/* Stack */}
-        <div id="skills" className="mt-6 flex flex-col relative z-10 scroll-mt-24">
+        <div id="skills" className="mt-6 flex flex-col relative z-10 scroll-mt-24 max-md:hidden">
           <div id="stack" className="-top-24 absolute pointer-events-none" />
           {/* Top full-width line */}
           <div
@@ -314,39 +322,13 @@ export default function Home() {
 
 
 
-        {/* Certifications */}
-        <div id="certifications" className="mt-6 flex flex-col relative z-10 scroll-mt-24">
-          {/* Top full-width line */}
-          <div
-            className="absolute top-0 left-[-100vw] right-[-100vw] h-0 border-t border-black/30 dark:border-white/[0.15] pointer-events-none"
-            aria-hidden="true"
-            style={{
-              maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)',
-              WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)'
-            }}
-          />
-          {/* Top Line Intersections */}
-          <div className="absolute top-0 -left-4 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" aria-hidden="true" />
-          <div className="absolute top-0 -right-4 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 -translate-y-1/2 pointer-events-none z-20" aria-hidden="true" />
 
-          <div className="py-2 relative mt-1">
-            <h2 className="text-[18px] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">Certifications</h2>
-
-            {/* Horizontal line below heading */}
-            <div className="absolute bottom-0 left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-            {/* Intersections */}
-            <div className="absolute bottom-0 -left-4 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-1/2 pointer-events-none z-20" aria-hidden="true" />
-            <div className="absolute bottom-0 -right-4 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-1/2 pointer-events-none z-20" aria-hidden="true" />
+        {/* Certifications (desktop) */}
+        <div id="certifications" className="flex max-md:hidden flex-col relative z-10 mt-6 scroll-mt-24">
+          <div className="relative mt-1 py-2">
+            <h2 className="text-[18px] font-bold tracking-tight text-zinc-900 dark:text-zinc-100">Certifications</h2>
           </div>
-
           <Certifications />
-
-          {/* Bottom line */}
-          <div className="relative mt-4 pb-4">
-            <div className="absolute bottom-0 left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-            <div className="absolute bottom-0 -left-4 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-1/2 pointer-events-none z-20" aria-hidden="true" />
-            <div className="absolute bottom-0 -right-4 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-1/2 pointer-events-none z-20" aria-hidden="true" />
-          </div>
         </div>
 
         {/* Minimal Quote Section */}
@@ -356,7 +338,7 @@ export default function Home() {
               &quot;It is simpler to plan for everything to go wrong,<br className="hidden md:block" /> and be pleasantly surprised when it works.&quot;
             </blockquote>
 
-            <div className="flex items-center gap-3 text-[10px] font-medium tracking-[0.2em] text-zinc-600 dark:text-zinc-400 uppercase">
+            <div className="flex items-center gap-3 text-[12px] sm:text-[10px] font-medium tracking-[0.2em] text-zinc-600 dark:text-zinc-400 uppercase">
               <div className="w-4 h-[1px] bg-zinc-200 dark:bg-zinc-800" aria-hidden="true" />
               KISUKE URAHARA — BLEACH
               <div className="w-4 h-[1px] bg-zinc-200 dark:bg-zinc-800" aria-hidden="true" />

@@ -2,6 +2,43 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* Blueprint vertical rhythm.
+ * The banner band and the profile/header band are the two fixed strips every
+ * page stacks above its content. Declared once here so no page hard-codes the
+ * offset, and so phones can tighten both bands from a single place.
+ * Consume with h-[var(--banner-h)] / h-[var(--profile-h)], and push content
+ * down with pt-[var(--content-offset)].
+ */
+:root {
+  --banner-h: 22vh;
+  --profile-h: 112px;
+  --content-offset: calc(var(--banner-h) + var(--profile-h));
+}
+
+/* On phones the banner band and the profile/header cell both render (the
+ * banner is the hero image, the profile cell carries the route title +
+ * controls). Shrink them so content starts high while still being visible,
+ * and drop only the desktop blueprint rules + intersection-dot decorations. */
+@media (max-width: 767px) {
+  :root {
+    --banner-h: 18vh;
+    --profile-h: 88px;
+    --tabbar-clearance: 88px;
+  }
+
+  /* Blueprint dashed rules + square intersection dots are desktop-only. */
+  [class*="top-[var(--banner-h)]"].h-0,
+  [class*="top-[var(--content-offset)]"].h-0 {
+    display: none;
+  }
+
+  /* An id selector outranks the pages' Tailwind padding utilities, so this
+   * clears the fixed tab bar without !important or per-page edits. */
+  #main-content {
+    padding-bottom: var(--tabbar-clearance);
+  }
+}
+
 @keyframes banner-music-level {
   0%,
   100% {

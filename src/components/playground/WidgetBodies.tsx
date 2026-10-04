@@ -13,7 +13,7 @@ import type { WorkbenchObject } from "@/data/playgroundAssets";
 
 const MUSIC_TRACK = "/sounds/flying.mp3";
 
-function LinkCardBody({ object }: { object: WorkbenchObject }) {
+function LinkCardBody({ object }: { readonly object: WorkbenchObject }) {
   const href = object.href ?? "";
   const isGitHub = href.includes("github.com");
   const isLinkedIn = href.includes("linkedin.com");
@@ -86,7 +86,7 @@ function ClockCardBody() {
   );
 }
 
-function MusicCardBody({ object }: { object: WorkbenchObject }) {
+function MusicCardBody({ object }: { readonly object: WorkbenchObject }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
 
@@ -131,7 +131,7 @@ function MusicCardBody({ object }: { object: WorkbenchObject }) {
   );
 }
 
-export function WidgetBody({ object }: { object: WorkbenchObject }) {
+export function WidgetBody({ object }: { readonly object: WorkbenchObject }) {
   if (object.type === "link") return <LinkCardBody object={object} />;
   if (object.type === "clock") return <ClockCardBody />;
   if (object.type === "music") return <MusicCardBody object={object} />;

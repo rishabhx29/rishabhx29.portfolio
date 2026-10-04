@@ -97,7 +97,7 @@ export const ProjectCard = ({
           }}
           transition={{ type: "spring", stiffness: 200, damping: 25 }}
         >
-          <span className="px-3 py-1.5 rounded-full bg-zinc-900/90 dark:bg-white/95 backdrop-blur-md text-white dark:text-zinc-900 text-[11px] font-semibold tracking-wider uppercase shadow-lg border border-white/10 dark:border-black/10 flex items-center gap-1.5">
+          <span className="px-3 py-1.5 rounded-full bg-zinc-900/90 dark:bg-white/95 backdrop-blur-md text-white dark:text-zinc-900 text-[12px] sm:text-[11px] font-semibold tracking-wider uppercase shadow-lg border border-white/10 dark:border-black/10 flex items-center gap-1.5">
             Explore Project
             <svg viewBox="0 0 24 24" aria-hidden="true" className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M7 17L17 7M17 7H7M17 7V17" />
@@ -136,7 +136,7 @@ export const ProjectCard = ({
 
           <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-zinc-200/50 dark:border-zinc-800/50 bg-white dark:bg-zinc-900/50 w-fit shrink-0">
             <div className={`w-1.5 h-1.5 rounded-full ${status.color}`} />
-            <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400">{status.label}</span>
+            <span className="text-[12px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400">{status.label}</span>
           </div>
         </div>
 
@@ -189,7 +189,7 @@ export const ProjectCard = ({
           </div>
 
           <div
-            className="flex shrink-0 items-center gap-1 text-[11px] font-medium text-zinc-500 transition-colors cursor-pointer group-hover:text-zinc-800 dark:group-hover:text-zinc-200 sm:text-[12px] focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 rounded-sm"
+            className="flex shrink-0 items-center gap-1 text-[12px] font-medium text-zinc-500 transition-colors cursor-pointer group-hover:text-zinc-800 dark:group-hover:text-zinc-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 rounded-sm"
             onClick={(e) => {
               if (project.live || project.github) {
                 e.preventDefault();

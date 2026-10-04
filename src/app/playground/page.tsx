@@ -19,7 +19,8 @@ export const metadata: Metadata = {
 
 export default function PlaygroundPage() {
   return (
-    <main className="w-full overflow-hidden">
+    <main id="main-content" className="w-full overflow-hidden">
+      <h1 className="sr-only">Playground &amp; Architecture Field Notebook</h1>
       <PlaygroundCanvas />
     </main>
   );

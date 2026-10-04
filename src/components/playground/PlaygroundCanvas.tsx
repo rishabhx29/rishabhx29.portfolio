@@ -38,7 +38,7 @@ import {
   type WorkbenchObjectType,
 } from "@/data/playgroundAssets";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { CommandMenu } from "@/components/command-menu";
+import { BannerMusicControl } from "@/components/BannerMusicControl";
 import { playSound } from "@/lib/audio";
 import { WidgetBody } from "@/components/playground/WidgetBodies";
 import {
@@ -545,7 +545,7 @@ export function PlaygroundCanvas() {
         </div>
         <div className="flex items-center gap-1.5">
           <button onClick={() => setFocusMode((value) => !value)} className="playground-icon-button hidden h-9 items-center gap-2 px-3 text-xs font-medium sm:flex" aria-pressed={focusMode}><span className="h-1.5 w-1.5 bg-current" />{focusMode ? "Exit focus" : "Focus"}</button>
-          <CommandMenu />
+          <BannerMusicControl />
           <ThemeToggle className="playground-icon-button grid h-9 w-9 shrink-0 place-items-center" />
           <button onClick={shareBoard} className="playground-export-button flex h-9 items-center gap-2 px-3 text-xs font-medium"><Share2 className="h-3.5 w-3.5" /><span className="hidden sm:inline">Share</span></button>
           <button onClick={exportPng} className="playground-export-button flex h-9 items-center gap-2 px-3 text-xs font-medium"><Download className="h-3.5 w-3.5" /><span className="hidden sm:inline">Export</span></button>
@@ -636,7 +636,7 @@ function achievementCountLabel(count: number) {
   return `That's ${count} of ${ACHIEVEMENTS.length}`;
 }
 
-function PlaygroundMobile({ earned }: { earned: string[] }) {
+function PlaygroundMobile({ earned }: { readonly earned: readonly string[] }) {
   const earnedSet = new Set(earned);
   return (
     <section className="playground-shell relative min-h-[100dvh] overflow-hidden bg-zinc-50 text-zinc-900 dark:bg-[#09090b] dark:text-zinc-100">
@@ -683,7 +683,7 @@ function PlaygroundMobile({ earned }: { earned: string[] }) {
   );
 }
 
-function MobileCard({ object }: { object: WorkbenchObject }) {
+function MobileCard({ object }: { readonly object: WorkbenchObject }) {
   if (object.type === "label") {
     return (
       <div className="pt-3">

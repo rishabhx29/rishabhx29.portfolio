@@ -1,0 +1,3107 @@
+[
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/blogs/[slug]/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 108,
+      "endLine": 108,
+      "startOffset": 15,
+      "endOffset": 20
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/blogs/[slug]/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 122,
+      "endLine": 122,
+      "startOffset": 26,
+      "endOffset": 68
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/blogs/[slug]/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 135,
+      "endLine": 135,
+      "startOffset": 26,
+      "endOffset": 57
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/blogs/[slug]/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 225,
+      "endLine": 225,
+      "startOffset": 43,
+      "endOffset": 68
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/contact/layout.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 17,
+      "endLine": 17,
+      "startOffset": 38,
+      "endOffset": 81
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/contact/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 139,
+      "endLine": 139,
+      "startOffset": 18,
+      "endOffset": 19
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/experience/layout.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 17,
+      "endLine": 17,
+      "startOffset": 41,
+      "endOffset": 84
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/experience/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 34,
+      "endLine": 34,
+      "startOffset": 18,
+      "endOffset": 19
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/experience/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "CRITICAL",
+    "message": "Refactor this function to reduce its Cognitive Complexity from 19 to the 15 allowed.",
+    "messageFormattings": [],
+    "tags": [
+      "brain-overload",
+      "architecture"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 91,
+      "endLine": 91,
+      "startOffset": 41,
+      "endOffset": 43
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/experience/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 96,
+      "endLine": 96,
+      "startOffset": 26,
+      "endOffset": 29
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/experience/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Use <input type=\"button\">, <input type=\"image\">, <input type=\"reset\">, <input type=\"submit\">, or <button> instead of the \"button\" role to ensure accessibility across all devices.",
+    "messageFormattings": [],
+    "tags": [
+      "accessibility",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 116,
+      "endLine": 129,
+      "startOffset": 18,
+      "endOffset": 19
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/experience/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 326,
+      "endLine": 326,
+      "startOffset": 41,
+      "endOffset": 42
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/experience/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 344,
+      "endLine": 344,
+      "startOffset": 53,
+      "endOffset": 62
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/globals.css",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Unexpected unknown at-rule \"@custom-variant\"",
+    "messageFormattings": [],
+    "tags": [],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 27,
+      "endLine": 27,
+      "startOffset": 0,
+      "endOffset": 47
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 36,
+      "endLine": 36,
+      "startOffset": 18,
+      "endOffset": 19
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Ambiguous spacing before next element span",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 103,
+      "endLine": 103,
+      "startOffset": 0,
+      "endOffset": 103
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 172,
+      "endLine": 172,
+      "startOffset": 36,
+      "endOffset": 37
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/projects/[slug]/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 61,
+      "endLine": 61,
+      "startOffset": 42,
+      "endOffset": 91
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/projects/[slug]/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 137,
+      "endLine": 137,
+      "startOffset": 18,
+      "endOffset": 19
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/projects/[slug]/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Extract this nested ternary operation into an independent statement.",
+    "messageFormattings": [],
+    "tags": [
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 190,
+      "endLine": 207,
+      "startOffset": 12,
+      "endOffset": 13
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/projects/[slug]/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "<iframe> elements must have a unique title property.",
+    "messageFormattings": [],
+    "tags": [
+      "accessibility",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 191,
+      "endLine": 196,
+      "startOffset": 14,
+      "endOffset": 15
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/projects/[slug]/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "This assertion is unnecessary since it does not change the type of the expression.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "redundant"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 287,
+      "endLine": 287,
+      "startOffset": 46,
+      "endOffset": 58
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/projects/[slug]/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "This assertion is unnecessary since it does not change the type of the expression.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "redundant"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 288,
+      "endLine": 288,
+      "startOffset": 43,
+      "endOffset": 55
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/projects/[slug]/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 291,
+      "endLine": 291,
+      "startOffset": 26,
+      "endOffset": 27
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/projects/layout.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 18,
+      "endLine": 18,
+      "startOffset": 39,
+      "endOffset": 82
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/projects/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 43,
+      "endLine": 43,
+      "startOffset": 20,
+      "endOffset": 21
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/projects/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 106,
+      "endLine": 106,
+      "startOffset": 28,
+      "endOffset": 36
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/projects/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Extract this nested ternary operation into an independent statement.",
+    "messageFormattings": [],
+    "tags": [
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 107,
+      "endLine": 107,
+      "startOffset": 135,
+      "endOffset": 274
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/projects/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Media elements such as <audio> and <video> must have a <track> for captions.",
+    "messageFormattings": [],
+    "tags": [
+      "accessibility",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 175,
+      "endLine": 175,
+      "startOffset": 17,
+      "endOffset": 22
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/pull-requests/layout.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 17,
+      "endLine": 17,
+      "startOffset": 43,
+      "endOffset": 86
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/pull-requests/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 30,
+      "endLine": 30,
+      "startOffset": 18,
+      "endOffset": 19
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/app/resume/page.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 105,
+      "endLine": 105,
+      "startOffset": 15,
+      "endOffset": 20
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerMusicControl.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Extract this nested ternary operation into an independent statement.",
+    "messageFormattings": [],
+    "tags": [
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 36,
+      "endLine": 36,
+      "startOffset": 44,
+      "endOffset": 71
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerMusicControl.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Media elements such as <audio> and <video> must have a <track> for captions.",
+    "messageFormattings": [],
+    "tags": [
+      "accessibility",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 40,
+      "endLine": 40,
+      "startOffset": 7,
+      "endOffset": 12
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerMusicControl.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Extract this nested ternary operation into an independent statement.",
+    "messageFormattings": [],
+    "tags": [
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 89,
+      "endLine": 89,
+      "startOffset": 56,
+      "endOffset": 86
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerMusicControl.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Extract this nested ternary operation into an independent statement.",
+    "messageFormattings": [],
+    "tags": [
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 89,
+      "endLine": 89,
+      "startOffset": 35,
+      "endOffset": 86
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 133,
+      "endLine": 133,
+      "startOffset": 8,
+      "endOffset": 18
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 137,
+      "endLine": 137,
+      "startOffset": 8,
+      "endOffset": 18
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 138,
+      "endLine": 138,
+      "startOffset": 22,
+      "endOffset": 32
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 138,
+      "endLine": 138,
+      "startOffset": 8,
+      "endOffset": 19
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 145,
+      "endLine": 145,
+      "startOffset": 8,
+      "endOffset": 14
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 148,
+      "endLine": 148,
+      "startOffset": 10,
+      "endOffset": 16
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 150,
+      "endLine": 150,
+      "startOffset": 10,
+      "endOffset": 16
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 151,
+      "endLine": 151,
+      "startOffset": 22,
+      "endOffset": 32
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 152,
+      "endLine": 152,
+      "startOffset": 15,
+      "endOffset": 25
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 155,
+      "endLine": 155,
+      "startOffset": 28,
+      "endOffset": 38
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 157,
+      "endLine": 157,
+      "startOffset": 8,
+      "endOffset": 23
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 158,
+      "endLine": 158,
+      "startOffset": 52,
+      "endOffset": 67
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 158,
+      "endLine": 158,
+      "startOffset": 8,
+      "endOffset": 23
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 160,
+      "endLine": 160,
+      "startOffset": 8,
+      "endOffset": 15
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 161,
+      "endLine": 161,
+      "startOffset": 8,
+      "endOffset": 15
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 163,
+      "endLine": 163,
+      "startOffset": 8,
+      "endOffset": 23
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 164,
+      "endLine": 164,
+      "startOffset": 8,
+      "endOffset": 19
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 165,
+      "endLine": 165,
+      "startOffset": 8,
+      "endOffset": 18
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 166,
+      "endLine": 166,
+      "startOffset": 8,
+      "endOffset": 19
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 167,
+      "endLine": 167,
+      "startOffset": 8,
+      "endOffset": 19
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 168,
+      "endLine": 168,
+      "startOffset": 8,
+      "endOffset": 18
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 169,
+      "endLine": 169,
+      "startOffset": 8,
+      "endOffset": 18
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 173,
+      "endLine": 173,
+      "startOffset": 78,
+      "endOffset": 93
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 174,
+      "endLine": 174,
+      "startOffset": 34,
+      "endOffset": 41
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 174,
+      "endLine": 174,
+      "startOffset": 8,
+      "endOffset": 15
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 175,
+      "endLine": 175,
+      "startOffset": 8,
+      "endOffset": 14
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 175,
+      "endLine": 175,
+      "startOffset": 18,
+      "endOffset": 25
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 177,
+      "endLine": 177,
+      "startOffset": 33,
+      "endOffset": 48
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 178,
+      "endLine": 178,
+      "startOffset": 8,
+      "endOffset": 15
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 180,
+      "endLine": 180,
+      "startOffset": 30,
+      "endOffset": 36
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 180,
+      "endLine": 180,
+      "startOffset": 67,
+      "endOffset": 82
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 181,
+      "endLine": 181,
+      "startOffset": 8,
+      "endOffset": 15
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 182,
+      "endLine": 182,
+      "startOffset": 8,
+      "endOffset": 15
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 184,
+      "endLine": 184,
+      "startOffset": 8,
+      "endOffset": 14
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 184,
+      "endLine": 184,
+      "startOffset": 18,
+      "endOffset": 25
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 185,
+      "endLine": 185,
+      "startOffset": 8,
+      "endOffset": 19
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 185,
+      "endLine": 185,
+      "startOffset": 23,
+      "endOffset": 33
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 185,
+      "endLine": 185,
+      "startOffset": 36,
+      "endOffset": 43
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 188,
+      "endLine": 188,
+      "startOffset": 25,
+      "endOffset": 35
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 188,
+      "endLine": 188,
+      "startOffset": 10,
+      "endOffset": 21
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 189,
+      "endLine": 189,
+      "startOffset": 25,
+      "endOffset": 35
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 189,
+      "endLine": 189,
+      "startOffset": 10,
+      "endOffset": 21
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 193,
+      "endLine": 193,
+      "startOffset": 70,
+      "endOffset": 76
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 193,
+      "endLine": 193,
+      "startOffset": 51,
+      "endOffset": 57
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 195,
+      "endLine": 195,
+      "startOffset": 22,
+      "endOffset": 28
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 195,
+      "endLine": 195,
+      "startOffset": 50,
+      "endOffset": 56
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 196,
+      "endLine": 196,
+      "startOffset": 10,
+      "endOffset": 20
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 202,
+      "endLine": 202,
+      "startOffset": 56,
+      "endOffset": 67
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 202,
+      "endLine": 202,
+      "startOffset": 85,
+      "endOffset": 96
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 202,
+      "endLine": 202,
+      "startOffset": 43,
+      "endOffset": 54
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 203,
+      "endLine": 203,
+      "startOffset": 85,
+      "endOffset": 96
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 203,
+      "endLine": 203,
+      "startOffset": 43,
+      "endOffset": 54
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 203,
+      "endLine": 203,
+      "startOffset": 56,
+      "endOffset": 67
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 206,
+      "endLine": 206,
+      "startOffset": 30,
+      "endOffset": 36
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 206,
+      "endLine": 206,
+      "startOffset": 22,
+      "endOffset": 28
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 211,
+      "endLine": 211,
+      "startOffset": 72,
+      "endOffset": 82
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 211,
+      "endLine": 211,
+      "startOffset": 38,
+      "endOffset": 48
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 211,
+      "endLine": 211,
+      "startOffset": 84,
+      "endOffset": 95
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Stateless functional components should not use `this`",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 211,
+      "endLine": 211,
+      "startOffset": 55,
+      "endOffset": 66
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BannerParticles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "aria-hidden=\"true\" must not be set on focusable elements.",
+    "messageFormattings": [],
+    "tags": [
+      "accessibility",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 276,
+      "endLine": 280,
+      "startOffset": 4,
+      "endOffset": 6
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BlogLikeButton.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 11,
+      "endLine": 11,
+      "startOffset": 31,
+      "endOffset": 74
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/BlogList.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 85,
+      "endLine": 85,
+      "startOffset": 29,
+      "endOffset": 35
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/DisplacementText.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "'addListener' is deprecated.",
+    "messageFormattings": [],
+    "tags": [
+      "cwe",
+      "type-dependent",
+      "obsolete"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 258,
+      "endLine": 258,
+      "startOffset": 37,
+      "endOffset": 48
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/DisplacementText.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "The signature '(callback: ((this: MediaQueryList, ev: MediaQueryListEvent) => any) | null): void' of 'mediaQuery.addListener' is deprecated.",
+    "messageFormattings": [],
+    "tags": [
+      "cwe",
+      "type-dependent",
+      "obsolete"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 259,
+      "endLine": 259,
+      "startOffset": 21,
+      "endOffset": 32
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/DisplacementText.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "The signature '(callback: ((this: MediaQueryList, ev: MediaQueryListEvent) => any) | null): void' of 'mediaQuery.removeListener' is deprecated.",
+    "messageFormattings": [],
+    "tags": [
+      "cwe",
+      "type-dependent",
+      "obsolete"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 260,
+      "endLine": 260,
+      "startOffset": 47,
+      "endOffset": 61
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/ExperienceList.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "CRITICAL",
+    "message": "Refactor this function to reduce its Cognitive Complexity from 18 to the 15 allowed.",
+    "messageFormattings": [],
+    "tags": [
+      "brain-overload",
+      "architecture"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 13,
+      "endLine": 13,
+      "startOffset": 35,
+      "endOffset": 37
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/ExperienceList.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 18,
+      "endLine": 18,
+      "startOffset": 20,
+      "endOffset": 23
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/ExperienceList.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Use <input type=\"button\">, <input type=\"image\">, <input type=\"reset\">, <input type=\"submit\">, or <button> instead of the \"button\" role to ensure accessibility across all devices.",
+    "messageFormattings": [],
+    "tags": [
+      "accessibility",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 49,
+      "endLine": 62,
+      "startOffset": 12,
+      "endOffset": 13
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/ExperienceList.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 260,
+      "endLine": 260,
+      "startOffset": 35,
+      "endOffset": 36
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/ExperienceList.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 278,
+      "endLine": 278,
+      "startOffset": 47,
+      "endOffset": 56
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/FlightButton.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 11,
+      "endLine": 11,
+      "startOffset": 29,
+      "endOffset": 80
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/FlightButton.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "CRITICAL",
+    "message": "Refactor this code to not nest functions more than 4 levels deep.",
+    "messageFormattings": [],
+    "tags": [
+      "brain-overload"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 97,
+      "endLine": 97,
+      "startOffset": 16,
+      "endOffset": 26
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/GithubGraph.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Use <img alt=...>, or <img alt=...> instead of the \"img\" role to ensure accessibility across all devices.",
+    "messageFormattings": [],
+    "tags": [
+      "accessibility",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 244,
+      "endLine": 244,
+      "startOffset": 12,
+      "endOffset": 119
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/GithubGraph.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 247,
+      "endLine": 247,
+      "startOffset": 30,
+      "endOffset": 38
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/GithubGraph.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 250,
+      "endLine": 250,
+      "startOffset": 31,
+      "endOffset": 39
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/GithubGraph.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 257,
+      "endLine": 257,
+      "startOffset": 30,
+      "endOffset": 38
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/GithubGraph.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 260,
+      "endLine": 260,
+      "startOffset": 36,
+      "endOffset": 52
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/GithubGraph.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 282,
+      "endLine": 282,
+      "startOffset": 36,
+      "endOffset": 55
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/GithubGraph.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 295,
+      "endLine": 295,
+      "startOffset": 21,
+      "endOffset": 26
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/OnekoPet.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "useState call is not destructured into value + setter pair",
+    "messageFormattings": [],
+    "tags": [
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 91,
+      "endLine": 91,
+      "startOffset": 8,
+      "endOffset": 22
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/OnekoPet.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "CRITICAL",
+    "message": "Refactor this function to reduce its Cognitive Complexity from 23 to the 15 allowed.",
+    "messageFormattings": [],
+    "tags": [
+      "brain-overload",
+      "architecture"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 170,
+      "endLine": 170,
+      "startOffset": 20,
+      "endOffset": 22
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/OnekoPet.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "CRITICAL",
+    "message": "Refactor this code to not nest functions more than 4 levels deep.",
+    "messageFormattings": [],
+    "tags": [
+      "brain-overload"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 314,
+      "endLine": 314,
+      "startOffset": 39,
+      "endOffset": 41
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/OpenSourceContributions.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 64,
+      "endLine": 64,
+      "startOffset": 40,
+      "endOffset": 88
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/OpenSourceContributions.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "CRITICAL",
+    "message": "Refactor this function to reduce its Cognitive Complexity from 18 to the 15 allowed.",
+    "messageFormattings": [],
+    "tags": [
+      "brain-overload",
+      "architecture"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 78,
+      "endLine": 78,
+      "startOffset": 63,
+      "endOffset": 65
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/OpenSourceContributions.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "CRITICAL",
+    "message": "Refactor this code to not nest functions more than 4 levels deep.",
+    "messageFormattings": [],
+    "tags": [
+      "brain-overload"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 160,
+      "endLine": 160,
+      "startOffset": 33,
+      "endOffset": 35
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/OpenSourceContributions.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Extract this nested ternary operation into an independent statement.",
+    "messageFormattings": [],
+    "tags": [
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 183,
+      "endLine": 183,
+      "startOffset": 328,
+      "endOffset": 395
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/OpenSourceContributions.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 226,
+      "endLine": 226,
+      "startOffset": 26,
+      "endOffset": 29
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/OpenSourceContributions.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Extract this nested ternary operation into an independent statement.",
+    "messageFormattings": [],
+    "tags": [
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 246,
+      "endLine": 305,
+      "startOffset": 14,
+      "endOffset": 11
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/OpenSourceContributions.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Extract this nested ternary operation into an independent statement.",
+    "messageFormattings": [],
+    "tags": [
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 271,
+      "endLine": 273,
+      "startOffset": 26,
+      "endOffset": 78
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/ProjectsGrid.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Remove this useless assignment to variable \"router\".",
+    "messageFormattings": [],
+    "tags": [
+      "cwe",
+      "unused"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 41,
+      "endLine": 41,
+      "startOffset": 8,
+      "endOffset": 14
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/ProjectsGrid.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Extract this nested ternary operation into an independent statement.",
+    "messageFormattings": [],
+    "tags": [
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 48,
+      "endLine": 48,
+      "startOffset": 53,
+      "endOffset": 99
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/ProjectsGrid.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Extract this nested ternary operation into an independent statement.",
+    "messageFormattings": [],
+    "tags": [
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 49,
+      "endLine": 49,
+      "startOffset": 53,
+      "endOffset": 85
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/ProjectsGrid.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element.",
+    "messageFormattings": [],
+    "tags": [
+      "accessibility",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 157,
+      "endLine": 162,
+      "startOffset": 16,
+      "endOffset": 17
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/ProjectsGrid.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Visible, non-interactive elements with click handlers must have at least one keyboard listener.",
+    "messageFormattings": [],
+    "tags": [
+      "accessibility",
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 192,
+      "endLine": 203,
+      "startOffset": 10,
+      "endOffset": 11
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/ProjectsGrid.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element.",
+    "messageFormattings": [],
+    "tags": [
+      "accessibility",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 192,
+      "endLine": 203,
+      "startOffset": 10,
+      "endOffset": 11
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/ProjectsGrid.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Media elements such as <audio> and <video> must have a <track> for captions.",
+    "messageFormattings": [],
+    "tags": [
+      "accessibility",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 288,
+      "endLine": 288,
+      "startOffset": 17,
+      "endOffset": 22
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/konami-easter-egg.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element.",
+    "messageFormattings": [],
+    "tags": [
+      "accessibility",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 169,
+      "endLine": 169,
+      "startOffset": 14,
+      "endOffset": 131
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/konami-easter-egg.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Visible, non-interactive elements with click handlers must have at least one keyboard listener.",
+    "messageFormattings": [],
+    "tags": [
+      "accessibility",
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 169,
+      "endLine": 169,
+      "startOffset": 14,
+      "endOffset": 131
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/page-transition.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 17,
+      "endLine": 17,
+      "startOffset": 31,
+      "endOffset": 74
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/page-transition.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Remove this redundant type alias and replace its occurrences with \"number\".",
+    "messageFormattings": [],
+    "tags": [],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 28,
+      "endLine": 28,
+      "startOffset": 9,
+      "endOffset": 34
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/pixel-perfect/social-hover-card.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 85,
+      "endLine": 85,
+      "startOffset": 40,
+      "endOffset": 86
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/pixel-perfect/social-hover-card.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 211,
+      "endLine": 211,
+      "startOffset": 36,
+      "endOffset": 37
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/pixel-perfect/social-hover-card.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Do not use Array index in keys",
+    "messageFormattings": [],
+    "tags": [
+      "performance",
+      "react",
+      "jsx"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 321,
+      "endLine": 321,
+      "startOffset": 36,
+      "endOffset": 37
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/DrawingOverlay.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 21,
+      "endLine": 27,
+      "startOffset": 31,
+      "endOffset": 22
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/DrawingOverlay.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Extract this nested ternary operation into an independent statement.",
+    "messageFormattings": [],
+    "tags": [
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 68,
+      "endLine": 70,
+      "startOffset": 12,
+      "endOffset": 21
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/DrawingOverlay.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Extract this nested ternary operation into an independent statement.",
+    "messageFormattings": [],
+    "tags": [
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 72,
+      "endLine": 72,
+      "startOffset": 55,
+      "endOffset": 85
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/DrawingOverlay.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "This assertion is unnecessary since it does not change the type of the expression.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "redundant"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 77,
+      "endLine": 77,
+      "startOffset": 14,
+      "endOffset": 59
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/DrawingOverlay.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "CRITICAL",
+    "message": "Refactor this function to reduce its Cognitive Complexity from 19 to the 15 allowed.",
+    "messageFormattings": [],
+    "tags": [
+      "brain-overload",
+      "architecture"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 110,
+      "endLine": 110,
+      "startOffset": 15,
+      "endOffset": 17
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/DrawingOverlay.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Extract this nested ternary operation into an independent statement.",
+    "messageFormattings": [],
+    "tags": [
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 154,
+      "endLine": 156,
+      "startOffset": 12,
+      "endOffset": 21
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/DrawingOverlay.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Extract this nested ternary operation into an independent statement.",
+    "messageFormattings": [],
+    "tags": [
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 157,
+      "endLine": 157,
+      "startOffset": 58,
+      "endOffset": 88
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/DrawingOverlay.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Extract this nested ternary operation into an independent statement.",
+    "messageFormattings": [],
+    "tags": [
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 193,
+      "endLine": 197,
+      "startOffset": 14,
+      "endOffset": 23
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/DrawingOverlay.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Extract this nested ternary operation into an independent statement.",
+    "messageFormattings": [],
+    "tags": [
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 195,
+      "endLine": 197,
+      "startOffset": 14,
+      "endOffset": 23
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/PlaygroundCanvas.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Extract this nested ternary operation into an independent statement.",
+    "messageFormattings": [],
+    "tags": [
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 46,
+      "endLine": 46,
+      "startOffset": 38,
+      "endOffset": 147
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/PlaygroundCanvas.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Extract this nested ternary operation into an independent statement.",
+    "messageFormattings": [],
+    "tags": [
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 46,
+      "endLine": 46,
+      "startOffset": 112,
+      "endOffset": 147
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/PlaygroundCanvas.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Extract this nested ternary operation into an independent statement.",
+    "messageFormattings": [],
+    "tags": [
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 46,
+      "endLine": 46,
+      "startOffset": 71,
+      "endOffset": 147
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/PlaygroundCanvas.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Extract this nested ternary operation into an independent statement.",
+    "messageFormattings": [],
+    "tags": [
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 156,
+      "endLine": 156,
+      "startOffset": 56,
+      "endOffset": 111
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/PlaygroundCanvas.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "This assertion is unnecessary since it does not change the type of the expression.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "redundant"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 285,
+      "endLine": 293,
+      "startOffset": 28,
+      "endOffset": 55
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/PlaygroundCanvas.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "This assertion is unnecessary since the receiver accepts the original type of the expression.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "redundant"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 294,
+      "endLine": 294,
+      "startOffset": 39,
+      "endOffset": 56
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/PlaygroundCanvas.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 386,
+      "endLine": 386,
+      "startOffset": 20,
+      "endOffset": 141
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/PlaygroundCanvas.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 390,
+      "endLine": 390,
+      "startOffset": 23,
+      "endOffset": 488
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/PlaygroundCanvas.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Extract this nested ternary operation into an independent statement.",
+    "messageFormattings": [],
+    "tags": [
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 392,
+      "endLine": 392,
+      "startOffset": 119,
+      "endOffset": 369
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/PlaygroundCanvas.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Use <details>, <fieldset>, <optgroup>, or <address> instead of the \"group\" role to ensure accessibility across all devices.",
+    "messageFormattings": [],
+    "tags": [
+      "accessibility",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 393,
+      "endLine": 393,
+      "startOffset": 9,
+      "endOffset": 875
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/PlaygroundCanvas.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Visible, non-interactive elements with click handlers must have at least one keyboard listener.",
+    "messageFormattings": [],
+    "tags": [
+      "accessibility",
+      "react"
+    ],
+    "type": "BUG",
+    "textRange": {
+      "startLine": 393,
+      "endLine": 393,
+      "startOffset": 9,
+      "endOffset": 875
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/PlaygroundCanvas.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Non-interactive elements should not be assigned mouse or keyboard event listeners.",
+    "messageFormattings": [],
+    "tags": [
+      "accessibility",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 393,
+      "endLine": 393,
+      "startOffset": 9,
+      "endOffset": 875
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/PlaygroundCanvas.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "`tabIndex` should only be declared on interactive elements.",
+    "messageFormattings": [],
+    "tags": [
+      "accessibility",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 393,
+      "endLine": 393,
+      "startOffset": 27,
+      "endOffset": 39
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/PlaygroundCanvas.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 403,
+      "endLine": 403,
+      "startOffset": 19,
+      "endOffset": 223
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/PlaygroundDock.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 13,
+      "endLine": 17,
+      "startOffset": 31,
+      "endOffset": 22
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/PlaygroundItem.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 17,
+      "endLine": 23,
+      "startOffset": 31,
+      "endOffset": 22
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/PlaygroundToolbar.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 24,
+      "endLine": 30,
+      "startOffset": 34,
+      "endOffset": 25
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/StickyNote.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 16,
+      "endLine": 22,
+      "startOffset": 27,
+      "endOffset": 18
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/playground/StickyNote.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element.",
+    "messageFormattings": [],
+    "tags": [
+      "accessibility",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 123,
+      "endLine": 126,
+      "startOffset": 8,
+      "endOffset": 9
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/theme-toggle.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 35,
+      "endLine": 35,
+      "startOffset": 28,
+      "endOffset": 65
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/ui/interactive-particles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Mark the props of the component as read-only.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 244,
+      "endLine": 259,
+      "startOffset": 37,
+      "endOffset": 28
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/ui/interactive-particles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "Prefer using an optional chain expression instead, as it's more concise and easier to read.",
+    "messageFormattings": [],
+    "tags": [],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 270,
+      "endLine": 270,
+      "startOffset": 8,
+      "endOffset": 48
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/ui/interactive-particles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "CRITICAL",
+    "message": "Refactor this code to not nest functions more than 4 levels deep.",
+    "messageFormattings": [],
+    "tags": [
+      "brain-overload"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 445,
+      "endLine": 445,
+      "startOffset": 34,
+      "endOffset": 36
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/components/ui/interactive-particles.tsx",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MAJOR",
+    "message": "aria-hidden=\"true\" must not be set on focusable elements.",
+    "messageFormattings": [],
+    "tags": [
+      "accessibility",
+      "react"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 521,
+      "endLine": 521,
+      "startOffset": 6,
+      "endOffset": 83
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/hooks/soundcn/use-sound.ts",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "CRITICAL",
+    "message": "Remove this use of the \"void\" operator.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 107,
+      "endLine": 107,
+      "startOffset": 8,
+      "endOffset": 12
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/hooks/soundcn/use-sound.ts",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "CRITICAL",
+    "message": "Remove this use of the \"void\" operator.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "confusing"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 113,
+      "endLine": 113,
+      "startOffset": 8,
+      "endOffset": 12
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/lib/sound-engine.ts",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Prefer using nullish coalescing operator (`??=`) instead of an assignment expression, as it is simpler to read.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "nullish-coalescing",
+      "es2020"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 5,
+      "endLine": 7,
+      "startOffset": 2,
+      "endOffset": 3
+    }
+  },
+  {
+    "component": "K27aUlXJGUTyE9OLcVeZ:src/lib/soundcn/sound-engine.ts",
+    "project": "K27aUlXJGUTyE9OLcVeZ",
+    "severity": "MINOR",
+    "message": "Prefer using nullish coalescing operator (`??=`) instead of an assignment expression, as it is simpler to read.",
+    "messageFormattings": [],
+    "tags": [
+      "type-dependent",
+      "nullish-coalescing",
+      "es2020"
+    ],
+    "type": "CODE_SMELL",
+    "textRange": {
+      "startLine": 5,
+      "endLine": 7,
+      "startOffset": 2,
+      "endOffset": 3
+    }
+  }
+]

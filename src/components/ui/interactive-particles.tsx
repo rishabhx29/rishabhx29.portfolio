@@ -306,7 +306,9 @@ export function InteractiveParticles({
 
     let fovHeight = 2 * Math.tan((camera.fov * Math.PI) / 180 / 2) * camera.position.z;
 
-    const clock = new THREE.Clock(true);
+    // `THREE.Clock` is deprecated in three r18x; a plain high-resolution
+    // timestamp gives us the same per-frame delta with no extra dependency.
+    let lastFrameTime = performance.now();
     const container3D = new THREE.Object3D();
     scene.add(container3D);
 
@@ -321,19 +323,31 @@ export function InteractiveParticles({
     let touch: TouchTexture | null = null;
     let uniforms: Record<string, THREE.IUniform> | null = null;
     let introObserver: IntersectionObserver | null = null;
+    let introFallback: number | null = null;
     let imgWidth = 0;
     let imgHeight = 0;
 
     const onPointerMove = (e: PointerEvent) => {
       if (!hitArea || !touch) return;
+      // The canvas is `pointer-events-none` so it never eats clicks meant for
+      // the page beneath — which also means it can never be the event target
+      // for its own pointermove. Listen on the window and reject pointers that
+      // fall outside the canvas rect.
       rect = canvas.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return;
+      if (
+        e.clientX < rect.left || e.clientX > rect.right ||
+        e.clientY < rect.top || e.clientY > rect.bottom
+      ) {
+        return;
+      }
       mouseNDC.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
       mouseNDC.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
       raycaster.setFromCamera(mouseNDC, camera);
       const hits = raycaster.intersectObject(hitArea);
       if (hits.length > 0 && hits[0].uv) touch.addTouch(hits[0].uv.x, hits[0].uv.y);
     };
-    canvas.addEventListener("pointermove", onPointerMove);
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
 
     // ── build particles from the image ───────────────────────────────────────
     const loader = new THREE.TextureLoader();
@@ -440,20 +454,35 @@ export function InteractiveParticles({
 
       // Intro animation triggered when entering viewport so user actually sees it.
       let hasAnimated = false;
+      const playIntro = () => {
+        if (hasAnimated || !uniforms) return;
+        hasAnimated = true;
+        gsap.fromTo(uniforms.uSize, { value: 0.35 }, { value: size, duration: 1.6, ease: "power2.out" });
+        gsap.fromTo(uniforms.uRandom, { value: 30.0 }, { value: randomness, duration: 1.8, ease: "power3.out" });
+        gsap.fromTo(uniforms.uDepth, { value: 60.0 }, { value: depth, duration: 2.0, ease: "power3.out" });
+      };
+
+      // threshold 0 (any sliver) rather than 0.25, so scrolling past quickly
+      // cannot skip the intro and leave uSize pinned near its start value.
       introObserver = new IntersectionObserver(
         (entries) => {
-          if (!uniforms) return;
-          if (hasAnimated) return;
           if (!entries.some((entry) => entry.isIntersecting)) return;
-
-          hasAnimated = true;
-          gsap.fromTo(uniforms.uSize, { value: 0.1 }, { value: size, duration: 1.6, ease: "power2.out" });
-          gsap.fromTo(uniforms.uRandom, { value: 30.0 }, { value: randomness, duration: 1.8, ease: "power3.out" });
-          gsap.fromTo(uniforms.uDepth, { value: 60.0 }, { value: depth, duration: 2.0, ease: "power3.out" });
+          playIntro();
         },
-        { threshold: 0.25 }
+        { threshold: 0 }
       );
       introObserver.observe(container);
+
+      // Safety net: if the observer never fires (section skipped, observer
+      // unsupported, backgrounded tab), snap to the settled values instead of
+      // leaving the particles stuck at a fraction of their intended size.
+      introFallback = window.setTimeout(() => {
+        if (hasAnimated || !uniforms) return;
+        playIntro();
+      }, 2200);
+    }, undefined, () => {
+      // Without this the canvas stays silently blank forever on a failed load.
+      console.error(`[InteractiveParticles] failed to load texture: ${effectiveSrc}`);
     });
 
     const applyScale = () => {
@@ -482,7 +511,11 @@ export function InteractiveParticles({
 
     // ── loop ──────────────────────────────────────────────────────────────────
     renderer.setAnimationLoop(() => {
-      const delta = clock.getDelta();
+      const now = performance.now();
+      // Clamp the delta so a backgrounded tab does not jump the animation
+      // forward by the whole time the page was hidden.
+      const delta = Math.min((now - lastFrameTime) / 1000, 0.1);
+      lastFrameTime = now;
       if (touch) touch.update();
       if (uniforms) uniforms.uTime.value += delta;
       renderer.render(scene, camera);
@@ -492,10 +525,11 @@ export function InteractiveParticles({
     return () => {
       disposed = true;
       renderer.setAnimationLoop(null);
-      canvas.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("resize", applySize);
       resizeObserver.disconnect();
       if (introObserver) introObserver.disconnect();
+      if (introFallback !== null) window.clearTimeout(introFallback);
       if (uniforms) gsap.killTweensOf([uniforms.uSize, uniforms.uRandom, uniforms.uDepth]);
       if (object3D) {
         object3D.geometry.dispose();

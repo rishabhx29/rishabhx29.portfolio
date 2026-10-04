@@ -37,7 +37,7 @@ export function ThemeToggle({ className }: Readonly<{ className?: string }>) {
   const mounted = useMounted();
 
   if (!mounted) {
-    return <div className={cn("h-8 w-8", className)} aria-hidden="true" />;
+    return <div className={cn("h-11 w-11 sm:h-8 sm:w-8", className)} aria-hidden="true" />;
   }
 
   const isDark = resolvedTheme === "dark";
@@ -67,7 +67,7 @@ export function ThemeToggle({ className }: Readonly<{ className?: string }>) {
         toggleTheme();
       }}
       className={cn(
-        "relative z-50 flex h-8 w-8 cursor-pointer items-center justify-center rounded-md text-zinc-600 transition-all duration-300 hover:text-zinc-900 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:text-zinc-400 dark:hover:text-zinc-100",
+        "relative z-50 flex h-11 w-11 sm:h-8 sm:w-8 cursor-pointer items-center justify-center rounded-md text-zinc-600 transition-all duration-300 hover:text-zinc-900 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:text-zinc-400 dark:hover:text-zinc-100",
         className,
       )}
       aria-label="Toggle theme"

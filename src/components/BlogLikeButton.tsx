@@ -53,7 +53,7 @@ export function BlogLikeButton({ slug, initialLikes }: BlogLikeButtonProps) {
       aria-label={liked ? "Unlike this blog post" : "Like this blog post"}
       aria-pressed={liked}
       onClick={toggleLike}
-      className="group -m-1 inline-flex min-h-7 min-w-10 items-center gap-1.5 rounded-[5px] p-1 text-emerald-600 transition-colors hover:bg-emerald-50 hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40 dark:text-emerald-500 dark:hover:bg-emerald-500/10 dark:hover:text-emerald-400"
+      className="group -m-1 inline-flex min-h-11 min-w-11 sm:min-h-7 sm:min-w-10 items-center gap-1.5 rounded-[5px] p-1 text-emerald-600 transition-colors hover:bg-emerald-50 hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40 dark:text-emerald-500 dark:hover:bg-emerald-500/10 dark:hover:text-emerald-400"
     >
       <Heart
         className={`h-3.5 w-3.5 transition-transform group-active:scale-90 ${

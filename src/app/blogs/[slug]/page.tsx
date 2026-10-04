@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -9,7 +8,8 @@ import {
   Clock,
 } from "lucide-react";
 import { BlogLikeButton } from "@/components/BlogLikeButton";
-import { CommandMenu } from "@/components/command-menu";
+import { BlogImage } from "@/components/BlogImage";
+import { BannerMusicControl } from "@/components/BannerMusicControl";
 import { CurrentTime } from "@/components/CurrentTime";
 import { FooterBackground } from "@/components/FooterBackground";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -90,22 +90,22 @@ function BlueprintFrame() {
       />
 
       <div
-        className="absolute left-0 right-0 top-[22vh] h-0 border-b border-black/30 pointer-events-none dark:border-white/[0.15]"
+        className="absolute left-0 right-0 top-[var(--banner-h)] h-0 border-b border-black/30 pointer-events-none dark:border-white/[0.15]"
         style={horizontalDashes}
       />
       <div
-        className="absolute left-0 right-0 top-[calc(22vh+112px)] h-0 border-b border-black/30 pointer-events-none dark:border-white/[0.15]"
+        className="absolute left-0 right-0 top-[var(--content-offset)] h-0 border-b border-black/30 pointer-events-none dark:border-white/[0.15]"
         style={horizontalDashes}
       />
 
       {[
-        { top: "22vh", left: "30%" },
-        { top: "22vh", right: "30%" },
-        { top: "calc(22vh + 112px)", left: "30%" },
-        { top: "calc(22vh + 112px)", right: "30%" },
+        { top: "var(--banner-h)", left: "30%" },
+        { top: "var(--banner-h)", right: "30%" },
+        { top: "var(--content-offset)", left: "30%" },
+        { top: "var(--content-offset)", right: "30%" },
       ].map((position) => (
         <div
-          key={`${position.top}-${position.left ?? position.right}`}
+          key={`${position.top}-${position.left ? "left" : "right"}`}
           className="absolute hidden h-[2px] w-[2px] bg-black/50 pointer-events-none dark:bg-white/[0.25] md:block"
           style={{
             top: position.top,
@@ -119,7 +119,7 @@ function BlueprintFrame() {
   );
 }
 
-function BlueprintDivider({ className = "" }: { className?: string }) {
+function BlueprintDivider({ className = "" }: { readonly className?: string }) {
   return (
     <div className={`relative ${className}`}>
       <div
@@ -132,7 +132,7 @@ function BlueprintDivider({ className = "" }: { className?: string }) {
   );
 }
 
-function BlogContentBlock({ block }: { block: BlogBlock }) {
+function BlogContentBlock({ block }: { readonly block: BlogBlock }) {
   switch (block.type) {
     case "heading":
       return (
@@ -164,21 +164,13 @@ function BlogContentBlock({ block }: { block: BlogBlock }) {
 
     case "image":
       return (
-        <figure className="my-8">
-          <div className="relative overflow-hidden rounded-[6px] border border-black/20 bg-zinc-100 shadow-sm shadow-black/10 dark:border-white/[0.12] dark:bg-[#09090b] dark:shadow-black/50">
-            <Image
-              src={block.src}
-              alt={block.alt}
-              width={block.width}
-              height={block.height}
-              sizes="(min-width: 768px) 40vw, 100vw"
-              className="h-auto w-full object-cover"
-            />
-          </div>
-          <figcaption className="mt-2 text-[11px] leading-5 text-zinc-500 dark:text-zinc-500">
-            {block.caption}
-          </figcaption>
-        </figure>
+        <BlogImage
+          src={block.src}
+          alt={block.alt}
+          caption={block.caption}
+          width={block.width}
+          height={block.height}
+        />
       );
 
     case "list":
@@ -290,14 +282,14 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
       />
       <BlueprintFrame />
 
-      <div className="absolute left-0 right-0 top-0 h-[22vh] pointer-events-auto -z-0 md:left-[30%] md:right-[30%]">
+      <div className="absolute left-0 right-0 top-0 h-[var(--banner-h)] pointer-events-auto -z-0 md:left-[30%] md:right-[30%]">
         <FooterBackground />
         <div className="absolute bottom-3 right-2 z-10 pointer-events-auto">
           <CurrentTime />
         </div>
       </div>
 
-      <div className="absolute left-0 right-0 top-[22vh] z-50 flex h-[112px] items-center px-4 md:left-[30%] md:right-[30%]">
+      <div className="absolute left-0 right-0 top-[var(--banner-h)] z-50 flex h-[var(--profile-h)] items-center px-4 md:left-[30%] md:right-[30%]">
         <div className="flex w-full items-center justify-between gap-4">
           <div className="flex min-w-0 items-center gap-5">
             <Link
@@ -317,21 +309,21 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
             </div>
           </div>
 
-          <div className="flex h-20 items-start justify-end gap-2 py-1 sm:h-24 sm:gap-3">
-            <CommandMenu />
+          <div className="flex h-20 items-start justify-end gap-2 py-1 sm:h-24 sm:gap-3 max-md:hidden">
+            <BannerMusicControl />
             <ThemeToggle className="dark:text-zinc-400 hover:dark:text-zinc-300" />
           </div>
         </div>
       </div>
 
-      <main className="relative z-10 ml-0 mr-0 flex flex-col px-4 pb-16 pt-[calc(22vh+112px)] md:ml-[30%] md:mr-[30%]">
+      <main id="main-content" className="relative z-10 ml-0 mr-0 flex flex-col px-4 pb-16 pt-[var(--content-offset)] md:ml-[30%] md:mr-[30%]">
         <article className="relative">
           <header className="relative py-7">
             <div className="mb-4 flex flex-wrap gap-2">
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-[4px] border border-black/30 bg-white/50 px-2 py-0.5 text-[11px] font-medium text-zinc-600 dark:border-white/[0.15] dark:bg-black/20 dark:text-zinc-400"
+                  className="rounded-[4px] border border-black/30 bg-white/50 px-2 py-0.5 text-[12px] sm:text-[11px] font-medium text-zinc-600 dark:border-white/[0.15] dark:bg-black/20 dark:text-zinc-400"
                 >
                   {tag}
                 </span>

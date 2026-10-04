@@ -1,256 +1,149 @@
-# Rishabh Tripathi — Technical Blueprint Portfolio
-
 <div align="center">
-  <h3>Minimalist Engineering & Architectural Web Portfolio</h3>
-  <p>
-    An ultra-fast, precision-crafted developer portfolio built with <b>Next.js 16 (App Router)</b>, <b>React 19</b>, <b>Tailwind CSS v4</b>, and <b>TypeScript</b>.<br />
-    Designed around a technical CAD/Blueprint aesthetic with sound-engineered micro-interactions, an open-ended interactive sandbox, and fluid route animations.
-  </p>
 
-  <p>
-    <a href="https://portfolio-v2-two-xi.vercel.app"><b>Live Preview</b></a> •
-    <a href="#key-features"><b>Features</b></a> •
-    <a href="#architecture--design-system"><b>Architecture</b></a> •
-    <a href="#getting-started"><b>Getting Started</b></a> •
-    <a href="#customization-guide"><b>Customization</b></a>
-  </p>
+# Rishabh Tripathi
+
+**Full-Stack Software Engineer · Open-Source Maintainer & Mentor**
+
+[![Portfolio](https://img.shields.io/badge/portfolio-rishabhx29.me-111111?style=flat-square&logo=vercel&logoColor=white)](https://rishabhx29.me)
+[![GitHub](https://img.shields.io/badge/github-rishabhx29-111111?style=flat-square&logo=github&logoColor=white)](https://github.com/rishabhx29)
+[![LinkedIn](https://img.shields.io/badge/linkedin-rishabh-tripathi-111111?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rishabh-tripathi-728a77317)
+[![X](https://img.shields.io/badge/x-@RishabhTri8805-111111?style=flat-square&logo=x&logoColor=white)](https://x.com/RishabhTri8805)
+
 </div>
 
 ---
 
-## 📐 Overview & Design Philosophy
+I build fast, dependable products and I write code that other people enjoy
+reading. Most of my time goes into developer tools — code intelligence,
+typing analytics, gamified DSA — and into open source, where I maintain
+projects, review pull requests, and help first-time contributors get unblocked.
 
-> *&quot;Simplicity is prerequisite for reliability.&quot;* — **Edsger W. Dijkstra**
+I care about the parts of software nobody demos: architecture that survives
+its second year, accessible keyboard paths, honest error states, and pages
+that don't shift while they're loading.
 
-This repository houses the personal portfolio and digital playground of **Rishabh Tripathi** (`rishabhx29`), a full-stack software engineer who ships fast and obsesses over clean architecture. 
-
-Rather than relying on heavy, generic templates, this project implements a custom **Technical Blueprint & CAD Sandbox** design system from scratch. Every border, grid line, and motion curve is calibrated to evoke the feeling of high-end architectural software while delivering instantaneous sub-millisecond route transitions and a **100/100 Lighthouse Performance** score.
-
-```
-+-------------------------------------------------------------------------+
-|  [N]   Rishabh Tripathi   Software Engineer          [ INDEX ]          |
-|                                                      ├── Experience     |
-|  +------------------------------------------------+  ├── Projects       |
-|  |  [!] Interactive Blueprint Sandbox & Canvas    |  ├── Open Source    |
-|  |  +------------------------------------------+  |  ├── Skills         |
-|  |  | Drag tech tokens, sticky notes, & tools  |  |  └── Certifications |
-|  |  +------------------------------------------+  |                     |
-|  +------------------------------------------------+  [ Explore ]        |
-+-------------------------------------------------------------------------+
-```
+> *Simplicity is prerequisite for reliability.* — Edsger W. Dijkstra
 
 ---
 
-## ✨ Key Features
+## 🛠️ What I'm building
 
-- **📐 Blueprint Dotted Grid Architecture:** Custom-engineered `repeating-linear-gradient` micro-dots (`1px` width/height at `6px` intervals) render crisp architectural guidelines across the viewport without layout shift.
-- **🛠️ Open-Ended CAD Sandbox (`/playground`):** A free-form interactive canvas where users can drag and drop tech tokens, place customizable sticky notes, draw freehand with pen & eraser tools, and export high-resolution PNG snapshots using `html2canvas`.
-- **🚀 Fluid Route Transitions:** Powered by `framer-motion`'s `AnimatePresence`. Grid lines dynamically scale and draw themselves across the screen on page enter (`scaleX`/`scaleY`), then smoothly fade to a subtle static opacity (`15%`) once settled.
-- **⌨️ Command Palette (`Cmd/Ctrl + K`):** Instant keyboard navigation built with `cmdk`. Jump to sections (`#experience`, `#projects`, `#skills`), switch color themes, or trigger the Blueprint Playground (`Shift + G`) from anywhere.
-- **🎮 Konami Code Easter Egg (`↑↑↓↓←→←→BA`):** Built-in sequence listener (`src/components/konami-easter-egg.tsx`) that rewards curiosity with celebratory multi-directional confetti using `canvas-confetti`.
-- **🔊 Sound-Engineered Micro-Interactions:** Web Audio API sound engine (`src/lib/sound.ts`) that plays subtle, tactile audio cues on button clicks, navigation events, and theme toggles.
-- **📊 Interactive GitHub Contribution Graph:** Live GitHub activity visualization fetching real-time contribution metrics via optimized server/client endpoints.
-- **🎨 Dark & Light Mode Synchronization:** Seamless, flicker-free theme toggling with `next-themes`, keeping CSS variables, background masks, and particle color fields in perfect harmony.
-- **✨ Interactive Canvas Particles:** Physics-based canvas particle field (`InteractiveParticles`) surrounding the profile illustration (`public/Rishabh.png`) that reacts to mouse movement.
+| Project | What it is | Status |
+| :--- | :--- | :--- |
+| **[Traceon](https://traceon.vercel.app/)** · [source](https://github.com/rishabhx29/Traceon) | Maps a repository's architecture into interactive dependency graphs using AST worker threads, scores blast-radius impact, and evaluates engineering capability with an LLM-powered "profile DNA". | **Live** |
+| **[VeloKey](https://velokey.vercel.app/)** · [source](https://github.com/rishabhx29/velokey) | A distraction-free typing platform with live WPM telemetry, consistency charts, a mirroring virtual keyboard, and Web Audio per-key acoustic feedback. | **Live** |
+| **[AlgoForge](https://algo-forge-2-0.vercel.app/)** · [source](https://github.com/rishabhx29/AlgoForge) | Gamified DSA learning — curated roadmaps, daily streaks, XP milestones, activity heatmaps, and global leaderboards that build intuition instead of memorising answers. | **Live** |
+| **[Adaptive](https://adaptiv-nine.vercel.app/)** · [source](https://github.com/rishabhx29/Adaptiv) | Contextual AI portfolio and dynamic resume system — Gemini reframes your experience for a specific role or company, paired with an ATS-friendly PDF generator. | **Building** |
 
 ---
 
-## 🛠️ Tech Stack
+## 🌱 Open source
 
-| Category | Technologies |
-| :--- | :--- |
-| **Core Framework** | [Next.js 16.2](https://nextjs.org/) (App Router, Turbopack, SSG/ISR) |
-| **UI Library** | [React 19](https://react.dev/) + React DOM 19 |
-| **Language** | [TypeScript 5](https://www.typescriptlang.org/) (`strict` mode) |
-| **Styling & Design System** | [Tailwind CSS v4](https://tailwindcss.com/) + PostCSS (`@tailwindcss/postcss`) |
-| **Motion & Physics** | [Framer Motion 12](https://www.framer.com/motion/) + [GSAP 3.15](https://greensock.com/gsap/) |
-| **Interactive Canvas & Export** | [html2canvas](https://html2canvas.hertzen.com/) + [canvas-confetti](https://github.com/catdad/canvas-confetti) |
-| **Command Menu & UI Primitives** | [cmdk](https://cmdk.paco.me/) + [Radix UI](https://www.radix-ui.com/) + [shadcn/ui](https://ui.shadcn.com/) |
-| **Icons & Typography** | [Lucide React](https://lucide.dev/) + [React Icons](https://react-icons.github.io/react-icons/) |
-| **Analytics & Observability** | [Vercel Analytics](https://vercel.com/analytics) + [Speed Insights](https://vercel.com/speed-insights) |
+| Programme | Role | Period |
+| :--- | :--- | :--- |
+| **Social Summer of Code (SSoC)** | Project Admin — admin and mentor contributors on Traceon and AlgoForge, guide architecture decisions, review PRs, and resolve issues with people early in their open-source journey. | Jun 2026 — Present |
+| **GirlScript Summer of Code (GSSoC)** | Contributor — shipped features and performance work on *Editron* and *Commitpulse* alongside maintainers. | Apr 2026 — Present |
+| **Ecera System Pvt. Ltd.** | Software Developer Intern — architected a job portal from the ground up (auth, CI/CD on a VPS via Jenkins), plus accessibility refactors, captcha security, and real-time dashboards on an LMS. | Jun 2026 — Present |
 
 ---
 
-## 🏗️ Architecture & Design System
+## 🧰 The stack, honestly
 
-### Request Lifecycle & Data Flow
+I split this three ways on purpose — a flat list of forty technologies tells
+you nothing about how I actually work.
 
-```mermaid
-graph TD
-    A[Browser Request / Route Change] --> B[Next.js 16 App Router]
-    B --> C[RootLayout src/app/layout.tsx]
-    C --> D[ThemeProvider & Sound Engine]
-    D --> E[PageTransition AnimatePresence]
-    E --> F[Route Page e.g., /, /playground, /projects]
-    
-    subgraph Global Navigation Layer
-        C --> G[RightNavbar Fixed Navigation]
-        C --> H[CommandMenu Cmd/Ctrl + K]
-        C --> I[KonamiEasterEgg Listener]
-    end
+**Every day** — what I open without thinking about it
+`Python` · `TypeScript` · `React` · `Next.js` · `FastAPI` · `PostgreSQL` · `Git`
 
-    subgraph Data & Assets
-        F --> J[src/data/projectsData.ts]
-        F --> K[src/data/experienceData.ts]
-        F --> L[src/data/playgroundAssets.ts]
-    end
-```
+**Often** — reached for whenever the problem calls for it
+`Tailwind` · `Kubernetes` · `Redis` · `Docker` · `Supabase` · `Vue` · `Prometheus` · `Vercel`
 
-> [!IMPORTANT]
-> **Fixed Positioning & CSS Filter Isolation:** In CSS specifications (`W3C Filter Effects Module Level 1`), any element with a `filter` or `transform` applied creates a new containing block for `position: fixed` descendants. To prevent the right sidebar (`<RightNavbar />`) from scrolling with the page during `<motion.div>` entrance animations, `<RightNavbar />` is hoisted directly into `RootLayout` outside the `PageTransition` wrapper, and `onAnimationComplete` cleans up lingering inline transform styles automatically.
-
-### Directory Structure
-
-```text
-Portfolio-v2-/
-├── public/
-│   ├── Rishabh.png              # Custom profile illustration
-│   ├── icon.png / apple-icon.png # Favicons and PWA metadata
-│   └── ...
-├── src/
-│   ├── app/                     # Next.js 16 App Router routes
-│   │   ├── layout.tsx           # Global layout, providers, & fixed navbar
-│   │   ├── page.tsx             # Homepage (INDEX, projects grid, experience list)
-│   │   ├── playground/          # Interactive CAD Sandbox & Canvas route
-│   │   ├── projects/[slug]/     # Dynamic SSG project detail pages
-│   │   ├── blogs/[slug]/        # Dynamic blog article pages
-│   │   ├── experience/          # Full experience timeline route
-│   │   ├── pull-requests/       # Open-source PR showcase route
-│   │   └── contact/             # Contact form & social cards route
-│   ├── components/              # Modular UI & Feature components
-│   │   ├── playground/          # Canvas, Toolbar, Dock, StickyNotes, DrawingOverlay
-│   │   ├── pixel-perfect/       # Precision buttons (SoftPillButton, SocialHoverCard)
-│   │   ├── ui/                  # Interactive particles & primitives
-│   │   ├── PageTransition.tsx   # Framer motion route wrapper & grid drawing
-│   │   ├── RightNavbar.tsx      # Fixed right-side INDEX navigation
-│   │   └── KonamiEasterEgg.tsx  # Secret ↑↑↓↓←→←→BA sequence listener
-│   ├── data/                    # Type-safe static content stores
-│   │   ├── projectsData.ts      # Featured projects metadata
-│   │   ├── experienceData.ts    # Career timeline & achievements
-│   │   └── playgroundAssets.ts  # Draggable tech tokens & initial sticky notes
-│   ├── hooks/                   # Custom React utility hooks
-│   └── lib/                     # Sound engine, utils, & helper functions
-├── next.config.ts               # Next.js & Turbopack configuration
-├── package.json                 # Project dependencies & scripts
-└── tsconfig.json                # TypeScript compiler options
-```
+**When it fits** — used in anger at least once, happy to again
+`LangChain` · `Ollama` · `Django` · `Spring Boot` · `Java` · `Firebase` · `MySQL`
 
 ---
 
-## 🚀 Getting Started
+## 🖥️ This site
 
-Follow these steps to set up the project locally on your machine in under two minutes.
+**[rishabhx29.me](https://rishabhx29.me)** is my portfolio and an interactive
+sandbox, built on a custom *technical blueprint / CAD* design language — dashed
+drawing frames, hairline grid rules, crosshair registration marks, and
+monospaced numerals.
 
-### 1. Prerequisites
+What makes it more than a template:
 
-Make sure you have the following installed:
-- [Node.js](https://nodejs.org/) (`v20.0.0` or higher)
-- [npm](https://www.npmjs.com/) (`v10+`) or [pnpm](https://pnpm.io/) / [bun](https://bun.sh/) / [yarn](https://yarnpkg.com/)
-- [Git](https://git-scm.com/)
+- **An open-ended CAD sandbox** (`/playground`) — a free-form canvas where you
+  drag technology tokens, place sticky notes, draw freehand with pen and
+  eraser, and export a high-resolution PNG of your board.
+- **Live GitHub activity** — the full 12-month contribution graph, fetched
+  through a locked-down server route and horizontally scrollable on mobile.
+- **An open-source PR showcase** — real Merged / Open / Closed filters across
+  my contributions.
+- **Blueprint route transitions** — grid lines draw themselves across the
+  viewport on navigation, then settle to a static hairline.
+- **Sound-engineered interaction** — a Web Audio engine synthesises tactile
+  cues for clicks, hovers, and theme changes. No audio files required.
+- **Responsive by design** — mobile gets a fixed top bar and an expanding-pill
+  bottom tab bar, not a squeezed-down desktop.
+- **Easter eggs** — try <kbd>↑</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd><kbd>←</kbd><kbd>→</kbd><kbd>B</kbd><kbd>A</kbd> somewhere. There's also a dog.
 
-### 2. Clone the Repository
+Built with **Next.js 16** (App Router, Turbopack) · **React 19** · **TypeScript 5** (strict) ·
+**Tailwind CSS v4** · **Framer Motion** · **GSAP** · **three.js** · **Vitest**.
+
+### A few engineering decisions worth calling out
+
+This is the part I'm most opinionated about, so here's the reasoning rather
+than just the stack:
+
+- **The GitHub route is a locked server, not a proxy.** `/api/github` holds the
+  `GITHUB_TOKEN`, so it accepts *only* an exact allowlist of the GraphQL
+  documents this site actually sends — anything else is a `403` before it
+  reaches the network. It's rate-limited per IP, cached for five minutes, and
+  times out at eight seconds. The allowlist is generated from the same module
+  the client imports, so the two can't drift apart.
+- **Assets are audited, not assumed.** A script cross-references every
+  root-relative asset reference in `src/` against `public/` and fails loudly on
+  anything that would 404. This caught seven broken images in one pass.
+- **Images degrade instead of breaking.** Blog figures fall back to a labelled
+  placeholder if an asset is ever missing, so content never renders as a
+  torn-image icon.
+- **Static analysis is enforced locally.** ESLint runs with SonarQube's rule
+  set, and there are 33 unit tests covering the GitHub data layer, the audio
+  engine, and the playground board state.
+- **Motion is decorative, never load-bearing.** Everything respects
+  `prefers-reduced-motion`.
+
+---
+
+## 💬 Let's talk
+
+I'm always up for talking about developer tooling, code intelligence,
+open-source mentorship, or building things that are genuinely useful.
+
+- **GitHub** — [github.com/rishabhx29](https://github.com/rishabhx29)
+- **X** — [@RishabhTri8805](https://x.com/RishabhTri8805)
+- **LinkedIn** — [rishabh-tripathi](https://www.linkedin.com/in/rishabh-tripathi-728a77317)
+- **Discord** — [jiraya_sensei2139](https://discord.com/users/jiraya_sensei2139)
+- **Email** — via the [contact page](https://rishabhx29.me/contact)
+
+---
+
+<details>
+<summary><b>Run it locally</b></summary>
 
 ```bash
-git clone https://github.com/rishabhx29/Portfolio-v2-.git
-cd Portfolio-v2-
-```
-
-### 3. Install Dependencies
-
-```bash
+git clone https://github.com/rishabhx29/rishabhx29.portfolio.git
+cd rishabhx29.portfolio
 npm install
-```
-
-### 4. Start the Development Server
-
-Launch the local development server with **Turbopack** enabled for instant Hot Module Replacement (HMR):
-
-```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser. You should see the blueprint grid animate across the screen and settle into the homepage.
+Needs Node 20+. Scripts: `dev` · `build` · `start` · `lint` · `test`.
+All portfolio content lives in `src/data/` — projects, experience, and
+playground tokens are plain typed objects.
 
-> [!TIP]
-> **Test the Easter Egg right away:** Once on [localhost:3000](http://localhost:3000), press the arrow keys and letters `↑ ↑ ↓ ↓ ← → ← → B A` on your keyboard to trigger the confetti animation!
-
----
-
-## 📜 Available Commands
-
-| Command | Description |
-| :--- | :--- |
-| `npm run dev` | Starts the Next.js development server with Turbopack at `localhost:3000`. |
-| `npm run build` | Compiles an optimized production static/hybrid bundle across all 17 routes. |
-| `npm start` | Starts the Node.js production server locally to inspect the built output. |
-| `npm run lint` | Runs ESLint and TypeScript checks across all `src/` files. |
-
----
-
-## 🎨 Customization Guide
-
-If you are using this repository as inspiration or a base for your own architectural portfolio, here is where to customize the core content:
-
-### 1. Updating Personal Content & Data
-All portfolio data is decoupled from presentation components and strongly typed inside `src/data/`:
-- **Projects (`src/data/projectsData.ts`):** Add or update projects, tech stacks, live/GitHub URLs, and detailed markdown descriptions for dynamic `[slug]` pages.
-- **Experience (`src/data/experienceData.ts`):** Modify career history, roles, dates, and bullet points.
-- **Playground Tokens (`src/data/playgroundAssets.ts`):** Customize the default tech tokens (`React`, `Next.js`, `TypeScript`, etc.), initial sticky notes, and drawing palette colors displayed in the CAD sandbox.
-
-### 2. Tweaking the Blueprint Grid Tokens
-The signature dotted blueprint lines are defined using high-performance CSS `mask-image` linear gradients. You can adjust the grid spacing (`6px`), dot size (`1px`), and opacity across `src/components/page-transition.tsx` and `src/app/layout.tsx`:
-
-```css
-/* Example: Standard 1px repeating vertical dot mask */
-mask-image: repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px);
-```
-
-### 3. Customizing Sound Effects
-The audio feedback engine is implemented via Web Audio API synthesis in `src/lib/sound.ts`. You can adjust pitch, gain, and decay frequency without needing external `.mp3` audio files.
-
----
-
-## 🚢 Deployment
-
-### Deploy to Vercel (Recommended)
-
-This project is fully optimized for [Vercel](https://vercel.com/), the creators of Next.js.
-
-1. Push your repository to GitHub / GitLab / Bitbucket.
-2. Import the project in your [Vercel Dashboard](https://vercel.com/new).
-3. Vercel will automatically detect **Next.js**, apply optimal build settings (`next build`), and deploy with zero required configuration.
-
-### Deploy via Docker / VPS
-
-To run on a standalone Linux server or container platform:
-
-```bash
-# Build the production bundle
-npm run build
-
-# Start the standalone server on port 3000
-PORT=3000 npm start
-```
-
----
-
-## 🤝 Contributing & Open Source
-
-Contributions, issues, and feature requests are welcome! Feel free to check out the [issues page](https://github.com/rishabhx29/Portfolio-v2-/issues) if you want to contribute.
-
-If you find this design system or blueprint sandbox helpful, consider leaving a ⭐ on the repository!
-
----
-
-## 📄 License
-
-This project is open-source and available under the [MIT License](file:///c:/Rishabh/Portfolio-v2-/LICENSE).
+</details>
 
 <div align="center">
-  <p>Engineered with precision by <b>Rishabh Tripathi</b></p>
-  <p>
-    <a href="https://github.com/rishabhx29">GitHub</a> •
-    <a href="https://x.com/RishabhTri8805">X (Twitter)</a> •
-    <a href="https://www.linkedin.com/in/rishabh-tripathi-728a77317">LinkedIn</a>
-  </p>
+  <sub>Engineered with precision by <b>Rishabh Tripathi</b></sub>
 </div>
