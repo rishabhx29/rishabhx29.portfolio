@@ -275,7 +275,7 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
   };
 
   return (
-    <div className="relative min-h-screen w-full overflow-x-hidden bg-[#fbfaf9] transition-colors duration-300 dark:bg-[#100f0f]">
+    <div className="relative min-h-screen w-full overflow-x-hidden bg-[#fbfaf9] transition-colors duration-300 dark:bg-[var(--page-bg)]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}

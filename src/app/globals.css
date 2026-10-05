@@ -10,6 +10,17 @@
  * down with pt-[var(--content-offset)].
  */
 :root {
+  /* Surface tokens.
+   *
+   * `--page-bg` is the canvas behind everything; `--surface-bg` is the raised
+   * panel that sits on it (the hero card and its children). These were baked
+   * into a dozen `dark:bg-[#......]` literals, which meant retuning the dark
+   * theme meant hunting through every file and inevitably missing one.
+   * Declared once here and consumed as `bg-[var(--...)]`.
+   */
+  --page-bg: #fbfaf9;
+  --surface-bg: #fbfaf9;
+
   --banner-h: 22vh;
   --profile-h: 112px;
   --content-offset: calc(var(--banner-h) + var(--profile-h));
@@ -144,9 +155,15 @@
 }
 
 .dark {
-  --color-background: #100f0f;
+  /* Dark theme greys. The page sits darker than the panels on it, so the
+     raised surfaces read as lifted rather than the whole page flattening into
+     one value. */
+  --page-bg: #0f0f10;
+  --surface-bg: #141414;
+
+  --color-background: #0f0f10;
   --color-foreground: #fafafa;
-  --color-popover: #171717;
+  --color-popover: #141414;
   --color-popover-foreground: #fafafa;
   --color-muted: #1c1c1c;
   --color-muted-foreground: #909092;
@@ -154,14 +171,14 @@
   --color-accent: #171717;
   --color-accent-foreground: #fafafa;
   --color-ring: #2f2f2f;
-  --background: #100f0f;
+  --background: #0f0f10;
   --foreground: #fafafa;
-  --card: #171717;
+  --card: #141414;
   --card-foreground: #fafafa;
-  --popover: #171717;
+  --popover: #141414;
   --popover-foreground: #fafafa;
   --primary: #fafafa;
-  --primary-foreground: #100f0f;
+  --primary-foreground: #0f0f10;
   --secondary: #1e1e1e;
   --secondary-foreground: #fafafa;
   --muted: #1c1c1c;

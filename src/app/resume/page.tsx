@@ -48,7 +48,7 @@ export default function ResumePage() {
   };
 
   return (
-    <main id="main-content" className="relative min-h-screen w-full overflow-x-hidden bg-[#fbfaf9] transition-colors duration-300 dark:bg-[#100f0f]">
+    <main id="main-content" className="relative min-h-screen w-full overflow-x-hidden bg-[#fbfaf9] transition-colors duration-300 dark:bg-[var(--page-bg)]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(resumeJsonLd) }}

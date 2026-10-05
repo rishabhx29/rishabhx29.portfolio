@@ -114,7 +114,7 @@ export default async function ProjectPage({ params }: Readonly<{ params: Promise
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#fbfaf9] dark:bg-[#100f0f] relative overflow-x-hidden transition-colors duration-300">
+    <div className="min-h-screen w-full bg-[#fbfaf9] dark:bg-[var(--page-bg)] relative overflow-x-hidden transition-colors duration-300">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}

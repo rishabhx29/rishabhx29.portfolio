@@ -20,7 +20,7 @@ const SoftPillButton = React.forwardRef<HTMLButtonElement, SoftPillButtonProps>(
       <Comp
         ref={ref}
         className={cn(
-          "group relative block rounded-[4px] text-center px-5 py-2.5 min-h-11 sm:min-h-0 flex sm:block items-center justify-center text-[13px] font-medium tracking-tight transition-[transform] duration-200 active:scale-[0.99] active:duration-[50ms] focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 dark:focus-visible:ring-zinc-400 dark:focus-visible:ring-offset-[#100f0f]",
+          "group relative block rounded-[4px] text-center px-5 py-2.5 min-h-11 sm:min-h-0 flex sm:block items-center justify-center text-[13px] font-medium tracking-tight transition-[transform] duration-200 active:scale-[0.99] active:duration-[50ms] focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 dark:focus-visible:ring-zinc-400 dark:focus-visible:ring-offset-[var(--page-bg)]",
           "[backdrop-filter:blur(6px)]",
           isPrimary ? "text-neutral-50 dark:text-neutral-950" : "text-neutral-900 dark:text-neutral-300",
           className,

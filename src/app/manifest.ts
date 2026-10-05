@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "Official portfolio of Rishabh Tripathi (rishabhx29), full-stack software engineer and open-source developer.",
     start_url: "/",
     display: "standalone",
-    background_color: "#100f0f",
-    theme_color: "#100f0f",
+    background_color: "#0f0f10",
+    theme_color: "#0f0f10",
     icons: [
       {
         src: "/icon.png",

@@ -13,7 +13,7 @@ export function MobileTopBar() {
   return (
     <header
       style={{ zIndex: 40, position: "fixed", top: 0, left: 0, right: 0 }}
-      className="md:hidden flex h-14 items-center justify-between gap-4 border-b border-black/5 bg-[#fbfaf9]/80 px-4 backdrop-blur-md dark:border-white/[0.08] dark:bg-[#100f0f]/80"
+      className="md:hidden flex h-14 items-center justify-between gap-4 border-b border-black/5 bg-[#fbfaf9]/80 px-4 backdrop-blur-md dark:border-white/[0.08] dark:bg-[var(--page-bg)]/80"
     >
       <Link
         href="/"

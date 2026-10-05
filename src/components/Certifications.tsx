@@ -7,7 +7,7 @@ export function Certifications() {
     <div className="relative mt-4 w-full overflow-x-auto pb-4 overscroll-x-contain cursor-grab active:cursor-grabbing md:overflow-visible">
       <div className="flex w-max min-w-full gap-4 md:w-full">
         <div className="group w-full max-w-[260px] flex-shrink-0 md:shrink flex flex-col rounded-[6px] overflow-hidden bg-zinc-50 dark:bg-[#171717] border border-black/20 dark:border-white/[0.08] hover:border-black/30 dark:hover:border-white/[0.16] transition-colors duration-200 cursor-default">
-          <div className="relative w-full aspect-video bg-zinc-100 dark:bg-[#100f0f]/60 p-2 flex items-center justify-center overflow-hidden">
+          <div className="relative w-full aspect-video bg-zinc-100 dark:bg-[var(--page-bg)]/60 p-2 flex items-center justify-center overflow-hidden">
             <div className="relative h-full aspect-square">
               <Image
                 src="/Gssoc-badge.png"
@@ -32,7 +32,7 @@ export function Certifications() {
         </div>
 
         <div className="group w-full max-w-[260px] flex-shrink-0 md:shrink flex flex-col rounded-[6px] overflow-hidden bg-zinc-50 dark:bg-[#171717] border border-black/20 dark:border-white/[0.08] hover:border-black/30 dark:hover:border-white/[0.16] transition-colors duration-200 cursor-default">
-          <div className="relative w-full aspect-video bg-zinc-100 dark:bg-[#100f0f]/60 p-2 flex items-center justify-center overflow-hidden">
+          <div className="relative w-full aspect-video bg-zinc-100 dark:bg-[var(--page-bg)]/60 p-2 flex items-center justify-center overflow-hidden">
             <div className="relative h-full aspect-square">
               <Image
                 src="/ssoc-badge.png"

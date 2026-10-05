@@ -15,7 +15,7 @@ export default function OpenGraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px",
-          background: "#100f0f",
+          background: "#0f0f10",
           color: "#fafafa",
         }}
       >

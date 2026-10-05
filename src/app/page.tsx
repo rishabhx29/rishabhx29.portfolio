@@ -16,7 +16,7 @@ import { BlueprintGrid } from "@/components/BlueprintGrid";
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-full bg-[#fbfaf9] dark:bg-[#100f0f] relative overflow-x-hidden transition-colors duration-300">
+    <div className="min-h-screen w-full bg-[#fbfaf9] dark:bg-[var(--page-bg)] relative overflow-x-hidden transition-colors duration-300">
 
       {/* Blueprint grid motif */}
       <BlueprintGrid horizontals={["var(--banner-h)", "var(--content-offset)"]} />
@@ -38,48 +38,52 @@ export default function Home() {
         className="absolute left-0 right-0 top-0 z-40 hidden md:block md:left-[30%] md:right-[30%]"
         style={{ height: "calc(var(--banner-h) + var(--profile-h))" }}
       >
-        <div className="flex h-full flex-col gap-8 rounded-3xl border border-dashed border-black/20 p-3 dark:border-white/[0.14]">
-          <div className="relative min-h-0 flex-1 overflow-hidden rounded-2xl bg-[#fbfaf9] dark:bg-[#100f0f]">
-            <Image
-              src="/new_banner_light (1).png"
-              alt="Rishabh Tripathi — Full-Stack Software Engineer Portfolio Banner"
-              fill
-              priority
-              sizes="(min-width: 768px) 40vw, 100vw"
-              quality={75}
-              className="object-cover object-[center_20%] dark:hidden"
-            />
-            <Image
-              src="/new_banner_dark.png"
-              alt="Rishabh Tripathi — Full-Stack Software Engineer Portfolio Banner Dark"
-              fill
-              priority
-              sizes="(min-width: 768px) 40vw, 100vw"
-              quality={75}
-              className="hidden object-cover object-[center_20%] dark:block"
-            />
-            <DeferredBannerParticles />
+        <div className="flex h-full flex-col gap-13 rounded-3xl border border-dashed border-black/20 bg-[var(--surface-bg)] p-3 dark:border-white/[0.14]">
+          {/*
+            Positioning wrapper for the banner and the avatar. It deliberately
+            does NOT clip. The avatar used to be a child of the overflow-hidden
+            element that rounds the image corners, which quietly cropped
+            everything below the banner's bottom edge - the overlap was being
+            clipped away rather than drawn.
+          */}
+          <div className="relative min-h-0 flex-1">
+            <div className="h-full overflow-hidden rounded-2xl bg-[#fbfaf9] dark:bg-[var(--surface-bg)]">
+              <Image
+                src="/new_banner_light (1).png"
+                alt="Rishabh Tripathi — Full-Stack Software Engineer Portfolio Banner"
+                fill
+                priority
+                sizes="(min-width: 768px) 40vw, 100vw"
+                quality={75}
+                className="object-cover object-[center_20%] dark:hidden"
+              />
+              <Image
+                src="/new_banner_dark.png"
+                alt="Rishabh Tripathi — Full-Stack Software Engineer Portfolio Banner Dark"
+                fill
+                priority
+                sizes="(min-width: 768px) 40vw, 100vw"
+                quality={75}
+                className="hidden object-cover object-[center_20%] dark:block"
+              />
+              <DeferredBannerParticles />
 
-            {/* Time readout, still sitting on the banner's bottom-right. It can
-                live inside the banner now that this is one stacking context
-                rather than two competing ones. */}
-            <div className="absolute bottom-2 right-3 z-20">
-              <CurrentTime />
+              {/* Time readout, still on the banner's bottom-right. */}
+              <div className="absolute bottom-2 right-3 z-20">
+                <CurrentTime />
+              </div>
             </div>
 
             {/*
-              Avatar, pulled up to straddle the banner's bottom-left corner. The
-              ring matches the page background so it reads as a cutout rather
-              than a sticker, which is what makes the overlap legible against a
-              busy image.
+              Avatar, sitting half in the banner and half below it.
+
+              Two numbers have to agree here. The avatar is 80px on desktop, so
+              hanging 40px past the edge is the halfway split; and the card's
+              `gap-13` (52px) has to exceed that 40px, or the avatar lands on the
+              name below. The ring matches the card it overhangs onto so the
+              circle reads as a cutout rather than a sticker.
             */}
-            {/* Avatar overlap. It hangs `overhang` px past the banner's bottom
-                edge, so the gap below the banner has to exceed that or the
-                avatar lands on the name. Kept as one number on both sides so
-                the two cannot drift apart again. */}
-            <div
-              className="absolute bottom-[-24px] left-3 z-20 h-16 w-16 overflow-hidden rounded-full ring-4 ring-[#fbfaf9] sm:h-20 sm:w-20 dark:ring-[#100f0f]"
-            >
+            <div className="absolute bottom-[-40px] left-3 z-20 h-16 w-16 overflow-hidden rounded-full ring-4 ring-[#fbfaf9] sm:h-20 sm:w-20 dark:ring-[var(--surface-bg)]">
               <Image
                 src="/Rishabh-Avatar.jpg"
                 alt="Rishabh Tripathi — Full-Stack Software Engineer Portfolio Avatar"
@@ -136,7 +140,7 @@ export default function Home() {
             <Image src="/new_banner_dark.png" alt="Banner (dark)" width={1200} height={630} quality={75} priority sizes="calc(100vw - 56px)" className="hidden w-full dark:block" />
             <DeferredBannerParticles />
           </div>
-          <div className="-mt-8 ml-3 relative z-10 w-16 h-16 rounded-full overflow-hidden ring-4 ring-[#fbfaf9] dark:ring-[#100f0f]">
+          <div className="-mt-8 ml-3 relative z-10 w-16 h-16 rounded-full overflow-hidden ring-4 ring-[#fbfaf9] dark:ring-[var(--page-bg)]">
             <Image src="/Rishabh-Avatar.jpg" alt="Rishabh Tripathi" width={240} height={240} className="h-full w-full object-cover grayscale contrast-100" />
           </div>
         </div>
