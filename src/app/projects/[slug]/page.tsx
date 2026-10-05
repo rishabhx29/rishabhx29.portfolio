@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { BannerMusicControl } from "@/components/BannerMusicControl";
+import { LastPlayed } from "@/components/LastPlayed";
 import { CurrentTime } from "@/components/CurrentTime";
 import { FooterBackground } from "@/components/FooterBackground";
 import { projectsData, iconMap, techNames, TechItem, TechKey } from "@/data/projectsData";
@@ -175,7 +175,7 @@ export default async function ProjectPage({ params }: Readonly<{ params: Promise
 
           {/* Right: Controls */}
           <div className="flex items-start justify-end gap-2 sm:gap-3 h-20 sm:h-24 py-1 max-md:hidden">
-            <BannerMusicControl />
+            <LastPlayed />
             <ThemeToggle className="dark:text-zinc-400 hover:dark:text-zinc-300" />
           </div>
         </div>

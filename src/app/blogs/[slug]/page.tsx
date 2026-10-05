@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { BlogLikeButton } from "@/components/BlogLikeButton";
 import { BlogImage } from "@/components/BlogImage";
-import { BannerMusicControl } from "@/components/BannerMusicControl";
+import { LastPlayed } from "@/components/LastPlayed";
 import { CurrentTime } from "@/components/CurrentTime";
 import { FooterBackground } from "@/components/FooterBackground";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -310,7 +310,7 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
           </div>
 
           <div className="flex h-20 items-start justify-end gap-2 py-1 sm:h-24 sm:gap-3 max-md:hidden">
-            <BannerMusicControl />
+            <LastPlayed />
             <ThemeToggle className="dark:text-zinc-400 hover:dark:text-zinc-300" />
           </div>
         </div>

@@ -10,7 +10,6 @@ const nextConfig: NextConfig = {
       "three",
       "canvas-confetti",
       "framer-motion",
-      "cmdk",
       "gsap",
     ],
   },
@@ -40,6 +39,14 @@ const nextConfig: NextConfig = {
         hostname: "unavatar.io",
         port: "",
         pathname: "/twitter/**",
+        search: "",
+      },
+      {
+        // Spotify album artwork for the LastPlayed chip
+        protocol: "https",
+        hostname: "i.scdn.co",
+        port: "",
+        pathname: "/image/**",
         search: "",
       },
     ],
@@ -88,7 +95,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: "Content-Security-Policy",
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://static.wixstatic.com https://github.com https://unavatar.io https://avatars.githubusercontent.com https://raw.githubusercontent.com; font-src 'self' data:; connect-src 'self' https://api.github.com https://formspree.io https://api.web3forms.com https://formsubmit.co https://vitals.vercel-insights.com https://va.vercel-scripts.com; media-src 'self' data: blob:; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io https://api.web3forms.com https://formsubmit.co; frame-ancestors 'self';",
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://static.wixstatic.com https://github.com https://unavatar.io https://avatars.githubusercontent.com https://raw.githubusercontent.com https://i.scdn.co; font-src 'self' data:; connect-src 'self' https://api.github.com https://formspree.io https://api.web3forms.com https://formsubmit.co https://vitals.vercel-insights.com https://va.vercel-scripts.com; media-src 'self' data: blob:; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io https://api.web3forms.com https://formsubmit.co; frame-ancestors 'self';",
           },
         ],
       },

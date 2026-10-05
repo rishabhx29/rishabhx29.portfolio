@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Download, ExternalLink, FileText } from "lucide-react";
-import { BannerMusicControl } from "@/components/BannerMusicControl";
+import { LastPlayed } from "@/components/LastPlayed";
 import { CurrentTime } from "@/components/CurrentTime";
 import { FooterBackground } from "@/components/FooterBackground";
 import SoftPillButton from "@/components/pixel-perfect/soft-pill-button";
@@ -142,7 +142,7 @@ export default function ResumePage() {
           </div>
 
           <div className="flex h-20 shrink-0 items-start justify-end gap-2 py-1 sm:h-24 sm:gap-3 max-md:hidden">
-            <BannerMusicControl />
+            <LastPlayed />
             <ThemeToggle className="dark:text-zinc-400 hover:dark:text-zinc-300" />
           </div>
         </div>

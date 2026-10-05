@@ -3,7 +3,7 @@ import { CurrentTime } from "@/components/CurrentTime";
 import { ProjectsGrid } from "@/components/ProjectsGrid";
 import { ExperienceList } from "@/components/ExperienceList";
 import { OpenSourceContributions } from "@/components/OpenSourceContributions";
-import { BannerMusicControl } from "@/components/BannerMusicControl";
+import { LastPlayed } from "@/components/LastPlayed";
 import Link from "next/link";
 import SoftPillButton from "@/components/pixel-perfect/soft-pill-button";
 import SocialHoverCard from "@/components/pixel-perfect/social-hover-card";
@@ -112,7 +112,7 @@ export default function Home() {
             </div>
 
             <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-              <BannerMusicControl />
+              <LastPlayed />
               <ThemeToggle className="dark:text-zinc-400 hover:dark:text-zinc-300" />
             </div>
           </div>

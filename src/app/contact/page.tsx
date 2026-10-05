@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useCallback, useRef, useState } from "react";
-import { BannerMusicControl } from "@/components/BannerMusicControl";
+import { LastPlayed } from "@/components/LastPlayed";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { FlightButton } from "@/components/FlightButton";
 import { Keyboard, type KeyboardInteractionEvent } from "@/components/ui/keyboard";
@@ -194,7 +194,7 @@ export default function ContactPage() {
 
           {/* Right: Controls */}
           <div className="flex items-start justify-end gap-2 sm:gap-3 h-20 sm:h-24 py-1 max-md:hidden">
-            <BannerMusicControl />
+            <LastPlayed />
             <ThemeToggle className="dark:text-zinc-400 hover:dark:text-zinc-300" />
           </div>
         </div>

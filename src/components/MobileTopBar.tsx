@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { BannerMusicControl } from "@/components/BannerMusicControl";
+import { LastPlayed } from "@/components/LastPlayed";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 /**
@@ -24,7 +24,7 @@ export function MobileTopBar() {
         Rishabh Tripathi
       </Link>
       <div className="flex items-center gap-2">
-        <BannerMusicControl />
+        <LastPlayed />
         <ThemeToggle />
       </div>
     </header>
