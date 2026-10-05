@@ -49,3 +49,6 @@ AGENTS.md
 
 # playwright-cli scratch output
 .playwright-cli/
+
+# local verification screenshots
+/tb-*.png
