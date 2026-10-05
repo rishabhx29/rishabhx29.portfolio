@@ -21,72 +21,91 @@ export default function Home() {
       {/* Blueprint grid motif */}
       <BlueprintGrid horizontals={["var(--banner-h)", "var(--content-offset)"]} />
 
-      {/* Cell 1: Banner */}
-      <div className="absolute left-0 right-0 md:left-[30%] md:right-[30%] top-0 h-[var(--banner-h)] -z-0 pointer-events-auto overflow-hidden bg-[#fbfaf9] dark:bg-[#100f0f] shadow-[0_4px_12px_rgba(2,6,23,0.04)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.20)] max-md:hidden">
-        <Image
-          src="/new_banner_light (1).png"
-          alt="Rishabh Tripathi — Full-Stack Software Engineer Portfolio Banner"
-          fill
-          priority
-          sizes="(min-width: 768px) 40vw, 100vw"
-          quality={75}
-          className="object-cover object-[center_20%] dark:hidden"
-        />
-        <Image
-          src="/new_banner_dark.png"
-          alt="Rishabh Tripathi — Full-Stack Software Engineer Portfolio Banner Dark"
-          fill
-          priority
-          sizes="(min-width: 768px) 40vw, 100vw"
-          quality={75}
-          className="hidden object-cover object-[center_20%] dark:block"
-        />
-        <DeferredBannerParticles />
-        <div className="absolute inset-x-0 bottom-0 h-10 pointer-events-none z-[5] bg-gradient-to-t from-[#fbfaf9]/90 to-transparent dark:from-[#100f0f]/90 dark:to-transparent" />
-        <div className="absolute left-0 top-0 bottom-0 w-8 pointer-events-none z-20 bg-gradient-to-r from-[#fbfaf9]/90 to-transparent dark:from-[#100f0f]/80 dark:to-transparent" />
-        <div className="absolute right-0 top-0 bottom-0 w-8 pointer-events-none z-20 bg-gradient-to-l from-[#fbfaf9]/90 to-transparent dark:from-[#100f0f]/80 dark:to-transparent" />
-      </div>
+      {/*
+        Desktop hero.
 
-      {/* Banner overlay controls — outside the banner's stacking context so z-[60] beats the profile section's z-50 */}
-      <div className="absolute right-2 md:right-[calc(30%+8px)] z-[60] pointer-events-auto max-md:hidden" style={{ top: 'calc(var(--banner-h) - 48px)' }}>
-        <CurrentTime />
-      </div>
+        This was two separate absolutely-positioned bands — a full-bleed banner
+        strip, then a profile row beneath it. It is now one dashed card holding
+        the banner, the avatar overlapping its bottom-left corner, and the
+        identity row underneath: the same construction the mobile hero already
+        uses, at desktop scale.
 
-      {/* Cell 2: Profile Section - --profile-h height to wrap the framed image (13px gap top/bottom) */}
-      <div className="absolute left-0 right-0 md:left-[30%] md:right-[30%] top-[var(--banner-h)] h-[var(--profile-h)] flex items-center px-4 z-50 max-md:hidden">
-        <div className="flex w-full items-center justify-between">
+        The total height is deliberately unchanged (--banner-h + --profile-h),
+        so `--content-offset`, the blueprint rules, and every other page that
+        pads itself by those vars are untouched.
+      */}
+      <div
+        className="absolute left-0 right-0 top-0 z-40 hidden md:block md:left-[30%] md:right-[30%]"
+        style={{ height: "calc(var(--banner-h) + var(--profile-h))" }}
+      >
+        <div className="flex h-full flex-col gap-3 rounded-3xl border border-dashed border-black/20 p-3 dark:border-white/[0.14]">
+          <div className="relative min-h-0 flex-1 overflow-hidden rounded-2xl bg-[#fbfaf9] dark:bg-[#100f0f]">
+            <Image
+              src="/new_banner_light (1).png"
+              alt="Rishabh Tripathi — Full-Stack Software Engineer Portfolio Banner"
+              fill
+              priority
+              sizes="(min-width: 768px) 40vw, 100vw"
+              quality={75}
+              className="object-cover object-[center_20%] dark:hidden"
+            />
+            <Image
+              src="/new_banner_dark.png"
+              alt="Rishabh Tripathi — Full-Stack Software Engineer Portfolio Banner Dark"
+              fill
+              priority
+              sizes="(min-width: 768px) 40vw, 100vw"
+              quality={75}
+              className="hidden object-cover object-[center_20%] dark:block"
+            />
+            <DeferredBannerParticles />
 
-          <div className="flex items-center gap-3 sm:gap-5">
-            <div className="relative p-[3px] rounded-[6px] sm:rounded-[8px] border-[1.5px] border-black/25 dark:border-white/[0.12] shrink-0">
-              {/* The inner image */}
-              <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-[3px] sm:rounded-[5px] overflow-hidden bg-zinc-100 dark:bg-[#171717]">
-                <Image
-                  src="/Rishabh-Avatar.jpg"
-                  alt="Rishabh Tripathi — Full-Stack Software Engineer Portfolio Avatar"
-                  width={240}
-                  height={240}
-                  quality={80}
-                  priority
-                  sizes="(min-width: 640px) 120px, 96px"
-                  className="h-full w-full origin-center object-cover opacity-90 grayscale contrast-100 mix-blend-multiply dark:mix-blend-normal"
-                />
-              </div>
+            {/* Time readout, still sitting on the banner's bottom-right. It can
+                live inside the banner now that this is one stacking context
+                rather than two competing ones. */}
+            <div className="absolute bottom-2 right-3 z-20">
+              <CurrentTime />
             </div>
 
-            <div className="flex flex-col justify-center pt-0 sm:pt-8">
-              <h1 className="text-[16px] sm:text-[24px] font-bold text-zinc-800 dark:text-zinc-100 tracking-tight leading-none mb-0.5 whitespace-nowrap [font-family:var(--font-doto),monospace] [text-shadow:-1.5px_0_0_rgba(0,200,255,0.3),1.5px_0_0_rgba(255,80,0,0.3)] dark:[text-shadow:-1.5px_0_0_rgba(0,200,255,0.6),1.5px_0_0_rgba(255,80,0,0.6)]">
+            {/*
+              Avatar, pulled up to straddle the banner's bottom-left corner. The
+              ring matches the page background so it reads as a cutout rather
+              than a sticker, which is what makes the overlap legible against a
+              busy image.
+            */}
+            <div className="absolute -bottom-5 left-3 z-20 h-16 w-16 overflow-hidden rounded-full ring-4 ring-[#fbfaf9] sm:h-20 sm:w-20 dark:ring-[#100f0f]">
+              <Image
+                src="/Rishabh-Avatar.jpg"
+                alt="Rishabh Tripathi — Full-Stack Software Engineer Portfolio Avatar"
+                width={240}
+                height={240}
+                quality={80}
+                priority
+                sizes="(min-width: 640px) 120px, 96px"
+                className="h-full w-full object-cover grayscale contrast-100"
+              />
+            </div>
+          </div>
+
+
+          {/* Identity row — name and role on the left, the sound and theme
+              controls on the right, exactly where they sat before. */}
+          <div className="flex shrink-0 items-center justify-between gap-3 px-1">
+            <div className="flex min-w-0 flex-col justify-center">
+              <h1 className="text-[16px] font-bold leading-none tracking-tight text-zinc-800 whitespace-nowrap dark:text-zinc-100 [font-family:var(--font-doto),monospace] [text-shadow:-1.5px_0_0_rgba(0,200,255,0.3),1.5px_0_0_rgba(255,80,0,0.3)] dark:[text-shadow:-1.5px_0_0_rgba(0,200,255,0.6),1.5px_0_0_rgba(255,80,0,0.6)] sm:text-[24px]">
                 Rishabh Tripathi
                 <span className="sr-only"> — Full-Stack Software Engineer Portfolio (rishabhx29)</span>
               </h1>
-              <p className="text-[12px] sm:text-[14px] text-zinc-500 dark:text-zinc-400">Full-Stack Software Engineer</p>
+              <p className="mt-1 text-[12px] text-zinc-500 sm:text-[14px] dark:text-zinc-400">
+                Full-Stack Software Engineer
+              </p>
+            </div>
+
+            <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+              <BannerMusicControl />
+              <ThemeToggle className="dark:text-zinc-400 hover:dark:text-zinc-300" />
             </div>
           </div>
-
-          <div className="flex items-start justify-end gap-2 sm:gap-3 h-20 sm:h-24 py-1 max-md:hidden">
-            <BannerMusicControl />
-            <ThemeToggle className="dark:text-zinc-400 hover:dark:text-zinc-300" />
-          </div>
-
         </div>
       </div>
 
