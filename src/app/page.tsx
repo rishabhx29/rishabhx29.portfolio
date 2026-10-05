@@ -38,7 +38,7 @@ export default function Home() {
         className="absolute left-0 right-0 top-0 z-40 hidden md:block md:left-[30%] md:right-[30%]"
         style={{ height: "calc(var(--banner-h) + var(--profile-h))" }}
       >
-        <div className="flex h-full flex-col gap-3 rounded-3xl border border-dashed border-black/20 p-3 dark:border-white/[0.14]">
+        <div className="flex h-full flex-col gap-8 rounded-3xl border border-dashed border-black/20 p-3 dark:border-white/[0.14]">
           <div className="relative min-h-0 flex-1 overflow-hidden rounded-2xl bg-[#fbfaf9] dark:bg-[#100f0f]">
             <Image
               src="/new_banner_light (1).png"
@@ -73,7 +73,13 @@ export default function Home() {
               than a sticker, which is what makes the overlap legible against a
               busy image.
             */}
-            <div className="absolute -bottom-5 left-3 z-20 h-16 w-16 overflow-hidden rounded-full ring-4 ring-[#fbfaf9] sm:h-20 sm:w-20 dark:ring-[#100f0f]">
+            {/* Avatar overlap. It hangs `overhang` px past the banner's bottom
+                edge, so the gap below the banner has to exceed that or the
+                avatar lands on the name. Kept as one number on both sides so
+                the two cannot drift apart again. */}
+            <div
+              className="absolute bottom-[-24px] left-3 z-20 h-16 w-16 overflow-hidden rounded-full ring-4 ring-[#fbfaf9] sm:h-20 sm:w-20 dark:ring-[#100f0f]"
+            >
               <Image
                 src="/Rishabh-Avatar.jpg"
                 alt="Rishabh Tripathi — Full-Stack Software Engineer Portfolio Avatar"
