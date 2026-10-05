@@ -36,6 +36,7 @@ export default function Home() {
           src="/new_banner_dark.png"
           alt="Rishabh Tripathi — Full-Stack Software Engineer Portfolio Banner Dark"
           fill
+          priority
           sizes="(min-width: 768px) 40vw, 100vw"
           quality={75}
           className="hidden object-cover object-[center_20%] dark:block"
@@ -94,8 +95,20 @@ export default function Home() {
       <div className="md:hidden px-4 pt-16 pb-2">
         <div className="rounded-3xl border border-dashed border-black/20 dark:border-white/[0.14] p-3">
           <div className="relative overflow-hidden rounded-2xl">
-            <Image src="/new_banner_light (1).png" alt="Banner" width={1200} height={630} quality={75} className="block w-full dark:hidden" />
-            <Image src="/new_banner_dark.png" alt="Banner (dark)" width={1200} height={630} quality={75} className="hidden w-full dark:block" />
+            {/*
+              This banner is the mobile LCP element. It was shipping with
+              next/image's default `loading="lazy"`, which Lighthouse charged
+              ~1.9s of load delay, and with no `sizes` it was fetched at
+              w=1920 to paint a 354px-wide slot.
+
+              `priority` makes it eager with high fetch priority; `sizes`
+              accounts for the page gutter and the card padding so the browser
+              picks a candidate near the size it actually renders. Both variants
+              are marked because the dark one is the LCP whenever the theme is
+              dark, and which one paints is not knowable during SSR.
+            */}
+            <Image src="/new_banner_light (1).png" alt="Banner" width={1200} height={630} quality={75} priority sizes="calc(100vw - 56px)" className="block w-full dark:hidden" />
+            <Image src="/new_banner_dark.png" alt="Banner (dark)" width={1200} height={630} quality={75} priority sizes="calc(100vw - 56px)" className="hidden w-full dark:block" />
             <DeferredBannerParticles />
           </div>
           <div className="-mt-8 ml-3 relative z-10 w-16 h-16 rounded-full overflow-hidden ring-4 ring-[#fbfaf9] dark:ring-[#100f0f]">

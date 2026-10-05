@@ -135,6 +135,13 @@ export function MobileTabBar() {
           <MotionLink
             key={href}
             href={href}
+            // Opt out of App Router prefetching. All five routes sit in the
+            // viewport at once, so Next began prefetching every one during
+            // hydration; on a throttled phone that RSC work collapsed into a
+            // single ~1s main-thread task and dominated total blocking time. A
+            // tab bar is tapped deliberately, so paying for the route on demand
+            // beats stalling first paint on a guess.
+            prefetch={false}
             // Animates the reflow the expanding pill causes, so the icons slide
             // instead of jumping. Restraint over cleverness: this is a 44px
             // control, and it has to stay cheap enough to run during a route

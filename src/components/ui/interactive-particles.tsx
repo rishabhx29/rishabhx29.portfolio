@@ -3,13 +3,12 @@
 import * as React from "react";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import gsap from "gsap";
 import { cn } from "@/lib/utils";
 
 /**
  * Interactive Particles
  * Samples an image into thousands of GPU particles that scatter and flow
- * around the cursor via an off-screen "touch texture", with a GSAP intro
+ * around the cursor via an off-screen "touch texture", with an eased intro
  * animation and simplex-noise displacement.
  *
  * Ported from Bruno Imbrizi's Codrops "Interactive Particles" (Three.js)
@@ -323,6 +322,28 @@ export function InteractiveParticles({
     let touch: TouchTexture | null = null;
     let uniforms: Record<string, THREE.IUniform> | null = null;
     let introObserver: IntersectionObserver | null = null;
+
+    /*
+     * Eased intro tweens, declared out here rather than next to `playIntro`
+     * because that lives inside the texture-loading block while these are
+     * advanced by the render loop, which is one scope wider.
+     *
+     * They replace three GSAP `fromTo` calls: GSAP cost 69 KB of bundle and a
+     * ~99ms main-thread task to interpolate three numbers, and it was landing on
+     * the mobile critical path even though this component only renders at `md`
+     * and up. Same easing (`powerN.out` is `1 - (1 - t) ** N`), same durations,
+     * driven by the loop that was already running.
+     */
+    type IntroTween = {
+      uniform: { value: number };
+      from: number;
+      to: number;
+      duration: number;
+      ease: (t: number) => number;
+      elapsed: number;
+    };
+    const powerOut = (n: number) => (t: number) => 1 - (1 - t) ** n;
+    const introTweens: IntroTween[] = [];
     let introFallback: number | null = null;
     let imgWidth = 0;
     let imgHeight = 0;
@@ -452,14 +473,28 @@ export function InteractiveParticles({
 
       applyScale();
 
-      // Intro animation triggered when entering viewport so user actually sees it.
+      /*
+       * Intro animation, triggered on entering the viewport so the user
+       * actually sees it.
+       *
+       * This used to be three GSAP `fromTo` tweens. GSAP was 69 KB of bundle
+       * and a ~99ms main-thread task purely to interpolate three numbers, and
+       * it was being pulled onto the mobile critical path even though this
+       * component only renders at `md` and up. The render loop below was
+       * already running, so the tweens live there now: same easing, same
+       * durations, one less dependency.
+       *
+       * `powerN.out` in GSAP is `1 - (1 - t) ** N`.
+       */
       let hasAnimated = false;
       const playIntro = () => {
         if (hasAnimated || !uniforms) return;
         hasAnimated = true;
-        gsap.fromTo(uniforms.uSize, { value: 0.35 }, { value: size, duration: 1.6, ease: "power2.out" });
-        gsap.fromTo(uniforms.uRandom, { value: 30.0 }, { value: randomness, duration: 1.8, ease: "power3.out" });
-        gsap.fromTo(uniforms.uDepth, { value: 60.0 }, { value: depth, duration: 2.0, ease: "power3.out" });
+        introTweens.push(
+          { uniform: uniforms.uSize, from: 0.35, to: size, duration: 1.6, ease: powerOut(2), elapsed: 0 },
+          { uniform: uniforms.uRandom, from: 30.0, to: randomness, duration: 1.8, ease: powerOut(3), elapsed: 0 },
+          { uniform: uniforms.uDepth, from: 60.0, to: depth, duration: 2.0, ease: powerOut(3), elapsed: 0 },
+        );
       };
 
       // threshold 0 (any sliver) rather than 0.25, so scrolling past quickly
@@ -518,6 +553,17 @@ export function InteractiveParticles({
       lastFrameTime = now;
       if (touch) touch.update();
       if (uniforms) uniforms.uTime.value += delta;
+
+      // Drive the intro tweens from the same loop. Iterating backwards lets a
+      // finished tween be spliced out without skipping the next one.
+      for (let i = introTweens.length - 1; i >= 0; i--) {
+        const tween = introTweens[i];
+        tween.elapsed += delta;
+        const progress = Math.min(1, tween.elapsed / tween.duration);
+        tween.uniform.value = tween.from + (tween.to - tween.from) * tween.ease(progress);
+        if (progress >= 1) introTweens.splice(i, 1);
+      }
+
       renderer.render(scene, camera);
     });
 
@@ -530,7 +576,7 @@ export function InteractiveParticles({
       resizeObserver.disconnect();
       if (introObserver) introObserver.disconnect();
       if (introFallback !== null) window.clearTimeout(introFallback);
-      if (uniforms) gsap.killTweensOf([uniforms.uSize, uniforms.uRandom, uniforms.uDepth]);
+      introTweens.length = 0;
       if (object3D) {
         object3D.geometry.dispose();
         (object3D.material as THREE.Material).dispose();

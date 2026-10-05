@@ -56,6 +56,9 @@ export function RightNavbar() {
             <Link
               key={link.name}
               href={link.href}
+              // See MobileTabBar: prefetching every nav destination during
+              // hydration produced a ~1s main-thread task on throttled devices.
+              prefetch={false}
               className={`text-[12px] font-medium tracking-[0.05em] transition-all duration-300 ease-out flex items-center gap-3 py-1 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600 ${isActive
                   ? "text-zinc-900 dark:text-zinc-100 font-semibold"
                   : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
