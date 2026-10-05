@@ -89,29 +89,21 @@ export function DeferredGithubGraph() {
 }
 
 /**
- * The three.js particle field behind the certifications card.
+ * The RISHABH particle logo in the site footer.
  *
- * That card is `max-md:hidden`, but a CSS-hidden element still satisfies
- * IntersectionObserver, so the viewport gate alone used to mount a WebGL
- * renderer — and pull the 514 KB three.js chunk — on phones, where nothing was
- * ever visible. Gating on the breakpoint as well means the chunk is never
- * requested on mobile.
+ * It renders on every breakpoint, so it cannot be gated on a media query —
+ * that was tried and it made the footer particle field disappear on phones,
+ * which is exactly where the viewport-gated load did not kick it in. What it
+ * does instead is wait until the block scrolls within 160px of the viewport
+ * before pulling the three.js chunk, so the 514 KB is only spent once the user
+ * has scrolled toward it.
  */
 export function DeferredRishabhParticles() {
   const { ref, shouldLoad } = useViewportLoad("160px");
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    const query = window.matchMedia("(min-width: 768px)");
-    const sync = () => setIsDesktop(query.matches);
-    sync();
-    query.addEventListener("change", sync);
-    return () => query.removeEventListener("change", sync);
-  }, []);
 
   return (
     <div ref={ref} className="h-full w-full">
-      {isDesktop && shouldLoad ? <RishabhParticles /> : null}
+      {shouldLoad ? <RishabhParticles /> : null}
     </div>
   );
 }
