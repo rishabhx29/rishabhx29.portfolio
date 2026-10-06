@@ -118,11 +118,6 @@ export function OpenSourceContributions({ isFullPage = false }: Readonly<{ isFul
           </div>
         </div>
 
-        {/* Horizontal line below heading */}
-        <div className="absolute bottom-0 left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-        {/* Intersections */}
-        <div className="absolute bottom-0 -left-4 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] -translate-x-1/2 translate-y-1/2 pointer-events-none z-20" aria-hidden="true" />
-        <div className="absolute bottom-0 -right-4 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] translate-x-1/2 translate-y-1/2 pointer-events-none z-20" aria-hidden="true" />
       </div>
 
       <div className="relative pt-0 pb-2">
@@ -139,15 +134,6 @@ export function OpenSourceContributions({ isFullPage = false }: Readonly<{ isFul
             <div className="flex flex-col">
               {Array.from({ length: initialCount }).map((_, idx) => (
                 <div key={idx} className="relative flex flex-col gap-1.5 py-4 px-4 -mx-4">
-                  {idx < initialCount - 1 && (
-                    <div
-                      className="absolute bottom-0 left-0 right-0 h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none z-10"
-                      style={{
-                        maskImage: "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-                        WebkitMaskImage: "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-                      }}
-                    />
-                  )}
                   <div className="flex items-center gap-2.5">
                     <div className="w-2 h-2 rounded-full bg-zinc-200 dark:bg-zinc-800 animate-pulse shrink-0" />
                     <div className="h-3.5 bg-zinc-100 dark:bg-zinc-800/60 rounded-md animate-pulse w-3/4" />
@@ -160,8 +146,7 @@ export function OpenSourceContributions({ isFullPage = false }: Readonly<{ isFul
             </div>
           ) : currentPrs.length > 0 ? (
             <div className="flex flex-col">
-              {currentPrs.slice(0, isFullPage ? currentPrs.length : initialCount).filter(pr => !closedPRIds.has(pr.id)).map((pr, idx, arr) => {
-                const isLast = idx === arr.length - 1;
+              {currentPrs.slice(0, isFullPage ? currentPrs.length : initialCount).filter(pr => !closedPRIds.has(pr.id)).map((pr) => {
                 return (
                   <a
                     key={pr.id}
@@ -171,15 +156,6 @@ export function OpenSourceContributions({ isFullPage = false }: Readonly<{ isFul
                     aria-label={`View pull request: ${pr.title} on GitHub`}
                     className="group relative flex flex-col gap-1.5 py-4 px-4 -mx-4 transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-900/20 rounded-lg"
                   >
-                    {!isLast && (
-                      <div
-                        className="absolute bottom-0 left-0 right-0 h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none z-10"
-                        style={{
-                          maskImage: "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-                          WebkitMaskImage: "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-                        }}
-                      />
-                    )}
                     <div className="flex items-center gap-2.5 relative z-20 min-w-0">
                       <div aria-hidden="true" className={`w-2 h-2 rounded-full shrink-0 ${pr.state === "MERGED"
                         ? "bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.4)]"

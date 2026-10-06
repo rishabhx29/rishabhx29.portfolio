@@ -1,21 +1,16 @@
 import { Fragment } from "react";
 
 /**
- * Blueprint grid motif — the site's shared visual language of dashed
- * vertical rails at 30% and dashed horizontal rules with tiny intersection
- * nodes. Owns the exact masks, borders, and node styling; pages pass only
- * where the horizontal rules sit.
+ * Horizontal blueprint rule, for section dividers.
+ *
+ * Used to be a full grid - two vertical rails spanning the page, horizontal
+ * rules, and intersection dots. All of it is gone. What remains is a single
+ * dashed rule at the requested position(s), so a page can mark the boundary
+ * between its sections without a background drawing in every corner.
  *
  * Render inside the page's root positioning context (a `relative` container).
  */
 export function BlueprintGrid({ horizontals }: { readonly horizontals: readonly string[] }) {
-  const verticalMask = {
-    maskImage:
-      "repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)",
-    WebkitMaskImage:
-      "repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)",
-  } as React.CSSProperties;
-
   const horizontalMask = {
     maskImage:
       "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
@@ -25,35 +20,12 @@ export function BlueprintGrid({ horizontals }: { readonly horizontals: readonly 
 
   return (
     <>
-      {/* Vertical rails */}
-      <div
-        className="absolute top-0 bottom-0 left-[27%] w-0 border-r border-black/25 dark:border-white/[0.10] pointer-events-none hidden md:block"
-        aria-hidden="true"
-        style={verticalMask}
-      />
-      <div
-        className="absolute top-0 bottom-0 right-[27%] w-0 border-r border-black/25 dark:border-white/[0.10] pointer-events-none hidden md:block"
-        aria-hidden="true"
-        style={verticalMask}
-      />
-
-      {/* Horizontal rules + intersection nodes */}
       {horizontals.map((top) => (
         <Fragment key={top}>
           <div
             className="absolute left-0 right-0 h-0 border-b border-black/25 dark:border-white/[0.10] pointer-events-none hidden md:block"
             aria-hidden="true"
             style={{ top, ...horizontalMask }}
-          />
-          <div
-            className="absolute left-[27%] w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.20] pointer-events-none z-10 hidden md:block -translate-x-1/2 -translate-y-1/2"
-            aria-hidden="true"
-            style={{ top }}
-          />
-          <div
-            className="absolute right-[27%] w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.20] pointer-events-none z-10 hidden md:block translate-x-1/2 -translate-y-1/2"
-            aria-hidden="true"
-            style={{ top }}
           />
         </Fragment>
       ))}

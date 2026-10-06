@@ -119,29 +119,6 @@ export default async function ProjectPage({ params }: Readonly<{ params: Promise
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
       />
-      {/* Vertical Lines - Ultra-fine Micro Dots */}
-      <div className="absolute top-0 bottom-0 left-[27%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-      <div className="absolute top-0 bottom-0 right-[27%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-
-      {/* Horizontal Lines - Ultra-fine Micro Dots */}
-      <div className="absolute left-0 right-0 top-[var(--banner-h)] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-      <div className="absolute left-0 right-0 top-[var(--content-offset)] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-
-      {/* Ultra-Tiny Solid Nodes */}
-      {[
-        { top: 'var(--banner-h)', left: '30%' },
-        { top: 'var(--banner-h)', right: '30%' },
-        { top: 'var(--content-offset)', left: '30%' },
-        { top: 'var(--content-offset)', right: '30%' },
-      ].map((pos) => (
-        <div key={`${pos.top}-${pos.left ? "left" : "right"}`} className="absolute w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] pointer-events-none z-10 hidden md:block"
-          style={{
-            top: pos.top,
-            left: pos.left,
-            right: pos.right,
-            transform: `translate(${pos.right ? '50%' : '-50%'}, -50%)`
-          }} />
-      ))}
 
       {/* Cell 1: Dot Matrix Background */}
       <div className="absolute left-0 right-0 md:left-[27%] md:right-[27%] top-0 h-[var(--banner-h)] -z-0 pointer-events-auto">
@@ -221,9 +198,6 @@ export default async function ProjectPage({ params }: Readonly<{ params: Promise
 
         {/* Top Dashed Divider (Blueprint system) */}
         <div className="relative mt-8">
-          <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-          <div className="absolute left-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" aria-hidden="true" />
-          <div className="absolute right-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" aria-hidden="true" />
         </div>
 
         {/* Action Links Grid */}
@@ -234,9 +208,6 @@ export default async function ProjectPage({ params }: Readonly<{ params: Promise
             </a>
           ) : <div />}
           
-          {/* Vertical Divider */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0 border-l border-black/30 dark:border-white/[0.15] pointer-events-none" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-
           {project.live ? (
             <a href={project.live} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 text-[13px] font-medium text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
               <ExternalLink aria-hidden="true" className="w-4 h-4" /> Website
@@ -246,9 +217,6 @@ export default async function ProjectPage({ params }: Readonly<{ params: Promise
 
         {/* Bottom Dashed Divider */}
         <div className="relative mb-6">
-          <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-          <div className="absolute left-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" aria-hidden="true" />
-          <div className="absolute right-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" aria-hidden="true" />
         </div>
 
         {/* Title and Status */}
@@ -274,9 +242,6 @@ export default async function ProjectPage({ params }: Readonly<{ params: Promise
 
         {/* Dashed Divider before Stack */}
         <div className="relative mt-8 mb-6">
-          <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-          <div className="absolute left-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" aria-hidden="true" />
-          <div className="absolute right-0 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" aria-hidden="true" />
         </div>
 
         {/* Tech Stack */}

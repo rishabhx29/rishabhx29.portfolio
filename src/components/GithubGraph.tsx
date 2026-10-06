@@ -156,11 +156,6 @@ export function GithubGraph() {
     if (el && el.scrollWidth > el.clientWidth) el.scrollLeft = el.scrollWidth;
   }, [graphWeeks]);
 
-  const dashedLineMask = {
-    maskImage: "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-    WebkitMaskImage: "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-  };
-
   return (
     <section
       className="relative z-10 mt-6 flex flex-col scroll-mt-24"
@@ -168,10 +163,6 @@ export function GithubGraph() {
       aria-describedby="github-activity-summary"
     >
       {/* Top full-width dashed line */}
-      <div
-        className="absolute top-0 left-[-100vw] right-[-100vw] h-0 border-t border-black/30 pointer-events-none dark:border-white/[0.15]"
-        style={dashedLineMask}
-      />
       <div className="absolute top-0 -left-4 z-20 size-[2px] -translate-x-1/2 -translate-y-1/2 bg-black/50 pointer-events-none dark:bg-white/[0.25]" aria-hidden="true" />
       <div className="absolute top-0 -right-4 z-20 size-[2px] translate-x-1/2 -translate-y-1/2 bg-black/50 pointer-events-none dark:bg-white/[0.25]" aria-hidden="true" />
 
@@ -187,10 +178,6 @@ export function GithubGraph() {
         </div>
 
         {/* Bottom full-width dashed line under heading */}
-        <div
-          className="absolute bottom-0 left-[-100vw] right-[-100vw] h-0 border-b border-black/30 pointer-events-none dark:border-white/[0.15]"
-          style={dashedLineMask}
-        />
         <div className="absolute bottom-0 -left-4 z-20 size-[2px] -translate-x-1/2 translate-y-1/2 bg-black/50 pointer-events-none dark:bg-white/[0.25]" aria-hidden="true" />
         <div className="absolute bottom-0 -right-4 z-20 size-[2px] translate-x-1/2 translate-y-1/2 bg-black/50 pointer-events-none dark:bg-white/[0.25]" aria-hidden="true" />
       </div>
@@ -282,10 +269,6 @@ export function GithubGraph() {
       </div>
 
       {/* Bottom full-width dashed line */}
-      <div
-        className="absolute bottom-0 left-[-100vw] right-[-100vw] h-0 border-b border-black/30 pointer-events-none dark:border-white/[0.15]"
-        style={dashedLineMask}
-      />
       <div className="absolute bottom-0 -left-4 z-20 size-[2px] -translate-x-1/2 translate-y-1/2 bg-black/50 pointer-events-none dark:bg-white/[0.25]" aria-hidden="true" />
       <div className="absolute bottom-0 -right-4 z-20 size-[2px] translate-x-1/2 translate-y-1/2 bg-black/50 pointer-events-none dark:bg-white/[0.25]" aria-hidden="true" />
     </section>

@@ -8,7 +8,6 @@ import { Keyboard, type KeyboardInteractionEvent } from "@/components/ui/keyboar
 import { recordAchievement } from "@/lib/playground/use-achievements";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { BlueprintGrid } from "@/components/BlueprintGrid";
 
 const SOCIALS = [
   {
@@ -167,8 +166,6 @@ export default function ContactPage() {
         }
       `}} />
 
-      {/* Blueprint grid motif */}
-      <BlueprintGrid horizontals={["112px"]} />
 
       {/* Header with Back Button + Title + Controls */}
       <div className="absolute left-0 right-0 md:left-[27%] md:right-[27%] top-14 md:top-0 h-[112px] flex items-center px-4 z-40">

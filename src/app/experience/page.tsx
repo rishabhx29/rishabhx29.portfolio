@@ -18,30 +18,6 @@ export default function AllExperiencePage() {
 
   return (
     <div className="min-h-screen w-full bg-[#fbfaf9] dark:bg-[var(--page-bg)] relative overflow-x-hidden transition-colors duration-300">
-      {/* Vertical Lines - Ultra-fine Micro Dots */}
-      <div className="absolute top-0 bottom-0 left-[27%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-      <div className="absolute top-0 bottom-0 right-[27%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-
-      {/* Horizontal Lines - Ultra-fine Micro Dots */}
-      <div className="absolute left-0 right-0 top-[var(--banner-h)] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-      <div className="absolute left-0 right-0 top-[var(--content-offset)] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-
-      {/* Ultra-Tiny Solid Nodes */}
-      {[
-        { top: 'var(--banner-h)', left: '30%' },
-        { top: 'var(--banner-h)', right: '30%' },
-        { top: 'var(--content-offset)', left: '30%' },
-        { top: 'var(--content-offset)', right: '30%' },
-      ].map((pos) => (
-        <div key={`${pos.top}-${pos.left ? "left" : "right"}`} className="absolute w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] pointer-events-none z-10 hidden md:block"
-          aria-hidden="true"
-          style={{
-            top: pos.top,
-            left: pos.left,
-            right: pos.right,
-            transform: `translate(${pos.right ? '50%' : '-50%'}, -50%)`
-          }} />
-      ))}
 
       {/* Cell 1: Dot Matrix Background */}
       <div className="absolute left-0 right-0 md:left-[27%] md:right-[27%] top-0 h-[var(--banner-h)] -z-0 pointer-events-auto">
@@ -90,31 +66,11 @@ export default function AllExperiencePage() {
 
           {/* Experience Items */}
           <div className="flex flex-col relative z-10 w-full">
-            {experiences.map((item, idx) => {
+            {experiences.map((item) => {
               const isOpen = openItem === item.title;
-              const isLast = idx === experiences.length - 1;
 
               return (
                 <div key={item.title} className="group relative">
-                  {/* Dashed bottom border for all items */}
-                  <div
-                    className={`absolute bottom-0 ${isLast ? 'left-[-100vw] right-[-100vw]' : 'left-[-16px] right-[-16px]'} h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none z-10`}
-                    style={{
-                      maskImage:
-                        "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-                      WebkitMaskImage:
-                        "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-                    }}
-                  />
-
-                  {/* Intersection dots for last item */}
-                  {isLast && (
-                    <>
-                      <div className="absolute bottom-0 -left-4 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] -translate-x-1/2 translate-y-1/2 pointer-events-none z-20" aria-hidden="true" />
-                      <div className="absolute bottom-0 -right-4 w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.25] translate-x-1/2 translate-y-1/2 pointer-events-none z-20" aria-hidden="true" />
-                    </>
-                  )}
-
                   <div
                     className="flex flex-col items-start gap-2.5 py-3.5 px-4 -mx-4 hover:bg-zinc-50 dark:hover:bg-zinc-900/20 transition-colors cursor-pointer relative z-20 rounded-lg sm:gap-3 sm:py-4 2xl:flex-row 2xl:items-center 2xl:justify-between focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
                     onClick={() => setOpenItem(isOpen ? null : item.title)}
@@ -256,7 +212,7 @@ export default function AllExperiencePage() {
                               {item.metrics.map((metric) => (
                                 <div
                                   key={metric.label}
-                                  className="relative min-w-0 px-3 py-2 after:absolute after:bottom-0 after:right-0 after:top-0 after:w-0 after:border-r after:border-black/30 after:[mask-image:repeating-linear-gradient(to_bottom,black_0,black_1px,transparent_1px,transparent_6px)] dark:after:border-white/[0.15] [&:nth-child(2n)]:after:hidden 2xl:[&:not(:last-child)]:after:block 2xl:[&:last-child]:after:hidden"
+                                  className="relative min-w-0 px-3 py-2"
                                 >
                                   <p
                                     className={`${metric.value.includes(" - ") ? "text-[13px]" : "text-[16px]"} whitespace-nowrap font-bold leading-none text-zinc-900 dark:text-zinc-100`}
@@ -269,38 +225,7 @@ export default function AllExperiencePage() {
                                 </div>
                               ))}
                             </div>
-                            <span
-                              className="pointer-events-none absolute inset-x-0 top-0 h-0 border-t border-black/30 dark:border-white/[0.15]"
-                              style={{
-                                maskImage:
-                                  "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-                                WebkitMaskImage:
-                                  "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-                              }}
-                            />
-                            <span
-                              className="pointer-events-none absolute inset-x-0 top-1/2 h-0 border-t border-black/30 dark:border-white/[0.15] 2xl:hidden"
-                              style={{
-                                maskImage:
-                                  "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-                                WebkitMaskImage:
-                                  "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-                              }}
-                            />
-                            <span
-                              className="pointer-events-none absolute inset-x-0 bottom-0 h-0 border-b border-black/30 dark:border-white/[0.15]"
-                              style={{
-                                maskImage:
-                                  "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-                                WebkitMaskImage:
-                                  "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-                              }}
-                            />
-                            <span className="pointer-events-none absolute left-0 top-0 h-[2px] w-[2px] -translate-x-1/2 -translate-y-1/2 bg-black/50 dark:bg-white/[0.25]" aria-hidden="true" />
-                            <span className="pointer-events-none absolute right-0 top-0 h-[2px] w-[2px] translate-x-1/2 -translate-y-1/2 bg-black/50 dark:bg-white/[0.25]" aria-hidden="true" />
-                            <span className="pointer-events-none absolute bottom-0 left-0 h-[2px] w-[2px] -translate-x-1/2 translate-y-1/2 bg-black/50 dark:bg-white/[0.25]" aria-hidden="true" />
-                            <span className="pointer-events-none absolute bottom-0 right-0 h-[2px] w-[2px] translate-x-1/2 translate-y-1/2 bg-black/50 dark:bg-white/[0.25]" aria-hidden="true" />
-                          </div>
+                            </div>
                         )}
 
                         {isOpen && item.screenshot && (
@@ -350,9 +275,6 @@ export default function AllExperiencePage() {
 
         {/* Bottom Separator */}
         <div className="relative mt-8">
-          <div className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-          <div className="absolute -left-4 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] -translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" aria-hidden="true" />
-          <div className="absolute -right-4 w-[2px] h-[2px] bg-black/50 dark:bg-white/[0.25] translate-x-1/2 translate-y-[-1px] pointer-events-none z-20" aria-hidden="true" />
         </div>
       </main>
     </div>

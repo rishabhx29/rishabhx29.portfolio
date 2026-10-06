@@ -18,7 +18,7 @@ export function Certifications() {
               />
             </div>
           </div>
-          <div className="h-px bg-black/30 dark:bg-white/[0.15]" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+          
           <div className="flex items-start justify-between gap-2 px-3 py-2.5">
             <div className="flex flex-col gap-1">
               <span className="text-[12px] sm:text-[10px] font-semibold tracking-[0.12em] uppercase text-zinc-600 dark:text-zinc-400">
@@ -43,7 +43,7 @@ export function Certifications() {
               />
             </div>
           </div>
-          <div className="h-px bg-black/30 dark:bg-white/[0.15]" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+          
           <div className="flex items-start justify-between gap-2 px-3 py-2.5">
             <div className="flex flex-col gap-1">
               <span className="text-[12px] sm:text-[10px] font-semibold tracking-[0.12em] uppercase text-zinc-600 dark:text-zinc-400">

@@ -53,66 +53,6 @@ export default function ResumePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(resumeJsonLd) }}
       />
-      <div
-        className="pointer-events-none absolute bottom-0 left-[27%] top-0 hidden w-0 border-r border-black/30 dark:border-white/[0.15] md:block"
-        aria-hidden="true"
-        style={{
-          maskImage:
-            "repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)",
-          WebkitMaskImage:
-            "repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)",
-        }}
-      />
-      <div
-        className="pointer-events-none absolute bottom-0 right-[27%] top-0 hidden w-0 border-r border-black/30 dark:border-white/[0.15] md:block"
-        aria-hidden="true"
-        style={{
-          maskImage:
-            "repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)",
-          WebkitMaskImage:
-            "repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)",
-        }}
-      />
-
-      <div
-        className="pointer-events-none absolute left-0 right-0 top-[var(--banner-h)] h-0 border-b border-black/30 dark:border-white/[0.15]"
-        aria-hidden="true"
-        style={{
-          maskImage:
-            "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-          WebkitMaskImage:
-            "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-        }}
-      />
-      <div
-        className="pointer-events-none absolute left-0 right-0 top-[var(--content-offset)] h-0 border-b border-black/30 dark:border-white/[0.15]"
-        aria-hidden="true"
-        style={{
-          maskImage:
-            "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-          WebkitMaskImage:
-            "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-        }}
-      />
-
-      {[
-        { top: "var(--banner-h)", left: "30%" },
-        { top: "var(--banner-h)", right: "30%" },
-        { top: "var(--content-offset)", left: "30%" },
-        { top: "var(--content-offset)", right: "30%" },
-      ].map((position) => (
-        <div
-          key={`${position.top}-${position.left ? "left" : "right"}`}
-          className="pointer-events-none absolute z-10 hidden h-[2px] w-[2px] bg-black/50 dark:bg-white/[0.25] md:block"
-          aria-hidden="true"
-          style={{
-            top: position.top,
-            left: position.left,
-            right: position.right,
-            transform: `translate(${position.right ? "50%" : "-50%"}, -50%)`,
-          }}
-        />
-      ))}
 
       <div className="pointer-events-auto absolute left-0 right-0 top-0 h-[var(--banner-h)] md:left-[27%] md:right-[27%]">
         <FooterBackground />
@@ -208,16 +148,6 @@ export default function ResumePage() {
         </div>
 
         <div className="relative mt-8">
-          <div
-            className="pointer-events-none absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 dark:border-white/[0.15]"
-            aria-hidden="true"
-            style={{
-              maskImage:
-                "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-              WebkitMaskImage:
-                "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-            }}
-          />
           <div className="pointer-events-none absolute -left-4 h-[2px] w-[2px] -translate-x-1/2 -translate-y-1/2 bg-black/50 dark:bg-white/[0.25]" aria-hidden="true" />
           <div className="pointer-events-none absolute -right-4 h-[2px] w-[2px] translate-x-1/2 -translate-y-1/2 bg-black/50 dark:bg-white/[0.25]" aria-hidden="true" />
         </div>

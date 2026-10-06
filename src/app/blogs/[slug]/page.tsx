@@ -24,20 +24,6 @@ type BlogPageProps = Readonly<{
   params: Promise<{ slug: string }>;
 }>;
 
-const horizontalDashes = {
-  maskImage:
-    "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-  WebkitMaskImage:
-    "repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)",
-};
-
-const verticalDashes = {
-  maskImage:
-    "repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)",
-  WebkitMaskImage:
-    "repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)",
-};
-
 export function generateStaticParams() {
   return blogPosts.map((post) => ({
     slug: post.slug,
@@ -77,70 +63,11 @@ export async function generateMetadata({
   };
 }
 
-function BlueprintFrame() {
-  return (
-    <>
-      <div
-        className="absolute top-0 bottom-0 left-[27%] hidden w-0 border-r border-black/30 pointer-events-none dark:border-white/[0.15] md:block"
-        style={verticalDashes}
-      />
-      <div
-        className="absolute top-0 bottom-0 right-[27%] hidden w-0 border-r border-black/30 pointer-events-none dark:border-white/[0.15] md:block"
-        style={verticalDashes}
-      />
-
-      <div
-        className="absolute left-0 right-0 top-[var(--banner-h)] h-0 border-b border-black/30 pointer-events-none dark:border-white/[0.15]"
-        style={horizontalDashes}
-      />
-      <div
-        className="absolute left-0 right-0 top-[var(--content-offset)] h-0 border-b border-black/30 pointer-events-none dark:border-white/[0.15]"
-        style={horizontalDashes}
-      />
-
-      {[
-        { top: "var(--banner-h)", left: "30%" },
-        { top: "var(--banner-h)", right: "30%" },
-        { top: "var(--content-offset)", left: "30%" },
-        { top: "var(--content-offset)", right: "30%" },
-      ].map((position) => (
-        <div
-          key={`${position.top}-${position.left ? "left" : "right"}`}
-          className="absolute hidden h-[2px] w-[2px] bg-black/50 pointer-events-none dark:bg-white/[0.25] md:block"
-          style={{
-            top: position.top,
-            left: position.left,
-            right: position.right,
-            transform: `translate(${position.right ? "50%" : "-50%"}, -50%)`,
-          }}
-        />
-      ))}
-    </>
-  );
-}
-
-function BlueprintDivider({ className = "" }: { readonly className?: string }) {
-  return (
-    <div className={`relative ${className}`}>
-      <div
-        className="absolute left-[-100vw] right-[-100vw] h-0 border-b border-black/30 pointer-events-none dark:border-white/[0.15]"
-        style={horizontalDashes}
-      />
-      <div className="absolute left-0 h-[2px] w-[2px] -translate-x-1/2 translate-y-[-1px] bg-black/50 pointer-events-none dark:bg-white/[0.25]" />
-      <div className="absolute right-0 h-[2px] w-[2px] translate-x-1/2 translate-y-[-1px] bg-black/50 pointer-events-none dark:bg-white/[0.25]" />
-    </div>
-  );
-}
-
 function BlogContentBlock({ block }: { readonly block: BlogBlock }) {
   switch (block.type) {
     case "heading":
       return (
         <section className="relative mt-10 pt-6">
-          <div
-            className="absolute left-[-100vw] right-[-100vw] top-0 h-0 border-b border-black/20 pointer-events-none dark:border-white/[0.1]"
-            style={horizontalDashes}
-          />
           <div className="absolute left-0 top-0 h-[2px] w-[2px] -translate-x-1/2 -translate-y-1/2 bg-black/40 pointer-events-none dark:bg-white/[0.22]" />
           <h2 className="text-[18px] font-bold leading-snug tracking-tight text-zinc-900 dark:text-zinc-50">
             {block.text}
@@ -280,7 +207,8 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
-      <BlueprintFrame />
+      
+
 
       <div className="absolute left-0 right-0 top-0 h-[var(--banner-h)] pointer-events-auto -z-0 md:left-[27%] md:right-[27%]">
         <FooterBackground />
@@ -355,22 +283,15 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
             </div>
           </header>
 
-          <BlueprintDivider />
-
           <div className="space-y-5 py-7">
             {post.content.map((block, index) => (
               <BlogContentBlock key={`${block.type}-${index}`} block={block} />
             ))}
           </div>
 
-          <BlueprintDivider className="mt-2" />
         </article>
 
         <div className="relative mt-12 h-[220px] w-[calc(100%+32px)] -mx-4 overflow-hidden">
-          <div
-            className="absolute left-[-100vw] right-[-100vw] top-0 z-10 h-0 border-t border-black/30 pointer-events-none dark:border-white/[0.15]"
-            style={horizontalDashes}
-          />
           <div className="absolute left-0 top-0 z-20 h-[2px] w-[2px] -translate-x-1/2 -translate-y-1/2 bg-black/50 pointer-events-none dark:bg-white/[0.25]" />
           <div className="absolute right-0 top-0 z-20 h-[2px] w-[2px] translate-x-1/2 -translate-y-1/2 bg-black/50 pointer-events-none dark:bg-white/[0.25]" />
           <FooterBackground />
