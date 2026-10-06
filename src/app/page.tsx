@@ -113,8 +113,8 @@ export default function Home() {
 
           {/* Identity row — name and role on the left, the sound and theme
               controls on the right, exactly where they sat before. */}
-          <div className="flex shrink-0 items-center justify-between gap-3 px-1">
-            <div className="flex min-w-0 flex-col justify-center">
+          <div className="flex shrink-0 items-start justify-between gap-3 px-1">
+            <div className="flex min-w-0 flex-col pt-1">
               <h1 className="text-[16px] font-bold leading-none tracking-tight text-zinc-800 whitespace-nowrap dark:text-zinc-100 [font-family:var(--font-doto),monospace] [text-shadow:-1.5px_0_0_rgba(0,200,255,0.3),1.5px_0_0_rgba(255,80,0,0.3)] dark:[text-shadow:-1.5px_0_0_rgba(0,200,255,0.6),1.5px_0_0_rgba(255,80,0,0.6)] sm:text-[24px]">
                 Rishabh Tripathi
                 <span className="sr-only"> — Full-Stack Software Engineer Portfolio (rishabhx29)</span>
@@ -127,7 +127,7 @@ export default function Home() {
             {/* Controls stack vertically, theme toggle on top, song chip below.
                 Putting them side by side forced the wide chip against the
                 fixed-width name, and the two overlapped. */}
-            <div className="flex shrink-0 flex-col items-end gap-2">
+            <div className="flex shrink-0 flex-col items-end gap-2 -mt-7">
               <ThemeToggle className="dark:text-zinc-400 hover:dark:text-zinc-300" />
               <LastPlayed />
             </div>
