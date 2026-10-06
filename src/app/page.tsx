@@ -25,7 +25,7 @@ export default function Home() {
           // vertically, the more of the source image survives the crop - right
           // now a wide strip of sky is what shows. This widening is scoped to
           // the homepage so every other page keeps the shared --banner-h.
-          "--banner-h": "30vh",
+          "--banner-h": "26vh",
           "--content-offset": "calc(var(--banner-h) + var(--profile-h))",
         } as React.CSSProperties
       }
@@ -48,7 +48,7 @@ export default function Home() {
         pads itself by those vars are untouched.
       */}
       <div
-        className="absolute left-0 right-0 top-0 z-40 hidden md:block md:left-[24%] md:right-[24%]"
+        className="absolute left-0 right-0 top-0 z-40 hidden md:block md:left-[27%] md:right-[27%]"
         style={{ height: "calc(var(--banner-h) + var(--profile-h))" }}
       >
         <div className="flex h-full flex-col gap-13 rounded-3xl border border-dashed border-black/20 bg-[var(--surface-bg)] p-3 dark:border-white/[0.14]">
@@ -175,7 +175,7 @@ export default function Home() {
         <p className="mt-3 text-[14px] leading-relaxed text-zinc-600 dark:text-zinc-300">I design and build fast, dependable products — currently shipping Traceon, VeloKey, Adaptive and AlgoForge, leading open-source at SSoC and contributing at GSSoC. I write clean, readable code that people enjoy using.</p>
       </div>
 
-      <main id="main-content" className="ml-0 mr-0 md:ml-[24%] md:mr-[24%] pt-4 md:pt-[var(--content-offset)] pb-0 px-4 flex flex-col z-10 relative min-h-screen">
+      <main id="main-content" className="ml-0 mr-0 md:ml-[27%] md:mr-[27%] pt-4 md:pt-[var(--content-offset)] pb-0 px-4 flex flex-col z-10 relative min-h-screen">
         <div className="hidden md:block mt-4">
           <p className="text-[14px] sm:text-[15px] text-zinc-600 dark:text-zinc-300 leading-relaxed mt-2">I design and build fast, dependable products — currently shipping Traceon, VeloKey, Adaptive and AlgoForge, leading open-source at SSoC and contributing at GSSoC. I write clean, readable code that people enjoy using.</p>
         </div>

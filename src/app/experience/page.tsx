@@ -19,8 +19,8 @@ export default function AllExperiencePage() {
   return (
     <div className="min-h-screen w-full bg-[#fbfaf9] dark:bg-[var(--page-bg)] relative overflow-x-hidden transition-colors duration-300">
       {/* Vertical Lines - Ultra-fine Micro Dots */}
-      <div className="absolute top-0 bottom-0 left-[24%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-      <div className="absolute top-0 bottom-0 right-[24%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+      <div className="absolute top-0 bottom-0 left-[27%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+      <div className="absolute top-0 bottom-0 right-[27%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
 
       {/* Horizontal Lines - Ultra-fine Micro Dots */}
       <div className="absolute left-0 right-0 top-[var(--banner-h)] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" aria-hidden="true" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
@@ -44,7 +44,7 @@ export default function AllExperiencePage() {
       ))}
 
       {/* Cell 1: Dot Matrix Background */}
-      <div className="absolute left-0 right-0 md:left-[24%] md:right-[24%] top-0 h-[var(--banner-h)] -z-0 pointer-events-auto">
+      <div className="absolute left-0 right-0 md:left-[27%] md:right-[27%] top-0 h-[var(--banner-h)] -z-0 pointer-events-auto">
         <FooterBackground />
         <div className="absolute bottom-3 right-2 z-10 pointer-events-auto">
           <CurrentTime />
@@ -52,7 +52,7 @@ export default function AllExperiencePage() {
       </div>
 
       {/* Cell 2: Header with Back Button + Title + Controls */}
-      <div className="absolute left-0 right-0 md:left-[24%] md:right-[24%] top-[var(--banner-h)] h-[var(--profile-h)] flex items-center px-4 z-50">
+      <div className="absolute left-0 right-0 md:left-[27%] md:right-[27%] top-[var(--banner-h)] h-[var(--profile-h)] flex items-center px-4 z-50">
         <div className="flex w-full items-center justify-between">
           {/* Left: Back + Title */}
           <div className="flex items-center gap-5">
@@ -84,7 +84,7 @@ export default function AllExperiencePage() {
       {/* Content Section */}
       <main
         id="main-content"
-        className="ml-0 mr-0 md:ml-[24%] md:mr-[24%] pt-[var(--content-offset)] pb-16 px-4 flex flex-col z-10 relative"
+        className="ml-0 mr-0 md:ml-[27%] md:mr-[27%] pt-[var(--content-offset)] pb-16 px-4 flex flex-col z-10 relative"
       >
         <div className="relative pt-0 pb-6">
 

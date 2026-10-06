@@ -47,7 +47,7 @@ export function RightNavbar() {
     >
       <nav
         aria-label="Section navigation"
-        className="absolute top-[22vh] left-[calc(76%+32px)] pointer-events-auto flex flex-col gap-4 mt-2"
+        className="absolute top-[22vh] left-[calc(73%+32px)] pointer-events-auto flex flex-col gap-4 mt-2"
       >
         <div className="text-[10px] font-bold tracking-[0.2em] text-zinc-500 dark:text-zinc-400 uppercase mb-1" aria-hidden="true">Index</div>
         {links.map((link) => {
