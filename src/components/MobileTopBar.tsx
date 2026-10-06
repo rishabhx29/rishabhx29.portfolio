@@ -1,13 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { LastPlayed } from "@/components/LastPlayed";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 /**
  * Consistent fixed mobile top bar on every page: site wordmark (distinct
- * display font) on the left, the song control + theme toggle on the right.
- * These are the only places THEME TOGGLE and SONG CONTROL render on phones.
+ * display font) on the left, theme toggle on the right. These are the only
+ * places THEME TOGGLE renders on phones (the song chip lives in the hero).
  */
 export function MobileTopBar() {
   return (
@@ -24,7 +23,6 @@ export function MobileTopBar() {
         Rishabh Tripathi
       </Link>
       <div className="flex items-center gap-2">
-        <LastPlayed />
         <ThemeToggle />
       </div>
     </header>

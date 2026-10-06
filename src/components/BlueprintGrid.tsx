@@ -27,12 +27,12 @@ export function BlueprintGrid({ horizontals }: { readonly horizontals: readonly 
     <>
       {/* Vertical rails */}
       <div
-        className="absolute top-0 bottom-0 left-[30%] w-0 border-r border-black/25 dark:border-white/[0.10] pointer-events-none hidden md:block"
+        className="absolute top-0 bottom-0 left-[24%] w-0 border-r border-black/25 dark:border-white/[0.10] pointer-events-none hidden md:block"
         aria-hidden="true"
         style={verticalMask}
       />
       <div
-        className="absolute top-0 bottom-0 right-[30%] w-0 border-r border-black/25 dark:border-white/[0.10] pointer-events-none hidden md:block"
+        className="absolute top-0 bottom-0 right-[24%] w-0 border-r border-black/25 dark:border-white/[0.10] pointer-events-none hidden md:block"
         aria-hidden="true"
         style={verticalMask}
       />
@@ -46,12 +46,12 @@ export function BlueprintGrid({ horizontals }: { readonly horizontals: readonly 
             style={{ top, ...horizontalMask }}
           />
           <div
-            className="absolute left-[30%] w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.20] pointer-events-none z-10 hidden md:block -translate-x-1/2 -translate-y-1/2"
+            className="absolute left-[24%] w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.20] pointer-events-none z-10 hidden md:block -translate-x-1/2 -translate-y-1/2"
             aria-hidden="true"
             style={{ top }}
           />
           <div
-            className="absolute right-[30%] w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.20] pointer-events-none z-10 hidden md:block translate-x-1/2 -translate-y-1/2"
+            className="absolute right-[24%] w-[2px] h-[2px] bg-black/40 dark:bg-white/[0.20] pointer-events-none z-10 hidden md:block translate-x-1/2 -translate-y-1/2"
             aria-hidden="true"
             style={{ top }}
           />

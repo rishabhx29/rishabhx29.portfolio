@@ -81,11 +81,11 @@ function BlueprintFrame() {
   return (
     <>
       <div
-        className="absolute top-0 bottom-0 left-[30%] hidden w-0 border-r border-black/30 pointer-events-none dark:border-white/[0.15] md:block"
+        className="absolute top-0 bottom-0 left-[24%] hidden w-0 border-r border-black/30 pointer-events-none dark:border-white/[0.15] md:block"
         style={verticalDashes}
       />
       <div
-        className="absolute top-0 bottom-0 right-[30%] hidden w-0 border-r border-black/30 pointer-events-none dark:border-white/[0.15] md:block"
+        className="absolute top-0 bottom-0 right-[24%] hidden w-0 border-r border-black/30 pointer-events-none dark:border-white/[0.15] md:block"
         style={verticalDashes}
       />
 
@@ -282,14 +282,14 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
       />
       <BlueprintFrame />
 
-      <div className="absolute left-0 right-0 top-0 h-[var(--banner-h)] pointer-events-auto -z-0 md:left-[30%] md:right-[30%]">
+      <div className="absolute left-0 right-0 top-0 h-[var(--banner-h)] pointer-events-auto -z-0 md:left-[24%] md:right-[24%]">
         <FooterBackground />
         <div className="absolute bottom-3 right-2 z-10 pointer-events-auto">
           <CurrentTime />
         </div>
       </div>
 
-      <div className="absolute left-0 right-0 top-[var(--banner-h)] z-50 flex h-[var(--profile-h)] items-center px-4 md:left-[30%] md:right-[30%]">
+      <div className="absolute left-0 right-0 top-[var(--banner-h)] z-50 flex h-[var(--profile-h)] items-center px-4 md:left-[24%] md:right-[24%]">
         <div className="flex w-full items-center justify-between gap-4">
           <div className="flex min-w-0 items-center gap-5">
             <Link
@@ -316,7 +316,7 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
         </div>
       </div>
 
-      <main id="main-content" className="relative z-10 ml-0 mr-0 flex flex-col px-4 pb-16 pt-[var(--content-offset)] md:ml-[30%] md:mr-[30%]">
+      <main id="main-content" className="relative z-10 ml-0 mr-0 flex flex-col px-4 pb-16 pt-[var(--content-offset)] md:ml-[24%] md:mr-[24%]">
         <article className="relative">
           <header className="relative py-7">
             <div className="mb-4 flex flex-wrap gap-2">

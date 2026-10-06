@@ -54,7 +54,7 @@ export default function ResumePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(resumeJsonLd) }}
       />
       <div
-        className="pointer-events-none absolute bottom-0 left-[30%] top-0 hidden w-0 border-r border-black/30 dark:border-white/[0.15] md:block"
+        className="pointer-events-none absolute bottom-0 left-[24%] top-0 hidden w-0 border-r border-black/30 dark:border-white/[0.15] md:block"
         aria-hidden="true"
         style={{
           maskImage:
@@ -64,7 +64,7 @@ export default function ResumePage() {
         }}
       />
       <div
-        className="pointer-events-none absolute bottom-0 right-[30%] top-0 hidden w-0 border-r border-black/30 dark:border-white/[0.15] md:block"
+        className="pointer-events-none absolute bottom-0 right-[24%] top-0 hidden w-0 border-r border-black/30 dark:border-white/[0.15] md:block"
         aria-hidden="true"
         style={{
           maskImage:
@@ -114,14 +114,14 @@ export default function ResumePage() {
         />
       ))}
 
-      <div className="pointer-events-auto absolute left-0 right-0 top-0 h-[var(--banner-h)] md:left-[30%] md:right-[30%]">
+      <div className="pointer-events-auto absolute left-0 right-0 top-0 h-[var(--banner-h)] md:left-[24%] md:right-[24%]">
         <FooterBackground />
         <div className="pointer-events-auto absolute bottom-3 right-2 z-10">
           <CurrentTime />
         </div>
       </div>
 
-      <header className="absolute left-0 right-0 top-[var(--banner-h)] z-50 flex h-[var(--profile-h)] items-center px-4 md:left-[30%] md:right-[30%]">
+      <header className="absolute left-0 right-0 top-[var(--banner-h)] z-50 flex h-[var(--profile-h)] items-center px-4 md:left-[24%] md:right-[24%]">
         <div className="flex w-full items-center justify-between gap-3">
           <div className="flex min-w-0 items-center gap-3 sm:gap-5">
             <Link
@@ -148,7 +148,7 @@ export default function ResumePage() {
         </div>
       </header>
 
-      <section className="relative z-10 ml-0 mr-0 flex min-h-screen flex-col px-4 pb-12 pt-[var(--content-offset)] md:ml-[30%] md:mr-[30%]">
+      <section className="relative z-10 ml-0 mr-0 flex min-h-screen flex-col px-4 pb-12 pt-[var(--content-offset)] md:ml-[24%] md:mr-[24%]">
         <div className="flex flex-wrap items-center justify-between gap-3 py-4">
           <div className="flex min-w-0 items-center gap-3">
             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[6px] border border-black/10 bg-zinc-50 text-zinc-500 dark:border-white/10 dark:bg-[#0a0a0a] dark:text-zinc-400">

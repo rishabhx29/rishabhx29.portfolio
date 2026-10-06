@@ -171,7 +171,7 @@ export default function ContactPage() {
       <BlueprintGrid horizontals={["112px"]} />
 
       {/* Header with Back Button + Title + Controls */}
-      <div className="absolute left-0 right-0 md:left-[30%] md:right-[30%] top-14 md:top-0 h-[112px] flex items-center px-4 z-40">
+      <div className="absolute left-0 right-0 md:left-[24%] md:right-[24%] top-14 md:top-0 h-[112px] flex items-center px-4 z-40">
         <div className="flex w-full items-center justify-between">
           {/* Left: Back + Title */}
           <div className="flex items-center gap-5">
@@ -201,7 +201,7 @@ export default function ContactPage() {
       </div>
 
       {/* Content Section */}
-      <main id="main-content" className="ml-0 mr-0 md:ml-[30%] md:mr-[30%] pt-[calc(3.5rem+112px)] md:pt-[calc(var(--profile-h)+24px)] pb-16 px-8 md:px-4 flex flex-col z-10 relative">
+      <main id="main-content" className="ml-0 mr-0 md:ml-[24%] md:mr-[24%] pt-[calc(3.5rem+112px)] md:pt-[calc(var(--profile-h)+24px)] pb-16 px-8 md:px-4 flex flex-col z-10 relative">
         <div className="md:hidden">
         {/* Message card — dashed framed panel, centered like the design reference */}
         <div className="mt-6 flex w-full flex-col items-center gap-8">

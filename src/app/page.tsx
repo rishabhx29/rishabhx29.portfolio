@@ -35,7 +35,7 @@ export default function Home() {
         pads itself by those vars are untouched.
       */}
       <div
-        className="absolute left-0 right-0 top-0 z-40 hidden md:block md:left-[30%] md:right-[30%]"
+        className="absolute left-0 right-0 top-0 z-40 hidden md:block md:left-[24%] md:right-[24%]"
         style={{ height: "calc(var(--banner-h) + var(--profile-h))" }}
       >
         <div className="flex h-full flex-col gap-13 rounded-3xl border border-dashed border-black/20 bg-[var(--surface-bg)] p-3 dark:border-white/[0.14]">
@@ -142,6 +142,15 @@ export default function Home() {
             <Image src="/new_banner_light (1).png" alt="Banner" width={1200} height={630} quality={75} priority sizes="calc(100vw - 56px)" className="block w-full dark:hidden" />
             <Image src="/new_banner_dark.png" alt="Banner (dark)" width={1200} height={630} quality={75} priority sizes="calc(100vw - 56px)" className="hidden w-full dark:block" />
             <DeferredBannerParticles />
+            {/*
+              Song chip, pinned to the banner's bottom-right. It is kept out of
+              the fixed top bar (where a wide chip wrapped and ran off the
+              edge) and becomes the one thing the banner carries besides the
+              avatar and particles.
+            */}
+            <div className="absolute bottom-2 right-2 z-10">
+              <LastPlayed />
+            </div>
           </div>
           <div className="-mt-8 ml-3 relative z-10 w-16 h-16 rounded-full overflow-hidden ring-4 ring-[#fbfaf9] dark:ring-[var(--page-bg)]">
             <Image src="/Rishabh-Avatar.jpg" alt="Rishabh Tripathi" width={240} height={240} className="h-full w-full object-cover grayscale contrast-100" />
@@ -153,7 +162,7 @@ export default function Home() {
         <p className="mt-3 text-[14px] leading-relaxed text-zinc-600 dark:text-zinc-300">I design and build fast, dependable products — currently shipping Traceon, VeloKey, Adaptive and AlgoForge, leading open-source at SSoC and contributing at GSSoC. I write clean, readable code that people enjoy using.</p>
       </div>
 
-      <main id="main-content" className="ml-0 mr-0 md:ml-[30%] md:mr-[30%] pt-4 md:pt-[var(--content-offset)] pb-0 px-4 flex flex-col z-10 relative min-h-screen">
+      <main id="main-content" className="ml-0 mr-0 md:ml-[24%] md:mr-[24%] pt-4 md:pt-[var(--content-offset)] pb-0 px-4 flex flex-col z-10 relative min-h-screen">
         <div className="hidden md:block mt-4">
           <p className="text-[14px] sm:text-[15px] text-zinc-600 dark:text-zinc-300 leading-relaxed mt-2">I design and build fast, dependable products — currently shipping Traceon, VeloKey, Adaptive and AlgoForge, leading open-source at SSoC and contributing at GSSoC. I write clean, readable code that people enjoy using.</p>
         </div>

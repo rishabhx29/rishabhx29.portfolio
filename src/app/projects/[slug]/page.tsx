@@ -120,8 +120,8 @@ export default async function ProjectPage({ params }: Readonly<{ params: Promise
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
       />
       {/* Vertical Lines - Ultra-fine Micro Dots */}
-      <div className="absolute top-0 bottom-0 left-[30%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
-      <div className="absolute top-0 bottom-0 right-[30%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+      <div className="absolute top-0 bottom-0 left-[24%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
+      <div className="absolute top-0 bottom-0 right-[24%] w-0 border-r border-black/30 dark:border-white/[0.15] pointer-events-none hidden md:block" style={{ maskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent 6px)' }} />
 
       {/* Horizontal Lines - Ultra-fine Micro Dots */}
       <div className="absolute left-0 right-0 top-[var(--banner-h)] h-0 border-b border-black/30 dark:border-white/[0.15] pointer-events-none" style={{ maskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)', WebkitMaskImage: 'repeating-linear-gradient(to right, black 0, black 1px, transparent 1px, transparent 6px)' }} />
@@ -144,7 +144,7 @@ export default async function ProjectPage({ params }: Readonly<{ params: Promise
       ))}
 
       {/* Cell 1: Dot Matrix Background */}
-      <div className="absolute left-0 right-0 md:left-[30%] md:right-[30%] top-0 h-[var(--banner-h)] -z-0 pointer-events-auto">
+      <div className="absolute left-0 right-0 md:left-[24%] md:right-[24%] top-0 h-[var(--banner-h)] -z-0 pointer-events-auto">
         <FooterBackground />
         <div className="absolute bottom-3 right-2 z-10 pointer-events-auto">
           <CurrentTime />
@@ -152,7 +152,7 @@ export default async function ProjectPage({ params }: Readonly<{ params: Promise
       </div>
 
       {/* Cell 2: Header with Back Button + Title + Controls */}
-      <div className="absolute left-0 right-0 md:left-[30%] md:right-[30%] top-[var(--banner-h)] h-[var(--profile-h)] flex items-center px-4 z-50">
+      <div className="absolute left-0 right-0 md:left-[24%] md:right-[24%] top-[var(--banner-h)] h-[var(--profile-h)] flex items-center px-4 z-50">
         <div className="flex w-full items-center justify-between">
           {/* Left: Back + Title */}
           <div className="flex items-center gap-5">
@@ -182,7 +182,7 @@ export default async function ProjectPage({ params }: Readonly<{ params: Promise
       </div>
 
       {/* Content Section */}
-      <main id="main-content" className="ml-0 mr-0 md:ml-[30%] md:mr-[30%] pt-[var(--content-offset)] pb-16 px-4 flex flex-col z-10 relative">
+      <main id="main-content" className="ml-0 mr-0 md:ml-[24%] md:mr-[24%] pt-[var(--content-offset)] pb-16 px-4 flex flex-col z-10 relative">
 
         {/* Media (Video or Image) right at the top */}
         <div className="w-full aspect-video relative mt-8 rounded-lg overflow-hidden border border-black/10 dark:border-white/[0.15] shadow-sm bg-black z-20">
