@@ -12,7 +12,8 @@ import { FileText, Boxes } from "lucide-react";
 import Image from "next/image";
 import { StackSection } from "@/components/StackSection";
 import { Certifications } from "@/components/Certifications";
-import { BlueprintGrid } from "@/components/BlueprintGrid";
+import { ProfileAvatar } from "@/components/ProfileAvatar";
+
 
 export default function Home() {
   return (
@@ -30,9 +31,6 @@ export default function Home() {
         } as React.CSSProperties
       }
     >
-
-      {/* Blueprint grid motif */}
-      <BlueprintGrid horizontals={["var(--content-offset)"]} />
 
       {/*
         Desktop hero.
@@ -96,16 +94,11 @@ export default function Home() {
               name below. The ring matches the card it overhangs onto so the
               circle reads as a cutout rather than a sticker.
             */}
-            <div className="absolute bottom-[-40px] left-3 z-20 h-16 w-16 overflow-hidden rounded-full ring-4 ring-[#fbfaf9] sm:h-20 sm:w-20 dark:ring-[var(--surface-bg)]">
-              <Image
-                src="/Rishabh-Avatar.jpg"
+            <div className="absolute bottom-[-40px] left-3 z-20 h-16 w-16 sm:h-20 sm:w-20">
+              <ProfileAvatar
                 alt="Rishabh Tripathi — Full-Stack Software Engineer Portfolio Avatar"
-                width={240}
-                height={240}
-                quality={80}
                 priority
                 sizes="(min-width: 640px) 120px, 96px"
-                className="h-full w-full object-cover grayscale contrast-100"
               />
             </div>
           </div>
@@ -165,8 +158,8 @@ export default function Home() {
               <LastPlayed />
             </div>
           </div>
-          <div className="-mt-8 ml-3 relative z-10 w-16 h-16 rounded-full overflow-hidden ring-4 ring-[#fbfaf9] dark:ring-[var(--page-bg)]">
-            <Image src="/Rishabh-Avatar.jpg" alt="Rishabh Tripathi" width={240} height={240} className="h-full w-full object-cover grayscale contrast-100" />
+          <div className="-mt-8 ml-3 relative z-10 w-16 h-16">
+            <ProfileAvatar alt="Rishabh Tripathi" priority sizes="96px" />
           </div>
         </div>
 
