@@ -16,7 +16,20 @@ import { BlueprintGrid } from "@/components/BlueprintGrid";
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-full bg-[#fbfaf9] dark:bg-[var(--page-bg)] relative overflow-x-hidden transition-colors duration-300">
+    <div
+      className="min-h-screen w-full bg-[#fbfaf9] dark:bg-[var(--page-bg)] relative overflow-x-hidden transition-colors duration-300"
+      style={
+        {
+          // The hero image is taller on purpose on this page. object-cover only
+          // ever crops to fit, so the more the banner band is allowed to grow
+          // vertically, the more of the source image survives the crop - right
+          // now a wide strip of sky is what shows. This widening is scoped to
+          // the homepage so every other page keeps the shared --banner-h.
+          "--banner-h": "30vh",
+          "--content-offset": "calc(var(--banner-h) + var(--profile-h))",
+        } as React.CSSProperties
+      }
+    >
 
       {/* Blueprint grid motif */}
       <BlueprintGrid horizontals={["var(--banner-h)", "var(--content-offset)"]} />
@@ -55,7 +68,7 @@ export default function Home() {
                 priority
                 sizes="(min-width: 768px) 40vw, 100vw"
                 quality={75}
-                className="object-cover object-[center_20%] dark:hidden"
+                className="object-cover object-center dark:hidden"
               />
               <Image
                 src="/new_banner_dark.png"
@@ -64,7 +77,7 @@ export default function Home() {
                 priority
                 sizes="(min-width: 768px) 40vw, 100vw"
                 quality={75}
-                className="hidden object-cover object-[center_20%] dark:block"
+                className="hidden object-cover object-center dark:block"
               />
               <DeferredBannerParticles />
 
