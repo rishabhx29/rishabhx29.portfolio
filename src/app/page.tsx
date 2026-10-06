@@ -111,9 +111,12 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-              <LastPlayed />
+            {/* Controls stack vertically, theme toggle on top, song chip below.
+                Putting them side by side forced the wide chip against the
+                fixed-width name, and the two overlapped. */}
+            <div className="flex shrink-0 flex-col items-end gap-2">
               <ThemeToggle className="dark:text-zinc-400 hover:dark:text-zinc-300" />
+              <LastPlayed />
             </div>
           </div>
         </div>
