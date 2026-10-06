@@ -148,18 +148,14 @@ export default function Home() {
             <Image src="/new_banner_light (1).png" alt="Banner" width={1200} height={630} quality={75} priority sizes="calc(100vw - 56px)" className="block w-full dark:hidden" />
             <Image src="/new_banner_dark.png" alt="Banner (dark)" width={1200} height={630} quality={75} priority sizes="calc(100vw - 56px)" className="hidden w-full dark:block" />
             <DeferredBannerParticles />
-            {/*
-              Song chip, pinned to the banner's bottom-right. It is kept out of
-              the fixed top bar (where a wide chip wrapped and ran off the
-              edge) and becomes the one thing the banner carries besides the
-              avatar and particles.
-            */}
-            <div className="absolute bottom-2 right-2 z-10">
+          </div>
+          <div className="flex items-start justify-between">
+            <div className="-mt-8 ml-3 relative z-10 w-16 h-16">
+              <ProfileAvatar alt="Rishabh Tripathi" priority sizes="96px" />
+            </div>
+            <div className="pt-2 pr-1 shrink-0 max-w-[70%]">
               <LastPlayed />
             </div>
-          </div>
-          <div className="-mt-8 ml-3 relative z-10 w-16 h-16">
-            <ProfileAvatar alt="Rishabh Tripathi" priority sizes="96px" />
           </div>
         </div>
 
