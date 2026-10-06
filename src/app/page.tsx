@@ -26,7 +26,11 @@ export default function Home() {
           // vertically, the more of the source image survives the crop - right
           // now a wide strip of sky is what shows. This widening is scoped to
           // the homepage so every other page keeps the shared --banner-h.
-          "--banner-h": "26vh",
+          // The banner source is 1200x630 (0.525 high-to-wide). Sized at
+          // 46vw minus the card's 26px of padding/border, that makes
+          // --banner-h the exact natural height, so object-cover shows the
+          // whole image instead of cropping the top and bottom.
+          "--banner-h": "calc((46vw - 26px) * 0.525)",
           "--content-offset": "calc(var(--banner-h) + var(--profile-h))",
         } as React.CSSProperties
       }
