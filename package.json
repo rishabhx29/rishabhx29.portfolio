@@ -44,6 +44,7 @@
     "eslint-config-next": "16.2.6",
     "eslint-plugin-sonarjs": "^1.0.4",
     "jsdom": "^25.0.1",
+    "puppeteer-core": "^25.12.0",
     "shadcn": "^4.7.0",
     "tailwind-merge": "^3.6.0",
     "tailwindcss": "^4",
