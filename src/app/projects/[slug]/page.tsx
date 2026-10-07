@@ -173,15 +173,17 @@ export default async function ProjectPage({ params }: Readonly<{ params: Promise
                 allowFullScreen
               ></iframe>
             ) : (
-              <video 
-                src={project.video} 
-                className="w-full h-full object-cover" 
-                controls 
-                autoPlay 
-                muted 
-                loop 
-                playsInline 
-              />
+              <video
+                src={project.video}
+                className="w-full h-full object-cover"
+                controls
+                autoPlay
+                muted
+                loop
+                playsInline
+              >
+                <track kind="captions" label="No spoken dialogue" srcLang="en" />
+              </video>
             )
           ) : (
             <Image 

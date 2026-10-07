@@ -289,7 +289,9 @@ export function ProjectsGrid() {
                   allowFullScreen
                 ></iframe>
               ) : (
-                <video src={activeVideo} className="w-full h-auto" controls autoPlay />
+                <video src={activeVideo} className="w-full h-auto" controls autoPlay>
+                  <track kind="captions" label="No spoken dialogue" srcLang="en" />
+                </video>
               )}
             </motion.div>
           </motion.div>
