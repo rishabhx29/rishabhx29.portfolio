@@ -5,8 +5,8 @@ import { NextResponse } from "next/server";
  *
  * The three secrets are read from the server environment and never shipped to
  * the client. The endpoint falls back to a `not-configured` payload rather
- * than throwing, so the chip can hide itself when the integration is not set
- * up — the site must still render for a developer who has not added the keys.
+ * than throwing, so the chip can show an honest unavailable state when a
+ * deployment has not added the keys.
  */
 
 export const runtime = "nodejs";

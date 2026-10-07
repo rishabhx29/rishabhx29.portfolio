@@ -4,6 +4,7 @@ import { ProjectsGrid } from "@/components/ProjectsGrid";
 import { ExperienceList } from "@/components/ExperienceList";
 import { OpenSourceContributions } from "@/components/OpenSourceContributions";
 import { LastPlayed } from "@/components/LastPlayed";
+import { ProfileViews } from "@/components/ProfileViews";
 import Link from "next/link";
 import SoftPillButton from "@/components/pixel-perfect/soft-pill-button";
 import SocialHoverCard from "@/components/pixel-perfect/social-hover-card";
@@ -244,6 +245,8 @@ export default function Home() {
             </Link>
           </div>
         </div>
+
+        <ProfileViews />
 
         {/* Experiences */}
         <div id="experience" className="mt-6 flex flex-col relative z-10 scroll-mt-24">

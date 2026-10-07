@@ -7,10 +7,9 @@ import { Music2 } from "lucide-react";
 /**
  * "Last played" chip for the song section.
  *
- * Replaces a hardcoded track with whatever Spotify actually reports — playing
- * right now if one is, otherwise the most recently played. Hides itself
- * entirely when the integration is not configured, so the header never renders
- * a dead or placeholder chip.
+ * Shows the latest Spotify track when configured. When a deployment has no
+ * Spotify credentials, keep the music control visible without pretending that
+ * a static track is live.
  */
 
 type SpotifyState = {
@@ -30,17 +29,37 @@ export function LastPlayed() {
   useEffect(() => {
     let alive = true;
     fetch("/api/spotify", { cache: "no-store" })
-      .then((r) => (r.ok ? r.json() : null))
+      .then((r) => (r.ok ? r.json() : { ok: false, reason: "unavailable" }))
       .then((d) => {
-        if (alive && d) setData(d as SpotifyState);
+        if (alive) setData(d && typeof d === "object" ? (d as SpotifyState) : { ok: false });
       })
-      .catch(() => {});
+      .catch(() => {
+        if (alive) setData({ ok: false, reason: "unavailable" });
+      });
     return () => {
       alive = false;
     };
   }, []);
 
-  if (!data || !data.ok || !data.title) return null;
+  if (!data?.ok || !data.title) {
+    return (
+      <span
+        role="status"
+        aria-label={data ? "Spotify track unavailable" : "Checking Spotify track"}
+        className="flex max-w-full items-center gap-2.5 rounded-3xl border border-black/10 bg-white/90 px-3 py-1.5 text-left shadow-sm shadow-black/10 dark:border-white/10 dark:bg-[#171717]/90"
+      >
+        <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+          <Music2 className="size-3.5" aria-hidden="true" />
+        </span>
+        <span className="flex min-w-0 flex-col font-mono leading-tight">
+          <span className="text-[12px] font-semibold text-zinc-700 dark:text-zinc-300 sm:text-[11px]">Music</span>
+          <span className="text-[9px] text-zinc-600 dark:text-zinc-400">
+            {data ? "Spotify unavailable" : "Checking Spotify…"}
+          </span>
+        </span>
+      </span>
+    );
+  }
 
   const albumTag = data.album ? ` (${data.album})` : "";
   const ariaLabel = `${data.isPlaying ? "Now playing" : "Last played"} ${data.title} by ${data.artist} on Spotify`;
@@ -52,7 +71,7 @@ export function LastPlayed() {
       rel="noopener noreferrer"
       aria-label={ariaLabel}
       title={`${data.title} — ${data.artist}${albumTag}`}
-      className="group relative flex items-center gap-2.5 rounded-3xl border border-black/10 bg-white/90 px-3 py-1.5 text-left shadow-sm shadow-black/10 backdrop-blur-md transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-[1px] hover:border-black/25 hover:bg-white hover:shadow-md active:scale-[0.96] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-950 dark:border-white/10 dark:bg-[#171717]/90 dark:shadow-black/60 dark:hover:border-white/25 dark:hover:bg-[#1e1e1e] dark:focus-visible:outline-zinc-50"
+      className="group relative flex max-w-full items-center gap-2.5 rounded-3xl border border-black/10 bg-white/90 px-3 py-1.5 text-left shadow-sm shadow-black/10 backdrop-blur-md transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-[1px] hover:border-black/25 hover:bg-white hover:shadow-md active:scale-[0.96] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-950 dark:border-white/10 dark:bg-[#171717]/90 dark:shadow-black/60 dark:hover:border-white/25 dark:hover:bg-[#1e1e1e] dark:focus-visible:outline-zinc-50 motion-reduce:transition-none"
     >
       {data.image ? (
         <Image
@@ -74,8 +93,9 @@ export function LastPlayed() {
           driven by the title only, and it no longer pushes the theme toggle /
           role out of its space. */}
       <span className="flex min-w-0 flex-col leading-tight">
-        <span className="truncate font-mono text-[12px] font-semibold tracking-[0.06em] text-zinc-700 dark:text-zinc-300 sm:text-[11px]">
-          {data.title}
+        <span className="flex min-w-0 items-center gap-1 truncate font-mono text-[12px] font-semibold tracking-[0.06em] text-zinc-700 dark:text-zinc-300 sm:text-[11px]">
+          <Music2 className="size-2.5 shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+          <span className="truncate">{data.title}</span>
         </span>
         <span className="flex items-center gap-1 font-mono text-[8px] font-bold tracking-[0.16em] text-emerald-600 dark:text-emerald-400">
           <span
