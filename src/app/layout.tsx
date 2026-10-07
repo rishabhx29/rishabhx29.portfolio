@@ -7,8 +7,7 @@ import { RightNavbar } from "@/components/RightNavbar";
 import { MobileTabBar } from "@/components/MobileTabBar";
 import { MobileTopBar } from "@/components/MobileTopBar";
 import { VisitTracker } from "@/lib/playground/visit-tracker";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ProductionAnalytics } from "@/components/ProductionAnalytics";
 import {
   siteDescription,
   siteKeywords,
@@ -206,24 +205,8 @@ export default function RootLayout({
           <VisitTracker />
           <PageTransition>{children}</PageTransition>
         </ThemeProvider>
-        {/*
-          Both of these inject a <script src="/_vercel/.../script.js"> that is
-          only served by Vercel's edge. Mounted unconditionally they 404 in local
-          dev and local `next start`, and because the 404 falls through to the
-          HTML 404 page the browser then refuses the script under strict MIME
-          checking — two red console errors plus a pointless request on every
-          page load, for telemetry that cannot work off-Vercel anyway.
-
-          `NEXT_PUBLIC_VERCEL_ENV` is injected automatically by Vercel at build
-          time and is undefined everywhere else, so this compiles the scripts
-          out of local and preview builds entirely.
-        */}
-        {process.env.NEXT_PUBLIC_VERCEL_ENV ? (
-          <>
-            <Analytics />
-            <SpeedInsights />
-          </>
-        ) : null}
+        {/* Vercel telemetry only on the production domains, never localhost. */}
+        <ProductionAnalytics />
       </body>
     </html>
   );

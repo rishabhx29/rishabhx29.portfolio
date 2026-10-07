@@ -3,8 +3,6 @@
 import { Eye } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const SESSION_KEY = "profile-view-id";
-
 type CountState = { ok: true; count: number } | { ok: false; count: null };
 
 export function ProfileViews() {
@@ -13,25 +11,12 @@ export function ProfileViews() {
 
   useEffect(() => {
     let active = true;
-    // One browser tab counts once per day; Redis also deduplicates repeated
-    // requests from React Strict Mode, navigation, and network retries.
-    let visitorId = crypto.randomUUID();
-    try {
-      visitorId = sessionStorage.getItem(SESSION_KEY) ?? visitorId;
-      sessionStorage.setItem(SESSION_KEY, visitorId);
-    } catch {
-      // Private browsing may block storage; the counter can still be read.
-    }
-
-    fetch("/api/profile-views", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ visitorId }),
-      cache: "no-store",
-    })
-      .then((response) => response.json() as Promise<CountState>)
+    // The browser only reads the aggregate. Vercel's Analytics script records
+    // visits independently; this request never increments a custom counter.
+    fetch("/api/profile-views")
+      .then((response) => response.ok ? response.json() as Promise<CountState> : null)
       .then((data) => {
-        if (active && data.ok && Number.isSafeInteger(data.count)) setViews(data.count);
+        if (active && data?.ok && Number.isSafeInteger(data.count)) setViews(data.count);
       })
       .catch(() => {})
       .finally(() => {
@@ -49,7 +34,7 @@ export function ProfileViews() {
       <span>Profile views</span>
       <span
         aria-live="polite"
-        title={loaded && views === null ? "View count is unavailable until the persistent store is connected" : undefined}
+        title={loaded && views === null ? "Vercel Web Analytics count is unavailable" : undefined}
         className="font-mono font-semibold tabular-nums text-zinc-800 dark:text-zinc-200"
       >
         {views === null ? (loaded ? "—" : "…") : views.toLocaleString("en-US")}

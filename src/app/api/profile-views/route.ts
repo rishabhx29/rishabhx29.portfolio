@@ -1,47 +1,28 @@
 import { NextResponse } from "next/server";
-import { getProfileViews, profileViewsConfigured, recordProfileView } from "@/lib/profile-views";
+import { getProfileViews, profileViewsConfigured } from "@/lib/profile-views";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const headers = { "Cache-Control": "private, no-store" };
-const unavailable = () => NextResponse.json({ ok: false, count: null }, { headers });
+// The count is public; cache the server response at Vercel's edge so every
+// browser does not consume a Vercel API query. Never return the access token.
+const successHeaders = { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600" };
+const unconfiguredHeaders = { "Cache-Control": "private, no-store" };
+// Briefly cache upstream failures too: an invalid token or API outage should
+// not cause a paid upstream query for every visitor to this public endpoint.
+const failureHeaders = { "Cache-Control": "public, s-maxage=30" };
 
 export async function GET() {
-  if (!profileViewsConfigured()) return unavailable();
-  try {
-    return NextResponse.json({ ok: true, count: await getProfileViews() }, { headers });
-  } catch {
-    return unavailable();
+  if (!profileViewsConfigured()) {
+    return NextResponse.json({ ok: false, count: null }, { headers: unconfiguredHeaders });
   }
-}
-
-export async function POST(request: Request) {
-  if (!profileViewsConfigured()) return unavailable();
-
-  const origin = request.headers.get("origin");
-  if (origin !== new URL(request.url).origin) {
-    return NextResponse.json({ error: "Forbidden" }, { status: 403, headers });
-  }
-
-  let visitorId: unknown;
-  try {
-    ({ visitorId } = await request.json());
-  } catch {
-    return NextResponse.json({ error: "Invalid request" }, { status: 400, headers });
-  }
-  if (typeof visitorId !== "string" || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(visitorId)) {
-    return NextResponse.json({ error: "Invalid visitor id" }, { status: 400, headers });
-  }
-
-  // Vercel Proxy sets x-real-ip; do not trust caller-controlled forwarded-for.
-  // Local development has no trusted proxy, so shares a single dev bucket.
-  const clientIp = process.env.VERCEL ? request.headers.get("x-real-ip") : "local";
-  if (!clientIp) return NextResponse.json({ error: "Client unavailable" }, { status: 403, headers });
 
   try {
-    return NextResponse.json({ ok: true, count: await recordProfileView(visitorId, clientIp) }, { headers });
+    const count = await getProfileViews();
+    return NextResponse.json({ ok: true, count }, { headers: successHeaders });
   } catch {
-    return unavailable();
+    // An expired token, insufficient team access, or an API outage must not
+    // appear as zero views or leak credential details to the browser.
+    return NextResponse.json({ ok: false, count: null }, { headers: failureHeaders });
   }
 }

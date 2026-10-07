@@ -1,21 +1,12 @@
 // @vitest-environment node
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { GET, POST } from "./route";
-
-const ORIGIN = "https://rishabhx29.me";
-const ID = "d04d225b-03e7-49dc-868c-ccdd85a45c55";
-
-function visit(id: unknown = ID, origin = ORIGIN) {
-  return new Request(`${ORIGIN}/api/profile-views`, {
-    method: "POST",
-    headers: { Origin: origin, "Content-Type": "application/json" },
-    body: JSON.stringify({ visitorId: id }),
-  });
-}
+import { GET } from "./route";
 
 beforeEach(() => {
-  vi.stubEnv("UPSTASH_REDIS_REST_URL", "https://example.upstash.io");
-  vi.stubEnv("UPSTASH_REDIS_REST_TOKEN", "test-token");
+  vi.stubEnv("VERCEL_ANALYTICS_TOKEN", "private-test-token");
+  vi.stubEnv("VERCEL_ANALYTICS_PROJECT_ID", "prj_test");
+  vi.stubEnv("VERCEL_PROJECT_ID", "");
+  vi.stubEnv("VERCEL_ANALYTICS_TEAM_ID", "");
 });
 
 afterEach(() => {
@@ -23,63 +14,60 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
-describe("/api/profile-views", () => {
-  it("never invents a count when the persistent store is unconfigured", async () => {
-    vi.stubEnv("UPSTASH_REDIS_REST_URL", "");
+describe("GET /api/profile-views", () => {
+  it("does not invent a count or call Vercel when credentials are absent", async () => {
+    vi.stubEnv("VERCEL_ANALYTICS_TOKEN", "");
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+
     const response = await GET();
     expect(await response.json()).toEqual({ ok: false, count: null });
     expect(response.headers.get("cache-control")).toBe("private, no-store");
+    expect(fetchMock).not.toHaveBeenCalled();
   });
 
-  it("rejects malformed identifiers and cross-origin submissions", async () => {
-    expect((await POST(visit("bad"))).status).toBe(400);
-    expect((await POST(visit(ID, "https://evil.example"))).status).toBe(403);
-    expect((await POST(new Request(`${ORIGIN}/api/profile-views`, { method: "POST" }))).status).toBe(403);
+  it("returns lifetime production homepage pageviews without exposing the token", async () => {
+    const fetchMock = vi.fn(async () => Response.json({ data: { pageviews: 1234, visitors: 900 } }));
+    vi.stubGlobal("fetch", fetchMock);
+    vi.stubEnv("VERCEL_ANALYTICS_TEAM_ID", "team_test");
+
+    const response = await GET();
+    const payload = await response.text();
+    expect(JSON.parse(payload)).toEqual({ ok: true, count: 1234 });
+    expect(payload).not.toContain("private-test-token");
+    expect(response.headers.get("cache-control")).toContain("s-maxage=300");
+    const [url, options] = fetchMock.mock.calls[0] as unknown as [URL, RequestInit];
+    expect(url.origin + url.pathname).toBe("https://api.vercel.com/v1/query/web-analytics/visits/count");
+    expect(url.searchParams.get("projectId")).toBe("prj_test");
+    expect(url.searchParams.get("teamId")).toBe("team_test");
+    expect(url.searchParams.get("filter")).toBe("requestPath eq '/'");
+    expect(url.searchParams.has("since")).toBe(false);
+    expect(options.headers).toEqual({ Authorization: "Bearer private-test-token" });
   });
 
-  it("increments only once for the same visitor while returning the shared count", async () => {
-    const entries = new Map<string, string>();
-    vi.stubGlobal("fetch", vi.fn(async (_url: string, init: RequestInit) => {
-      const args = JSON.parse(init.body as string) as (string | number)[];
-      const [command, , , countKey, visitorKey, rateKey, , , limit] = args;
-      if (command === "GET") return Response.json({ result: entries.get(String(args[1])) ?? null });
-      if (command === "EVAL") {
-        const count = Number(entries.get(String(countKey)) ?? 0);
-        if (entries.has(String(visitorKey))) return Response.json({ result: count });
-        const attempts = Number(entries.get(String(rateKey)) ?? 0) + 1;
-        entries.set(String(rateKey), String(attempts));
-        if (attempts > Number(limit)) return Response.json({ result: count });
-        entries.set(String(visitorKey), "1");
-        entries.set(String(countKey), String(count + 1));
-        return Response.json({ result: count + 1 });
-      }
-      throw new Error("Unexpected Redis command");
-    }));
+  it("uses Vercel's system project ID when no override is set", async () => {
+    vi.stubEnv("VERCEL_ANALYTICS_PROJECT_ID", "");
+    vi.stubEnv("VERCEL_PROJECT_ID", "prj_system");
+    const fetchMock = vi.fn(async () => Response.json({ data: { pageviews: 0, visitors: 0 } }));
+    vi.stubGlobal("fetch", fetchMock);
 
     expect(await (await GET()).json()).toEqual({ ok: true, count: 0 });
-    expect(await (await POST(visit())).json()).toEqual({ ok: true, count: 1 });
-    expect(await (await POST(visit())).json()).toEqual({ ok: true, count: 1 });
-    expect(await (await POST(visit("00000000-0000-4000-8000-000000000001"))).json()).toEqual({ ok: true, count: 2 });
-    expect(await (await GET()).json()).toEqual({ ok: true, count: 2 });
-    expect(JSON.stringify([...entries.keys()])).not.toContain(ID);
-
-    // A scripted flood with fresh IDs from one proxy IP cannot inflate views
-    // beyond the hourly cap. Duplicate IDs never consume extra quota.
-    for (let i = 2; i < 120; i++) {
-      await POST(visit(`00000000-0000-4000-8000-${String(i).padStart(12, "0")}`));
-    }
-    expect(await (await POST(visit("00000000-0000-4000-8000-000000000121"))).json())
-      .toEqual({ ok: true, count: 120 });
-    expect(await (await GET()).json()).toEqual({ ok: true, count: 120 });
+    const [url] = fetchMock.mock.calls[0] as unknown as [URL];
+    expect(url.searchParams.get("projectId")).toBe("prj_system");
   });
 
-  it("requires Vercel's trusted IP header on deployment", async () => {
-    vi.stubEnv("VERCEL", "1");
-    expect((await POST(visit())).status).toBe(403);
+  it("does not show a fake zero for an API error or unexpected response", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => new Response("Unauthorized", { status: 401 })));
+    expect(await (await GET()).json()).toEqual({ ok: false, count: null });
+
+    vi.stubGlobal("fetch", vi.fn(async () => Response.json({ data: { pageviews: "0" } })));
+    const malformed = await GET();
+    expect(await malformed.json()).toEqual({ ok: false, count: null });
+    expect(malformed.headers.get("cache-control")).toContain("s-maxage=30");
   });
 
-  it("returns unavailable rather than a fake zero when the store fails", async () => {
-    vi.stubGlobal("fetch", vi.fn(async () => { throw new Error("offline"); }));
-    expect(await (await POST(visit())).json()).toEqual({ ok: false, count: null });
+  it("handles an upstream network failure without leaking error details", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => { throw new Error("network failed"); }));
+    expect(await (await GET()).json()).toEqual({ ok: false, count: null });
   });
 });
