@@ -41,9 +41,9 @@ that don't shift while they're loading.
 
 | Programme | Role | Period |
 | :--- | :--- | :--- |
-| **Social Summer of Code (SSoC)** | Project Admin — admin and mentor contributors on Traceon and AlgoForge, guide architecture decisions, review PRs, and resolve issues with people early in their open-source journey. | Jun 2026 — Present |
-| **GirlScript Summer of Code (GSSoC)** | Contributor — shipped features and performance work on *Editron* and *Commitpulse* alongside maintainers. | Apr 2026 — Present |
-| **Ecera System Pvt. Ltd.** | Software Developer Intern — architected a job portal from the ground up (auth, CI/CD on a VPS via Jenkins), plus accessibility refactors, captcha security, and real-time dashboards on an LMS. | Jun 2026 — Present |
+| **Social Summer of Code (SSoC)** | Project Admin — admin and mentor contributors on Traceon and AlgoForge, guide architecture decisions, review PRs, and resolve issues with people early in their open-source journey. | Jun 2026 — Aug 2026 |
+| **GirlScript Summer of Code (GSSoC)** | Contributor — shipped features and performance work on *Editron* and *Commitpulse* alongside maintainers. | Apr 2026 — Aug 2026 |
+| **Ecera System Pvt. Ltd.** | Software Developer Intern — architected a job portal from the ground up (auth, CI/CD on a VPS via Jenkins), plus accessibility refactors, captcha security, and real-time dashboards on an LMS. | Jun 2026 — Aug 2026 |
 
 ---
 

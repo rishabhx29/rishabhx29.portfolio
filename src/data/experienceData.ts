@@ -18,7 +18,7 @@ export const experiences: ExperienceData[] = [
   {
     title: "Ecera System Private Ltd.",
     role: "Software Developer Intern",
-    dates: "June 2026 - Present",
+    dates: "June 2026 - August 2026",
     location: "Remote",
     src: "/logos/ecera-logo.png",
     imageFit: "contain",
@@ -32,7 +32,7 @@ export const experiences: ExperienceData[] = [
   {
     title: "SSoC",
     role: "Project Admin",
-    dates: "June 2026 - Present",
+    dates: "June 2026 - August 2026",
     location: "Remote",
     src: "/logos/SSoC_light.png",
     srcDark: "/logos/SSoC_dark.png",
@@ -48,7 +48,7 @@ export const experiences: ExperienceData[] = [
   {
     title: "GSSoC",
     role: "Contributor",
-    dates: "April 2026 - Present",
+    dates: "April 2026 - August 2026",
     location: "Remote",
     src: "/logos/GSSoC_light.jpg",
     srcDark: "/logos/GSSoC_dark.jpg",
