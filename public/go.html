@@ -12,7 +12,7 @@
     background: #0b0b0f; color: #fafafa;
     font: 15px/1.7 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   }
-  .card { text-align: center; padding: 2rem 2.5rem; }
+  .card { text-align: center; padding: 2rem 2.5rem; max-width: 34rem; }
   .spinner {
     width: 26px; height: 26px; margin: 0 auto 1.1rem; border-radius: 50%;
     border: 2px solid rgba(129, 140, 248, .25); border-top-color: #818cf8;
@@ -21,15 +21,22 @@
   @keyframes spin { to { transform: rotate(360deg); } }
   @media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
   a { color: #818cf8; }
-  p { margin: .35rem 0; }
+  p { margin: .4rem 0; }
   .muted { color: #a1a1aa; font-size: 13px; }
+  .btn {
+    display: inline-block; margin-top: .6rem; padding: .6rem 1.1rem;
+    border: 1px solid #818cf8; border-radius: 8px; color: #818cf8;
+    text-decoration: none; font-weight: 600;
+  }
+  .btn:hover { background: rgba(129, 140, 248, .12); }
 </style>
 </head>
 <body>
 <div class="card">
   <div class="spinner" id="spinner"></div>
   <p id="status">Opening in a new tab…</p>
-  <p class="muted"><a id="fallback" href="https://www.rishabhx29.me/">click here</a> if nothing opened</p>
+  <p><a class="btn" id="fallback" href="https://www.rishabhx29.me/" target="_blank" rel="noopener">Open the link</a></p>
+  <p class="muted">This page closes itself once the link is open.</p>
 </div>
 <script>
 (function () {
@@ -63,30 +70,33 @@
 
   fallback.href = target;
 
-  // Opening a new tab with window.open() gets blocked here, because by the
-  // time this page runs the original click is no longer a user gesture.
-  // Clicking a real anchor with target="_blank" is a navigation rather than
-  // a pop-up, so it is not blocked.
-  fallback.target = "_blank";
-  fallback.textContent = "opening";
-  fallback.click();
+  // Try the new tab first. Some browsers block this, because the click that
+  // brought the reader here is no longer a user gesture by now.
+  var opened = null;
+  try {
+    opened = window.open(target, "_blank");
+  } catch (err) {
+    opened = null;
+  }
 
-  window.setTimeout(function () {
-    if (document.hidden) {
-      // The new tab took over, so put the reader back where they came from.
+  if (opened) {
+    try { opened.opener = null; } catch (err) { /* ignore */ }
+    // The destination is open in its own tab. Return the reader to the
+    // profile so it stays on screen.
+    window.setTimeout(function () {
       if (window.history.length > 1) {
         window.history.back();
       } else {
         spinner.style.display = "none";
         status.textContent = "Opened in a new tab.";
       }
-    } else {
-      // Nothing opened, the browser blocked it. Carry on in this tab.
-      spinner.style.display = "none";
-      status.textContent = "Opening…";
-      window.location.replace(target);
-    }
-  }, 1200);
+    }, 700);
+  } else {
+    // Blocked, so carry on in this tab rather than stranding the reader.
+    spinner.style.display = "none";
+    status.textContent = "Opening…";
+    window.location.replace(target);
+  }
 })();
 </script>
 </body>
