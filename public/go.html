@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Opening…</title>
+<style>
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    min-height: 100vh; display: grid; place-items: center;
+    background: #0b0b0f; color: #fafafa;
+    font: 15px/1.7 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .card { text-align: center; padding: 2rem 2.5rem; }
+  .spinner {
+    width: 26px; height: 26px; margin: 0 auto 1.1rem; border-radius: 50%;
+    border: 2px solid rgba(129, 140, 248, .25); border-top-color: #818cf8;
+    animation: spin .8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
+  a { color: #818cf8; }
+  p { margin: .35rem 0; }
+  .muted { color: #a1a1aa; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="spinner" id="spinner"></div>
+  <p id="status">Opening in a new tab…</p>
+  <p class="muted"><a id="fallback" href="https://www.rishabhx29.me/">click here</a> if nothing opened</p>
+</div>
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var target = params.get("u");
+  var status = document.getElementById("status");
+  var fallback = document.getElementById("fallback");
+  var spinner = document.getElementById("spinner");
+
+  if (!target) {
+    spinner.style.display = "none";
+    status.textContent = "No destination given.";
+    return;
+  }
+
+  // Only web addresses are allowed through, never a script or file scheme.
+  var allowed = false;
+  try {
+    var probe = document.createElement("a");
+    probe.href = target;
+    allowed = probe.protocol === "http:" || probe.protocol === "https:";
+  } catch (err) {
+    allowed = false;
+  }
+
+  if (!allowed) {
+    spinner.style.display = "none";
+    status.textContent = "That destination is not allowed.";
+    return;
+  }
+
+  fallback.href = target;
+
+  var opened = window.open(target, "_blank");
+  if (opened) {
+    try { opened.opener = null; } catch (err) { /* ignore */ }
+    window.setTimeout(function () { window.close(); }, 1500);
+  } else {
+    // The browser blocked the pop-up, so carry on in this tab instead.
+    spinner.style.display = "none";
+    status.textContent = "Opening…";
+    window.location.replace(target);
+  }
+})();
+</script>
+</body>
+</html>
