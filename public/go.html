@@ -63,25 +63,30 @@
 
   fallback.href = target;
 
-  var opened = window.open(target, "_blank");
-  if (opened) {
-    try { opened.opener = null; } catch (err) { /* ignore */ }
-    // The target is open in its own tab now. Put the reader back where they
-    // came from, so the profile stays on screen.
-    window.setTimeout(function () {
+  // Opening a new tab with window.open() gets blocked here, because by the
+  // time this page runs the original click is no longer a user gesture.
+  // Clicking a real anchor with target="_blank" is a navigation rather than
+  // a pop-up, so it is not blocked.
+  fallback.target = "_blank";
+  fallback.textContent = "opening";
+  fallback.click();
+
+  window.setTimeout(function () {
+    if (document.hidden) {
+      // The new tab took over, so put the reader back where they came from.
       if (window.history.length > 1) {
         window.history.back();
       } else {
         spinner.style.display = "none";
         status.textContent = "Opened in a new tab.";
       }
-    }, 500);
-  } else {
-    // The browser blocked the pop-up, so carry on in this tab instead.
-    spinner.style.display = "none";
-    status.textContent = "Opening…";
-    window.location.replace(target);
-  }
+    } else {
+      // Nothing opened, the browser blocked it. Carry on in this tab.
+      spinner.style.display = "none";
+      status.textContent = "Opening…";
+      window.location.replace(target);
+    }
+  }, 1200);
 })();
 </script>
 </body>
