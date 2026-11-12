@@ -66,7 +66,16 @@
   var opened = window.open(target, "_blank");
   if (opened) {
     try { opened.opener = null; } catch (err) { /* ignore */ }
-    window.setTimeout(function () { window.close(); }, 1500);
+    // The target is open in its own tab now. Put the reader back where they
+    // came from, so the profile stays on screen.
+    window.setTimeout(function () {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        spinner.style.display = "none";
+        status.textContent = "Opened in a new tab.";
+      }
+    }, 500);
   } else {
     // The browser blocked the pop-up, so carry on in this tab instead.
     spinner.style.display = "none";
