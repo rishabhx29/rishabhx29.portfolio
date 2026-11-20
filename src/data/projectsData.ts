@@ -36,7 +36,7 @@ export type TechKey =
 
 export type TechItem = TechKey | { label: string; tooltip?: string; };
 
-export type ProjectStatus = "live" | "building" | "not-started";
+type ProjectStatus = "live" | "building" | "not-started";
 
 export interface Project {
   slug: string;

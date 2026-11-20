@@ -41,9 +41,9 @@ import { useWebHaptics } from "web-haptics/react";
 // Public API
 // -----------------------------------------------------------------------------
 
-export type KeyboardEventSource = "physical" | "pointer";
-export type KeyboardEventPhase = "down" | "up";
-export type KeyboardThemeName = "classic" | "mint" | "royal" | "dolch" | "sand" | "scarlet";
+type KeyboardEventSource = "physical" | "pointer";
+type KeyboardEventPhase = "down" | "up";
+type KeyboardThemeName = "classic" | "mint" | "royal" | "dolch" | "sand" | "scarlet";
 
 export interface KeyboardInteractionEvent {
   code: string;
@@ -85,8 +85,6 @@ export function Keyboard({
     </KeyboardProvider>
   );
 }
-
-export default Keyboard;
 
 // -----------------------------------------------------------------------------
 // Internal keyboard context
@@ -706,7 +704,7 @@ function Key({
 // Keyboard constants
 // -----------------------------------------------------------------------------
 
-export enum KEYCODE {
+enum KEYCODE {
   Escape = "Escape",
   F1 = "F1",
   F2 = "F2",
@@ -1007,7 +1005,7 @@ function toRgba(color: string, alpha: number): string {
   return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
 }
 
-export const SOUND_DEFINES_DOWN: Record<string, [number, number]> = {
+const SOUND_DEFINES_DOWN: Record<string, [number, number]> = {
   Escape: [9069, 115],
   F1: [2754, 104],
   F2: [3155, 99],
@@ -1095,7 +1093,7 @@ export const SOUND_DEFINES_DOWN: Record<string, [number, number]> = {
   AltRight: [35878, 90],
 };
 
-export const SOUND_DEFINES_UP: Record<string, [number, number]> = {
+const SOUND_DEFINES_UP: Record<string, [number, number]> = {
   Escape: [9069 + 115, 94],
   F1: [2754 + 104, 85],
   F2: [3155 + 99, 81],

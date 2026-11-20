@@ -7,24 +7,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
 import {
-  type TechIcon,
-  type TechKey,
-  type TechItem,
   type Project,
   iconMap,
   techNames,
   projectsData,
 } from "@/data/projectsData";
-
-export {
-  type TechIcon,
-  type TechKey,
-  type TechItem,
-  type Project,
-  iconMap,
-  techNames,
-  projectsData,
-};
 
 export const ProjectCard = ({
   project,

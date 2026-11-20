@@ -9,10 +9,6 @@ const KonamiEasterEgg = dynamic(
   { ssr: false }
 );
 
-const OnekoPet = dynamic(
-  () => import("@/components/OnekoPet").then((module) => module.OnekoPet),
-  { ssr: false }
-);
 
 export function PageTransition({ children }: Readonly<{ children: React.ReactNode }>) {
   const pathname = usePathname();
@@ -52,8 +48,6 @@ export function PageTransition({ children }: Readonly<{ children: React.ReactNod
   return (
     <>
       {canLoadExtras && <KonamiEasterEgg />}
-      {/* Pet dog (Oneko) only on the home page */}
-      {canLoadExtras && pathname === "/" && <OnekoPet />}
       <div key={pathname} className="page-transition flex min-h-screen w-full flex-col relative">
         {children}
       </div>

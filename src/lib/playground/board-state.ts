@@ -10,8 +10,8 @@ import {
  * state returns null and the caller falls back to the authored defaults.
  * ------------------------------------------------------------------------- */
 
-export const BOARD_STORAGE_KEY = "playground.board.v1";
-export const ACHIEVEMENTS_STORAGE_KEY = "playground.achievements.v1";
+const BOARD_STORAGE_KEY = "playground.board.v1";
+const ACHIEVEMENTS_STORAGE_KEY = "playground.achievements.v1";
 
 export interface BoardCamera {
   x: number;

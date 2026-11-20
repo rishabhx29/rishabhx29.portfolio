@@ -45,7 +45,7 @@ export type BlogBlock =
       }[];
     };
 
-export const blogsData: Blog[] = [
+const blogsData: Blog[] = [
   {
     title: "You Are Not Ready for Open Source Just Because You Want to Start",
     date: "Jul 2026",

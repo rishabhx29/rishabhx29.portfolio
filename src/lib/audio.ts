@@ -1,12 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-
 /**
  * Sound playback module — the single seam for everything audio in this app.
  *
  * One AudioContext, one decode cache keyed by URL, one playback path
- * (one-shot clips, sprite slices, stateful playback via the hook).
+ * (one-shot clips and sprite slices).
  * Callers learn only: a sound lives at a URL, and play/stop it.
  */
 
@@ -106,62 +104,3 @@ export async function playSound(
   };
 }
 
-// -----------------------------------------------------------------------------
-// React hook — stateful playback over the same engine
-// -----------------------------------------------------------------------------
-
-export interface UseSoundOptions {
-  volume?: number;
-  playbackRate?: number;
-  /** When false, play() becomes a no-op. Default true. */
-  soundEnabled?: boolean;
-  /** Play restarts the clip instead of layering. Default false. */
-  interrupt?: boolean;
-  onEnd?: () => void;
-}
-
-export interface UseSoundReturn {
-  play: () => void;
-  stop: () => void;
-  isPlaying: boolean;
-}
-
-export function useSound(url: string, options: UseSoundOptions = {}): UseSoundReturn {
-  const { volume = 1, playbackRate = 1, soundEnabled = true, interrupt = false, onEnd } = options;
-
-  const [isPlaying, setIsPlaying] = useState(false);
-  const stopRef = useRef<(() => void) | null>(null);
-  const onEndRef = useRef(onEnd);
-  useEffect(() => {
-    onEndRef.current = onEnd;
-  }, [onEnd]);
-
-  const stop = useCallback(() => {
-    stopRef.current?.();
-    stopRef.current = null;
-    setIsPlaying(false);
-  }, []);
-
-  const play = useCallback(() => {
-    if (!soundEnabled) return;
-    if (interrupt) stop();
-
-    void playSound(url, {
-      volume,
-      playbackRate,
-      onEnd: () => {
-        stopRef.current = null;
-        setIsPlaying(false);
-        onEndRef.current?.();
-      },
-    }).then((handle) => {
-      stopRef.current = handle.stop;
-      setIsPlaying(true);
-    });
-  }, [interrupt, playbackRate, soundEnabled, stop, url, volume]);
-
-  // Stop playback on unmount.
-  useEffect(() => stop, [stop]);
-
-  return { play, stop, isPlaying };
-}
