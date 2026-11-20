@@ -210,14 +210,14 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
       
 
 
-      <div className="absolute left-0 right-0 top-0 h-[var(--banner-h)] pointer-events-auto -z-0 md:left-[27%] md:right-[27%]">
+      <div className="absolute left-0 right-0 top-0 h-[var(--banner-h)] pointer-events-auto -z-0 page-band">
         <FooterBackground />
         <div className="absolute bottom-3 right-2 z-10 pointer-events-auto">
           <CurrentTime />
         </div>
       </div>
 
-      <div className="absolute left-0 right-0 top-[var(--banner-h)] z-50 flex h-[var(--profile-h)] items-center px-4 md:left-[27%] md:right-[27%]">
+      <div className="absolute left-0 right-0 top-[var(--banner-h)] z-50 flex h-[var(--profile-h)] items-center px-4 page-band">
         <div className="flex w-full items-center justify-between gap-4">
           <div className="flex min-w-0 items-center gap-5">
             <Link
@@ -244,7 +244,7 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
         </div>
       </div>
 
-      <main id="main-content" className="relative z-10 ml-0 mr-0 flex flex-col px-4 pb-16 pt-[var(--content-offset)] md:ml-[27%] md:mr-[27%]">
+      <main id="main-content" className="relative z-10 ml-0 mr-0 flex flex-col px-4 pb-16 pt-[var(--content-offset)] page-column">
         <article className="relative">
           <header className="relative py-7">
             <div className="mb-4 flex flex-wrap gap-2">

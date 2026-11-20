@@ -33,7 +33,7 @@ export default function AllProjectsPage() {
       <div className="min-h-screen w-full bg-[#fbfaf9] dark:bg-[var(--page-bg)] relative overflow-x-hidden transition-colors duration-300">
 
         {/* Cell 1: Dot Matrix Background */}
-        <div className="absolute left-0 right-0 md:left-[27%] md:right-[27%] top-0 h-[var(--banner-h)] -z-0 pointer-events-auto">
+        <div className="absolute left-0 right-0 page-band top-0 h-[var(--banner-h)] -z-0 pointer-events-auto">
           <FooterBackground />
           <div className="absolute bottom-3 right-2 z-10 pointer-events-auto">
             <CurrentTime />
@@ -41,7 +41,7 @@ export default function AllProjectsPage() {
         </div>
 
         {/* Cell 2: Header with Back Button + Title + Controls */}
-        <div className="absolute left-0 right-0 md:left-[27%] md:right-[27%] top-[var(--banner-h)] h-[var(--profile-h)] flex items-center px-4 z-50">
+        <div className="absolute left-0 right-0 page-band top-[var(--banner-h)] h-[var(--profile-h)] flex items-center px-4 z-50">
           <div className="flex w-full items-center justify-between">
             {/* Left: Back + Title */}
             <div className="flex items-center gap-5">
@@ -73,7 +73,7 @@ export default function AllProjectsPage() {
         {/* Content Section */}
         <main
           id="main-content"
-          className="ml-0 mr-0 md:ml-[27%] md:mr-[27%] pt-[var(--content-offset)] pb-16 px-4 flex flex-col z-10 relative"
+          className="ml-0 mr-0 page-column pt-[var(--content-offset)] pb-16 px-4 flex flex-col z-10 relative"
         >
           <div className="relative pt-6 pb-6">
             <div className="flex flex-col relative z-10 w-full">

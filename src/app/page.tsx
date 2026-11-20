@@ -2,7 +2,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { CurrentTime } from "@/components/CurrentTime";
 import { ProjectsGrid } from "@/components/ProjectsGrid";
 import { ExperienceList } from "@/components/ExperienceList";
-import { OpenSourceContributions } from "@/components/OpenSourceContributions";
+import { OpenSourceOrgs } from "@/components/OpenSourceOrgs";
 import { LastPlayed } from "@/components/LastPlayed";
 import { ProfileViews } from "@/components/ProfileViews";
 import Link from "next/link";
@@ -47,7 +47,7 @@ export default function Home() {
         pads itself by those vars are untouched.
       */}
       <div
-        className="absolute left-0 right-0 top-0 z-40 hidden md:block md:left-[27%] md:right-[27%]"
+        className="absolute left-0 right-0 top-0 z-40 hidden md:block page-band"
         style={{ height: "calc(var(--banner-h) + var(--profile-h))" }}
       >
         <div className="flex h-full flex-col gap-13 rounded-3xl border border-dashed border-black/20 bg-[var(--surface-bg)] p-3 dark:border-white/[0.14]">
@@ -165,7 +165,7 @@ export default function Home() {
         <p className="mt-3 text-[14px] leading-relaxed text-zinc-600 dark:text-zinc-300">I design and build fast, dependable products — shipped Traceon and VeloKey, currently shipping Tessera, and led open-source at SSoC and GSSoC along the way. I write clean, readable code that people enjoy using.</p>
       </div>
 
-      <main id="main-content" className="ml-0 mr-0 md:ml-[27%] md:mr-[27%] pt-4 md:pt-[var(--content-offset)] pb-0 px-4 flex flex-col z-10 relative min-h-screen">
+      <main id="main-content" className="ml-0 mr-0 page-column pt-4 md:pt-[var(--content-offset)] pb-0 px-4 flex flex-col z-10 relative min-h-screen">
         <div className="hidden md:block mt-4">
           <p className="text-[14px] sm:text-[15px] text-zinc-600 dark:text-zinc-300 leading-relaxed mt-2">I design and build fast, dependable products — shipped Traceon and VeloKey, currently shipping Tessera, and led open-source at SSoC and GSSoC along the way. I write clean, readable code that people enjoy using.</p>
         </div>
@@ -304,7 +304,7 @@ export default function Home() {
 
         {/* Open Source Contributions */}
         <div id="opensource" className="scroll-mt-24">
-          <OpenSourceContributions />
+          <OpenSourceOrgs />
         </div>
 
         {/* Stack */}

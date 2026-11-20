@@ -26,6 +26,22 @@
   --content-offset: calc(var(--banner-h) + var(--profile-h));
 }
 
+/* Desktop column: an 800px centered strip with equal empty space on both
+ * sides (the reference measures 560px / 880px at 1920 / 2560), not a
+ * proportional one. Phones keep their full-width stack. */
+@media (min-width: 768px) {
+  .page-column {
+    width: 100%;
+    max-width: 800px;
+    margin-inline: auto;
+  }
+
+  .page-band {
+    left: max(0px, calc((100% - 800px) / 2));
+    right: max(0px, calc((100% - 800px) / 2));
+  }
+}
+
 /* On phones the banner band and the profile/header cell both render (the
  * banner is the hero image, the profile cell carries the route title +
  * controls). Shrink them so content starts high while still being visible,
