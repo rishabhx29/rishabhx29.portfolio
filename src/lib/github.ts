@@ -36,6 +36,7 @@ export interface PullRequest {
   url: string;
   repository: {
     nameWithOwner: string;
+    stargazerCount: number;
   };
   state: string;
   createdAt: string;
@@ -81,8 +82,12 @@ export async function fetchContributionCalendar(): Promise<ContributionCalendar 
 }
 
 /** PRs that shouldn't appear in the open-source timeline. */
-function isExcludedPullRequest(pr: PullRequest): boolean {
-  return pr.title === "Main" && pr.repository.nameWithOwner === "rishabhx29/flexprice-storybook";
+export function isExcludedPullRequest(pr: PullRequest): boolean {
+  const repo = pr.repository.nameWithOwner.toLowerCase();
+  return (
+    (pr.title === "Main" && repo === "rishabhx29/flexprice-storybook") ||
+    repo.includes("codebuff")
+  );
 }
 
 function recency(pr: PullRequest): number {

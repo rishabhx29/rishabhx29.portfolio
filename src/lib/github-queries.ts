@@ -56,6 +56,7 @@ function buildPullRequestSearchQuery(searchQuery: string): string {
             url
             repository {
               nameWithOwner
+              stargazerCount
             }
             state
             createdAt

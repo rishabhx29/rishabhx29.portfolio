@@ -65,7 +65,7 @@ describe("fetchPullRequests", () => {
     id,
     title,
     url: `https://github.com/${repo}/pull/${id}`,
-    repository: { nameWithOwner: repo },
+    repository: { nameWithOwner: repo, stargazerCount: 1000 },
     state: "MERGED",
     createdAt,
   });
@@ -79,6 +79,16 @@ describe("fetchPullRequests", () => {
     const prs = await fetchPullRequests("merged");
 
     expect(prs).toEqual([newest, old]);
+  });
+
+  it("filters out codebuff PRs", async () => {
+    const kept = makePR(1, "Fix bug", "upstream/repo", "2025-01-01");
+    const codebuff = makePR(2, "Add feature", "CodebuffAI/codebuff", "2026-06-01");
+    stubFetch({ data: { search: { edges: [{ node: kept }, { node: codebuff }] } } });
+
+    const prs = await fetchPullRequests("merged");
+
+    expect(prs).toEqual([kept]);
   });
 
   it("resolves null when search edges are missing (fallback payload)", async () => {
