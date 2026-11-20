@@ -12,7 +12,7 @@ const PROJECT_NAME_PATTERN =
 
 const STRONG_CLASS = "font-semibold text-zinc-800 dark:text-zinc-200";
 
-export function splitDescriptionPoints(description: string): string[] {
+function splitDescriptionPoints(description: string): string[] {
   return description.split("\n").filter((line) => line.trim() !== "");
 }
 
@@ -34,7 +34,7 @@ function renderDetail(detail: string): ReactNode {
   });
 }
 
-export function DescriptionPoint({ point }: Readonly<{ point: string }>) {
+function DescriptionPoint({ point }: Readonly<{ point: string }>) {
   const trimmed = point.trim();
   const separator = trimmed.indexOf(":");
 

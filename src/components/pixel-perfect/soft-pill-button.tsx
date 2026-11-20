@@ -2,7 +2,7 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 
-export type SoftPillVariant = "secondary" | "primary";
+type SoftPillVariant = "secondary" | "primary";
 
 interface SoftPillButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {

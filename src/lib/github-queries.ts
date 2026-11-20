@@ -39,7 +39,7 @@ export const CONTRIBUTION_CALENDAR_QUERY = `
     }
   `;
 
-export const PR_SEARCH_QUERIES: Record<PRFilterType, string> = {
+const PR_SEARCH_QUERIES: Record<PRFilterType, string> = {
   merged: "author:rishabhx29 type:pr is:merged",
   open: "author:rishabhx29 type:pr is:open",
   closed: "author:rishabhx29 type:pr is:closed is:unmerged",

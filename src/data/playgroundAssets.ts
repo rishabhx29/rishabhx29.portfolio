@@ -82,22 +82,6 @@ export const WIDGET_PRESETS: readonly {
   },
 ];
 
-export interface PlaygroundAssetItem {
-  id: string;
-  type: "image" | "badge" | "sticky" | "tech" | "widget";
-  title: string;
-  subtitle?: string;
-  src?: string;
-  color?: string;
-  content?: string;
-  defaultX: number;
-  defaultY: number;
-  width?: number;
-  height?: number;
-  rotation?: number;
-  link?: string;
-}
-
 export interface PlaygroundAssetCatalogItem {
   id: string;
   type: Extract<WorkbenchObjectType, "photo" | "achievement" | "project">;

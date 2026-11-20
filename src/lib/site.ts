@@ -7,8 +7,6 @@ const resolvedUrl =
 export const siteUrl = new URL(resolvedUrl);
 
 export const siteName = "Rishabh Tripathi";
-export const siteDomain = "rishabhx29.me";
-export const alternateDomain = "rishabhx29.vercel.app";
 
 export const siteTitle = "Rishabh Portfolio | Rishabh Tripathi — Full-Stack Software Engineer";
 

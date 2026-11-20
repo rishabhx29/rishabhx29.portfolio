@@ -630,5 +630,3 @@ export function InteractiveParticles({
     </div>
   );
 }
-
-export default InteractiveParticles;
