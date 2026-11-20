@@ -1,0 +1,6 @@
+# Keep automatic bot reviews off for this repository.
+language: en-US
+reviews:
+  auto_review:
+    enabled: false
+    auto_incremental_review: false
